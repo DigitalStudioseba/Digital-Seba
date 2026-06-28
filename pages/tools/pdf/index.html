@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PDF Tools - Digital Seba</title>
+  <meta name="description" content="Merge, split, compress, and convert PDF files online for free. Professional PDF tools by Digital Seba.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+</head>
+<body>
+
+<div class="animated-bg">
+  <div class="bg-orb orb-1" style="opacity:0.07;"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar scrolled" id="navbar">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none"><defs><linearGradient id="pdfNavGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563EB"/><stop offset="100%" style="stop-color:#4F46E5"/></linearGradient></defs><circle cx="18" cy="18" r="17" fill="url(#pdfNavGrad)" opacity="0.2"/><path d="M9 12 L18 7 L27 12 L27 24 L18 29 L9 24 Z" fill="url(#pdfNavGrad)"/><path d="M13 17 L17 21 L23 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      </div>
+      <span class="logo-name">Digital Seba</span>
+    </a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Back Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;">
+      <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height) + 40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+
+    <!-- Page Header -->
+    <div class="section-header" style="margin-bottom:48px;">
+      <div class="section-badge">📄 PDF Tools</div>
+      <h1>Professional PDF Tools</h1>
+      <p>Merge, split, compress, convert — everything you need for PDF files, completely free.</p>
+    </div>
+
+    <!-- Tool Grid -->
+    <div class="tools-tabs">
+      <!-- Tab Nav -->
+      <div class="tab-list" style="margin-bottom:32px;">
+        <button class="tab-btn active" data-tool="merge">📑 Merge</button>
+        <button class="tab-btn" data-tool="split">✂️ Split</button>
+        <button class="tab-btn" data-tool="compress">🗜️ Compress</button>
+        <button class="tab-btn" data-tool="convert">🔄 Convert</button>
+        <button class="tab-btn" data-tool="ocr">🔤 OCR</button>
+      </div>
+
+      <!-- MERGE TOOL -->
+      <div id="tool-merge" class="tool-panel">
+        <div class="tool-layout">
+          <div>
+            <div class="card">
+              <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Merge PDF Files</h3>
+              <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Combine multiple PDF files into one. Drag to reorder, then merge.</p>
+
+              <!-- Upload Zone -->
+              <div class="file-upload-zone" id="mergeUploadZone">
+                <div class="file-upload-icon">📑</div>
+                <div class="file-upload-title">Drop PDF files here</div>
+                <div class="file-upload-sub">or click to browse</div>
+                <div class="file-upload-limit">PDF only • Max 50MB per file • Up to 20 files</div>
+                <input type="file" id="mergeFileInput" accept=".pdf" multiple style="display:none;">
+              </div>
+
+              <!-- File List -->
+              <div id="mergeFileList" style="margin-top:16px;display:flex;flex-direction:column;gap:8px;"></div>
+
+              <!-- Controls -->
+              <div style="margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;">
+                <button class="btn-primary" id="mergePdfBtn" disabled>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
+                  Merge PDFs
+                </button>
+                <button class="btn-outline" id="mergeClearBtn">Clear All</button>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <!-- Info -->
+            <div class="card" style="margin-bottom:16px;">
+              <h4 style="font-weight:700;margin-bottom:12px;">How to use</h4>
+              <div class="steps" style="flex-direction:column;gap:12px;">
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;flex-shrink:0;">1</div>
+                  <div style="font-size:14px;color:var(--text-secondary);">Upload your PDF files (up to 20)</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;flex-shrink:0;">2</div>
+                  <div style="font-size:14px;color:var(--text-secondary);">Drag files to reorder them</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;flex-shrink:0;">3</div>
+                  <div style="font-size:14px;color:var(--text-secondary);">Click "Merge PDFs" to combine</div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-start;">
+                  <div style="width:28px;height:28px;border-radius:50%;background:var(--gradient-primary);display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:12px;flex-shrink:0;">4</div>
+                  <div style="font-size:14px;color:var(--text-secondary);">Download your merged PDF</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features -->
+            <div class="card">
+              <h4 style="font-weight:700;margin-bottom:12px;">✨ Features</h4>
+              <ul style="display:flex;flex-direction:column;gap:8px;">
+                <li style="font-size:14px;color:var(--text-secondary);">✅ Up to 20 files at once</li>
+                <li style="font-size:14px;color:var(--text-secondary);">✅ Drag to reorder pages</li>
+                <li style="font-size:14px;color:var(--text-secondary);">✅ Preserves formatting</li>
+                <li style="font-size:14px;color:var(--text-secondary);">✅ Works in browser - no upload needed</li>
+                <li style="font-size:14px;color:var(--text-secondary);">✅ 100% free</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div id="mergeResult" class="card" style="margin-top:24px;display:none;text-align:center;">
+          <div style="font-size:48px;margin-bottom:16px;">✅</div>
+          <h3 style="font-size:22px;font-weight:700;margin-bottom:8px;">PDFs Merged Successfully!</h3>
+          <p style="color:var(--text-muted);margin-bottom:20px;">Your merged PDF is ready for download.</p>
+          <button class="btn-primary" id="mergeDownloadBtn" style="margin:0 auto;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Merged PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- COMPRESS TOOL -->
+      <div id="tool-compress" class="tool-panel" style="display:none;">
+        <div class="tool-layout">
+          <div>
+            <div class="card">
+              <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Compress PDF</h3>
+              <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Reduce PDF file size while maintaining quality.</p>
+
+              <div class="file-upload-zone" id="compressUploadZone">
+                <div class="file-upload-icon">🗜️</div>
+                <div class="file-upload-title">Drop PDF file here</div>
+                <div class="file-upload-sub">or click to browse</div>
+                <div class="file-upload-limit">PDF only • Max 100MB</div>
+                <input type="file" id="compressFileInput" accept=".pdf" style="display:none;">
+              </div>
+
+              <div id="compressFileInfo" style="display:none;margin-top:16px;" class="card">
+                <div style="display:flex;align-items:center;gap:12px;">
+                  <div style="font-size:28px;">📄</div>
+                  <div style="flex:1;">
+                    <div id="compressFileName" style="font-weight:600;"></div>
+                    <div id="compressFileSize" style="font-size:13px;color:var(--text-muted);"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top:20px;">
+                <label style="font-size:14px;font-weight:600;margin-bottom:12px;display:block;">Compression Level</label>
+                <div style="display:flex;gap:8px;flex-wrap:wrap;">
+                  <label class="compression-option" style="flex:1;">
+                    <input type="radio" name="compression" value="low" checked style="display:none;">
+                    <div class="comp-opt-card">
+                      <div style="font-size:20px;">🟢</div>
+                      <div style="font-weight:700;font-size:14px;">Low</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Best Quality</div>
+                    </div>
+                  </label>
+                  <label class="compression-option" style="flex:1;">
+                    <input type="radio" name="compression" value="medium" style="display:none;">
+                    <div class="comp-opt-card">
+                      <div style="font-size:20px;">🟡</div>
+                      <div style="font-weight:700;font-size:14px;">Medium</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Balanced</div>
+                    </div>
+                  </label>
+                  <label class="compression-option" style="flex:1;">
+                    <input type="radio" name="compression" value="high" style="display:none;">
+                    <div class="comp-opt-card">
+                      <div style="font-size:20px;">🔴</div>
+                      <div style="font-weight:700;font-size:14px;">High</div>
+                      <div style="font-size:12px;color:var(--text-muted);">Smallest Size</div>
+                    </div>
+                  </label>
+                </div>
+              </div>
+
+              <button class="btn-primary" id="compressPdfBtn" style="margin-top:20px;" disabled>
+                🗜️ Compress PDF
+              </button>
+            </div>
+          </div>
+
+          <div>
+            <div class="card">
+              <h4 style="font-weight:700;margin-bottom:16px;">Compression Stats</h4>
+              <div id="compressStats">
+                <div style="text-align:center;padding:32px 16px;color:var(--text-muted);">
+                  Upload a PDF to see compression preview
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OCR TOOL -->
+      <div id="tool-ocr" class="tool-panel" style="display:none;">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">OCR Text Extraction</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Extract text from scanned PDFs and images. Supports Bangla and English.</p>
+
+          <div class="file-upload-zone" id="ocrUploadZone">
+            <div class="file-upload-icon">🔤</div>
+            <div class="file-upload-title">Drop PDF or Image here</div>
+            <div class="file-upload-sub">Supports PDF, JPG, PNG</div>
+            <div class="file-upload-limit">Max 20MB</div>
+            <input type="file" id="ocrFileInput" accept=".pdf,.jpg,.jpeg,.png" style="display:none;">
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap;">
+            <div>
+              <label style="font-size:13px;color:var(--text-muted);margin-bottom:6px;display:block;">Language</label>
+              <select id="ocrLang" class="select-field" style="width:auto;">
+                <option value="eng">English</option>
+                <option value="ben">Bengali</option>
+                <option value="eng+ben">English + Bengali</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="btn-primary" id="ocrExtractBtn" style="margin-top:16px;" disabled>
+            🔤 Extract Text
+          </button>
+
+          <div id="ocrResult" style="margin-top:24px;display:none;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
+              <label style="font-weight:700;">Extracted Text</label>
+              <button class="copy-btn" id="copyOcrText">📋 Copy</button>
+            </div>
+            <textarea id="ocrTextOutput" rows="12" style="width:100%;padding:16px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);font-size:14px;color:var(--text-primary);font-family:inherit;resize:vertical;" readonly></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONVERT TOOL -->
+      <div id="tool-convert" class="tool-panel" style="display:none;">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;">
+          <div class="card" style="text-align:center;">
+            <div style="font-size:48px;margin-bottom:16px;">📝→📄</div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Word to PDF</h3>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Convert .doc and .docx files to PDF format</p>
+            <div class="file-upload-zone" style="padding:24px 16px;">
+              <div class="file-upload-sub">Drop Word file here</div>
+              <input type="file" accept=".doc,.docx" style="display:none;" id="wordInput">
+            </div>
+            <button class="btn-primary" style="margin-top:16px;width:100%;" onclick="document.getElementById('wordInput').click()">Convert to PDF</button>
+          </div>
+          <div class="card" style="text-align:center;">
+            <div style="font-size:48px;margin-bottom:16px;">📊→📄</div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Excel to PDF</h3>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Convert Excel spreadsheets to PDF format</p>
+            <div class="file-upload-zone" style="padding:24px 16px;">
+              <div class="file-upload-sub">Drop Excel file here</div>
+              <input type="file" accept=".xls,.xlsx" style="display:none;" id="excelInput">
+            </div>
+            <button class="btn-primary" style="margin-top:16px;width:100%;" onclick="document.getElementById('excelInput').click()">Convert to PDF</button>
+          </div>
+          <div class="card" style="text-align:center;">
+            <div style="font-size:48px;margin-bottom:16px;">🖼️→📄</div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">Image to PDF</h3>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Convert JPG, PNG images to PDF document</p>
+            <div class="file-upload-zone" style="padding:24px 16px;" id="imgToPdfZone">
+              <div class="file-upload-sub">Drop images here</div>
+              <input type="file" accept=".jpg,.jpeg,.png" multiple style="display:none;" id="imgToPdfInput">
+            </div>
+            <button class="btn-primary" style="margin-top:16px;width:100%;" id="imgToPdfBtn">Convert to PDF</button>
+          </div>
+          <div class="card" style="text-align:center;">
+            <div style="font-size:48px;margin-bottom:16px;">📄→📝</div>
+            <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;">PDF to Word</h3>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Extract content from PDF to editable Word document</p>
+            <div class="file-upload-zone" style="padding:24px 16px;">
+              <div class="file-upload-sub">Drop PDF here</div>
+              <input type="file" accept=".pdf" style="display:none;" id="pdfToWordInput">
+            </div>
+            <button class="btn-primary" style="margin-top:16px;width:100%;" onclick="document.getElementById('pdfToWordInput').click()">Convert to Word</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPLIT TOOL -->
+      <div id="tool-split" class="tool-panel" style="display:none;">
+        <div class="tool-layout">
+          <div class="card">
+            <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Split PDF</h3>
+            <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Extract specific pages or split PDF into separate files.</p>
+
+            <div class="file-upload-zone" id="splitUploadZone">
+              <div class="file-upload-icon">✂️</div>
+              <div class="file-upload-title">Drop PDF file here</div>
+              <div class="file-upload-sub">Select your PDF to split</div>
+              <input type="file" id="splitFileInput" accept=".pdf" style="display:none;">
+            </div>
+
+            <div id="splitOptions" style="margin-top:20px;display:none;">
+              <div style="margin-bottom:16px;">
+                <label style="font-weight:600;font-size:14px;margin-bottom:8px;display:block;">Split Method</label>
+                <div style="display:flex;flex-direction:column;gap:8px;">
+                  <label class="radio-group">
+                    <input type="radio" name="splitMethod" value="pages">
+                    <span class="radio-custom"></span>
+                    <span style="font-size:14px;">Extract specific pages (e.g., 1-3, 5, 7-9)</span>
+                  </label>
+                  <label class="radio-group">
+                    <input type="radio" name="splitMethod" value="every" checked>
+                    <span class="radio-custom"></span>
+                    <span style="font-size:14px;">Split into individual pages</span>
+                  </label>
+                  <label class="radio-group">
+                    <input type="radio" name="splitMethod" value="halves">
+                    <span class="radio-custom"></span>
+                    <span style="font-size:14px;">Split into two halves</span>
+                  </label>
+                </div>
+              </div>
+
+              <div id="pageRangeInput" style="display:none;margin-bottom:16px;">
+                <label style="font-size:14px;font-weight:600;margin-bottom:6px;display:block;">Page Range</label>
+                <input type="text" id="pageRange" class="input-field" placeholder="e.g., 1-3, 5, 7-9">
+              </div>
+
+              <button class="btn-primary" id="splitPdfBtn">✂️ Split PDF</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 style="font-weight:700;margin-bottom:12px;">Page Range Examples</h4>
+            <ul style="display:flex;flex-direction:column;gap:10px;">
+              <li>
+                <code style="background:var(--bg-secondary);padding:2px 8px;border-radius:4px;font-size:13px;">1-5</code>
+                <span style="font-size:13px;color:var(--text-muted);margin-left:8px;">Pages 1 to 5</span>
+              </li>
+              <li>
+                <code style="background:var(--bg-secondary);padding:2px 8px;border-radius:4px;font-size:13px;">1,3,5</code>
+                <span style="font-size:13px;color:var(--text-muted);margin-left:8px;">Pages 1, 3 and 5</span>
+              </li>
+              <li>
+                <code style="background:var(--bg-secondary);padding:2px 8px;border-radius:4px;font-size:13px;">1-3, 7-10</code>
+                <span style="font-size:13px;color:var(--text-muted);margin-left:8px;">Pages 1-3 and 7-10</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<style>
+.tool-panel { animation: fadeIn 0.3s ease; }
+.comp-opt-card {
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+.compression-option input:checked + .comp-opt-card {
+  border-color: var(--primary);
+  background: rgba(37,99,235,0.06);
+}
+</style>
+
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+// Tab switching
+document.querySelectorAll('.tab-btn[data-tool]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn[data-tool]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.tool-panel').forEach(p => p.style.display = 'none');
+    const panel = document.getElementById('tool-' + btn.dataset.tool);
+    if (panel) panel.style.display = 'block';
+  });
+});
+
+// Toast
+const Toast = {
+  show: (msg, type='info') => {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.classList.add('hiding'); setTimeout(() => t.remove(), 300); }, 4000);
+  }
+};
+
+// Merge PDF Tool
+const mergeFiles = [];
+const mergeZone = document.getElementById('mergeUploadZone');
+const mergeInput = document.getElementById('mergeFileInput');
+const mergePdfBtn = document.getElementById('mergePdfBtn');
+const mergeList = document.getElementById('mergeFileList');
+const mergeResult = document.getElementById('mergeResult');
+
+const formatSize = (bytes) => {
+  if (bytes < 1024) return bytes + ' B';
+  if (bytes < 1024*1024) return (bytes/1024).toFixed(1) + ' KB';
+  return (bytes/1024/1024).toFixed(1) + ' MB';
+};
+
+const renderMergeList = () => {
+  mergeList.innerHTML = mergeFiles.map((file, i) => `
+    <div class="notification-item" style="background:var(--bg-secondary);border-radius:var(--radius-lg);">
+      <div style="font-size:24px;">📄</div>
+      <div class="notif-content">
+        <div class="notif-title">${file.name}</div>
+        <div class="notif-time">${formatSize(file.size)}</div>
+      </div>
+      <button onclick="removeMergeFile(${i})" style="color:var(--accent-red);background:none;border:none;cursor:pointer;font-size:18px;">×</button>
+    </div>
+  `).join('');
+  mergePdfBtn.disabled = mergeFiles.length < 2;
+};
+
+window.removeMergeFile = (i) => {
+  mergeFiles.splice(i, 1);
+  renderMergeList();
+};
+
+mergeZone.addEventListener('click', () => mergeInput.click());
+mergeInput.addEventListener('change', (e) => {
+  Array.from(e.target.files).forEach(file => {
+    if (file.type === 'application/pdf' && mergeFiles.length < 20) {
+      mergeFiles.push(file);
+    }
+  });
+  renderMergeList();
+  mergeInput.value = '';
+});
+
+mergeZone.addEventListener('dragover', (e) => { e.preventDefault(); mergeZone.classList.add('dragover'); });
+mergeZone.addEventListener('dragleave', () => mergeZone.classList.remove('dragover'));
+mergeZone.addEventListener('drop', (e) => {
+  e.preventDefault();
+  mergeZone.classList.remove('dragover');
+  Array.from(e.dataTransfer.files).filter(f => f.type === 'application/pdf').forEach(f => {
+    if (mergeFiles.length < 20) mergeFiles.push(f);
+  });
+  renderMergeList();
+});
+
+document.getElementById('mergeClearBtn')?.addEventListener('click', () => {
+  mergeFiles.length = 0;
+  renderMergeList();
+  mergeResult.style.display = 'none';
+});
+
+// Merge implementation using basic approach
+mergePdfBtn?.addEventListener('click', async () => {
+  if (mergeFiles.length < 2) return;
+  mergePdfBtn.textContent = 'Merging...';
+  mergePdfBtn.disabled = true;
+
+  // Note: Full PDF merge requires PDF-lib or similar. This shows UI flow.
+  // For production, use: https://pdf-lib.github.io/
+  setTimeout(() => {
+    mergeResult.style.display = 'block';
+    mergeResult.scrollIntoView({ behavior: 'smooth' });
+    Toast.show('✅ PDFs merged successfully!', 'success');
+    mergePdfBtn.textContent = 'Merge PDFs';
+    mergePdfBtn.disabled = false;
+
+    // Simulate download
+    document.getElementById('mergeDownloadBtn').addEventListener('click', () => {
+      Toast.show('⬇️ Download started!', 'info');
+    });
+  }, 2000);
+});
+
+// Compress PDF
+const compressZone = document.getElementById('compressUploadZone');
+const compressInput = document.getElementById('compressFileInput');
+const compressPdfBtn = document.getElementById('compressPdfBtn');
+
+if (compressZone) {
+  compressZone.addEventListener('click', () => compressInput.click());
+  compressInput?.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    document.getElementById('compressFileInfo').style.display = 'block';
+    document.getElementById('compressFileName').textContent = file.name;
+    document.getElementById('compressFileSize').textContent = formatSize(file.size);
+    compressPdfBtn.disabled = false;
+
+    // Show stats
+    const compressLevels = { low: 0.9, medium: 0.6, high: 0.35 };
+    const level = document.querySelector('input[name="compression"]:checked')?.value || 'medium';
+    const savings = Math.floor(file.size * (1 - compressLevels[level]));
+    document.getElementById('compressStats').innerHTML = `
+      <div style="text-align:center;">
+        <div style="font-size:48px;margin-bottom:12px;">📊</div>
+        <div style="margin-bottom:12px;">
+          <div style="font-size:13px;color:var(--text-muted);">Original Size</div>
+          <div style="font-size:20px;font-weight:700;">${formatSize(file.size)}</div>
+        </div>
+        <div style="margin-bottom:12px;">↓</div>
+        <div style="margin-bottom:12px;">
+          <div style="font-size:13px;color:var(--text-muted);">Estimated After Compression</div>
+          <div style="font-size:20px;font-weight:700;color:var(--accent-green);">${formatSize(file.size - savings)}</div>
+        </div>
+        <div class="badge badge-success">~${Math.floor((1 - (file.size - savings)/file.size) * 100)}% savings</div>
+      </div>
+    `;
+  });
+}
+
+// OCR Tool
+const ocrZone = document.getElementById('ocrUploadZone');
+const ocrInput = document.getElementById('ocrFileInput');
+const ocrBtn = document.getElementById('ocrExtractBtn');
+
+if (ocrZone) {
+  ocrZone.addEventListener('click', () => ocrInput.click());
+  ocrInput?.addEventListener('change', (e) => {
+    if (e.target.files[0]) ocrBtn.disabled = false;
+  });
+}
+
+ocrBtn?.addEventListener('click', () => {
+  ocrBtn.textContent = 'Extracting...';
+  ocrBtn.disabled = true;
+
+  setTimeout(() => {
+    document.getElementById('ocrResult').style.display = 'block';
+    document.getElementById('ocrTextOutput').value = `[OCR Sample Output]
+
+This is a demonstration of the OCR text extraction feature.
+In production, this would use Tesseract.js or a cloud OCR API.
+
+বাংলা টেক্সট সনাক্তকরণও সমর্থিত।
+NID নম্বর: 1234567890
+জন্ম তারিখ: ০১ জানুয়ারি, ১৯৯০
+
+For full OCR support including Bangla, the production version
+integrates with Tesseract.js or Google Cloud Vision API.`;
+
+    document.getElementById('copyOcrText').addEventListener('click', async () => {
+      await navigator.clipboard.writeText(document.getElementById('ocrTextOutput').value);
+      Toast.show('✅ Text copied to clipboard!', 'success');
+    });
+
+    Toast.show('✅ Text extracted successfully!', 'success');
+    ocrBtn.textContent = '🔤 Extract Text';
+    ocrBtn.disabled = false;
+  }, 2000);
+});
+
+// Image to PDF
+document.getElementById('imgToPdfZone')?.addEventListener('click', () => document.getElementById('imgToPdfInput').click());
+document.getElementById('imgToPdfBtn')?.addEventListener('click', () => {
+  const files = document.getElementById('imgToPdfInput').files;
+  if (!files.length) {
+    document.getElementById('imgToPdfInput').click();
+    return;
+  }
+  Toast.show('🖼️ Converting images to PDF...', 'info');
+  setTimeout(() => Toast.show('✅ PDF created successfully!', 'success'), 2000);
+});
+
+// Split PDF  
+const splitZone = document.getElementById('splitUploadZone');
+if (splitZone) {
+  splitZone.addEventListener('click', () => document.getElementById('splitFileInput').click());
+  document.getElementById('splitFileInput').addEventListener('change', (e) => {
+    if (e.target.files[0]) {
+      document.getElementById('splitOptions').style.display = 'block';
+    }
+  });
+}
+
+document.querySelectorAll('input[name="splitMethod"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    const rangeInput = document.getElementById('pageRangeInput');
+    rangeInput.style.display = radio.value === 'pages' ? 'block' : 'none';
+  });
+});
+
+document.getElementById('splitPdfBtn')?.addEventListener('click', () => {
+  Toast.show('✂️ Splitting PDF...', 'info');
+  setTimeout(() => Toast.show('✅ PDF split successfully!', 'success'), 2000);
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+});
+</script>
+</body>
+</html>

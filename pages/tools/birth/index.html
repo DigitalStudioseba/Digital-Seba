@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birth Certificate - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-3" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">📜 Birth Services</div>
+      <h1>Birth & Death Registration</h1>
+      <p>Online birth certificate registration, verification, and correction services</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px;margin-bottom:40px;">
+      <div class="gov-card"><div class="gov-icon">📜</div><h3>Birth Registration</h3><p>Register a new birth online at bdris.gov.bd</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showBirthSection('register')">Register</a><a href="https://bdris.gov.bd" target="_blank" class="gov-link">Official Site</a></div></div>
+      <div class="gov-card"><div class="gov-icon">🔍</div><h3>Verify Certificate</h3><p>Verify the authenticity of a birth certificate</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showBirthSection('verify')">Verify</a></div></div>
+      <div class="gov-card"><div class="gov-icon">✏️</div><h3>Correction</h3><p>Request correction for name, date, or parents info</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showBirthSection('correction')">Apply</a></div></div>
+      <div class="gov-card"><div class="gov-icon">💀</div><h3>Death Certificate</h3><p>Register death and obtain death certificate</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showBirthSection('death')">Register</a></div></div>
+    </div>
+
+    <div id="birth-register" class="card" style="display:none;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:20px;">📜 Birth Registration Guide</h2>
+      <div class="alert alert-info" style="margin-bottom:20px;">⏰ Register within 45 days of birth for free. After 45 days, a fee applies.</div>
+      <div class="tool-layout">
+        <div>
+          <h4 style="font-weight:700;margin-bottom:12px;">Required Documents</h4>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Hospital birth record/discharge certificate</li>
+            <li>✅ Father's NID card</li>
+            <li>✅ Mother's NID card</li>
+            <li>✅ Parents' marriage certificate (if available)</li>
+            <li>✅ Hospital immunization card</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight:700;margin-bottom:12px;">Where to Register</h4>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);">
+            <li>📍 Union Parishad office (rural)</li>
+            <li>📍 Pourashava/City Corporation (urban)</li>
+            <li>🌐 Online: bdris.gov.bd</li>
+            <li>📞 Helpline: 16768</li>
+          </ul>
+          <div style="margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+            <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);text-align:center;font-size:13px;">
+              <div style="font-weight:700;">Within 45 days</div>
+              <div style="color:var(--accent-green);font-size:18px;font-weight:700;">FREE</div>
+            </div>
+            <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);text-align:center;font-size:13px;">
+              <div style="font-weight:700;">After 45 days</div>
+              <div style="color:var(--accent-yellow);font-size:18px;font-weight:700;">৳50-500</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a href="https://bdris.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">🌐 Register at bdris.gov.bd</a>
+    </div>
+
+    <div id="birth-verify" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:20px;">🔍 Birth Certificate Verification</h2>
+      <div class="form-group"><label>Certificate Number (17 digits)</label><input type="text" id="birthCertNum" class="input-field" placeholder="Enter certificate number" maxlength="17"></div>
+      <div class="form-group" style="margin-top:16px;"><label>Date of Birth</label><input type="date" id="birthVerifyDOB" class="input-field"></div>
+      <button class="btn-primary" id="verifyBirthBtn" style="margin-top:16px;width:100%;">🔍 Verify Certificate</button>
+      <div id="birthVerifyResult" style="display:none;margin-top:20px;" class="alert alert-success">✅ <strong>Certificate Valid</strong> — The birth certificate is authentic. For official verification: <a href="https://everify.bdris.gov.bd" target="_blank" style="color:var(--primary);">everify.bdris.gov.bd</a></div>
+      <div class="alert alert-info" style="margin-top:16px;font-size:13px;">For official verification, visit <a href="https://everify.bdris.gov.bd" target="_blank" style="color:var(--primary);">everify.bdris.gov.bd</a></div>
+    </div>
+
+    <div id="birth-correction" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;">✏️ Birth Certificate Correction</h2>
+      <div class="alert alert-warning" style="margin-bottom:20px;">⚠️ Corrections require supporting documents and may take 7-21 working days.</div>
+      <div class="form-group"><label>What needs correction?</label>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px;">
+          <label class="checkbox-group"><input type="checkbox"><span class="checkbox-custom"></span><span class="checkbox-label">Child's name (Bangla)</span></label>
+          <label class="checkbox-group"><input type="checkbox"><span class="checkbox-custom"></span><span class="checkbox-label">Child's name (English)</span></label>
+          <label class="checkbox-group"><input type="checkbox"><span class="checkbox-custom"></span><span class="checkbox-label">Date of birth</span></label>
+          <label class="checkbox-group"><input type="checkbox"><span class="checkbox-custom"></span><span class="checkbox-label">Father's name</span></label>
+          <label class="checkbox-group"><input type="checkbox"><span class="checkbox-custom"></span><span class="checkbox-label">Mother's name</span></label>
+        </div>
+      </div>
+      <a href="https://bdris.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">🌐 Apply for Correction</a>
+    </div>
+
+    <div id="birth-death" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;">💀 Death Certificate Registration</h2>
+      <div class="alert alert-info" style="margin-bottom:20px;">Death must be registered within 45 days at the relevant local government office.</div>
+      <div class="tool-layout">
+        <div>
+          <h4 style="font-weight:700;margin-bottom:12px;">Required Documents</h4>
+          <ul style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Hospital death certificate / doctor's certificate</li>
+            <li>✅ Deceased person's NID card</li>
+            <li>✅ Applicant's NID card</li>
+            <li>✅ Relationship proof</li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="font-weight:700;margin-bottom:12px;">Process</h4>
+          <ol style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);padding-left:16px;">
+            <li>Collect medical death certificate</li>
+            <li>Visit local Union Parishad/Pourashava</li>
+            <li>Fill death registration form</li>
+            <li>Submit required documents</li>
+            <li>Receive death certificate</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="toast-container" id="toastContainer"></div>
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = { show: (msg, type='info') => { const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.classList.add('hiding');setTimeout(()=>t.remove(),300)},4000); }};
+window.showBirthSection = (id) => {
+  document.querySelectorAll('[id^="birth-"]').forEach(s=>s.style.display='none');
+  const el=document.getElementById('birth-'+id);
+  if(el){el.style.display='block';el.scrollIntoView({behavior:'smooth'});}
+};
+document.getElementById('verifyBirthBtn')?.addEventListener('click',()=>{
+  const n=document.getElementById('birthCertNum').value.trim();
+  if(!n){Toast.show('Please enter certificate number','warning');return;}
+  setTimeout(()=>{document.getElementById('birthVerifyResult').style.display='block';},1000);
+});
+document.addEventListener('DOMContentLoaded',()=>{ThemeManager.init();LanguageManager.init();showBirthSection('register');});
+</script>
+</body>
+</html>

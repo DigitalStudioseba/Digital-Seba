@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Passport Services - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-1" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">🛂 Passport Services</div>
+      <h1>Bangladesh Passport Services</h1>
+      <p>Complete guide for MRP and ePassport application, renewal, and status tracking</p>
+    </div>
+
+    <!-- Service Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px;">
+      <div class="service-card" onclick="showSection('new-passport')" style="cursor:pointer;">
+        <div class="service-icon" style="background:linear-gradient(135deg,#2563EB,#4F46E5);">🛂</div>
+        <div class="service-info"><h3>New Passport</h3><p>Apply for new MRP or ePassport</p></div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" onclick="showSection('passport-renewal')" style="cursor:pointer;">
+        <div class="service-icon" style="background:linear-gradient(135deg,#10B981,#06B6D4);">🔄</div>
+        <div class="service-info"><h3>Passport Renewal</h3><p>Renew your existing passport</p></div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" onclick="showSection('status-check')" style="cursor:pointer;">
+        <div class="service-icon" style="background:linear-gradient(135deg,#F59E0B,#EF4444);">🔍</div>
+        <div class="service-info"><h3>Status Check</h3><p>Track your passport application</p></div>
+        <div class="service-arrow">→</div>
+      </div>
+      <div class="service-card" onclick="showSection('passport-guide')" style="cursor:pointer;">
+        <div class="service-icon" style="background:linear-gradient(135deg,#8B5CF6,#EC4899);">📖</div>
+        <div class="service-info"><h3>Application Guide</h3><p>Step-by-step guide</p></div>
+        <div class="service-arrow">→</div>
+      </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div id="new-passport" class="content-section card" style="display:none;">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:20px;">🛂 New Passport Application</h2>
+      <div class="tool-layout">
+        <div>
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">Required Documents</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="info-card"><div class="info-card-icon" style="background:rgba(37,99,235,0.1);">📇</div><div><div class="info-card-label">Primary ID</div><div style="font-size:14px;color:var(--text-secondary);">National ID Card (NID) or Birth Certificate for minors</div></div></div>
+            <div class="info-card"><div class="info-card-icon" style="background:rgba(16,185,129,0.1);">📷</div><div><div class="info-card-label">Photo</div><div style="font-size:14px;color:var(--text-secondary);">3.5 × 4.5 cm, white background, recent photo</div></div></div>
+            <div class="info-card"><div class="info-card-icon" style="background:rgba(245,158,11,0.1);">💳</div><div><div class="info-card-label">Payment Receipt</div><div style="font-size:14px;color:var(--text-secondary);">Bank payment slip or online payment confirmation</div></div></div>
+            <div class="info-card"><div class="info-card-icon" style="background:rgba(139,92,246,0.1);">📋</div><div><div class="info-card-label">Application Form</div><div style="font-size:14px;color:var(--text-secondary);">Completed online application form</div></div></div>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">Application Steps</h3>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+              <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;">1</div>
+              <div><div style="font-weight:600;font-size:15px;">Online Registration</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Visit epassport.gov.bd and create account</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+              <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;">2</div>
+              <div><div style="font-weight:600;font-size:15px;">Fill Application Form</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Enter personal information and select passport type</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+              <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;">3</div>
+              <div><div style="font-weight:600;font-size:15px;">Pay Fee</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Regular: ৳3,450 | Urgent: ৳6,900 | Express: ৳13,800</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+              <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;">4</div>
+              <div><div style="font-weight:600;font-size:15px;">Schedule Appointment</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Book appointment at nearest passport office</div></div>
+            </div>
+            <div style="display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+              <div style="width:32px;height:32px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:13px;flex-shrink:0;">5</div>
+              <div><div style="font-weight:600;font-size:15px;">Biometric Enrollment</div><div style="font-size:13px;color:var(--text-muted);margin-top:2px;">Visit office for fingerprint and photo</div></div>
+            </div>
+          </div>
+          <a href="https://www.epassport.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;width:100%;text-align:center;justify-content:center;">🌐 Apply at epassport.gov.bd</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="status-check" class="content-section card" style="display:none;">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:20px;">🔍 Passport Status Check</h2>
+      <div style="max-width:500px;">
+        <div class="form-group">
+          <label>Application ID / Enrollment ID</label>
+          <input type="text" id="passportAppId" class="input-field" placeholder="Enter your Application ID">
+        </div>
+        <div class="form-group" style="margin-top:16px;">
+          <label>Date of Birth</label>
+          <input type="date" id="passportDOB" class="input-field">
+        </div>
+        <button class="btn-primary" id="checkPassportStatus" style="margin-top:16px;width:100%;">🔍 Check Status</button>
+      </div>
+
+      <div id="passportStatusResult" style="margin-top:24px;display:none;" class="alert alert-info">
+        <div style="font-size:40px;margin-bottom:12px;">📋</div>
+        <div>
+          <div style="font-weight:700;font-size:16px;margin-bottom:4px;">Application Status: <span style="color:var(--accent-green);">In Process</span></div>
+          <div style="font-size:14px;color:var(--text-muted);">Your passport is being processed. Expected delivery: 15-21 working days.</div>
+          <div style="font-size:12px;color:var(--text-muted);margin-top:8px;">Note: For real status, visit <a href="https://www.epassport.gov.bd" target="_blank" style="color:var(--primary);">epassport.gov.bd</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="passport-guide" class="content-section card" style="display:none;">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:20px;">📖 Passport Application Guide</h2>
+      <div class="tabs">
+        <div class="tab-list">
+          <button class="tab-btn active" data-tab="mrp-guide">MRP Passport</button>
+          <button class="tab-btn" data-tab="epassport-guide">ePassport</button>
+          <button class="tab-btn" data-tab="fees-guide">Fees</button>
+          <button class="tab-btn" data-tab="faq-guide">FAQ</button>
+        </div>
+        <div class="tab-content active" data-tab="mrp-guide">
+          <h3 style="margin-bottom:16px;">Machine Readable Passport (MRP)</h3>
+          <div class="alert alert-info" style="margin-bottom:16px;">MRP passports are being phased out. New applications get ePassport by default.</div>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Valid for 5 or 10 years</li>
+            <li>✅ 48 pages available</li>
+            <li>✅ Machine readable technology</li>
+            <li>✅ Available at all Regional Passport Offices</li>
+          </ul>
+        </div>
+        <div class="tab-content" data-tab="epassport-guide">
+          <h3 style="margin-bottom:16px;">Electronic Passport (ePassport)</h3>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ RFID chip with biometric data</li>
+            <li>✅ More secure than MRP</li>
+            <li>✅ Faster immigration processing</li>
+            <li>✅ Available in 48 or 64 pages</li>
+            <li>✅ Online application at epassport.gov.bd</li>
+          </ul>
+        </div>
+        <div class="tab-content" data-tab="fees-guide">
+          <h3 style="margin-bottom:16px;">Passport Fees (Updated 2024)</h3>
+          <div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Type</th><th>Pages</th><th>Validity</th><th>Fee (৳)</th></tr></thead>
+              <tbody>
+                <tr><td>Regular</td><td>48</td><td>5 years</td><td>3,450</td></tr>
+                <tr><td>Regular</td><td>48</td><td>10 years</td><td>5,750</td></tr>
+                <tr><td>Urgent</td><td>48</td><td>5 years</td><td>6,900</td></tr>
+                <tr><td>Urgent</td><td>48</td><td>10 years</td><td>8,050</td></tr>
+                <tr><td>Super Express</td><td>48</td><td>5 years</td><td>13,800</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="tab-content" data-tab="faq-guide">
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="faq-item active">
+              <button class="faq-question"><span>How long does passport processing take?</span><span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Regular: 15-21 working days | Urgent: 7 working days | Super Express: 2 working days</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question"><span>Can I apply for passport without NID?</span><span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>For those under 18, birth certificate and parent NID is required. For adults, NID is mandatory.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question"><span>Where can I submit my application?</span><span class="faq-icon">+</span></button>
+              <div class="faq-answer"><p>Applications can be submitted at Regional Passport Offices across Bangladesh. Online application is available at epassport.gov.bd</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="passport-renewal" class="content-section card" style="display:none;">
+      <h2 style="font-size:24px;font-weight:700;margin-bottom:20px;">🔄 Passport Renewal</h2>
+      <div class="alert alert-info" style="margin-bottom:24px;">
+        ⏰ <strong>Important:</strong> Renew your passport at least 6 months before expiry to avoid travel disruptions.
+      </div>
+      <div class="tool-layout">
+        <div>
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">Renewal Documents</h3>
+          <ul style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Current/expired passport (original)</li>
+            <li>✅ National ID card</li>
+            <li>✅ Passport size photo (latest)</li>
+            <li>✅ Fee payment receipt</li>
+            <li>✅ Completed application form</li>
+          </ul>
+        </div>
+        <div>
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:16px;">Renewal Process</h3>
+          <ol style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--text-secondary);padding-left:20px;">
+            <li>Apply online at epassport.gov.bd</li>
+            <li>Select "Renewal" application type</li>
+            <li>Upload existing passport details</li>
+            <li>Pay the applicable fee</li>
+            <li>Visit the passport office with original documents</li>
+            <li>Collect new passport when ready</li>
+          </ol>
+          <a href="https://www.epassport.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">🌐 Apply for Renewal</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Passport Offices -->
+    <div class="card" style="margin-top:24px;">
+      <h2 style="font-size:20px;font-weight:700;margin-bottom:16px;">📍 Regional Passport Offices</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Dhaka</strong><br><span style="color:var(--text-muted);">Agargaon, Dhaka-1207</span></div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Chittagong</strong><br><span style="color:var(--text-muted);">Agrabad, Chittagong</span></div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Sylhet</strong><br><span style="color:var(--text-muted);">Sylhet City</span></div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Rajshahi</strong><br><span style="color:var(--text-muted);">Rajshahi City</span></div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Khulna</strong><br><span style="color:var(--text-muted);">Khulna City</span></div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);font-size:14px;">📍 <strong>Barisal</strong><br><span style="color:var(--text-muted);">Barisal City</span></div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = {
+  show: (msg, type='info') => {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.classList.add('hiding'); setTimeout(() => t.remove(), 300); }, 4000);
+  }
+};
+
+window.showSection = (id) => {
+  document.querySelectorAll('.content-section').forEach(s => s.style.display = 'none');
+  const section = document.getElementById(id);
+  if (section) {
+    section.style.display = 'block';
+    section.scrollIntoView({ behavior:'smooth', block:'start' });
+  }
+};
+
+document.getElementById('checkPassportStatus')?.addEventListener('click', () => {
+  const id = document.getElementById('passportAppId').value.trim();
+  const dob = document.getElementById('passportDOB').value;
+  if (!id) { Toast.show('Please enter your Application ID', 'warning'); return; }
+  document.getElementById('passportStatusResult').style.display = 'block';
+  Toast.show('Checking status... Note: Real status requires official epassport.gov.bd website', 'info');
+});
+
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.closest('.faq-item');
+    item.classList.toggle('active');
+  });
+});
+
+document.querySelectorAll('.tab-btn[data-tab]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('.tabs');
+    container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    container.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    container.querySelector(`.tab-content[data-tab="${btn.dataset.tab}"]`)?.classList.add('active');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+  showSection('new-passport');
+});
+</script>
+</body>
+</html>

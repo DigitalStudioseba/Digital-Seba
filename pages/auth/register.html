@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+
+<div class="animated-bg">
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<a href="../../index.html" class="back-home">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+  <span>Back to Digital Seba</span>
+</a>
+
+<div class="auth-layout" style="padding-top:100px;">
+  <div class="auth-card">
+    <div class="auth-logo">
+      <a href="../../index.html">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <defs><linearGradient id="regLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563EB"/><stop offset="100%" style="stop-color:#4F46E5"/></linearGradient></defs>
+          <circle cx="24" cy="24" r="22" fill="url(#regLogoGrad)" opacity="0.15"/>
+          <path d="M12 17 L24 10 L36 17 L36 31 L24 38 L12 31 Z" fill="url(#regLogoGrad)"/>
+          <path d="M17 23 L21 27 L29 19" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </a>
+      <h1>Create Account</h1>
+      <p>Join Digital Seba for free</p>
+    </div>
+
+    <div id="authMessage" class="auth-message hidden"></div>
+
+    <!-- Google Register -->
+    <button id="googleRegisterBtn" class="btn-google">
+      <svg width="20" height="20" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      <span>Continue with Google</span>
+    </button>
+
+    <div class="divider-with-text"><span>or create with email</span></div>
+
+    <!-- Register Form -->
+    <form id="registerForm">
+      <div class="form-row" style="gap:14px;">
+        <div class="input-group">
+          <label for="regFirstName">First Name</label>
+          <input type="text" id="regFirstName" class="input-field" placeholder="John" required autocomplete="given-name">
+        </div>
+        <div class="input-group">
+          <label for="regLastName">Last Name</label>
+          <input type="text" id="regLastName" class="input-field" placeholder="Doe" required autocomplete="family-name">
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-top:16px;">
+        <label for="regEmail">Email Address</label>
+        <div class="input-with-icon">
+          <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <input type="email" id="regEmail" class="input-field" placeholder="your@email.com" required autocomplete="email">
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-top:16px;">
+        <label for="regPhone">Phone (Optional)</label>
+        <div class="input-with-icon">
+          <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <input type="tel" id="regPhone" class="input-field" placeholder="01XXXXXXXXX" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-top:16px;">
+        <label for="regPassword">Password</label>
+        <div class="input-with-icon">
+          <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input type="password" id="regPassword" class="input-field" placeholder="Min. 8 characters" required minlength="8" autocomplete="new-password">
+          <button type="button" class="input-action" id="toggleRegPassword">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          </button>
+        </div>
+        <div class="password-strength" id="passwordStrength" style="margin-top:8px;">
+          <div class="strength-bar">
+            <div class="strength-fill" id="strengthFill"></div>
+          </div>
+          <span id="strengthText" style="font-size:12px;color:var(--text-muted);margin-top:4px;"></span>
+        </div>
+      </div>
+
+      <div class="input-group" style="margin-top:16px;">
+        <label for="regConfirmPassword">Confirm Password</label>
+        <div class="input-with-icon">
+          <svg class="input-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <input type="password" id="regConfirmPassword" class="input-field" placeholder="Repeat password" required autocomplete="new-password">
+        </div>
+      </div>
+
+      <label class="checkbox-group" style="margin-top:20px;align-items:flex-start;">
+        <input type="checkbox" id="agreeTerms" required>
+        <span class="checkbox-custom" style="margin-top:2px;flex-shrink:0;"></span>
+        <span class="checkbox-label">
+          I agree to the <a href="../privacy.html" target="_blank" style="color:var(--primary);">Privacy Policy</a> and 
+          <a href="../terms.html" target="_blank" style="color:var(--primary);">Terms of Service</a>
+        </span>
+      </label>
+
+      <button type="submit" class="btn-primary btn-full" id="registerSubmit" style="margin-top:20px;padding:14px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+        Create Account
+      </button>
+    </form>
+
+    <div class="auth-footer">
+      <p>Already have an account? <a href="login.html" class="auth-link">Sign in</a></p>
+    </div>
+
+    <div class="auth-privacy">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Your data is encrypted. We never share or sell your information.</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<style>
+.back-home { position:fixed;top:20px;left:24px;z-index:100;display:flex;align-items:center;gap:8px;padding:10px 18px;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-full);font-size:14px;font-weight:500;color:var(--text-secondary);backdrop-filter:blur(20px);transition:all .2s ease;text-decoration:none; }
+.back-home:hover { color:var(--text-primary);background:var(--bg-card); }
+.auth-logo { text-align:center;margin-bottom:28px; }
+.auth-logo h1 { font-size:26px;font-weight:800;margin:16px 0 6px; }
+.auth-logo p { font-size:15px;color:var(--text-muted); }
+.auth-message { padding:14px 18px;border-radius:var(--radius-lg);font-size:14px;font-weight:500;margin-bottom:20px;display:flex;align-items:center;gap:10px; }
+.auth-message.error { background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2);color:#EF4444; }
+.auth-message.success { background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2);color:#10B981; }
+.auth-message.hidden { display:none; }
+.btn-google { width:100%;display:flex;align-items:center;justify-content:center;gap:12px;padding:14px;background:var(--bg-secondary);border:1px solid var(--border-strong);border-radius:var(--radius-lg);font-size:15px;font-weight:600;color:var(--text-primary);cursor:pointer;transition:all .2s ease;margin-bottom:20px;font-family:inherit; }
+.btn-google:hover { background:var(--bg-tertiary);transform:translateY(-1px);box-shadow:var(--shadow-md); }
+.auth-link { color:var(--primary);font-size:14px;font-weight:600;text-decoration:none; }
+.auth-link:hover { text-decoration:underline; }
+.auth-footer { text-align:center;margin-top:24px;font-size:14px;color:var(--text-muted); }
+.auth-privacy { display:flex;align-items:center;gap:8px;margin-top:20px;padding:12px 16px;background:rgba(37,99,235,0.06);border-radius:var(--radius-lg);font-size:12px;color:var(--text-muted);line-height:1.4; }
+.strength-bar { height:4px;background:var(--bg-tertiary);border-radius:2px;overflow:hidden; }
+.strength-fill { height:100%;border-radius:2px;transition:all .3s ease;width:0; }
+</style>
+
+<script src="../../assets/js/firebase-config.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/language.js"></script>
+<script>
+const Toast = {
+  show: (msg, type = 'info') => {
+    const container = document.getElementById('toastContainer');
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    toast.textContent = msg;
+    container.appendChild(toast);
+    setTimeout(() => { toast.classList.add('hiding'); setTimeout(() => toast.remove(), 300); }, 4000);
+  }
+};
+
+const showMessage = (msg, type = 'error') => {
+  const el = document.getElementById('authMessage');
+  el.textContent = msg;
+  el.className = `auth-message ${type}`;
+};
+
+// Toggle passwords
+document.getElementById('toggleRegPassword')?.addEventListener('click', () => {
+  const inp = document.getElementById('regPassword');
+  inp.type = inp.type === 'password' ? 'text' : 'password';
+});
+
+// Password strength
+document.getElementById('regPassword')?.addEventListener('input', (e) => {
+  const val = e.target.value;
+  const fill = document.getElementById('strengthFill');
+  const text = document.getElementById('strengthText');
+  let strength = 0;
+
+  if (val.length >= 8) strength++;
+  if (/[A-Z]/.test(val)) strength++;
+  if (/[0-9]/.test(val)) strength++;
+  if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+  const levels = ['', '#EF4444', '#F59E0B', '#10B981', '#2563EB'];
+  const labels = ['', 'Weak', 'Fair', 'Good', 'Strong'];
+  const widths = ['0%', '25%', '50%', '75%', '100%'];
+
+  fill.style.width = widths[strength] || '0%';
+  fill.style.background = levels[strength] || 'transparent';
+  text.textContent = labels[strength] || '';
+  text.style.color = levels[strength] || 'transparent';
+});
+
+// Google register
+document.getElementById('googleRegisterBtn')?.addEventListener('click', async () => {
+  try {
+    if (typeof firebase === 'undefined' || !window.auth) {
+      showMessage('Firebase not configured.', 'error'); return;
+    }
+    const provider = new firebase.auth.GoogleAuthProvider();
+    const result = await window.auth.signInWithPopup(provider);
+    const user = result.user;
+
+    if (window.db) {
+      await window.db.collection('users').doc(user.uid).set({
+        uid: user.uid, email: user.email, displayName: user.displayName,
+        photoURL: user.photoURL, createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        lastLogin: firebase.firestore.FieldValue.serverTimestamp(), role: 'user', plan: 'free'
+      }, { merge: true });
+    }
+
+    Toast.show('✅ Account created! Redirecting...', 'success');
+    setTimeout(() => window.location.href = '../../pages/dashboard/index.html', 1200);
+  } catch (e) {
+    showMessage('Google sign-up failed: ' + (e.message || 'Unknown error'), 'error');
+  }
+});
+
+// Email register
+document.getElementById('registerForm')?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const firstName = document.getElementById('regFirstName').value.trim();
+  const lastName = document.getElementById('regLastName').value.trim();
+  const email = document.getElementById('regEmail').value.trim();
+  const phone = document.getElementById('regPhone').value.trim();
+  const password = document.getElementById('regPassword').value;
+  const confirmPassword = document.getElementById('regConfirmPassword').value;
+  const agreeTerms = document.getElementById('agreeTerms').checked;
+  const btn = document.getElementById('registerSubmit');
+
+  if (!firstName || !lastName || !email || !password) {
+    showMessage('Please fill in all required fields.', 'error'); return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    showMessage('Please enter a valid email address.', 'error'); return;
+  }
+
+  if (password.length < 8) {
+    showMessage('Password must be at least 8 characters.', 'error'); return;
+  }
+
+  if (password !== confirmPassword) {
+    showMessage('Passwords do not match.', 'error'); return;
+  }
+
+  if (!agreeTerms) {
+    showMessage('Please agree to the Terms and Privacy Policy.', 'error'); return;
+  }
+
+  btn.innerHTML = '<div class="loading-dots"><span></span><span></span><span></span></div>';
+  btn.disabled = true;
+
+  try {
+    if (typeof firebase === 'undefined' || !window.auth) throw new Error('Firebase not configured');
+
+    const credential = await window.auth.createUserWithEmailAndPassword(email, password);
+    const user = credential.user;
+
+    await user.updateProfile({ displayName: `${firstName} ${lastName}` });
+    await user.sendEmailVerification();
+
+    if (window.db) {
+      await window.db.collection('users').doc(user.uid).set({
+        uid: user.uid, email, displayName: `${firstName} ${lastName}`,
+        firstName, lastName, phone: phone || null, photoURL: null,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        lastLogin: firebase.firestore.FieldValue.serverTimestamp(),
+        role: 'user', plan: 'free', emailVerified: false, notifications: true
+      });
+    }
+
+    showMessage('✅ Account created! Please check your email to verify your account.', 'success');
+    setTimeout(() => window.location.href = 'login.html', 3000);
+  } catch (error) {
+    const msgs = {
+      'auth/email-already-in-use': 'This email is already registered. Try logging in.',
+      'auth/weak-password': 'Password is too weak.',
+      'auth/invalid-email': 'Invalid email address.',
+      'Firebase not configured': 'Firebase not configured. Please add your config.'
+    };
+    showMessage(msgs[error.code] || error.message || 'Registration failed.', 'error');
+    btn.innerHTML = 'Create Account';
+    btn.disabled = false;
+  }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+});
+</script>
+</body>
+</html>

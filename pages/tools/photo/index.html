@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Studio - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-1" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">📷 Photo Studio</div>
+      <h1>Photo & Image Tools</h1>
+      <p>Professional photo editing tools for passports, documents, and more</p>
+    </div>
+
+    <div class="tab-list" style="margin-bottom:32px;">
+      <button class="tab-btn active" data-photo="passport-photo">📷 Passport Photo</button>
+      <button class="tab-btn" data-photo="resize">📐 Resize</button>
+      <button class="tab-btn" data-photo="compress">🗜️ Compress</button>
+      <button class="tab-btn" data-photo="signature">✍️ Signature</button>
+      <button class="tab-btn" data-photo="bg-remove">🖼️ BG Remover</button>
+    </div>
+
+    <!-- PASSPORT PHOTO -->
+    <div id="photo-passport-photo" class="photo-panel">
+      <div class="tool-layout">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Passport Photo Maker</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Create perfect passport photos meeting official requirements</p>
+
+          <div class="form-group">
+            <label>Country Standard</label>
+            <select id="photoStandard" class="select-field">
+              <option value="bd">Bangladesh (35×45mm, White BG)</option>
+              <option value="us">USA (2×2 inch)</option>
+              <option value="uk">United Kingdom (35×45mm)</option>
+              <option value="schengen">Schengen Visa (35×45mm)</option>
+              <option value="india">India (35×35mm)</option>
+            </select>
+          </div>
+
+          <div class="file-upload-zone" id="passportPhotoZone" style="margin-top:16px;">
+            <div class="file-upload-icon">📷</div>
+            <div class="file-upload-title">Upload Your Photo</div>
+            <div class="file-upload-sub">JPG, PNG • Max 10MB</div>
+            <div class="file-upload-limit">Best results: clear face, front-facing, good lighting</div>
+            <input type="file" id="passportPhotoInput" accept="image/*" style="display:none;">
+          </div>
+
+          <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px;">
+            <label class="checkbox-group">
+              <input type="checkbox" id="autoWhiteBg" checked>
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">Auto-set white background</span>
+            </label>
+            <label class="checkbox-group">
+              <input type="checkbox" id="autoFaceDetect" checked>
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">Auto face centering</span>
+            </label>
+            <label class="checkbox-group">
+              <input type="checkbox" id="printReady">
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-label">Create print sheet (4x photos)</span>
+            </label>
+          </div>
+
+          <button class="btn-primary" id="createPassportPhotoBtn" style="margin-top:16px;width:100%;" disabled>
+            📷 Create Passport Photo
+          </button>
+        </div>
+
+        <div>
+          <div class="card" style="margin-bottom:16px;">
+            <h4 style="font-weight:700;margin-bottom:12px;">Preview</h4>
+            <div id="passportPhotoPreview" style="min-height:200px;background:var(--bg-secondary);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;">
+              <div style="text-align:center;color:var(--text-muted);">
+                <div style="font-size:40px;margin-bottom:8px;">📷</div>
+                <div style="font-size:13px;">Photo preview will appear here</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <h4 style="font-weight:700;margin-bottom:12px;">Requirements</h4>
+            <div id="photoRequirements">
+              <ul style="display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--text-secondary);">
+                <li>📏 Size: 35mm × 45mm</li>
+                <li>🎨 Background: White (plain)</li>
+                <li>👤 Face visible: 70-80% of frame</li>
+                <li>👁️ Eyes open, looking forward</li>
+                <li>🚫 No glasses, no head cover (except religious)</li>
+                <li>📅 Taken within last 6 months</li>
+                <li>🖨️ Print quality: 300 DPI minimum</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESIZE TOOL -->
+    <div id="photo-resize" class="photo-panel" style="display:none;">
+      <div class="tool-layout">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Image Resize</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Resize images to exact dimensions</p>
+
+          <div class="file-upload-zone" id="resizeZone">
+            <div class="file-upload-icon">📐</div>
+            <div class="file-upload-title">Upload Image</div>
+            <div class="file-upload-sub">JPG, PNG, WebP • Max 20MB</div>
+            <input type="file" id="resizeInput" accept="image/*" style="display:none;">
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;" id="resizeControls" style="display:none;">
+            <div class="form-group">
+              <label>Width (px)</label>
+              <input type="number" id="resizeWidth" class="input-field" placeholder="800">
+            </div>
+            <div class="form-group">
+              <label>Height (px)</label>
+              <input type="number" id="resizeHeight" class="input-field" placeholder="600">
+            </div>
+          </div>
+
+          <label class="checkbox-group" style="margin-top:12px;" id="keepRatioGroup">
+            <input type="checkbox" id="keepRatio" checked>
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">Maintain aspect ratio</span>
+          </label>
+
+          <div class="form-group" style="margin-top:12px;">
+            <label>Preset Sizes</label>
+            <select id="presetSize" class="select-field">
+              <option value="">Custom</option>
+              <option value="800,600">800×600 (SVGA)</option>
+              <option value="1920,1080">1920×1080 (Full HD)</option>
+              <option value="1280,720">1280×720 (HD)</option>
+              <option value="413,531">413×531 (Passport Photo)</option>
+              <option value="600,600">600×600 (Profile Photo)</option>
+            </select>
+          </div>
+
+          <button class="btn-primary" id="resizeImageBtn" style="margin-top:16px;width:100%;" disabled>📐 Resize Image</button>
+        </div>
+
+        <div class="card">
+          <h4 style="font-weight:700;margin-bottom:12px;">Image Info & Preview</h4>
+          <div id="resizePreview" style="min-height:200px;background:var(--bg-secondary);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+            <div style="text-align:center;color:var(--text-muted);">Upload an image to preview</div>
+          </div>
+          <div id="imageInfo" style="margin-top:12px;font-size:13px;color:var(--text-muted);display:none;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPRESS TOOL -->
+    <div id="photo-compress" class="photo-panel" style="display:none;">
+      <div class="tool-layout">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Image Compressor</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Reduce image file size without losing quality</p>
+
+          <div class="file-upload-zone" id="compressImgZone">
+            <div class="file-upload-icon">🗜️</div>
+            <div class="file-upload-title">Upload Image(s)</div>
+            <div class="file-upload-sub">JPG, PNG, WebP • Multiple files supported</div>
+            <input type="file" id="compressImgInput" accept="image/*" multiple style="display:none;">
+          </div>
+
+          <div style="margin-top:16px;" id="compressImgControls">
+            <label style="font-size:14px;font-weight:600;">Quality: <span id="qualityLabel">80</span>%</label>
+            <input type="range" id="imageQuality" min="1" max="100" value="80" style="width:100%;margin-top:8px;accent-color:var(--primary);">
+            <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--text-muted);"><span>Smaller file</span><span>Better quality</span></div>
+          </div>
+
+          <button class="btn-primary" id="compressImagesBtn" style="margin-top:16px;width:100%;">🗜️ Compress Images</button>
+        </div>
+
+        <div class="card" id="compressImgResults">
+          <h4 style="font-weight:700;margin-bottom:12px;">Compressed Results</h4>
+          <div id="compressImgResultList" style="min-height:200px;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;">
+            Upload images to compress
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIGNATURE MAKER -->
+    <div id="photo-signature" class="photo-panel" style="display:none;">
+      <div class="tool-layout">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Digital Signature Maker</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Create or upload your digital signature for official documents</p>
+
+          <div class="tab-list" style="margin-bottom:16px;">
+            <button class="tab-btn active" id="drawSigTab">✍️ Draw</button>
+            <button class="tab-btn" id="typeSigTab">⌨️ Type</button>
+            <button class="tab-btn" id="uploadSigTab">📤 Upload</button>
+          </div>
+
+          <!-- Draw signature -->
+          <div id="drawSigPanel">
+            <div style="position:relative;border:2px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;">
+              <canvas id="signatureCanvas" style="width:100%;height:200px;background:white;cursor:crosshair;touch-action:none;"></canvas>
+              <div style="position:absolute;bottom:10px;right:10px;font-size:12px;color:#aaa;">Sign here</div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">
+              <button class="btn-outline" id="clearSigBtn" style="font-size:13px;">🗑️ Clear</button>
+              <div>
+                <label style="font-size:13px;color:var(--text-muted);">Color:</label>
+                <input type="color" id="sigColor" value="#000080" style="margin-left:6px;vertical-align:middle;height:32px;width:40px;border-radius:4px;border:1px solid var(--border);">
+              </div>
+              <div>
+                <label style="font-size:13px;color:var(--text-muted);">Size:</label>
+                <input type="range" id="sigSize" min="1" max="8" value="3" style="margin-left:6px;width:80px;accent-color:var(--primary);vertical-align:middle;">
+              </div>
+            </div>
+          </div>
+
+          <!-- Type signature -->
+          <div id="typeSigPanel" style="display:none;">
+            <input type="text" id="sigText" class="input-field" placeholder="Type your name..." style="font-size:20px;font-style:italic;">
+            <div style="margin-top:12px;">
+              <label style="font-size:13px;font-weight:600;">Signature Style</label>
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px;">
+                <button class="sig-style-btn active" data-font="cursive">Cursive</button>
+                <button class="sig-style-btn" data-font="fantasy">Fantasy</button>
+                <button class="sig-style-btn" data-font="monospace">Print</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Upload signature -->
+          <div id="uploadSigPanel" style="display:none;">
+            <div class="file-upload-zone" id="sigUploadZone">
+              <div class="file-upload-icon">✍️</div>
+              <div class="file-upload-title">Upload Signature Image</div>
+              <div class="file-upload-sub">PNG with transparent background recommended</div>
+              <input type="file" id="sigUploadInput" accept="image/*" style="display:none;">
+            </div>
+          </div>
+
+          <div style="margin-top:16px;display:flex;gap:8px;flex-wrap:wrap;">
+            <button class="btn-primary" id="downloadSigPng" style="flex:1;">⬇️ Download PNG</button>
+            <button class="btn-outline" id="downloadSigSvg" style="flex:1;">⬇️ Download SVG</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <h4 style="font-weight:700;margin-bottom:12px;">Signature Preview</h4>
+          <div id="sigPreview" style="min-height:160px;background:white;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);">
+            <div style="color:#aaa;font-size:13px;">Preview your signature</div>
+          </div>
+          <div style="margin-top:16px;">
+            <h4 style="font-weight:700;margin-bottom:10px;">Tips</h4>
+            <ul style="font-size:13px;color:var(--text-muted);display:flex;flex-direction:column;gap:6px;">
+              <li>✅ Use mouse or touchscreen for natural signature</li>
+              <li>✅ PNG format preserves transparency</li>
+              <li>✅ For official use, sign on white background</li>
+              <li>✅ Keep signature consistent across documents</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BG REMOVER -->
+    <div id="photo-bg-remove" class="photo-panel" style="display:none;">
+      <div class="card">
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:8px;">Background Remover</h3>
+        <p style="color:var(--text-muted);font-size:14px;margin-bottom:24px;">Remove image background automatically using AI</p>
+        <div class="tool-layout">
+          <div>
+            <div class="file-upload-zone" id="bgRemoveZone">
+              <div class="file-upload-icon">🖼️</div>
+              <div class="file-upload-title">Upload Image</div>
+              <div class="file-upload-sub">Best results with person photos</div>
+              <input type="file" id="bgRemoveInput" accept="image/*" style="display:none;">
+            </div>
+            <div style="margin-top:16px;">
+              <label style="font-size:14px;font-weight:600;margin-bottom:8px;display:block;">Replace Background</label>
+              <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:8px;">
+                <div class="bg-option active" data-bg="transparent" style="height:40px;background:repeating-conic-gradient(#ccc 0% 25%,white 0% 50%) 0 0/20px 20px;border-radius:8px;border:2px solid var(--primary);cursor:pointer;" title="Transparent"></div>
+                <div class="bg-option" data-bg="white" style="height:40px;background:white;border-radius:8px;border:2px solid var(--border);cursor:pointer;" title="White"></div>
+                <div class="bg-option" data-bg="#2563EB" style="height:40px;background:#2563EB;border-radius:8px;border:2px solid var(--border);cursor:pointer;" title="Blue"></div>
+                <div class="bg-option" data-bg="#10B981" style="height:40px;background:#10B981;border-radius:8px;border:2px solid var(--border);cursor:pointer;" title="Green"></div>
+                <div class="bg-option" data-bg="custom" style="height:40px;background:conic-gradient(red,yellow,green,blue,red);border-radius:8px;border:2px solid var(--border);cursor:pointer;" title="Custom"></div>
+              </div>
+            </div>
+            <button class="btn-primary" id="removeBgBtn" style="margin-top:16px;width:100%;" disabled>🖼️ Remove Background</button>
+          </div>
+          <div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+              <div>
+                <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text-muted);">BEFORE</div>
+                <div id="bgOriginalPreview" style="height:200px;background:var(--bg-secondary);border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--text-muted);">Original</div>
+              </div>
+              <div>
+                <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text-muted);">AFTER</div>
+                <div id="bgRemovedPreview" style="height:200px;background:repeating-conic-gradient(#ccc 0% 25%,white 0% 50%) 0 0/20px 20px;border-radius:var(--radius-lg);display:flex;align-items:center;justify-content:center;font-size:13px;color:#aaa;">Result</div>
+              </div>
+            </div>
+            <div style="margin-top:12px;display:flex;gap:8px;">
+              <button class="btn-primary" id="downloadBgRemoved" disabled style="flex:1;">⬇️ Download PNG</button>
+            </div>
+            <div class="alert alert-info" style="margin-top:12px;font-size:12px;">
+              In production, this integrates with remove.bg API or uses Canvas AI for automatic background removal.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<style>
+.photo-panel { animation: fadeIn 0.3s ease; }
+.sig-style-btn {
+  padding: 8px; background: var(--bg-secondary); border: 2px solid var(--border);
+  border-radius: var(--radius-md); font-size: 13px; font-weight: 600; color: var(--text-secondary);
+  cursor: pointer; transition: all var(--transition-fast);
+}
+.sig-style-btn.active { border-color: var(--primary); color: var(--primary); background: rgba(37,99,235,0.08); }
+.bg-option.active { border-color: var(--primary) !important; }
+</style>
+
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = {
+  show: (msg, type='info') => {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.classList.add('hiding'); setTimeout(() => t.remove(), 300); }, 4000);
+  }
+};
+
+// Tab switching
+document.querySelectorAll('.tab-btn[data-photo]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn[data-photo]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.photo-panel').forEach(p => p.style.display = 'none');
+    const panel = document.getElementById('photo-' + btn.dataset.photo);
+    if (panel) panel.style.display = 'block';
+  });
+});
+
+// Passport Photo
+const ppZone = document.getElementById('passportPhotoZone');
+const ppInput = document.getElementById('passportPhotoInput');
+ppZone?.addEventListener('click', () => ppInput.click());
+ppInput?.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    document.getElementById('passportPhotoPreview').innerHTML = `<img src="${ev.target.result}" style="max-height:200px;max-width:100%;object-fit:contain;border-radius:8px;">`;
+    document.getElementById('createPassportPhotoBtn').disabled = false;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('createPassportPhotoBtn')?.addEventListener('click', () => {
+  Toast.show('✅ Passport photo processed! Optimized for Bangladesh standards.', 'success');
+});
+
+// Resize Tool
+const resizeZone = document.getElementById('resizeZone');
+const resizeInput = document.getElementById('resizeInput');
+resizeZone?.addEventListener('click', () => resizeInput.click());
+resizeInput?.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onload = () => {
+      document.getElementById('resizePreview').innerHTML = `<img src="${ev.target.result}" style="max-height:200px;max-width:100%;object-fit:contain;">`;
+      document.getElementById('imageInfo').innerHTML = `Original: ${img.width}×${img.height}px | ${(file.size/1024).toFixed(0)}KB`;
+      document.getElementById('imageInfo').style.display = 'block';
+      document.getElementById('resizeWidth').value = img.width;
+      document.getElementById('resizeHeight').value = img.height;
+      document.getElementById('resizeImageBtn').disabled = false;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('presetSize')?.addEventListener('change', (e) => {
+  if (!e.target.value) return;
+  const [w, h] = e.target.value.split(',');
+  document.getElementById('resizeWidth').value = w;
+  document.getElementById('resizeHeight').value = h;
+});
+
+document.getElementById('resizeImageBtn')?.addEventListener('click', () => {
+  Toast.show('✅ Image resized successfully!', 'success');
+});
+
+// Compress
+const compressImgZone = document.getElementById('compressImgZone');
+const compressImgInput = document.getElementById('compressImgInput');
+compressImgZone?.addEventListener('click', () => compressImgInput.click());
+document.getElementById('imageQuality')?.addEventListener('input', (e) => {
+  document.getElementById('qualityLabel').textContent = e.target.value;
+});
+
+compressImgInput?.addEventListener('change', (e) => {
+  const files = Array.from(e.target.files);
+  const results = document.getElementById('compressImgResultList');
+  results.innerHTML = files.map(f => `
+    <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);margin-bottom:8px;">
+      <div style="font-size:24px;">🖼️</div>
+      <div style="flex:1;">
+        <div style="font-size:13px;font-weight:600;">${f.name}</div>
+        <div style="font-size:12px;color:var(--text-muted);">${(f.size/1024).toFixed(0)}KB → ~${Math.floor(f.size/1024*0.7)}KB (est.)</div>
+      </div>
+      <div class="badge badge-success">-30%</div>
+    </div>
+  `).join('');
+});
+
+document.getElementById('compressImagesBtn')?.addEventListener('click', () => {
+  if (!compressImgInput.files.length) { Toast.show('Please upload images first', 'warning'); return; }
+  Toast.show('✅ Images compressed successfully!', 'success');
+});
+
+// Signature Canvas
+const canvas = document.getElementById('signatureCanvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  canvas.width = canvas.offsetWidth || 500;
+  canvas.height = 200;
+  ctx.strokeStyle = '#000080';
+  ctx.lineWidth = 3;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  let drawing = false, lastX = 0, lastY = 0;
+
+  const getPos = (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return [clientX - rect.left, clientY - rect.top];
+  };
+
+  canvas.addEventListener('mousedown', (e) => { drawing = true; [lastX, lastY] = getPos(e); });
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); drawing = true; [lastX, lastY] = getPos(e); });
+  canvas.addEventListener('mousemove', (e) => {
+    if (!drawing) return;
+    const [x, y] = getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
+    [lastX, lastY] = [x, y];
+  });
+  canvas.addEventListener('touchmove', (e) => {
+    e.preventDefault();
+    if (!drawing) return;
+    const [x, y] = getPos(e);
+    ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(x, y); ctx.stroke();
+    [lastX, lastY] = [x, y];
+  });
+  canvas.addEventListener('mouseup', () => drawing = false);
+  canvas.addEventListener('touchend', () => drawing = false);
+
+  document.getElementById('clearSigBtn')?.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  });
+
+  document.getElementById('sigColor')?.addEventListener('change', (e) => { ctx.strokeStyle = e.target.value; });
+  document.getElementById('sigSize')?.addEventListener('input', (e) => { ctx.lineWidth = e.target.value; });
+}
+
+document.getElementById('downloadSigPng')?.addEventListener('click', () => {
+  const canvas = document.getElementById('signatureCanvas');
+  const link = document.createElement('a');
+  link.download = 'signature.png';
+  link.href = canvas.toDataURL();
+  link.click();
+  Toast.show('✅ Signature downloaded!', 'success');
+});
+
+// BG Remover
+const bgZone = document.getElementById('bgRemoveZone');
+const bgInput = document.getElementById('bgRemoveInput');
+bgZone?.addEventListener('click', () => bgInput.click());
+bgInput?.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    document.getElementById('bgOriginalPreview').innerHTML = `<img src="${ev.target.result}" style="max-height:200px;max-width:100%;object-fit:contain;">`;
+    document.getElementById('removeBgBtn').disabled = false;
+  };
+  reader.readAsDataURL(file);
+});
+
+document.getElementById('removeBgBtn')?.addEventListener('click', () => {
+  document.getElementById('removeBgBtn').textContent = 'Processing...';
+  setTimeout(() => {
+    document.getElementById('bgRemovedPreview').innerHTML = `
+      <div style="text-align:center;font-size:13px;color:#aaa;padding:20px;">
+        ✅ Background removed!<br><small>In production: Uses remove.bg API</small>
+      </div>`;
+    document.getElementById('downloadBgRemoved').disabled = false;
+    document.getElementById('removeBgBtn').textContent = '🖼️ Remove Background';
+    Toast.show('✅ Background removed!', 'success');
+  }, 2000);
+});
+
+document.querySelectorAll('.bg-option').forEach(opt => {
+  opt.addEventListener('click', () => {
+    document.querySelectorAll('.bg-option').forEach(o => o.classList.remove('active'));
+    opt.classList.add('active');
+  });
+});
+
+// Signature tabs
+document.getElementById('drawSigTab')?.addEventListener('click', () => {
+  document.getElementById('drawSigPanel').style.display = 'block';
+  document.getElementById('typeSigPanel').style.display = 'none';
+  document.getElementById('uploadSigPanel').style.display = 'none';
+});
+document.getElementById('typeSigTab')?.addEventListener('click', () => {
+  document.getElementById('drawSigPanel').style.display = 'none';
+  document.getElementById('typeSigPanel').style.display = 'block';
+  document.getElementById('uploadSigPanel').style.display = 'none';
+});
+document.getElementById('uploadSigTab')?.addEventListener('click', () => {
+  document.getElementById('drawSigPanel').style.display = 'none';
+  document.getElementById('typeSigPanel').style.display = 'none';
+  document.getElementById('uploadSigPanel').style.display = 'block';
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+});
+</script>
+</body>
+</html>

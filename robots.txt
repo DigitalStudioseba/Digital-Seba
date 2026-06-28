@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+Disallow: /pages/admin/
+Disallow: /pages/dashboard/
+Disallow: /assets/js/firebase-config.js
+Disallow: /uploads/
+Disallow: /.firebase/
+
+# Sitemaps
+Sitemap: https://digitalseba.com.bd/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1
+
+# Google
+User-agent: Googlebot
+Allow: /
+Disallow: /pages/admin/
+Disallow: /pages/dashboard/
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Disallow: /pages/admin/

@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba - Bangladesh's Smart Digital Service Platform. Access government services, tools, and digital solutions online.">
+  <meta name="keywords" content="Digital Seba, Bangladesh digital services, passport, NID, birth certificate, online services">
+  <meta name="author" content="Monir Hossain">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Digital Seba - Bangladesh's Smart Digital Service Platform">
+  <meta property="og:description" content="Access all government and digital services in one place. Passport, NID, Birth Certificate, PDF Tools, AI Tools and more.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digitalseba.com.bd">
+  <meta property="og:image" content="assets/images/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Digital Seba">
+  <meta name="twitter:description" content="Bangladesh's Smart Digital Service Platform">
+  <title>Digital Seba - Bangladesh's Smart Digital Service Platform</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Digital Seba",
+    "url": "https://digitalseba.com.bd",
+    "description": "Bangladesh's Smart Digital Service Platform",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://digitalseba.com.bd/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen" class="loading-screen">
+  <div class="loading-content">
+    <div class="loading-logo">
+      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+        <defs>
+          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2563EB"/>
+            <stop offset="100%" style="stop-color:#4F46E5"/>
+          </linearGradient>
+        </defs>
+        <circle cx="30" cy="30" r="28" fill="url(#logoGrad)" opacity="0.15"/>
+        <path d="M15 20 L30 12 L45 20 L45 40 L30 48 L15 40 Z" fill="url(#logoGrad)" opacity="0.8"/>
+        <path d="M22 28 L28 34 L38 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+    </div>
+    <div class="loading-text">Digital Seba</div>
+    <div class="loading-bar"><div class="loading-progress"></div></div>
+    <div class="loading-sub">Bangladesh's Smart Digital Service Platform</div>
+  </div>
+</div>
+
+<!-- Animated Background -->
+<div class="animated-bg">
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <defs>
+            <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" style="stop-color:#2563EB"/>
+              <stop offset="100%" style="stop-color:#4F46E5"/>
+            </linearGradient>
+          </defs>
+          <circle cx="18" cy="18" r="17" fill="url(#navLogoGrad)" opacity="0.2"/>
+          <path d="M9 12 L18 7 L27 12 L27 24 L18 29 L9 24 Z" fill="url(#navLogoGrad)"/>
+          <path d="M13 17 L17 21 L23 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline" data-en="Smart Platform" data-bn="স্মার্ট প্ল্যাটফর্ম">Smart Platform</span>
+      </div>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <input type="text" id="globalSearch" placeholder="Search services, tools..." data-placeholder-en="Search services, tools..." data-placeholder-bn="সেবা, টুলস খুঁজুন...">
+        <kbd class="search-shortcut">⌘K</kbd>
+      </div>
+      <div class="search-dropdown" id="searchDropdown"></div>
+    </div>
+
+    <!-- Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="nav-link active" data-en="Home" data-bn="হোম">Home</a></li>
+      <li class="dropdown">
+        <a href="#tools" class="nav-link" data-en="Tools" data-bn="টুলস">Tools <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="dropdown-menu tools-mega-menu">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <div class="mega-title">🛂 Government</div>
+              <a href="pages/tools/passport/index.html">Passport Services</a>
+              <a href="pages/tools/nid/index.html">NID Services</a>
+              <a href="pages/tools/birth/index.html">Birth Certificate</a>
+              <a href="pages/tools/land/index.html">Land Records</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">📷 Photo & PDF</div>
+              <a href="pages/tools/photo/index.html">Photo Studio</a>
+              <a href="pages/tools/pdf/index.html">PDF Tools</a>
+              <a href="#">Signature Maker</a>
+              <a href="#">Background Remover</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🤖 AI Tools</div>
+              <a href="pages/tools/ai/index.html">AI Chat</a>
+              <a href="#">AI Image Generator</a>
+              <a href="#">AI OCR</a>
+              <a href="#">AI Writer</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🔧 Utilities</div>
+              <a href="pages/tools/utility/index.html">Age Calculator</a>
+              <a href="#">BMI Calculator</a>
+              <a href="#">Currency Converter</a>
+              <a href="#">QR Generator</a>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li><a href="#services" class="nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="#categories" class="nav-link" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a></li>
+      <li><a href="#pricing" class="nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a></li>
+      <li><a href="#about" class="nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+      <li><a href="#contact" class="nav-link" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+      <!-- Language Toggle -->
+      <button class="lang-toggle" id="langToggle" title="Switch Language">
+        <span class="lang-icon">🌐</span>
+        <span class="lang-text" id="langText">EN</span>
+      </button>
+
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+
+      <!-- Auth Buttons -->
+      <div class="auth-buttons" id="authButtons">
+        <a href="pages/auth/login.html" class="btn-outline" data-en="Login" data-bn="লগইন">Login</a>
+        <a href="pages/auth/register.html" class="btn-primary" data-en="Register" data-bn="নিবন্ধন">Register</a>
+      </div>
+
+      <!-- User Menu (shown when logged in) -->
+      <div class="user-menu hidden" id="userMenu">
+        <button class="user-avatar-btn" id="userAvatarBtn">
+          <div class="user-avatar" id="userAvatarNav">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          </div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-info-header">
+            <div class="user-avatar-lg" id="userAvatarDropdown"></div>
+            <div>
+              <div class="user-name" id="userDisplayName">User</div>
+              <div class="user-email" id="userEmailDisplay">user@email.com</div>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="pages/dashboard/index.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span data-en="Dashboard" data-bn="ড্যাশবোর্ড">Dashboard</span>
+          </a>
+          <a href="pages/dashboard/profile.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span data-en="Profile" data-bn="প্রোফাইল">Profile</span>
+          </a>
+          <a href="pages/dashboard/settings.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span data-en="Settings" data-bn="সেটিংস">Settings</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item logout-item" id="logoutBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span data-en="Logout" data-bn="লগআউট">Logout</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Toggle -->
+      <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="#tools" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+      <li><a href="#services" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="#categories" class="mobile-nav-link" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a></li>
+      <li><a href="#pricing" class="mobile-nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a></li>
+      <li><a href="#about" class="mobile-nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+      <li><a href="#contact" class="mobile-nav-link" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
+    </ul>
+    <div class="mobile-auth">
+      <a href="pages/auth/login.html" class="btn-outline w-full" data-en="Login" data-bn="লগইন">Login</a>
+      <a href="pages/auth/register.html" class="btn-primary w-full" data-en="Register" data-bn="নিবন্ধন">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="home">
+    <div class="hero-container">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span data-en="Bangladesh's #1 Digital Platform" data-bn="বাংলাদেশের #১ ডিজিটাল প্ল্যাটফর্ম">Bangladesh's #1 Digital Platform</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="title-line" data-en="Your Digital Gateway" data-bn="আপনার ডিজিটাল গেটওয়ে">Your Digital Gateway</span>
+        <span class="title-gradient" id="animatedTitle">to Bangladesh's Services</span>
+      </h1>
+
+      <p class="hero-subtitle" data-en="Access government services, professional tools, and AI-powered solutions — all in one secure platform. Designed for every Bangladeshi citizen." data-bn="সরকারি সেবা, পেশাদার টুলস এবং এআই-চালিত সমাধান — সব এক নিরাপদ প্ল্যাটফর্মে। প্রতিটি বাংলাদেশি নাগরিকের জন্য ডিজাইন করা।">Access government services, professional tools, and AI-powered solutions — all in one secure platform. Designed for every Bangladeshi citizen.</p>
+
+      <!-- Hero Search -->
+      <div class="hero-search">
+        <div class="hero-search-box">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input type="text" id="heroSearch" placeholder="Search for passport, NID, birth certificate..." data-placeholder-en="Search for passport, NID, birth certificate..." data-placeholder-bn="পাসপোর্ট, এনআইডি, জন্ম সনদ খুঁজুন...">
+          <button class="hero-search-btn" data-en="Search" data-bn="খুঁজুন">Search</button>
+        </div>
+        <div class="hero-search-suggestions" id="heroSearchDropdown"></div>
+        <div class="search-tags">
+          <span class="search-tag-label" data-en="Popular:" data-bn="জনপ্রিয়:">Popular:</span>
+          <button class="search-tag" onclick="fillSearch('Passport')">Passport</button>
+          <button class="search-tag" onclick="fillSearch('NID')">NID</button>
+          <button class="search-tag" onclick="fillSearch('Birth Certificate')">Birth Certificate</button>
+          <button class="search-tag" onclick="fillSearch('PDF Merge')">PDF Merge</button>
+          <button class="search-tag" onclick="fillSearch('AI Chat')">AI Chat</button>
+        </div>
+      </div>
+
+      <!-- Hero Stats -->
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="stat-num" data-target="50000">0</div>
+          <div class="stat-label" data-en="Active Users" data-bn="সক্রিয় ব্যবহারকারী">Active Users</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <div class="stat-num" data-target="100">0</div>
+          <div class="stat-label" data-en="Digital Tools" data-bn="ডিজিটাল টুলস">Digital Tools</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <div class="stat-num" data-target="99">0</div>
+          <div class="stat-label" data-en="% Uptime" data-bn="% আপটাইম">% Uptime</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="hero-stat">
+          <div class="stat-num" data-target="24">0</div>
+          <div class="stat-label" data-en="/7 Support" data-bn="/৭ সাপোর্ট">/7 Support</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Cards -->
+    <div class="floating-cards">
+      <div class="float-card float-card-1">
+        <div class="fc-icon">🛂</div>
+        <div class="fc-text">
+          <div class="fc-title">Passport Ready</div>
+          <div class="fc-sub">ePassport Application</div>
+        </div>
+      </div>
+      <div class="float-card float-card-2">
+        <div class="fc-icon">✅</div>
+        <div class="fc-text">
+          <div class="fc-title">NID Verified</div>
+          <div class="fc-sub">Smart Card Services</div>
+        </div>
+      </div>
+      <div class="float-card float-card-3">
+        <div class="fc-icon">🤖</div>
+        <div class="fc-text">
+          <div class="fc-title">AI Powered</div>
+          <div class="fc-sub">Smart Assistance</div>
+        </div>
+      </div>
+      <div class="float-card float-card-4">
+        <div class="fc-icon">🔒</div>
+        <div class="fc-text">
+          <div class="fc-title">100% Secure</div>
+          <div class="fc-sub">Your Data is Private</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- Popular Services -->
+  <section class="section popular-services" id="services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge" data-en="🔥 Popular" data-bn="🔥 জনপ্রিয়">🔥 Popular</div>
+        <h2 data-en="Most Used Services" data-bn="সর্বাধিক ব্যবহৃত সেবাসমূহ">Most Used Services</h2>
+        <p data-en="Quick access to the services Bangladeshis use most" data-bn="বাংলাদেশিরা সবচেয়ে বেশি যেসব সেবা ব্যবহার করেন">Quick access to the services Bangladeshis use most</p>
+      </div>
+      <div class="services-grid">
+        <a href="pages/tools/passport/index.html" class="service-card" data-aos="fade-up">
+          <div class="service-icon" style="background: linear-gradient(135deg, #2563EB, #4F46E5);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="12" y2="14"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="Passport Services" data-bn="পাসপোর্ট সেবা">Passport Services</h3>
+            <p data-en="MRP, ePassport, Status Check" data-bn="এমআরপি, ই-পাসপোর্ট, স্ট্যাটাস চেক">MRP, ePassport, Status Check</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/nid/index.html" class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon" style="background: linear-gradient(135deg, #06B6D4, #2563EB);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="6" y1="14" x2="8" y2="14"/><line x1="11" y1="14" x2="14" y2="14"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</h3>
+            <p data-en="Smart Card, Correction, Download" data-bn="স্মার্ট কার্ড, সংশোধন, ডাউনলোড">Smart Card, Correction, Download</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/birth/index.html" class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon" style="background: linear-gradient(135deg, #10B981, #06B6D4);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="Birth Certificate" data-bn="জন্ম নিবন্ধন">Birth Certificate</h3>
+            <p data-en="Online Registration & Correction" data-bn="অনলাইন নিবন্ধন ও সংশোধন">Online Registration & Correction</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/land/index.html" class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="Land Records" data-bn="ভূমি রেকর্ড">Land Records</h3>
+            <p data-en="Khatian, Mutation, Mouza Map" data-bn="খতিয়ান, মিউটেশন, মৌজা ম্যাপ">Khatian, Mutation, Mouza Map</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/photo/index.html" class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon" style="background: linear-gradient(135deg, #8B5CF6, #4F46E5);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="Photo Studio" data-bn="ফটো স্টুডিও">Photo Studio</h3>
+            <p data-en="Passport Photo, Resize, Compress" data-bn="পাসপোর্ট ফটো, রিসাইজ, কম্প্রেস">Passport Photo, Resize, Compress</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/pdf/index.html" class="service-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="service-icon" style="background: linear-gradient(135deg, #EF4444, #F59E0B);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="9" y1="9" x2="11" y2="9"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="PDF Tools" data-bn="পিডিএফ টুলস">PDF Tools</h3>
+            <p data-en="Merge, Split, Compress, OCR" data-bn="মার্জ, স্প্লিট, কম্প্রেস, ওসিআর">Merge, Split, Compress, OCR</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/ai/index.html" class="service-card" data-aos="fade-up" data-aos-delay="600">
+          <div class="service-icon" style="background: linear-gradient(135deg, #06B6D4, #10B981);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2a10 10 0 0 1 10 10c0 5.52-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="AI Tools" data-bn="এআই টুলস">AI Tools</h3>
+            <p data-en="AI Chat, Image, OCR, Writer" data-bn="এআই চ্যাট, ইমেজ, ওসিআর, রাইটার">AI Chat, Image, OCR, Writer</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+        <a href="pages/tools/utility/index.html" class="service-card" data-aos="fade-up" data-aos-delay="700">
+          <div class="service-icon" style="background: linear-gradient(135deg, #EC4899, #8B5CF6);">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <div class="service-info">
+            <h3 data-en="Utilities" data-bn="ইউটিলিটিস">Utilities</h3>
+            <p data-en="Age, BMI, Currency, QR Code" data-bn="বয়স, বিএমআই, মুদ্রা, কিউআর কোড">Age, BMI, Currency, QR Code</p>
+          </div>
+          <div class="service-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Government Services -->
+  <section class="section gov-services">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🏛️ Official</div>
+        <h2 data-en="Government Digital Services" data-bn="সরকারি ডিজিটাল সেবাসমূহ">Government Digital Services</h2>
+        <p data-en="Direct links and guides for official government services" data-bn="সরকারি সেবার সরাসরি লিঙ্ক ও গাইড">Direct links and guides for official government services</p>
+      </div>
+      <div class="gov-grid">
+        <div class="gov-card" data-aos="zoom-in">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">🛂</div>
+          <h3 data-en="Passport Department" data-bn="পাসপোর্ট অধিদপ্তর">Passport Department</h3>
+          <p data-en="MRP & ePassport application, renewal, and status tracking" data-bn="এমআরপি ও ই-পাসপোর্ট আবেদন, নবায়ন এবং স্ট্যাটাস ট্র্যাকিং">MRP & ePassport application, renewal, and status tracking</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Apply Now</a>
+            <a href="#" class="gov-link">Check Status</a>
+          </div>
+        </div>
+        <div class="gov-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">🪪</div>
+          <h3 data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</h3>
+          <p data-en="National ID registration, correction, smart card collection" data-bn="জাতীয় পরিচয়পত্র নিবন্ধন, সংশোধন, স্মার্ট কার্ড সংগ্রহ">National ID registration, correction, smart card collection</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Verify NID</a>
+            <a href="#" class="gov-link">Download</a>
+          </div>
+        </div>
+        <div class="gov-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">📜</div>
+          <h3 data-en="Birth & Death" data-bn="জন্ম ও মৃত্যু">Birth & Death</h3>
+          <p data-en="Birth certificate online registration, death certificate services" data-bn="জন্ম নিবন্ধন অনলাইন, মৃত্যু সনদ সেবা">Birth certificate online registration, death certificate services</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Register</a>
+            <a href="#" class="gov-link">Verify</a>
+          </div>
+        </div>
+        <div class="gov-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">🗺️</div>
+          <h3 data-en="Land Records" data-bn="ভূমি রেকর্ড">Land Records</h3>
+          <p data-en="Check khatian, mutation, mouza maps and land ownership" data-bn="খতিয়ান, মিউটেশন, মৌজা ম্যাপ এবং জমির মালিকানা যাচাই">Check khatian, mutation, mouza maps and land ownership</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Search</a>
+            <a href="#" class="gov-link">Map View</a>
+          </div>
+        </div>
+        <div class="gov-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">🚗</div>
+          <h3 data-en="Driving License" data-bn="ড্রাইভিং লাইসেন্স">Driving License</h3>
+          <p data-en="Apply, renew, and track your driving license application" data-bn="ড্রাইভিং লাইসেন্স আবেদন, নবায়ন ও ট্র্যাকিং">Apply, renew, and track your driving license application</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Apply</a>
+            <a href="#" class="gov-link">Status</a>
+          </div>
+        </div>
+        <div class="gov-card" data-aos="zoom-in" data-aos-delay="500">
+          <div class="gov-flag">🇧🇩</div>
+          <div class="gov-icon">💼</div>
+          <h3 data-en="Trade License" data-bn="ট্রেড লাইসেন্স">Trade License</h3>
+          <p data-en="Business registration, trade license application and renewal" data-bn="ব্যবসা নিবন্ধন, ট্রেড লাইসেন্স আবেদন ও নবায়ন">Business registration, trade license application and renewal</p>
+          <div class="gov-links">
+            <a href="#" class="gov-link">Apply</a>
+            <a href="#" class="gov-link">Renew</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="section categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">📂 Categories</div>
+        <h2 data-en="Browse by Category" data-bn="ক্যাটাগরি অনুযায়ী ব্রাউজ করুন">Browse by Category</h2>
+        <p data-en="Find exactly what you need organized by category" data-bn="ক্যাটাগরি অনুযায়ী আপনার প্রয়োজনীয় সেবা খুঁজুন">Find exactly what you need organized by category</p>
+      </div>
+      <div class="categories-grid">
+        <div class="category-card" data-aos="fade-right">
+          <div class="cat-header" style="background: linear-gradient(135deg, #2563EB20, #4F46E520);">
+            <div class="cat-icon">🏛️</div>
+            <h3 data-en="Government" data-bn="সরকারি">Government</h3>
+            <span class="cat-count">12 Tools</span>
+          </div>
+          <ul class="cat-list">
+            <li><a href="#">Passport Services</a></li>
+            <li><a href="#">NID Verification</a></li>
+            <li><a href="#">Birth Certificate</a></li>
+            <li><a href="#">Land Records</a></li>
+            <li><a href="#">TIN / BIN</a></li>
+          </ul>
+        </div>
+        <div class="category-card" data-aos="fade-right" data-aos-delay="100">
+          <div class="cat-header" style="background: linear-gradient(135deg, #8B5CF620, #4F46E520);">
+            <div class="cat-icon">📷</div>
+            <h3 data-en="Photo & Media" data-bn="ফটো ও মিডিয়া">Photo & Media</h3>
+            <span class="cat-count">8 Tools</span>
+          </div>
+          <ul class="cat-list">
+            <li><a href="#">Passport Photo</a></li>
+            <li><a href="#">Background Remove</a></li>
+            <li><a href="#">Image Resize</a></li>
+            <li><a href="#">Image Compress</a></li>
+            <li><a href="#">Signature Maker</a></li>
+          </ul>
+        </div>
+        <div class="category-card" data-aos="fade-left" data-aos-delay="200">
+          <div class="cat-header" style="background: linear-gradient(135deg, #EF444420, #F59E0B20);">
+            <div class="cat-icon">📄</div>
+            <h3 data-en="PDF & Documents" data-bn="পিডিএফ ও ডকুমেন্ট">PDF & Documents</h3>
+            <span class="cat-count">10 Tools</span>
+          </div>
+          <ul class="cat-list">
+            <li><a href="#">PDF Merge</a></li>
+            <li><a href="#">PDF Split</a></li>
+            <li><a href="#">PDF Compress</a></li>
+            <li><a href="#">Word to PDF</a></li>
+            <li><a href="#">OCR Text Extract</a></li>
+          </ul>
+        </div>
+        <div class="category-card" data-aos="fade-left" data-aos-delay="300">
+          <div class="cat-header" style="background: linear-gradient(135deg, #06B6D420, #10B98120);">
+            <div class="cat-icon">🤖</div>
+            <h3 data-en="AI Tools" data-bn="এআই টুলস">AI Tools</h3>
+            <span class="cat-count">6 Tools</span>
+          </div>
+          <ul class="cat-list">
+            <li><a href="#">AI Chat Assistant</a></li>
+            <li><a href="#">AI Image Generate</a></li>
+            <li><a href="#">AI OCR</a></li>
+            <li><a href="#">AI Content Writer</a></li>
+            <li><a href="#">AI Translator</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Counter -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card" data-aos="zoom-in">
+          <div class="stat-icon">👥</div>
+          <div class="stat-number" data-target="50000">0</div>
+          <div class="stat-suffix">+</div>
+          <div class="stat-label" data-en="Registered Users" data-bn="নিবন্ধিত ব্যবহারকারী">Registered Users</div>
+        </div>
+        <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="stat-icon">🔧</div>
+          <div class="stat-number" data-target="100">0</div>
+          <div class="stat-suffix">+</div>
+          <div class="stat-label" data-en="Digital Tools" data-bn="ডিজিটাল টুলস">Digital Tools</div>
+        </div>
+        <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="stat-icon">📋</div>
+          <div class="stat-number" data-target="500000">0</div>
+          <div class="stat-suffix">+</div>
+          <div class="stat-label" data-en="Services Completed" data-bn="সম্পন্ন সেবাসমূহ">Services Completed</div>
+        </div>
+        <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="stat-icon">⭐</div>
+          <div class="stat-number" data-target="4">0</div>
+          <div class="stat-suffix">.9/5</div>
+          <div class="stat-label" data-en="User Rating" data-bn="ব্যবহারকারী রেটিং">User Rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="section why-us" id="about">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">💡 Why Us</div>
+        <h2 data-en="Why Choose Digital Seba?" data-bn="কেন ডিজিটাল সেবা বেছে নেবেন?">Why Choose Digital Seba?</h2>
+        <p data-en="We are committed to making digital services accessible to every Bangladeshi" data-bn="আমরা প্রতিটি বাংলাদেশির কাছে ডিজিটাল সেবা সহজলভ্য করতে প্রতিশ্রুতিবদ্ধ">We are committed to making digital services accessible to every Bangladeshi</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card" data-aos="fade-up">
+          <div class="why-icon">🔒</div>
+          <h3 data-en="Bank-Level Security" data-bn="ব্যাংক-স্তরের নিরাপত্তা">Bank-Level Security</h3>
+          <p data-en="Your data is encrypted and completely private. No one can access your information." data-bn="আপনার ডেটা এনক্রিপ্টেড এবং সম্পূর্ণ ব্যক্তিগত। কেউ আপনার তথ্য অ্যাক্সেস করতে পারবে না।">Your data is encrypted and completely private. No one can access your information.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="why-icon">⚡</div>
+          <h3 data-en="Lightning Fast" data-bn="অত্যন্ত দ্রুত">Lightning Fast</h3>
+          <p data-en="All tools are optimized for speed with 99% uptime guarantee." data-bn="সকল টুলস দ্রুততার জন্য অপ্টিমাইজ করা হয়েছে এবং ৯৯% আপটাইম গ্যারান্টি।">All tools are optimized for speed with 99% uptime guarantee.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="why-icon">🌐</div>
+          <h3 data-en="Bilingual Support" data-bn="দ্বিভাষিক সাপোর্ট">Bilingual Support</h3>
+          <p data-en="Full Bangla and English support for every feature and service." data-bn="প্রতিটি ফিচার ও সেবার জন্য সম্পূর্ণ বাংলা ও ইংরেজি সাপোর্ট।">Full Bangla and English support for every feature and service.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="why-icon">📱</div>
+          <h3 data-en="Works Everywhere" data-bn="সর্বত্র কাজ করে">Works Everywhere</h3>
+          <p data-en="Fully responsive on mobile, tablet, and desktop. Install as PWA app." data-bn="মোবাইল, ট্যাবলেট ও ডেস্কটপে সম্পূর্ণ রেসপন্সিভ। পিডব্লিউএ অ্যাপ হিসেবে ইনস্টল করুন।">Fully responsive on mobile, tablet, and desktop. Install as PWA app.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="why-icon">💰</div>
+          <h3 data-en="Free & Premium" data-bn="বিনামূল্যে ও প্রিমিয়াম">Free & Premium</h3>
+          <p data-en="Many tools are free. Premium features available at affordable prices." data-bn="অনেক টুলস বিনামূল্যে। সাশ্রয়ী মূল্যে প্রিমিয়াম ফিচার পাওয়া যায়।">Many tools are free. Premium features available at affordable prices.</p>
+        </div>
+        <div class="why-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="why-icon">🤖</div>
+          <h3 data-en="AI Powered" data-bn="এআই চালিত">AI Powered</h3>
+          <p data-en="Advanced AI tools to help you complete tasks faster and smarter." data-bn="কাজ দ্রুত ও স্মার্টভাবে সম্পন্ন করতে উন্নত এআই টুলস।">Advanced AI tools to help you complete tasks faster and smarter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">💎 Pricing</div>
+        <h2 data-en="Simple, Transparent Pricing" data-bn="সহজ, স্বচ্ছ মূল্য নির্ধারণ">Simple, Transparent Pricing</h2>
+        <p data-en="Choose the plan that works for you" data-bn="আপনার জন্য উপযুক্ত প্ল্যান বেছে নিন">Choose the plan that works for you</p>
+      </div>
+      <div class="pricing-grid">
+        <div class="pricing-card" data-aos="fade-up">
+          <div class="plan-badge free">Free</div>
+          <div class="plan-price"><span class="price-num">৳0</span><span class="price-period">/month</span></div>
+          <div class="plan-name" data-en="Basic Plan" data-bn="বেসিক প্ল্যান">Basic Plan</div>
+          <ul class="plan-features">
+            <li>✅ <span data-en="10 Tool Uses/Day" data-bn="১০টি টুল ব্যবহার/দিন">10 Tool Uses/Day</span></li>
+            <li>✅ <span data-en="Basic PDF Tools" data-bn="বেসিক পিডিএফ টুলস">Basic PDF Tools</span></li>
+            <li>✅ <span data-en="Photo Resize" data-bn="ফটো রিসাইজ">Photo Resize</span></li>
+            <li>✅ <span data-en="Service Guides" data-bn="সেবার গাইড">Service Guides</span></li>
+            <li>❌ <span data-en="AI Tools" data-bn="এআই টুলস">AI Tools</span></li>
+            <li>❌ <span data-en="Priority Support" data-bn="প্রাধান্য সাপোর্ট">Priority Support</span></li>
+          </ul>
+          <a href="pages/auth/register.html" class="plan-btn plan-btn-outline" data-en="Get Started Free" data-bn="বিনামূল্যে শুরু করুন">Get Started Free</a>
+        </div>
+        <div class="pricing-card popular-plan" data-aos="fade-up" data-aos-delay="100">
+          <div class="plan-badge popular">⭐ Most Popular</div>
+          <div class="plan-price"><span class="price-num">৳199</span><span class="price-period">/month</span></div>
+          <div class="plan-name" data-en="Pro Plan" data-bn="প্রো প্ল্যান">Pro Plan</div>
+          <ul class="plan-features">
+            <li>✅ <span data-en="Unlimited Tools" data-bn="আনলিমিটেড টুলস">Unlimited Tools</span></li>
+            <li>✅ <span data-en="All PDF Tools" data-bn="সব পিডিএফ টুলস">All PDF Tools</span></li>
+            <li>✅ <span data-en="AI Chat (100/day)" data-bn="এআই চ্যাট (১০০/দিন)">AI Chat (100/day)</span></li>
+            <li>✅ <span data-en="Priority Support" data-bn="প্রাধান্য সাপোর্ট">Priority Support</span></li>
+            <li>✅ <span data-en="File History 30 days" data-bn="ফাইল হিস্টোরি ৩০ দিন">File History 30 days</span></li>
+            <li>❌ <span data-en="Custom Branding" data-bn="কাস্টম ব্র্যান্ডিং">Custom Branding</span></li>
+          </ul>
+          <a href="pages/auth/register.html" class="plan-btn plan-btn-primary" data-en="Start Pro Trial" data-bn="প্রো ট্রায়াল শুরু করুন">Start Pro Trial</a>
+        </div>
+        <div class="pricing-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="plan-badge enterprise">Enterprise</div>
+          <div class="plan-price"><span class="price-num">৳999</span><span class="price-period">/month</span></div>
+          <div class="plan-name" data-en="Business Plan" data-bn="বিজনেস প্ল্যান">Business Plan</div>
+          <ul class="plan-features">
+            <li>✅ <span data-en="Everything in Pro" data-bn="প্রো-তে সব কিছু">Everything in Pro</span></li>
+            <li>✅ <span data-en="Unlimited AI Access" data-bn="আনলিমিটেড এআই অ্যাক্সেস">Unlimited AI Access</span></li>
+            <li>✅ <span data-en="Team Access (5 users)" data-bn="টিম অ্যাক্সেস (৫ জন)">Team Access (5 users)</span></li>
+            <li>✅ <span data-en="Custom Branding" data-bn="কাস্টম ব্র্যান্ডিং">Custom Branding</span></li>
+            <li>✅ <span data-en="API Access" data-bn="এপিআই অ্যাক্সেস">API Access</span></li>
+            <li>✅ <span data-en="Dedicated Support" data-bn="ডেডিকেটেড সাপোর্ট">Dedicated Support</span></li>
+          </ul>
+          <a href="#contact" class="plan-btn plan-btn-outline" data-en="Contact Sales" data-bn="সেলসে যোগাযোগ করুন">Contact Sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">💬 Reviews</div>
+        <h2 data-en="What Users Say" data-bn="ব্যবহারকারীরা কি বলেন">What Users Say</h2>
+        <p data-en="Real feedback from real Bangladeshi users" data-bn="বাস্তব বাংলাদেশি ব্যবহারকারীদের প্রকৃত মতামত">Real feedback from real Bangladeshi users</p>
+      </div>
+      <div class="testimonials-slider" id="testimonialsSlider">
+        <div class="testimonial-track" id="testimonialTrack">
+          <div class="testimonial-card">
+            <div class="test-stars">★★★★★</div>
+            <p>"Digital Seba made applying for my ePassport so much easier. The step-by-step guide was excellent!"</p>
+            <div class="test-author">
+              <div class="test-avatar">আ</div>
+              <div>
+                <div class="test-name">আব্দুল করিম</div>
+                <div class="test-role">Dhaka, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="test-stars">★★★★★</div>
+            <p>"The PDF merge tool saved me hours! I needed to combine 20 documents and it was done in seconds."</p>
+            <div class="test-author">
+              <div class="test-avatar">র</div>
+              <div>
+                <div class="test-name">রহিমা বেগম</div>
+                <div class="test-role">Chittagong, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="test-stars">★★★★★</div>
+            <p>"The AI chat is incredible for getting help with government forms. It explained everything in Bangla!"</p>
+            <div class="test-author">
+              <div class="test-avatar">ক</div>
+              <div>
+                <div class="test-name">করিম উদ্দিন</div>
+                <div class="test-role">Sylhet, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="test-stars">★★★★★</div>
+            <p>"Best platform for Bangladeshi digital services. I use it daily for my office work. Highly recommended!"</p>
+            <div class="test-author">
+              <div class="test-avatar">ম</div>
+              <div>
+                <div class="test-name">মাহমুদুল হাসান</div>
+                <div class="test-role">Rajshahi, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial-card">
+            <div class="test-stars">★★★★★</div>
+            <p>"Passport photo tool is perfect. My application was accepted first time with their optimized photo!"</p>
+            <div class="test-author">
+              <div class="test-avatar">ফ</div>
+              <div>
+                <div class="test-name">ফারহানা আক্তার</div>
+                <div class="test-role">Khulna, Bangladesh</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slider-controls">
+          <button class="slider-btn" id="prevTestimonial">←</button>
+          <div class="slider-dots" id="sliderDots"></div>
+          <button class="slider-btn" id="nextTestimonial">→</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section faq-section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">❓ FAQ</div>
+        <h2 data-en="Frequently Asked Questions" data-bn="সাধারণ জিজ্ঞাসা">Frequently Asked Questions</h2>
+        <p data-en="Answers to the most common questions" data-bn="সবচেয়ে সাধারণ প্রশ্নের উত্তর">Answers to the most common questions</p>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item" data-aos="fade-up">
+          <button class="faq-question">
+            <span data-en="Is Digital Seba free to use?" data-bn="ডিজিটাল সেবা কি বিনামূল্যে ব্যবহার করা যায়?">Is Digital Seba free to use?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Yes! Many features are completely free. We offer a free plan with access to basic tools. Premium plans unlock unlimited access and AI features." data-bn="হ্যাঁ! অনেক ফিচার সম্পূর্ণ বিনামূল্যে। আমরা বেসিক টুলসে অ্যাক্সেস সহ একটি বিনামূল্যে প্ল্যান অফার করি।">Yes! Many features are completely free. We offer a free plan with access to basic tools. Premium plans unlock unlimited access and AI features.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+          <button class="faq-question">
+            <span data-en="Is my data safe on Digital Seba?" data-bn="ডিজিটাল সেবায় আমার ডেটা কি নিরাপদ?">Is my data safe on Digital Seba?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Absolutely. We use Firebase with bank-level encryption. Each user's data is completely private and inaccessible to others." data-bn="সম্পূর্ণরূপে। আমরা ব্যাংক-স্তরের এনক্রিপশন সহ ফায়ারবেস ব্যবহার করি। প্রতিটি ব্যবহারকারীর ডেটা সম্পূর্ণ ব্যক্তিগত।">Absolutely. We use Firebase with bank-level encryption. Each user's data is completely private and inaccessible to others.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+          <button class="faq-question">
+            <span data-en="Can I use Digital Seba on mobile?" data-bn="আমি কি মোবাইলে ডিজিটাল সেবা ব্যবহার করতে পারি?">Can I use Digital Seba on mobile?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Yes! Digital Seba is fully responsive and works on all devices. You can also install it as a PWA app on your phone for a native app experience." data-bn="হ্যাঁ! ডিজিটাল সেবা সম্পূর্ণ রেসপন্সিভ এবং সব ডিভাইসে কাজ করে। আপনি এটি আপনার ফোনে পিডব্লিউএ অ্যাপ হিসেবেও ইনস্টল করতে পারেন।">Yes! Digital Seba is fully responsive and works on all devices. You can also install it as a PWA app on your phone for a native app experience.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+          <button class="faq-question">
+            <span data-en="Does Digital Seba support Bangla?" data-bn="ডিজিটাল সেবা কি বাংলা সাপোর্ট করে?">Does Digital Seba support Bangla?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-en="Yes! Full Bangla support is available. Switch between English and Bangla with a single click from the navigation bar." data-bn="হ্যাঁ! সম্পূর্ণ বাংলা সাপোর্ট পাওয়া যায়। নেভিগেশন বার থেকে এক ক্লিকে ইংরেজি ও বাংলার মধ্যে সুইচ করুন।">Yes! Full Bangla support is available. Switch between English and Bangla with a single click from the navigation bar.</p>
+          </div>
+        </div>
+        <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+          <button class="faq-question">
+            <span data-en="Are government service links official?" data-bn="সরকারি সেবার লিঙ্কগুলো কি অফিসিয়াল?">Are government service links official?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p data-en="We provide guides and links to official government websites. Digital Seba is a service aggregator and educational platform, not a government entity." data-bn="আমরা অফিসিয়াল সরকারি ওয়েবসাইটের গাইড ও লিঙ্ক প্রদান করি। ডিজিটাল সেবা একটি সার্ভিস অ্যাগ্রিগেটর ও শিক্ষামূলক প্ল্যাটফর্ম, সরকারি সত্তা নয়।">We provide guides and links to official government websites. Digital Seba is a service aggregator and educational platform, not a government entity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-card" data-aos="zoom-in">
+        <div class="newsletter-content">
+          <div class="newsletter-icon">📬</div>
+          <h2 data-en="Stay Updated" data-bn="আপডেট থাকুন">Stay Updated</h2>
+          <p data-en="Get notified about new tools, services and government updates" data-bn="নতুন টুলস, সেবা এবং সরকারি আপডেট সম্পর্কে বিজ্ঞাপন পান">Get notified about new tools, services and government updates</p>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="Enter your email address" data-placeholder-en="Enter your email address" data-placeholder-bn="আপনার ইমেইল ঠিকানা লিখুন" required>
+            <button type="submit" class="btn-primary" data-en="Subscribe" data-bn="সদস্য হোন">Subscribe</button>
+          </form>
+          <div class="newsletter-note" data-en="No spam. Unsubscribe anytime." data-bn="কোনো স্প্যাম নেই। যেকোনো সময় সদস্যতা বাতিল করুন।">No spam. Unsubscribe anytime.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">📞 Contact</div>
+        <h2 data-en="Get In Touch" data-bn="যোগাযোগ করুন">Get In Touch</h2>
+        <p data-en="We're here to help you with any questions or issues" data-bn="যেকোনো প্রশ্ন বা সমস্যায় আমরা আপনাকে সাহায্য করতে এখানে আছি">We're here to help you with any questions or issues</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="contact-icon">📧</div>
+            <div>
+              <div class="contact-label" data-en="Email" data-bn="ইমেইল">Email</div>
+              <div class="contact-value">support@digitalseba.com.bd</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📱</div>
+            <div>
+              <div class="contact-label" data-en="Phone" data-bn="ফোন">Phone</div>
+              <div class="contact-value">+880 1700-000000</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            <div>
+              <div class="contact-label" data-en="Address" data-bn="ঠিকানা">Address</div>
+              <div class="contact-value">Dhaka, Bangladesh</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon">⏰</div>
+            <div>
+              <div class="contact-label" data-en="Support Hours" data-bn="সাপোর্ট সময়">Support Hours</div>
+              <div class="contact-value">24/7 Online Support</div>
+            </div>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" data-aos="fade-left">
+          <div class="form-row">
+            <div class="form-group">
+              <label data-en="Your Name" data-bn="আপনার নাম">Your Name</label>
+              <input type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+              <label data-en="Email" data-bn="ইমেইল">Email</label>
+              <input type="email" placeholder="Enter your email" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label data-en="Subject" data-bn="বিষয়">Subject</label>
+            <input type="text" placeholder="How can we help?" required>
+          </div>
+          <div class="form-group">
+            <label data-en="Message" data-bn="বার্তা">Message</label>
+            <textarea rows="5" placeholder="Write your message here..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary btn-full" data-en="Send Message" data-bn="বার্তা পাঠান">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none">
+              <defs>
+                <linearGradient id="footLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#2563EB"/>
+                  <stop offset="100%" style="stop-color:#4F46E5"/>
+                </linearGradient>
+              </defs>
+              <circle cx="20" cy="20" r="18" fill="url(#footLogoGrad)" opacity="0.15"/>
+              <path d="M10 14 L20 8 L30 14 L30 26 L20 32 L10 26 Z" fill="url(#footLogoGrad)"/>
+              <path d="M15 19 L19 23 L25 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <span>Digital Seba</span>
+          </a>
+          <p data-en="Bangladesh's Smart Digital Service Platform. Providing accessible digital tools and government service guides for every citizen." data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সার্ভিস প্ল্যাটফর্ম। প্রতিটি নাগরিকের জন্য সহজলভ্য ডিজিটাল টুলস ও সরকারি সেবার গাইড প্রদান।">Bangladesh's Smart Digital Service Platform. Providing accessible digital tools and government service guides for every citizen.</p>
+          <div class="footer-owner">
+            <div class="owner-label" data-en="Platform by" data-bn="প্ল্যাটফর্ম দ্বারা">Platform by</div>
+            <div class="owner-name">Monir Hossain</div>
+          </div>
+          <div class="social-links">
+            <a href="#" class="social-link" title="Facebook">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="social-link" title="Twitter">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+            </a>
+            <a href="#" class="social-link" title="YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor"/></svg>
+            </a>
+            <a href="#" class="social-link" title="LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 data-en="Quick Links" data-bn="দ্রুত লিঙ্ক">Quick Links</h4>
+          <ul>
+            <li><a href="index.html" data-en="Home" data-bn="হোম">Home</a></li>
+            <li><a href="#services" data-en="Services" data-bn="সেবা">Services</a></li>
+            <li><a href="#categories" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a></li>
+            <li><a href="#pricing" data-en="Pricing" data-bn="মূল্য">Pricing</a></li>
+            <li><a href="#about" data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</a></li>
+            <li><a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 data-en="Tools" data-bn="টুলস">Tools</h4>
+          <ul>
+            <li><a href="pages/tools/passport/index.html" data-en="Passport Services" data-bn="পাসপোর্ট সেবা">Passport Services</a></li>
+            <li><a href="pages/tools/nid/index.html" data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</a></li>
+            <li><a href="pages/tools/birth/index.html" data-en="Birth Certificate" data-bn="জন্ম নিবন্ধন">Birth Certificate</a></li>
+            <li><a href="pages/tools/photo/index.html" data-en="Photo Studio" data-bn="ফটো স্টুডিও">Photo Studio</a></li>
+            <li><a href="pages/tools/pdf/index.html" data-en="PDF Tools" data-bn="পিডিএফ টুলস">PDF Tools</a></li>
+            <li><a href="pages/tools/ai/index.html" data-en="AI Tools" data-bn="এআই টুলস">AI Tools</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4 data-en="Legal" data-bn="আইনি">Legal</h4>
+          <ul>
+            <li><a href="pages/privacy.html" data-en="Privacy Policy" data-bn="গোপনীয়তা নীতি">Privacy Policy</a></li>
+            <li><a href="pages/terms.html" data-en="Terms of Service" data-bn="সেবার শর্তাবলী">Terms of Service</a></li>
+            <li><a href="#" data-en="Cookie Policy" data-bn="কুকি নীতি">Cookie Policy</a></li>
+            <li><a href="#" data-en="Disclaimer" data-bn="দায়মুক্তি">Disclaimer</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <div class="copyright" data-en="© 2024 Digital Seba. All rights reserved. Made with ❤️ in Bangladesh" data-bn="© ২০২৪ ডিজিটাল সেবা। সর্বস্বত্ব সংরক্ষিত। ❤️ দিয়ে বাংলাদেশে তৈরি">© 2024 Digital Seba. All rights reserved. Made with ❤️ in Bangladesh</div>
+        <div class="footer-bottom-links">
+          <a href="pages/privacy.html">Privacy</a>
+          <a href="pages/terms.html">Terms</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast Notification -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- PWA Install Banner -->
+<div class="pwa-banner" id="pwaBanner">
+  <div class="pwa-content">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    <span data-en="Install Digital Seba App" data-bn="ডিজিটাল সেবা অ্যাপ ইনস্টল করুন">Install Digital Seba App</span>
+  </div>
+  <div class="pwa-actions">
+    <button id="pwaInstallBtn" class="btn-primary btn-sm" data-en="Install" data-bn="ইনস্টল">Install</button>
+    <button id="pwaDismissBtn" class="btn-ghost btn-sm" data-en="Later" data-bn="পরে">Later</button>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/auth.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/language.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script>
+// Service Worker Registration
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
+</body>
+</html>

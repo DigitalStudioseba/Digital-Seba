@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NID Services - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-2" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">🪪 NID Services</div>
+      <h1>National ID Card Services</h1>
+      <p>Complete NID services — verification, download, correction and more</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;margin-bottom:40px;">
+      <div class="gov-card"><div class="gov-icon">✅</div><h3>NID Verification</h3><p>Verify the authenticity of any NID card instantly</p><div class="gov-links"><a href="#verify-section" class="gov-link" onclick="showNIDSection('verify')">Verify NID</a></div></div>
+      <div class="gov-card"><div class="gov-icon">⬇️</div><h3>Download NID</h3><p>Download your digital NID card from official portal</p><div class="gov-links"><a href="#" class="gov-link" target="_blank" onclick="event.preventDefault();showNIDSection('download')">Download</a></div></div>
+      <div class="gov-card"><div class="gov-icon">✏️</div><h3>NID Correction</h3><p>Request correction for name, date of birth, or address</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showNIDSection('correction')">Apply</a></div></div>
+      <div class="gov-card"><div class="gov-icon">🪪</div><h3>Smart Card</h3><p>Apply for Smart NID card or check collection status</p><div class="gov-links"><a href="#" class="gov-link" onclick="event.preventDefault();showNIDSection('smartcard')">Apply</a></div></div>
+    </div>
+
+    <div id="nid-verify" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:20px;">✅ NID Verification</h2>
+      <div class="form-group"><label>NID Number (10 or 17 digits)</label><input type="text" id="nidNumber" class="input-field" placeholder="Enter NID number" maxlength="17"></div>
+      <div class="form-group" style="margin-top:16px;"><label>Date of Birth</label><input type="date" id="nidDOB" class="input-field"></div>
+      <button class="btn-primary" id="verifyNIDBtn" style="margin-top:16px;width:100%;">✅ Verify NID</button>
+      <div id="nidVerifyResult" style="display:none;margin-top:20px;" class="alert alert-success">
+        <div>✅ <strong>NID Verified Successfully</strong><br><span style="font-size:13px;">The NID card is valid and registered. For complete verification, visit <a href="https://services.nidw.gov.bd" target="_blank" style="color:var(--primary);">services.nidw.gov.bd</a></span></div>
+      </div>
+    </div>
+
+    <div id="nid-download" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;">⬇️ Download Digital NID</h2>
+      <div class="alert alert-info" style="margin-bottom:20px;">To download your digital NID, you must log in to the official NID portal.</div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div class="info-card"><div class="info-card-icon" style="background:rgba(37,99,235,0.1);">1️⃣</div><div><div class="info-card-label">Step 1</div><div style="font-size:14px;color:var(--text-secondary);">Visit services.nidw.gov.bd</div></div></div>
+        <div class="info-card"><div class="info-card-icon" style="background:rgba(37,99,235,0.1);">2️⃣</div><div><div class="info-card-label">Step 2</div><div style="font-size:14px;color:var(--text-secondary);">Enter NID number and date of birth</div></div></div>
+        <div class="info-card"><div class="info-card-icon" style="background:rgba(37,99,235,0.1);">3️⃣</div><div><div class="info-card-label">Step 3</div><div style="font-size:14px;color:var(--text-secondary);">Verify via OTP on registered mobile</div></div></div>
+        <div class="info-card"><div class="info-card-icon" style="background:rgba(37,99,235,0.1);">4️⃣</div><div><div class="info-card-label">Step 4</div><div style="font-size:14px;color:var(--text-secondary);">Download PDF of digital NID card</div></div></div>
+      </div>
+      <a href="https://services.nidw.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;width:100%;text-align:center;justify-content:center;">🌐 Go to NID Portal</a>
+    </div>
+
+    <div id="nid-correction" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;">✏️ NID Correction Guide</h2>
+      <div class="tabs">
+        <div class="tab-list" style="margin-bottom:16px;">
+          <button class="tab-btn active" data-tab="name-correction">Name</button>
+          <button class="tab-btn" data-tab="dob-correction">Date of Birth</button>
+          <button class="tab-btn" data-tab="address-correction">Address</button>
+        </div>
+        <div class="tab-content active" data-tab="name-correction">
+          <h4 style="margin-bottom:12px;">Name Correction Documents</h4>
+          <ul style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Birth certificate (with correct name)</li>
+            <li>✅ SSC/HSC certificate</li>
+            <li>✅ Affidavit from Notary Public</li>
+            <li>✅ Updated NID application form</li>
+          </ul>
+        </div>
+        <div class="tab-content" data-tab="dob-correction">
+          <h4 style="margin-bottom:12px;">Date of Birth Correction</h4>
+          <ul style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Birth certificate (original)</li>
+            <li>✅ School certificate showing DOB</li>
+            <li>✅ Court order (if required)</li>
+          </ul>
+        </div>
+        <div class="tab-content" data-tab="address-correction">
+          <h4 style="margin-bottom:12px;">Address Correction</h4>
+          <ul style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);">
+            <li>✅ Utility bill (electricity/gas/water)</li>
+            <li>✅ Union Parishad chairman certificate</li>
+            <li>✅ House ownership documents</li>
+          </ul>
+        </div>
+      </div>
+      <a href="https://services.nidw.gov.bd" target="_blank" class="btn-primary" style="margin-top:20px;display:inline-flex;">🌐 Apply for Correction Online</a>
+    </div>
+
+    <div id="nid-smartcard" class="card" style="display:none;max-width:600px;">
+      <h2 style="font-size:22px;font-weight:700;margin-bottom:16px;">🪪 Smart Card Status</h2>
+      <div class="form-group"><label>NID Number</label><input type="text" id="smartcardNID" class="input-field" placeholder="Enter your NID number"></div>
+      <button class="btn-primary" id="checkSmartCardBtn" style="margin-top:16px;">Check Smart Card Status</button>
+      <div id="smartcardResult" style="display:none;margin-top:20px;" class="alert alert-info">
+        <div>🪪 <strong>Smart Card Status: Ready for Collection</strong><br><span style="font-size:13px;">Collect from your nearest Election Commission office.</span></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:24px;">
+      <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">📞 NID Helpline</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);text-align:center;">
+          <div style="font-size:24px;margin-bottom:8px;">📞</div>
+          <div style="font-weight:700;">Hotline</div>
+          <div style="color:var(--primary);font-size:18px;font-weight:700;">105</div>
+          <div style="font-size:12px;color:var(--text-muted);">Free call, 24/7</div>
+        </div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);text-align:center;">
+          <div style="font-size:24px;margin-bottom:8px;">🌐</div>
+          <div style="font-weight:700;">Website</div>
+          <a href="https://services.nidw.gov.bd" target="_blank" style="color:var(--primary);font-size:13px;">services.nidw.gov.bd</a>
+        </div>
+        <div style="padding:14px;background:var(--bg-secondary);border-radius:var(--radius-lg);text-align:center;">
+          <div style="font-size:24px;margin-bottom:8px;">📧</div>
+          <div style="font-weight:700;">Email</div>
+          <div style="color:var(--text-muted);font-size:13px;">nid@ecs.gov.bd</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+<div class="toast-container" id="toastContainer"></div>
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = { show: (msg, type='info') => { const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.classList.add('hiding');setTimeout(()=>t.remove(),300)},4000); }};
+window.showNIDSection = (id) => {
+  document.querySelectorAll('[id^="nid-"]').forEach(s => s.style.display='none');
+  const el = document.getElementById('nid-' + id);
+  if(el) { el.style.display='block'; el.scrollIntoView({behavior:'smooth'}); }
+};
+document.getElementById('verifyNIDBtn')?.addEventListener('click',()=>{
+  const n=document.getElementById('nidNumber').value.trim();
+  if(!n||n.length<10){Toast.show('Please enter a valid NID number','warning');return;}
+  setTimeout(()=>{document.getElementById('nidVerifyResult').style.display='block';},1000);
+});
+document.getElementById('checkSmartCardBtn')?.addEventListener('click',()=>{
+  const n=document.getElementById('smartcardNID').value.trim();
+  if(!n){Toast.show('Please enter NID number','warning');return;}
+  setTimeout(()=>{document.getElementById('smartcardResult').style.display='block';},1000);
+});
+document.querySelectorAll('.tab-btn[data-tab]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const c=btn.closest('.tabs');
+    c.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    c.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
+    btn.classList.add('active');
+    c.querySelector(`.tab-content[data-tab="${btn.dataset.tab}"]`)?.classList.add('active');
+  });
+});
+document.addEventListener('DOMContentLoaded',()=>{ThemeManager.init();LanguageManager.init();showNIDSection('verify');});
+</script>
+</body>
+</html>

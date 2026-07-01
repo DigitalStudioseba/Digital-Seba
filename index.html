@@ -43,24 +43,26 @@
 <body>
 
 <!-- Loading Screen -->
+<!-- Loading Screen -->
 <div id="loadingScreen" class="loading-screen">
   <div class="loading-content">
+
     <div class="loading-logo">
-      <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-        <defs>
-          <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" style="stop-color:#2563EB"/>
-            <stop offset="100%" style="stop-color:#4F46E5"/>
-          </linearGradient>
-        </defs>
-        <circle cx="30" cy="30" r="28" fill="url(#logoGrad)" opacity="0.15"/>
-        <path d="M15 20 L30 12 L45 20 L45 40 L30 48 L15 40 Z" fill="url(#logoGrad)" opacity="0.8"/>
-        <path d="M22 28 L28 34 L38 24" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      </svg>
+      <img src="assets/images/logo.png"
+           alt="Digital Seba Logo"
+           class="loading-logo-img">
     </div>
+
     <div class="loading-text">Digital Seba</div>
-    <div class="loading-bar"><div class="loading-progress"></div></div>
-    <div class="loading-sub">Bangladesh's Smart Digital Service Platform</div>
+
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
+    </div>
+
+    <div class="loading-sub">
+      Bangladesh's Smart Digital Service Platform
+    </div>
+
   </div>
 </div>
 
@@ -75,24 +77,22 @@
 <!-- Navbar -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo">
-      <div class="logo-icon">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <defs>
-            <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:#2563EB"/>
-              <stop offset="100%" style="stop-color:#4F46E5"/>
-            </linearGradient>
-          </defs>
-          <circle cx="18" cy="18" r="17" fill="url(#navLogoGrad)" opacity="0.2"/>
-          <path d="M9 12 L18 7 L27 12 L27 24 L18 29 L9 24 Z" fill="url(#navLogoGrad)"/>
-          <path d="M13 17 L17 21 L23 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
-      </div>
-      <div class="logo-text">
+ <a href="index.html" class="nav-logo">
+    <div class="logo-icon">
+        <img src="assets/images/logo.png"
+             alt="Digital Seba Logo"
+             class="site-logo">
+    </div>
+
+    <div class="logo-text">
         <span class="logo-name">Digital Seba</span>
-        <span class="logo-tagline" data-en="Smart Platform" data-bn="স্মার্ট প্ল্যাটফর্ম">Smart Platform</span>
-      </div>
+        <span class="logo-tagline"
+              data-en="Bangladesh's Smart Digital Service Platform"
+              data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সেবা প্ল্যাটফর্ম">
+            Bangladesh's Smart Digital Service Platform
+        </span>
+    </div>
+</a>
     </a>
 
     <!-- Search Bar -->

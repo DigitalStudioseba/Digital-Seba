@@ -319,12 +319,13 @@ img { max-width: 100%; display: block; }
   flex-shrink: 0;
 }
 
-.logo-icon {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.site-logo{
+    width:32px;
+    height:32px;
+    display:block;
+    object-fit:contain;
+    margin:auto;
+    transform: translateX(2px);
 }
 
 .logo-text {
@@ -2299,3 +2300,80 @@ img { max-width: 100%; display: block; }
 
 /* Selection */
 ::selection { background: rgba(37,99,235,0.3); color: var(--text-primary); }
+/* Logo */
+.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+}
+
+.logo-icon{
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.site-logo{
+    width:42px;
+    height:42px;
+    display:block;
+    object-fit:contain;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    margin:0;
+}
+
+.logo-name{
+    font-size:22px;
+    font-weight:800;
+    background:var(--gradient-primary);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+    line-height:1.1;
+}
+
+.logo-tagline{
+    font-size:12px;
+    color:var(--text-secondary);
+    line-height:1.2;
+}
+
+.logo-tagline{
+    font-size:12px;
+    color:#6B7280;
+    margin-top:2px;
+}.loading-logo-img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    display:block;
+    animation:logoPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes logoPulse{
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+}.site-logo{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+    display:block;
+}

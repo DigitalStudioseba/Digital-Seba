@@ -2376,4 +2376,27 @@ img { max-width: 100%; display: block; }
     height:48px;
     object-fit:contain;
     display:block;
+}/* Footer Logo */
+
+.footer-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+}
+
+.footer-logo-img{
+    width:46px;
+    height:46px;
+    object-fit:contain;
+    display:block;
+}
+
+.footer-logo-name{
+    font-size:22px;
+    font-weight:800;
+    background:var(--gradient-primary);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
 }

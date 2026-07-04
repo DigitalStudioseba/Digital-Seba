@@ -173,6 +173,7 @@ const AnimationsModule = (() => {
     toggle.addEventListener('click', () => {
       toggle.classList.toggle('active');
       menu.classList.toggle('active');
+      toggle.setAttribute('aria-expanded', menu.classList.contains('active') ? 'true' : 'false');
 
       // Prevent body scroll
       document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
@@ -183,6 +184,7 @@ const AnimationsModule = (() => {
       link.addEventListener('click', () => {
         toggle.classList.remove('active');
         menu.classList.remove('active');
+        toggle.setAttribute('aria-expanded', 'false');
         document.body.style.overflow = '';
       });
     });
@@ -394,7 +396,6 @@ const AnimationsModule = (() => {
     });
   };
 
-<<<<<<< HEAD
 // Premium Loading Screen
 const hideLoadingScreen = () => {
 
@@ -436,18 +437,6 @@ const hideLoadingScreen = () => {
     }, 12);
 
 };
-=======
-  // Loading screen
-  const hideLoadingScreen = () => {
-    const screen = document.getElementById('loadingScreen');
-    if (!screen) return;
-
-    setTimeout(() => {
-      screen.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 1500);
-  };
->>>>>>> ee4dcfa1aeb86ff570efb7f187f629e031cb202a
 
   // PWA Banner
   const setupPWABanner = () => {

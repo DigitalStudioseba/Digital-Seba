@@ -28,7 +28,7 @@ const ResourcesModule = (() => {
     'PDF Tools': '📄', 'Photo Editing Tools': '🖼️', 'Adobe Software': '🎨',
     'Microsoft Office': '💻', 'Video Editing': '🎬', 'Software Download': '📥',
     'Fonts Collection': '🔤', 'Templates': '📝', 'Google Drive Collections': '📁',
-    'File Sharing': '☁️', 'Utility Websites': '🔧', 'Live TV': '📺'
+    'File Sharing': '☁️', 'Utility Websites': '🔧', 'Live TV': '📺', 'Tax & Finance': '💰'
   };
 
   const QUICK_FILTERS = {
@@ -49,7 +49,9 @@ const ResourcesModule = (() => {
     'ai-tools': [],
     'utilities': ['Utility Websites'],
     'templates': ['Templates'],
-    'downloads': ['Software Download', 'Adobe Software', 'Microsoft Office', 'Video Editing', 'Fonts Collection', 'Templates', 'Google Drive Collections']
+    'downloads': ['Software Download', 'Adobe Software', 'Microsoft Office', 'Video Editing', 'Fonts Collection', 'Templates', 'Google Drive Collections'],
+    'tax-finance': ['Tax & Finance'],
+    'video-tools': ['Video Editing']
   };
 
   const isBangla = () => (window.LanguageManager && LanguageManager.get) ? LanguageManager.get() === 'bn' : false;

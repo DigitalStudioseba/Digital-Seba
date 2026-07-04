@@ -2818,5 +2818,20 @@
     "category_icon": "🏛️",
     "title_en": "Youth Development Training (YTMS)",
     "description_en": "Youth Development Training (YTMS) — Official government service or citizen facility."
+  },
+  {
+    "url": "https://income-tax-calculator-2cus.vercel.app/",
+    "title": "Income Tax Calculator",
+    "title_en": "Income Tax Calculator",
+    "title_bn": "আয়কর ক্যালকুলেটর",
+    "category": "Tax & Finance",
+    "icon": "💰",
+    "category_icon": "💰",
+    "type": "official",
+    "badge": "Official",
+    "id": 189,
+    "description": "Income Tax Calculator — Calculate your Bangladesh income tax online.",
+    "description_en": "Income Tax Calculator — Calculate your Bangladesh income tax online.",
+    "description_bn": "আয়কর ক্যালকুলেটর — অনলাইনে বাংলাদেশের আয়কর হিসাব করুন।"
   }
 ]

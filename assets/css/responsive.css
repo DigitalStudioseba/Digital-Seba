@@ -27,6 +27,19 @@
 }
 
 /* ============================================
+   LAPTOP FIX (1024px - 1366px)
+   The nav grew two extra items (Resources, Live TV) since the
+   original design was built; at these widths the row no longer
+   fits without wrapping/overflowing. Reuse the existing, unchanged
+   hamburger menu here instead of letting the header break — the
+   visual desktop nav at 1367px+ is completely untouched.
+   ============================================ */
+@media (max-width: 1366px) {
+  .nav-links { display: none; }
+  .mobile-menu-toggle { display: flex; }
+}
+
+/* ============================================
    TABLET (768px - 1023px)
    ============================================ */
 @media (max-width: 1023px) {

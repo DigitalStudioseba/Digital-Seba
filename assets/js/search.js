@@ -76,16 +76,12 @@ const SearchModule = (() => {
     const q = query.toLowerCase().trim();
     const lang = LanguageManager?.get() || 'en';
 
-<<<<<<< HEAD
     // === Resources Extension (additive, do not remove existing data) ===
     const allData = Array.isArray(window.EXTRA_SEARCH_DATA)
       ? searchData.concat(window.EXTRA_SEARCH_DATA)
       : searchData;
 
     return allData
-=======
-    return searchData
->>>>>>> ee4dcfa1aeb86ff570efb7f187f629e031cb202a
       .filter(item => {
         const searchIn = [
           item.name.toLowerCase(),
@@ -115,11 +111,7 @@ const SearchModule = (() => {
     const lang = LanguageManager?.get() || 'en';
 
     container.innerHTML = results.map(item => `
-<<<<<<< HEAD
       <a href="${item.url}" class="search-result-item"${item.url.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>
-=======
-      <a href="${item.url}" class="search-result-item">
->>>>>>> ee4dcfa1aeb86ff570efb7f187f629e031cb202a
         <div class="search-result-icon">${item.icon}</div>
         <div>
           <div class="search-result-name">${highlight(lang === 'bn' ? item.namebn : item.name, query)}</div>
@@ -213,11 +205,7 @@ const SearchModule = (() => {
             dropdown.innerHTML = `
               <div style="position:absolute;top:8px;left:0;right:0;background:var(--bg-card);border:1px solid var(--border-strong);border-radius:var(--radius-xl);box-shadow:var(--shadow-xl);padding:8px;z-index:100;">
                 ${results.map(item => `
-<<<<<<< HEAD
                   <a href="${item.url}" class="search-result-item"${item.url.startsWith('http') ? ' target="_blank" rel="noopener"' : ''}>
-=======
-                  <a href="${item.url}" class="search-result-item">
->>>>>>> ee4dcfa1aeb86ff570efb7f187f629e031cb202a
                     <div class="search-result-icon">${item.icon}</div>
                     <div>
                       <div class="search-result-name">${highlight(item.name, q)}</div>

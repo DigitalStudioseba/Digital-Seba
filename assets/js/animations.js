@@ -394,6 +394,7 @@ const AnimationsModule = (() => {
     });
   };
 
+<<<<<<< HEAD
 // Premium Loading Screen
 const hideLoadingScreen = () => {
 
@@ -435,6 +436,18 @@ const hideLoadingScreen = () => {
     }, 12);
 
 };
+=======
+  // Loading screen
+  const hideLoadingScreen = () => {
+    const screen = document.getElementById('loadingScreen');
+    if (!screen) return;
+
+    setTimeout(() => {
+      screen.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 1500);
+  };
+>>>>>>> ee4dcfa1aeb86ff570efb7f187f629e031cb202a
 
   // PWA Banner
   const setupPWABanner = () => {

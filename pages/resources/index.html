@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba Resources - 188+ government websites, official portals, software downloads, AI tools, PDF & photo tools, fonts, templates and more, all in one place.">
+  <title>Resources - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <link rel="stylesheet" href="../../assets/css/resources.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://digitalseba.com.bd/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://digitalseba.com.bd/pages/resources/index.html" }
+    ]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "Digital Seba Resources Hub",
+    "description": "188+ hand-picked government portals, official services, software downloads, AI & photo tools, fonts and templates.",
+    "isPartOf": { "@type": "WebSite", "name": "Digital Seba", "url": "https://digitalseba.com.bd" }
+  }
+  </script>
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-1" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;" aria-label="Toggle dark/light mode"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:32px;">
+      <div class="section-badge">📚 Resources Hub</div>
+      <h1>All-in-One Resource Library</h1>
+      <p>Government portals, official services, software downloads, AI &amp; photo tools, fonts, templates and more — 188+ hand-picked resources in one place.</p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="ds-stats-grid" id="resourceStats"></div>
+
+    <!-- Quick Access -->
+    <div style="display:flex;gap:10px;margin-bottom:20px;">
+      <button id="resourceFavToggle" class="tag">⭐ My Favorites</button>
+      <button id="resourceRecentToggle" class="tag">🕘 Recently Visited</button>
+    </div>
+
+    <!-- Advanced Quick Filters -->
+    <div id="resourceQuickFilters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+      <button class="tag active" data-qf="all">All</button>
+      <button class="tag" data-qf="government">🏛️ Government</button>
+      <button class="tag" data-qf="education">🎓 Education</button>
+      <button class="tag" data-qf="visa">🌍 Visa</button>
+      <button class="tag" data-qf="nid-passport">🪪 Passport</button>
+      <button class="tag" data-qf="police">🚔 Police</button>
+      <button class="tag" data-qf="land">🗺️ Land</button>
+      <button class="tag" data-qf="medical">🏥 Medical</button>
+      <button class="tag" data-qf="software-download">💾 Software</button>
+      <button class="tag" data-qf="adobe">🎨 Adobe</button>
+      <button class="tag" data-qf="templates">📝 Templates</button>
+      <button class="tag" data-qf="fonts">🔤 Fonts</button>
+      <button class="tag" data-qf="ai-tools">🤖 AI Tools</button>
+      <button class="tag" data-qf="pdf-tools">📑 PDF</button>
+      <button class="tag" data-qf="photo-editing">🖼️ Photo Editing</button>
+      <button class="tag" data-qf="file-sharing">☁️ File Sharing</button>
+      <button class="tag" data-qf="utilities">🔧 Utilities</button>
+      <button class="tag" data-qf="downloads">📥 Downloads</button>
+    </div>
+
+    <!-- Search -->
+    <div style="max-width:560px;margin:0 auto 28px;">
+      <input type="text" id="resourceSearch" class="input-field" placeholder="🔍 Search resources by name, category, keyword...">
+    </div>
+
+    <!-- Type Filters + Sort -->
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;">
+      <div id="resourceTypeFilters" style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button class="tag active" data-type="All">All Types</button>
+        <button class="tag" data-type="official">🏛️ Official</button>
+        <button class="tag" data-type="download">⬇️ Download</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="resourcesCount" style="font-size:13px;color:var(--text-muted);"></span>
+        <select id="resourceSort" class="input-field" style="width:auto;padding:8px 14px;font-size:13px;">
+          <option value="popular">⭐ Most Popular</option>
+          <option value="recent">🆕 Recently Added</option>
+          <option value="alphabetical">🔤 Alphabetical</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Category Filters -->
+    <div id="resourceCategoryFilters" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;"></div>
+
+    <!-- Resource Grid -->
+    <div id="resourcesGrid" class="gov-grid"></div>
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../../assets/js/main.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/language.js"></script>
+<script src="../../assets/js/resources.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    ThemeManager.init();
+    LanguageManager.init();
+  });
+</script>
+</body>
+</html>

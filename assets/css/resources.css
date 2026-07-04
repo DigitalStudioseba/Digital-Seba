@@ -1,0 +1,71 @@
+/**
+ * DIGITAL SEBA - Resource Center Extension Styles
+ * Additive only. Uses existing CSS variables from assets/css/main.css.
+ * Nothing here overrides or redefines any existing class.
+ */
+
+@keyframes ds-heart-pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.35); }
+  60%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+
+.fav-btn.pop {
+  animation: ds-heart-pop 0.35s ease;
+}
+
+.resource-card p.ds-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ds-highlight {
+  background: rgba(37, 99, 235, 0.18);
+  color: var(--primary);
+  border-radius: 3px;
+  padding: 0 2px;
+}
+
+.ds-shortcut-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 8px;
+  padding: 22px 14px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: all var(--transition-normal);
+}
+
+.ds-shortcut-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.ds-shortcut-icon { font-size: 30px; }
+
+.ds-shortcut-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+.ds-shortcuts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.ds-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  margin-bottom: 36px;
+}

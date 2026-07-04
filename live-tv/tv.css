@@ -1,0 +1,46 @@
+/**
+ * DIGITAL SEBA - Live TV Module Styles (PLACEHOLDER)
+ * ----------------------------------------------------------------------
+ * Empty scaffolding only. Uses existing CSS variables from
+ * assets/css/main.css — no new colors, fonts, or spacing scales are
+ * introduced. Future channel grid / player styles should be added here
+ * without touching assets/css/main.css or components.css.
+ */
+
+.livetv-placeholder {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.livetv-placeholder-icon {
+  font-size: 56px;
+  margin-bottom: 20px;
+}
+
+.livetv-placeholder h1 {
+  margin-bottom: 12px;
+}
+
+.livetv-placeholder p {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto 8px;
+}
+
+.livetv-coming-soon-badge {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 6px 16px;
+  border-radius: var(--radius-full);
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Reserved for future use: .livetv-channel-grid, .livetv-channel-card,
+   .livetv-player-wrapper, .livetv-controls — intentionally left empty. */

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+</head>
+<body data-require-auth>
+
+<div class="animated-bg">
+  <div class="bg-orb orb-1" style="opacity:0.05;"></div>
+  <div class="bg-grid"></div>
+</div>
+
+<!-- Dashboard Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <defs><linearGradient id="dnLG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563EB"/><stop offset="100%" style="stop-color:#4F46E5"/></linearGradient></defs>
+          <circle cx="18" cy="18" r="17" fill="url(#dnLG)" opacity="0.2"/>
+          <path d="M9 12 L18 7 L27 12 L27 24 L18 29 L9 24 Z" fill="url(#dnLG)"/>
+          <path d="M13 17 L17 21 L23 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline">Dashboard</span>
+      </div>
+    </a>
+
+    <div style="flex:1;"></div>
+
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+
+      <!-- Notifications -->
+      <button class="theme-toggle" id="notifBtn" style="position:relative;" title="Notifications">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span id="notifBadge" style="position:absolute;top:-2px;right:-2px;width:8px;height:8px;background:#EF4444;border-radius:50%;display:none;"></span>
+      </button>
+
+      <!-- User Menu -->
+      <div class="user-menu" style="display:block;">
+        <button class="user-avatar-btn" id="userAvatarBtn">
+          <div class="user-avatar" id="userAvatarNav">U</div>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="user-dropdown" id="userDropdown">
+          <div class="user-info-header">
+            <div class="user-avatar-lg" id="userAvatarDropdown">U</div>
+            <div>
+              <div class="user-name" id="userDisplayName">Loading...</div>
+              <div class="user-email" id="userEmailDisplay"></div>
+            </div>
+          </div>
+          <div class="dropdown-divider"></div>
+          <a href="profile.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Profile Settings</span>
+          </a>
+          <a href="settings.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <span>Settings</span>
+          </a>
+          <a href="../../index.html" class="dropdown-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Back to Home</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item logout-item" id="logoutBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Logout</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Dashboard Layout -->
+<div class="dashboard-wrapper" style="padding-top:calc(var(--nav-height) + 32px);padding-bottom:60px;position:relative;z-index:1;">
+  <div class="container">
+
+    <!-- Welcome Header -->
+    <div class="dashboard-header" style="margin-bottom:32px;">
+      <div>
+        <h1 id="welcomeMsg" style="font-size:clamp(22px,3vw,32px);font-weight:800;">Good morning! 👋</h1>
+        <p style="color:var(--text-muted);font-size:15px;margin-top:6px;" id="welcomeSubtitle">Here's your Digital Seba overview</p>
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <a href="../tools/passport/index.html" class="btn-outline" style="font-size:13px;padding:9px 16px;">+ New Application</a>
+        <a href="../../index.html#tools" class="btn-primary" style="font-size:13px;padding:9px 16px;">Explore Tools</a>
+      </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="dashboard-grid" style="margin-bottom:32px;">
+      <div class="stat-mini">
+        <div class="stat-mini-icon" style="background:rgba(37,99,235,0.1);">📋</div>
+        <div>
+          <div class="stat-mini-value" id="totalApplications">0</div>
+          <div class="stat-mini-label">Applications</div>
+        </div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-icon" style="background:rgba(16,185,129,0.1);">✅</div>
+        <div>
+          <div class="stat-mini-value" id="completedTasks">0</div>
+          <div class="stat-mini-label">Completed</div>
+        </div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-icon" style="background:rgba(245,158,11,0.1);">📁</div>
+        <div>
+          <div class="stat-mini-value" id="savedFiles">0</div>
+          <div class="stat-mini-label">Saved Files</div>
+        </div>
+      </div>
+      <div class="stat-mini">
+        <div class="stat-mini-icon" style="background:rgba(139,92,246,0.1);">⭐</div>
+        <div>
+          <div class="stat-mini-value" id="favorites">0</div>
+          <div class="stat-mini-label">Favorites</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-layout">
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <div class="sidebar-title">Navigation</div>
+        <a href="index.html" class="sidebar-link active">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Overview
+        </a>
+        <a href="profile.html" class="sidebar-link">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </a>
+        <a href="#history" class="sidebar-link">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h6l3 9-6.5 4 1 4H18l1-4-6.5-4 3-9h6"/></svg>
+          History
+        </a>
+        <a href="#saved" class="sidebar-link">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+          Saved Files
+        </a>
+        <a href="#favorites" class="sidebar-link">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          Favorites
+        </a>
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-title">Tools</div>
+        <a href="../tools/passport/index.html" class="sidebar-link">🛂 Passport</a>
+        <a href="../tools/nid/index.html" class="sidebar-link">🪪 NID</a>
+        <a href="../tools/birth/index.html" class="sidebar-link">📜 Birth Certificate</a>
+        <a href="../tools/pdf/index.html" class="sidebar-link">📄 PDF Tools</a>
+        <a href="../tools/ai/index.html" class="sidebar-link">🤖 AI Tools</a>
+        <div class="sidebar-divider"></div>
+        <a href="settings.html" class="sidebar-link">
+          <svg class="link-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+      </div>
+
+      <!-- Main Content -->
+      <div class="dashboard-main">
+
+        <!-- Quick Actions -->
+        <div class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Quick Actions</div>
+              <div class="card-subtitle">Frequently used tools and services</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;">
+            <a href="../tools/passport/index.html" class="quick-action-btn">
+              <span class="qa-icon">🛂</span>
+              <span>Passport</span>
+            </a>
+            <a href="../tools/nid/index.html" class="quick-action-btn">
+              <span class="qa-icon">🪪</span>
+              <span>NID Card</span>
+            </a>
+            <a href="../tools/birth/index.html" class="quick-action-btn">
+              <span class="qa-icon">📜</span>
+              <span>Birth Cert.</span>
+            </a>
+            <a href="../tools/photo/index.html" class="quick-action-btn">
+              <span class="qa-icon">📷</span>
+              <span>Photo Tool</span>
+            </a>
+            <a href="../tools/pdf/index.html" class="quick-action-btn">
+              <span class="qa-icon">📄</span>
+              <span>PDF Tools</span>
+            </a>
+            <a href="../tools/ai/index.html" class="quick-action-btn">
+              <span class="qa-icon">🤖</span>
+              <span>AI Chat</span>
+            </a>
+            <a href="../tools/utility/index.html" class="quick-action-btn">
+              <span class="qa-icon">🔧</span>
+              <span>Utilities</span>
+            </a>
+            <a href="../tools/land/index.html" class="quick-action-btn">
+              <span class="qa-icon">🗺️</span>
+              <span>Land Records</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="card" id="history">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Recent Activity</div>
+              <div class="card-subtitle">Your last interactions with Digital Seba</div>
+            </div>
+            <button class="btn-ghost" style="font-size:13px;">View All</button>
+          </div>
+          <div id="recentActivity">
+            <div class="empty-state" style="padding:40px 0;">
+              <div class="empty-icon">📭</div>
+              <div class="empty-title">No Activity Yet</div>
+              <div class="empty-desc">Start using our tools and your activity will appear here.</div>
+              <a href="../../index.html#tools" class="btn-primary" style="margin-top:16px;">Explore Tools</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Saved Files -->
+        <div class="card" id="saved">
+          <div class="card-header">
+            <div>
+              <div class="card-title">Saved Files</div>
+              <div class="card-subtitle">Files you've saved or downloaded</div>
+            </div>
+            <button class="btn-primary" style="font-size:13px;padding:8px 16px;">Upload File</button>
+          </div>
+          <div id="savedFilesContent">
+            <div class="empty-state" style="padding:40px 0;">
+              <div class="empty-icon">📁</div>
+              <div class="empty-title">No Saved Files</div>
+              <div class="empty-desc">Files you create or save will appear here for easy access.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Announcements -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">📢 Announcements</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="alert alert-info">
+              <div>
+                <strong>🆕 New Feature:</strong> AI-powered document assistant is now available! Try it in the AI Tools section.
+              </div>
+            </div>
+            <div class="alert alert-success">
+              <div>
+                <strong>✅ System Update:</strong> PDF merge tool has been improved with faster processing.
+              </div>
+            </div>
+            <div class="alert alert-warning">
+              <div>
+                <strong>⚠️ Reminder:</strong> Passport renewal notices will be sent 90 days before expiry.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<style>
+.quick-action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 12px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+.quick-action-btn:hover {
+  background: rgba(37,99,235,0.08);
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+.qa-icon { font-size: 24px; }
+
+@media (max-width: 767px) {
+  .dashboard-layout { flex-direction: column; }
+  .dashboard-grid { grid-template-columns: repeat(2,1fr); }
+  .dashboard-header { flex-direction: column; gap: 16px; align-items: flex-start; }
+}
+
+/* Dashboard-specific navbar fix */
+.dashboard-wrapper .container {
+  padding: 0 var(--container-pad);
+}
+</style>
+
+<script src="../../assets/js/firebase-config.js"></script>
+<script src="../../assets/js/theme.js"></script>
+<script src="../../assets/js/language.js"></script>
+<script>
+// Toast
+const Toast = {
+  show: (msg, type='info') => {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.classList.add('hiding'); setTimeout(() => t.remove(), 300); }, 4000);
+  }
+};
+
+// Greeting
+const getGreeting = () => {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning!';
+  if (h < 17) return 'Good afternoon!';
+  return 'Good evening!';
+};
+
+// Logout
+document.getElementById('logoutBtn')?.addEventListener('click', async () => {
+  try {
+    if (typeof firebase !== 'undefined' && window.auth) {
+      await window.auth.signOut();
+    }
+    localStorage.removeItem('ds_user');
+    window.location.href = '../../index.html';
+  } catch (e) {
+    localStorage.removeItem('ds_user');
+    window.location.href = '../../index.html';
+  }
+});
+
+// Load user data
+const loadUser = async (user) => {
+  const displayName = user.displayName || user.email?.split('@')[0] || 'User';
+  const initials = displayName.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+
+  document.getElementById('welcomeMsg').textContent = `${getGreeting()} ${displayName.split(' ')[0]}! 👋`;
+  document.getElementById('welcomeSubtitle').textContent = `Here's your Digital Seba overview for ${new Date().toLocaleDateString('en-BD', {weekday:'long', month:'long', day:'numeric'})}`;
+  document.getElementById('userDisplayName').textContent = displayName;
+  document.getElementById('userEmailDisplay').textContent = user.email || '';
+
+  const setAvatar = (el, size) => {
+    if (!el) return;
+    if (user.photoURL) {
+      el.innerHTML = `<img src="${user.photoURL}" alt="Avatar" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+    } else {
+      el.textContent = initials;
+    }
+  };
+
+  setAvatar(document.getElementById('userAvatarNav'));
+  setAvatar(document.getElementById('userAvatarDropdown'));
+
+  // Load Firestore data
+  if (typeof firebase !== 'undefined' && window.db && user.uid) {
+    try {
+      const doc = await window.db.collection('users').doc(user.uid).get();
+      if (doc.exists) {
+        const data = doc.data();
+        // Load activity, files etc.
+        loadActivity(user.uid);
+      }
+    } catch (e) {}
+  }
+};
+
+const loadActivity = async (uid) => {
+  if (!window.db) return;
+  try {
+    const snapshot = await window.db.collection('userHistory')
+      .doc(uid).collection('activities')
+      .orderBy('timestamp', 'desc')
+      .limit(10)
+      .get();
+
+    if (!snapshot.empty) {
+      const activityEl = document.getElementById('recentActivity');
+      activityEl.innerHTML = snapshot.docs.map(doc => {
+        const d = doc.data();
+        return `
+          <div class="notification-item">
+            <div class="notif-icon" style="background:rgba(37,99,235,0.1);">${d.icon || '📋'}</div>
+            <div class="notif-content">
+              <div class="notif-title">${d.title || 'Activity'}</div>
+              <div class="notif-text">${d.description || ''}</div>
+              <div class="notif-time">${d.timestamp ? new Date(d.timestamp.toDate()).toLocaleDateString() : ''}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  } catch (e) {}
+};
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+
+  // Check auth
+  const cached = (() => {
+    try { return JSON.parse(localStorage.getItem('ds_user')); } catch { return null; }
+  })();
+
+  if (!cached) {
+    window.location.href = '../../pages/auth/login.html';
+    return;
+  }
+
+  // Update stats
+  document.getElementById('totalApplications').textContent = '0';
+  document.getElementById('completedTasks').textContent = '0';
+  document.getElementById('savedFiles').textContent = '0';
+  document.getElementById('favorites').textContent = '0';
+
+  if (typeof firebase !== 'undefined' && window.auth) {
+    window.auth.onAuthStateChanged((user) => {
+      if (user) {
+        loadUser(user);
+      } else {
+        window.location.href = '../../pages/auth/login.html';
+      }
+    });
+  } else {
+    loadUser(cached);
+  }
+});
+</script>
+</body>
+</html>

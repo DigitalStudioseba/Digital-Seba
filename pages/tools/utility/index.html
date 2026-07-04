@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utility Tools - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../../assets/css/accessibility.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-1" style="opacity:0.07;"></div><div class="bg-grid"></div></div>
+
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;" aria-label="Toggle dark/light mode"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">🔧 Utilities</div>
+      <h1>Utility Tools</h1>
+      <p>Handy calculators and generators for everyday use</p>
+    </div>
+
+    <!-- Tool Grid -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px;">
+
+      <!-- AGE CALCULATOR -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#2563EB,#4F46E5);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🎂</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">Age Calculator</h3>
+            <p style="font-size:13px;color:var(--text-muted);">Calculate exact age</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date of Birth</label>
+          <input type="date" id="dobInput" class="input-field" max="">
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+          <label>Calculate as of</label>
+          <input type="date" id="asOfInput" class="input-field">
+        </div>
+        <button class="btn-primary" id="calcAgeBtn" style="margin-top:14px;width:100%;">Calculate Age</button>
+        <div id="ageResult" style="margin-top:16px;display:none;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:16px;text-align:center;">
+          <div id="ageDisplay" style="font-size:32px;font-weight:900;background:linear-gradient(135deg,#2563EB,#4F46E5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;"></div>
+          <div id="ageSub" style="font-size:13px;color:var(--text-muted);margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- BMI CALCULATOR -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#10B981,#06B6D4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">⚖️</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">BMI Calculator</h3>
+            <p style="font-size:13px;color:var(--text-muted);">Body Mass Index</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Height</label>
+          <div style="display:flex;gap:8px;">
+            <input type="number" id="heightInput" class="input-field" placeholder="170" min="50" max="300">
+            <select id="heightUnit" class="select-field" style="width:80px;">
+              <option value="cm">cm</option>
+              <option value="ft">ft</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+          <label>Weight</label>
+          <div style="display:flex;gap:8px;">
+            <input type="number" id="weightInput" class="input-field" placeholder="70" min="1" max="500">
+            <select id="weightUnit" class="select-field" style="width:80px;">
+              <option value="kg">kg</option>
+              <option value="lb">lb</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-primary" id="calcBmiBtn" style="margin-top:14px;width:100%;">Calculate BMI</button>
+        <div id="bmiResult" style="margin-top:16px;display:none;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:16px;text-align:center;">
+          <div id="bmiValue" style="font-size:40px;font-weight:900;"></div>
+          <div id="bmiCategory" style="font-size:16px;font-weight:700;margin-top:4px;"></div>
+          <div class="progress-bar" style="margin-top:12px;"><div class="progress-fill" id="bmiBar"></div></div>
+          <div id="bmiInfo" style="font-size:12px;color:var(--text-muted);margin-top:8px;"></div>
+        </div>
+      </div>
+
+      <!-- CURRENCY CONVERTER -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#F59E0B,#EF4444);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">💱</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">Currency Converter</h3>
+            <p style="font-size:13px;color:var(--text-muted);">BDT exchange rates</p>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <div style="flex:1;">
+            <input type="number" id="currencyAmount" class="input-field" placeholder="Amount" value="1" min="0">
+          </div>
+          <div>
+            <select id="currencyFrom" class="select-field">
+              <option value="BDT">BDT ৳</option>
+              <option value="USD">USD $</option>
+              <option value="EUR">EUR €</option>
+              <option value="GBP">GBP £</option>
+              <option value="SAR">SAR ﷼</option>
+              <option value="AED">AED د.إ</option>
+              <option value="MYR">MYR RM</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:center;margin:10px 0;">
+          <button id="swapCurrencyBtn" style="background:var(--bg-secondary);border:1px solid var(--border);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;">⇄</button>
+        </div>
+        <div>
+          <select id="currencyTo" class="select-field">
+            <option value="USD">USD $</option>
+            <option value="BDT">BDT ৳</option>
+            <option value="EUR">EUR €</option>
+            <option value="GBP">GBP £</option>
+            <option value="SAR">SAR ﷼</option>
+            <option value="AED">AED د.إ</option>
+            <option value="MYR">MYR RM</option>
+          </select>
+        </div>
+        <button class="btn-primary" id="convertCurrencyBtn" style="margin-top:14px;width:100%;">Convert</button>
+        <div id="currencyResult" style="margin-top:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:14px;text-align:center;display:none;">
+          <div id="currencyOutput" style="font-size:24px;font-weight:700;"></div>
+          <div id="currencyRate" style="font-size:12px;color:var(--text-muted);margin-top:4px;"></div>
+        </div>
+      </div>
+
+      <!-- QR CODE GENERATOR -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#8B5CF6,#EC4899);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🔲</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">QR Code Generator</h3>
+            <p style="font-size:13px;color:var(--text-muted);">Generate QR codes instantly</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Content Type</label>
+          <select id="qrType" class="select-field">
+            <option value="text">Text / URL</option>
+            <option value="email">Email</option>
+            <option value="phone">Phone Number</option>
+            <option value="sms">SMS</option>
+            <option value="wifi">WiFi</option>
+          </select>
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+          <label>Content</label>
+          <input type="text" id="qrContent" class="input-field" placeholder="Enter text, URL, or data...">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;">
+          <div class="form-group" style="flex:1;">
+            <label style="font-size:12px;">Size</label>
+            <select id="qrSize" class="select-field">
+              <option value="200">200px</option>
+              <option value="300" selected>300px</option>
+              <option value="400">400px</option>
+            </select>
+          </div>
+          <div class="form-group" style="flex:1;">
+            <label style="font-size:12px;">Foreground</label>
+            <input type="color" id="qrFgColor" value="#000000" class="input-field" style="height:42px;padding:4px;">
+          </div>
+        </div>
+        <button class="btn-primary" id="generateQrBtn" style="margin-top:14px;width:100%;">Generate QR Code</button>
+        <div id="qrResult" style="margin-top:16px;text-align:center;display:none;">
+          <div id="qrImage" style="display:inline-block;background:white;padding:12px;border-radius:12px;"></div>
+          <div style="margin-top:10px;display:flex;gap:8px;justify-content:center;">
+            <button class="btn-outline" id="downloadQrBtn" style="font-size:13px;">⬇️ Download PNG</button>
+            <button class="btn-outline" id="downloadQrSvgBtn" style="font-size:13px;">⬇️ Download SVG</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- UNIT CONVERTER -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#06B6D4,#2563EB);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">📏</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">Unit Converter</h3>
+            <p style="font-size:13px;color:var(--text-muted);">Convert between units</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Category</label>
+          <select id="unitCategory" class="select-field">
+            <option value="length">Length</option>
+            <option value="weight">Weight</option>
+            <option value="temperature">Temperature</option>
+            <option value="area">Area</option>
+            <option value="volume">Volume</option>
+            <option value="speed">Speed</option>
+          </select>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center;margin-top:12px;">
+          <div style="flex:1;">
+            <input type="number" id="unitAmount" class="input-field" placeholder="Value" value="1">
+          </div>
+          <select id="unitFrom" class="select-field" style="flex:1;"></select>
+        </div>
+        <div style="text-align:center;margin:8px 0;font-size:20px;">⬇️</div>
+        <select id="unitTo" class="select-field"></select>
+        <button class="btn-primary" id="convertUnitBtn" style="margin-top:14px;width:100%;">Convert</button>
+        <div id="unitResult" style="margin-top:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:14px;text-align:center;display:none;">
+          <div id="unitOutput" style="font-size:24px;font-weight:700;"></div>
+        </div>
+      </div>
+
+      <!-- PASSWORD GENERATOR -->
+      <div class="card">
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+          <div style="width:48px;height:48px;background:linear-gradient(135deg,#EF4444,#8B5CF6);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;">🔐</div>
+          <div>
+            <h3 style="font-weight:700;font-size:18px;">Password Generator</h3>
+            <p style="font-size:13px;color:var(--text-muted);">Generate secure passwords</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Password Length: <span id="pwLengthLabel">16</span></label>
+          <input type="range" id="pwLength" min="8" max="64" value="16" style="width:100%;margin-top:8px;accent-color:var(--primary);">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;">
+          <label class="checkbox-group">
+            <input type="checkbox" id="pwUpper" checked>
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">Uppercase (A-Z)</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" id="pwLower" checked>
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">Lowercase (a-z)</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" id="pwNumbers" checked>
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">Numbers (0-9)</span>
+          </label>
+          <label class="checkbox-group">
+            <input type="checkbox" id="pwSymbols">
+            <span class="checkbox-custom"></span>
+            <span class="checkbox-label">Symbols (!@#$)</span>
+          </label>
+        </div>
+        <button class="btn-primary" id="generatePwBtn" style="margin-top:14px;width:100%;">🔐 Generate Password</button>
+        <div id="pwResult" style="margin-top:12px;display:none;">
+          <div style="display:flex;align-items:center;gap:8px;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:12px 16px;border:1px solid var(--border);">
+            <code id="pwOutput" style="flex:1;font-size:14px;word-break:break-all;font-family:monospace;color:var(--text-primary);"></code>
+            <button class="copy-btn" id="copyPwBtn">Copy</button>
+          </div>
+          <div id="pwStrengthIndicator" style="margin-top:8px;"></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = {
+  show: (msg, type='info') => {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.classList.add('hiding'); setTimeout(() => t.remove(), 300); }, 4000);
+  }
+};
+
+// === AGE CALCULATOR ===
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('dobInput').max = today;
+document.getElementById('asOfInput').value = today;
+document.getElementById('asOfInput').max = today;
+
+document.getElementById('calcAgeBtn').addEventListener('click', () => {
+  const dob = new Date(document.getElementById('dobInput').value);
+  const asOf = new Date(document.getElementById('asOfInput').value);
+  if (!document.getElementById('dobInput').value) { Toast.show('Please select date of birth', 'warning'); return; }
+
+  let years = asOf.getFullYear() - dob.getFullYear();
+  let months = asOf.getMonth() - dob.getMonth();
+  let days = asOf.getDate() - dob.getDate();
+
+  if (days < 0) { months--; days += new Date(asOf.getFullYear(), asOf.getMonth(), 0).getDate(); }
+  if (months < 0) { years--; months += 12; }
+
+  const totalDays = Math.floor((asOf - dob) / (1000*60*60*24));
+  const totalWeeks = Math.floor(totalDays / 7);
+  const totalMonths = years * 12 + months;
+
+  document.getElementById('ageDisplay').textContent = `${years}y ${months}m ${days}d`;
+  document.getElementById('ageSub').innerHTML = `
+    📅 Total: ${totalDays.toLocaleString()} days<br>
+    📆 ${totalWeeks.toLocaleString()} weeks • ${totalMonths.toLocaleString()} months<br>
+    🎂 Next birthday in ${(() => { const next = new Date(asOf.getFullYear(), dob.getMonth(), dob.getDate()); if(next < asOf) next.setFullYear(next.getFullYear()+1); return Math.ceil((next-asOf)/(1000*60*60*24)); })()} days
+  `;
+  document.getElementById('ageResult').style.display = 'block';
+});
+
+// === BMI CALCULATOR ===
+document.getElementById('calcBmiBtn').addEventListener('click', () => {
+  let height = parseFloat(document.getElementById('heightInput').value);
+  let weight = parseFloat(document.getElementById('weightInput').value);
+  const hUnit = document.getElementById('heightUnit').value;
+  const wUnit = document.getElementById('weightUnit').value;
+
+  if (!height || !weight) { Toast.show('Please enter height and weight', 'warning'); return; }
+
+  if (hUnit === 'ft') height = height * 30.48;
+  if (wUnit === 'lb') weight = weight * 0.453592;
+
+  const bmi = weight / Math.pow(height/100, 2);
+  let category, color, percent, info;
+
+  if (bmi < 18.5) { category = 'Underweight'; color = '#06B6D4'; percent = 20; info = 'Consider gaining some weight for optimal health'; }
+  else if (bmi < 25) { category = 'Normal Weight ✅'; color = '#10B981'; percent = 45; info = 'Great! You have a healthy BMI'; }
+  else if (bmi < 30) { category = 'Overweight'; color = '#F59E0B'; percent = 70; info = 'Consider a balanced diet and exercise'; }
+  else { category = 'Obese'; color = '#EF4444'; percent = 90; info = 'Please consult a healthcare professional'; }
+
+  document.getElementById('bmiValue').textContent = bmi.toFixed(1);
+  document.getElementById('bmiValue').style.color = color;
+  document.getElementById('bmiCategory').textContent = category;
+  document.getElementById('bmiCategory').style.color = color;
+  document.getElementById('bmiBar').style.width = percent + '%';
+  document.getElementById('bmiBar').style.background = color;
+  document.getElementById('bmiInfo').textContent = info;
+  document.getElementById('bmiResult').style.display = 'block';
+});
+
+// === CURRENCY CONVERTER ===
+const rates = { BDT:1, USD:110, EUR:119, GBP:138, SAR:29.3, AED:30, MYR:23.5 };
+
+document.getElementById('convertCurrencyBtn').addEventListener('click', () => {
+  const amount = parseFloat(document.getElementById('currencyAmount').value);
+  const from = document.getElementById('currencyFrom').value;
+  const to = document.getElementById('currencyTo').value;
+  if (!amount || isNaN(amount)) { Toast.show('Please enter an amount', 'warning'); return; }
+
+  const bdtAmount = amount * rates[from];
+  const result = bdtAmount / rates[to];
+  const symbols = { BDT:'৳', USD:'$', EUR:'€', GBP:'£', SAR:'﷼', AED:'د.إ', MYR:'RM' };
+
+  document.getElementById('currencyOutput').textContent = `${symbols[to] || ''}${result.toFixed(2)} ${to}`;
+  document.getElementById('currencyRate').textContent = `1 ${from} = ${(rates[from]/rates[to]).toFixed(4)} ${to} (Sample rates - connect live API for real data)`;
+  document.getElementById('currencyResult').style.display = 'block';
+});
+
+document.getElementById('swapCurrencyBtn').addEventListener('click', () => {
+  const f = document.getElementById('currencyFrom');
+  const t = document.getElementById('currencyTo');
+  [f.value, t.value] = [t.value, f.value];
+});
+
+// === QR CODE GENERATOR ===
+document.getElementById('generateQrBtn').addEventListener('click', () => {
+  const content = document.getElementById('qrContent').value.trim();
+  if (!content) { Toast.show('Please enter content for QR code', 'warning'); return; }
+
+  const size = document.getElementById('qrSize').value;
+  const fg = document.getElementById('qrFgColor').value.replace('#', '');
+
+  // Using QR code API (free service)
+  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=${size}x${size}&data=${encodeURIComponent(content)}&color=${fg}&bgcolor=FFFFFF`;
+
+  document.getElementById('qrImage').innerHTML = `<img src="${qrUrl}" alt="QR Code" style="width:${size}px;max-width:100%;" onload="this.style.display='block'" onerror="this.parentElement.innerHTML='<div style=\'padding:20px;color:var(--text-muted)\'>QR generation requires internet connection</div>'">`;
+  document.getElementById('qrResult').style.display = 'block';
+
+  document.getElementById('downloadQrBtn').onclick = () => {
+    const a = document.createElement('a');
+    a.href = qrUrl;
+    a.download = 'qrcode.png';
+    a.click();
+  };
+  Toast.show('✅ QR Code generated!', 'success');
+});
+
+// === UNIT CONVERTER ===
+const unitData = {
+  length: { m:'Meter', km:'Kilometer', cm:'Centimeter', mm:'Millimeter', ft:'Foot', in:'Inch', mi:'Mile', yd:'Yard' },
+  weight: { kg:'Kilogram', g:'Gram', mg:'Milligram', lb:'Pound', oz:'Ounce', t:'Metric Ton' },
+  temperature: { C:'Celsius', F:'Fahrenheit', K:'Kelvin' },
+  area: { m2:'Sq Meter', km2:'Sq Kilometer', ft2:'Sq Foot', acre:'Acre', hectare:'Hectare' },
+  volume: { L:'Liter', mL:'Milliliter', gal:'Gallon', qt:'Quart', pt:'Pint', cup:'Cup' },
+  speed: { kmh:'km/h', ms:'m/s', mph:'mph', knot:'Knot' }
+};
+
+const unitConversions = {
+  length: { m:1, km:1000, cm:0.01, mm:0.001, ft:0.3048, in:0.0254, mi:1609.34, yd:0.9144 },
+  weight: { kg:1, g:0.001, mg:0.000001, lb:0.453592, oz:0.0283495, t:1000 },
+  area: { m2:1, km2:1000000, ft2:0.092903, acre:4046.86, hectare:10000 },
+  volume: { L:1, mL:0.001, gal:3.78541, qt:0.946353, pt:0.473176, cup:0.236588 },
+  speed: { kmh:1, ms:3.6, mph:1.60934, knot:1.852 }
+};
+
+const loadUnits = () => {
+  const cat = document.getElementById('unitCategory').value;
+  const units = unitData[cat];
+  ['unitFrom', 'unitTo'].forEach(id => {
+    const el = document.getElementById(id);
+    el.innerHTML = Object.entries(units).map(([v,l]) => `<option value="${v}">${l} (${v})</option>`).join('');
+  });
+  if (document.getElementById('unitTo').options.length > 1) {
+    document.getElementById('unitTo').selectedIndex = 1;
+  }
+};
+
+document.getElementById('unitCategory').addEventListener('change', loadUnits);
+loadUnits();
+
+document.getElementById('convertUnitBtn').addEventListener('click', () => {
+  const cat = document.getElementById('unitCategory').value;
+  const from = document.getElementById('unitFrom').value;
+  const to = document.getElementById('unitTo').value;
+  const amount = parseFloat(document.getElementById('unitAmount').value);
+  if (isNaN(amount)) { Toast.show('Please enter a value', 'warning'); return; }
+
+  let result;
+  if (cat === 'temperature') {
+    let celsius;
+    if (from === 'C') celsius = amount;
+    else if (from === 'F') celsius = (amount - 32) * 5/9;
+    else celsius = amount - 273.15;
+
+    if (to === 'C') result = celsius;
+    else if (to === 'F') result = celsius * 9/5 + 32;
+    else result = celsius + 273.15;
+  } else {
+    const conv = unitConversions[cat];
+    if (!conv) { Toast.show('Conversion not available', 'warning'); return; }
+    const base = amount * conv[from];
+    result = base / conv[to];
+  }
+
+  document.getElementById('unitOutput').textContent = `${result.toFixed(6).replace(/\.?0+$/, '')} ${to}`;
+  document.getElementById('unitResult').style.display = 'block';
+});
+
+// === PASSWORD GENERATOR ===
+document.getElementById('pwLength').addEventListener('input', (e) => {
+  document.getElementById('pwLengthLabel').textContent = e.target.value;
+});
+
+document.getElementById('generatePwBtn').addEventListener('click', () => {
+  const len = parseInt(document.getElementById('pwLength').value);
+  const upper = document.getElementById('pwUpper').checked;
+  const lower = document.getElementById('pwLower').checked;
+  const numbers = document.getElementById('pwNumbers').checked;
+  const symbols = document.getElementById('pwSymbols').checked;
+
+  let chars = '';
+  if (upper) chars += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  if (lower) chars += 'abcdefghijklmnopqrstuvwxyz';
+  if (numbers) chars += '0123456789';
+  if (symbols) chars += '!@#$%^&*()_+-=[]{}|;:,.<>?';
+
+  if (!chars) { Toast.show('Select at least one character type', 'warning'); return; }
+
+  let pw = '';
+  const arr = new Uint8Array(len);
+  crypto.getRandomValues(arr);
+  arr.forEach(b => pw += chars[b % chars.length]);
+
+  document.getElementById('pwOutput').textContent = pw;
+
+  let strength = 0;
+  if (len >= 12) strength++;
+  if (upper && lower) strength++;
+  if (numbers) strength++;
+  if (symbols) strength++;
+
+  const levels = ['', '⚠️ Weak', '🟡 Fair', '🟢 Good', '💪 Strong'];
+  const colors = ['', '#EF4444', '#F59E0B', '#10B981', '#2563EB'];
+  document.getElementById('pwStrengthIndicator').innerHTML = `<span style="font-size:13px;color:${colors[strength]}">${levels[strength]}</span>`;
+  document.getElementById('pwResult').style.display = 'block';
+
+  document.getElementById('copyPwBtn').addEventListener('click', async () => {
+    await navigator.clipboard.writeText(pw);
+    Toast.show('✅ Password copied!', 'success');
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  ThemeManager.init();
+  LanguageManager.init();
+});
+</script>
+</body>
+</html>

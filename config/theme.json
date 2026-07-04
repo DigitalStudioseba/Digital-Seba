@@ -1,0 +1,5 @@
+{
+  "note": "Colors are defined in assets/css/main.css as CSS variables and are NOT duplicated here to avoid drift. This file is reserved for future non-visual theme metadata only.",
+  "defaultMode": "dark",
+  "supportedModes": ["dark", "light"]
+}

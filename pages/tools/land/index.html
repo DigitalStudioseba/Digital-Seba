@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Records - Digital Seba</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../../assets/css/main.css">
+  <link rel="stylesheet" href="../../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../../assets/css/components.css">
+  <link rel="stylesheet" href="../../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../../assets/css/accessibility.css">
+</head>
+<body>
+<div class="animated-bg"><div class="bg-orb orb-1" style="opacity:0.06;"></div><div class="bg-grid"></div></div>
+<nav class="navbar scrolled">
+  <div class="nav-container">
+    <a href="../../../index.html" class="nav-logo"><span class="logo-name">Digital Seba</span></a>
+    <div style="flex:1;"></div>
+    <a href="../../../index.html" class="btn-outline" style="font-size:13px;padding:8px 16px;">← Home</a>
+    <button class="theme-toggle" id="themeToggle" style="margin-left:8px;" aria-label="Toggle dark/light mode"><svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg><svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </div>
+</nav>
+<main style="padding-top:calc(var(--nav-height)+40px);padding-bottom:80px;position:relative;z-index:1;">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:40px;">
+      <div class="section-badge">🗺️ Land Services</div>
+      <h1>Land Records & Services</h1>
+      <p>Search khatian, check mutation status, and access land records online</p>
+    </div>
+
+    <div class="tab-list" style="margin-bottom:32px;">
+      <button class="tab-btn active" data-land="khatian">📋 Khatian Search</button>
+      <button class="tab-btn" data-land="mutation">🔄 Mutation</button>
+      <button class="tab-btn" data-land="mouza">🗺️ Mouza Map</button>
+      <button class="tab-btn" data-land="calculator">🧮 Land Calculator</button>
+    </div>
+
+    <!-- KHATIAN SEARCH -->
+    <div id="land-khatian" class="land-panel">
+      <div class="tool-layout">
+        <div class="card">
+          <h3 style="font-size:20px;font-weight:700;margin-bottom:16px;">📋 Khatian/Parch Search</h3>
+          <p style="color:var(--text-muted);font-size:14px;margin-bottom:20px;">Search land records by khatian number, dag number, or owner name</p>
+          <div class="form-group"><label>District (জেলা)</label>
+            <select id="khatianDistrict" class="select-field">
+              <option>Select District...</option>
+              <option>Dhaka (ঢাকা)</option><option>Chittagong (চট্টগ্রাম)</option>
+              <option>Sylhet (সিলেট)</option><option>Rajshahi (রাজশাহী)</option>
+              <option>Khulna (খুলনা)</option><option>Barisal (বরিশাল)</option>
+              <option>Rangpur (রংপুর)</option><option>Mymensingh (ময়মনসিংহ)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-top:12px;"><label>Upazila (উপজেলা)</label><input type="text" id="khatianUpazila" class="input-field" placeholder="Enter upazila name"></div>
+          <div class="form-group" style="margin-top:12px;"><label>Mouza (মৌজা)</label><input type="text" id="khatianMouza" class="input-field" placeholder="Enter mouza name"></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px;">
+            <div class="form-group"><label>Khatian Type</label>
+              <select id="khatianType" class="select-field">
+                <option>RS (রেকর্ড সার্ভে)</option>
+                <option>SA (স্টেট অ্যাকুইজিশন)</option>
+                <option>CS (ক্যাডাস্ট্রাল সার্ভে)</option>
+                <option>City Jorip</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Khatian No.</label><input type="text" id="khatianNo" class="input-field" placeholder="e.g., 1234"></div>
+          </div>
+          <div class="form-group" style="margin-top:12px;"><label>OR Dag/Plot Number</label><input type="text" id="dagNo" class="input-field" placeholder="e.g., 567"></div>
+          <button class="btn-primary" id="searchKhatianBtn" style="margin-top:16px;width:100%;">🔍 Search Land Records</button>
+        </div>
+        <div class="card">
+          <h4 style="font-weight:700;margin-bottom:12px;">Search Results</h4>
+          <div id="khatianResults">
+            <div class="empty-state" style="padding:40px 0;">
+              <div class="empty-icon">🗺️</div>
+              <div class="empty-title">Enter search criteria</div>
+              <div class="empty-desc">Fill in the district, mouza, and khatian details to search land records.</div>
+            </div>
+          </div>
+          <div class="alert alert-info" style="margin-top:16px;font-size:12px;">
+            For official records, visit <a href="https://land.gov.bd" target="_blank" style="color:var(--primary);">land.gov.bd</a> or contact your local Land Office.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MUTATION -->
+    <div id="land-mutation" class="land-panel" style="display:none;">
+      <div class="card">
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:16px;">🔄 Land Mutation (নামজারি)</h3>
+        <div class="alert alert-warning" style="margin-bottom:20px;">⚠️ Mutation must be done after every land transfer/purchase to update ownership records.</div>
+        <div class="tool-layout">
+          <div>
+            <h4 style="font-weight:700;margin-bottom:12px;">Required Documents</h4>
+            <ul style="display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--text-secondary);">
+              <li>✅ Purchase deed (registered)</li>
+              <li>✅ Seller's NID card</li>
+              <li>✅ Buyer's NID card</li>
+              <li>✅ Last paid tax receipt (Khajna)</li>
+              <li>✅ Khatian copy (certified)</li>
+              <li>✅ Dag/Plot map</li>
+              <li>✅ Application form</li>
+            </ul>
+          </div>
+          <div>
+            <h4 style="font-weight:700;margin-bottom:12px;">Mutation Process</h4>
+            <div style="display:flex;flex-direction:column;gap:10px;">
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+                <div style="width:24px;height:24px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;">1</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Apply at Upazila Land Office with documents</div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+                <div style="width:24px;height:24px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;">2</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Pay Mutation fee (৳ varies by land value)</div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+                <div style="width:24px;height:24px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;">3</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Field verification by Land Office staff</div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+                <div style="width:24px;height:24px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;">4</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Mutation order issued (30-90 days)</div>
+              </div>
+              <div style="display:flex;gap:10px;align-items:flex-start;padding:12px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+                <div style="width:24px;height:24px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:11px;flex-shrink:0;">5</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Collect mutation khatian from Land Office</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h4 style="font-weight:700;margin-top:24px;margin-bottom:12px;">Mutation Status Check</h4>
+        <div style="display:flex;gap:12px;">
+          <input type="text" id="mutationAppNo" class="input-field" placeholder="Enter mutation application number" style="flex:1;">
+          <button class="btn-primary" id="checkMutationBtn">Check Status</button>
+        </div>
+        <div id="mutationStatus" style="display:none;margin-top:12px;" class="alert alert-info">
+          📋 <strong>Status: Under Review</strong> — Your mutation application is being processed by the Land Office. Expected: 30-60 working days.
+        </div>
+      </div>
+    </div>
+
+    <!-- MOUZA MAP -->
+    <div id="land-mouza" class="land-panel" style="display:none;">
+      <div class="card">
+        <h3 style="font-size:20px;font-weight:700;margin-bottom:16px;">🗺️ Mouza Map Search</h3>
+        <div class="tool-layout">
+          <div>
+            <div class="form-group"><label>District</label><select id="mouzaDistrict" class="select-field"><option>Select District...</option><option>Dhaka</option><option>Chittagong</option><option>Sylhet</option><option>Rajshahi</option></select></div>
+            <div class="form-group" style="margin-top:12px;"><label>Upazila</label><input type="text" id="mouzaUpazila" class="input-field" placeholder="Enter upazila"></div>
+            <div class="form-group" style="margin-top:12px;"><label>Mouza Name</label><input type="text" id="mouzaName" class="input-field" placeholder="Enter mouza name"></div>
+            <div class="form-group" style="margin-top:12px;"><label>Dag/Plot Number</label><input type="text" id="mouzaDag" class="input-field" placeholder="Optional"></div>
+            <button class="btn-primary" id="searchMouzaBtn" style="margin-top:16px;width:100%;">🗺️ View Mouza Map</button>
+          </div>
+          <div style="background:var(--bg-secondary);border-radius:var(--radius-xl);min-height:350px;display:flex;align-items:center;justify-content:center;border:2px dashed var(--border);">
+            <div style="text-align:center;color:var(--text-muted);">
+              <div style="font-size:48px;margin-bottom:12px;">🗺️</div>
+              <div style="font-size:14px;font-weight:600;">Map View Area</div>
+              <div style="font-size:12px;margin-top:6px;">Search to view mouza map</div>
+              <div style="font-size:11px;margin-top:12px;color:var(--text-muted);padding:0 20px;">In production: Integrates with Bangladesh Land Map API or OpenStreetMap with land boundary overlays</div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-info" style="margin-top:16px;font-size:12px;">For official mouza maps, visit <a href="https://land.gov.bd" target="_blank" style="color:var(--primary);">land.gov.bd</a> or contact your District Survey Office.</div>
+      </div>
+    </div>
+
+    <!-- LAND CALCULATOR -->
+    <div id="land-calculator" class="land-panel" style="display:none;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;">
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">📐 Land Area Converter</h3>
+          <div class="form-group"><label>Enter Area</label><input type="number" id="landAmount" class="input-field" placeholder="Enter value" value="1" step="0.001"></div>
+          <div class="form-group" style="margin-top:12px;"><label>From Unit</label>
+            <select id="landFrom" class="select-field">
+              <option value="decimal">Decimal (শতাংশ)</option>
+              <option value="katha">Katha (কাঠা)</option>
+              <option value="bigha">Bigha (বিঘা)</option>
+              <option value="acre">Acre (একর)</option>
+              <option value="sqft">Sq Feet (বর্গফুট)</option>
+              <option value="sqm">Sq Meter (বর্গমিটার)</option>
+            </select>
+          </div>
+          <button class="btn-primary" id="convertLandBtn" style="margin-top:14px;width:100%;">Convert All Units</button>
+          <div id="landConvResult" style="margin-top:16px;display:none;">
+            <div id="landConvTable"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3 style="font-size:18px;font-weight:700;margin-bottom:16px;">💰 Land Tax Calculator (Khajna)</h3>
+          <div class="form-group"><label>Land Area (Decimal)</label><input type="number" id="taxLandArea" class="input-field" placeholder="e.g., 5.50"></div>
+          <div class="form-group" style="margin-top:12px;"><label>Land Type</label>
+            <select id="landType" class="select-field">
+              <option value="agricultural">Agricultural (কৃষি)</option>
+              <option value="homestead">Homestead (বাস্তু)</option>
+              <option value="commercial">Commercial (বাণিজ্যিক)</option>
+            </select>
+          </div>
+          <div class="form-group" style="margin-top:12px;"><label>District</label><select id="taxDistrict" class="select-field"><option>Dhaka</option><option>Chittagong</option><option>Sylhet</option><option>Other</option></select></div>
+          <button class="btn-primary" id="calcTaxBtn" style="margin-top:14px;width:100%;">Calculate Tax</button>
+          <div id="taxResult" style="margin-top:16px;display:none;background:var(--bg-secondary);border-radius:var(--radius-lg);padding:16px;text-align:center;">
+            <div style="font-size:13px;color:var(--text-muted);">Estimated Annual Khajna</div>
+            <div id="taxAmount" style="font-size:32px;font-weight:900;"></div>
+            <div style="font-size:12px;color:var(--text-muted);margin-top:6px;">*Approximate estimate. Actual amount may vary. Contact local Land Office for exact amount.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<div class="toast-container" id="toastContainer"></div>
+<style>
+.land-panel { animation: fadeIn 0.3s ease; }
+</style>
+<script src="../../../assets/js/theme.js"></script>
+<script src="../../../assets/js/language.js"></script>
+<script>
+const Toast = { show: (msg, type='info') => { const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.classList.add('hiding');setTimeout(()=>t.remove(),300)},4000); }};
+
+document.querySelectorAll('.tab-btn[data-land]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn[data-land]').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.land-panel').forEach(p => p.style.display = 'none');
+    document.getElementById('land-' + btn.dataset.land).style.display = 'block';
+  });
+});
+
+document.getElementById('searchKhatianBtn')?.addEventListener('click', () => {
+  const district = document.getElementById('khatianDistrict').value;
+  if (district === 'Select District...') { Toast.show('Please select a district', 'warning'); return; }
+  const results = document.getElementById('khatianResults');
+  results.innerHTML = `
+    <div style="padding:20px;background:var(--bg-secondary);border-radius:var(--radius-lg);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+        <div style="font-weight:700;">Sample Land Record</div>
+        <span class="badge badge-success">Found</span>
+      </div>
+      <table style="width:100%;font-size:13px;color:var(--text-secondary);">
+        <tr><td style="padding:4px 0;color:var(--text-muted);width:40%;">Khatian No:</td><td style="font-weight:600;">${document.getElementById('khatianNo').value || 'N/A'}</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text-muted);">Owner:</td><td style="font-weight:600;">Mohammad Ali</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text-muted);">District:</td><td>${district}</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text-muted);">Total Area:</td><td>2.50 Decimal</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text-muted);">Dag No:</td><td>${document.getElementById('dagNo').value || '123'}</td></tr>
+        <tr><td style="padding:4px 0;color:var(--text-muted);">Land Type:</td><td>Agricultural</td></tr>
+      </table>
+      <div style="margin-top:12px;font-size:11px;color:var(--text-muted);">⚠️ This is sample data. For real records visit land.gov.bd</div>
+    </div>
+  `;
+  Toast.show('ℹ️ Sample result shown. Visit land.gov.bd for official records.', 'info');
+});
+
+document.getElementById('checkMutationBtn')?.addEventListener('click', () => {
+  const n = document.getElementById('mutationAppNo').value.trim();
+  if (!n) { Toast.show('Please enter application number', 'warning'); return; }
+  document.getElementById('mutationStatus').style.display = 'block';
+});
+
+document.getElementById('searchMouzaBtn')?.addEventListener('click', () => {
+  Toast.show('ℹ️ For official mouza maps, please visit land.gov.bd', 'info');
+});
+
+// Land converter
+const landUnits = {
+  decimal: { decimal:1, katha:1.65, bigha:0.033, acre:0.01, sqft:435.6, sqm:40.47 },
+  katha: { decimal:0.606, katha:1, bigha:0.02, acre:0.00606, sqft:264, sqm:24.53 },
+  bigha: { decimal:30.25, katha:20, bigha:1, acre:0.3025, sqft:14520, sqm:1348.96 },
+  acre: { decimal:100, katha:66, bigha:3.3, acre:1, sqft:43560, sqm:4046.86 },
+  sqft: { decimal:0.0023, katha:0.00379, bigha:0.0000689, acre:0.0000230, sqft:1, sqm:0.0929 },
+  sqm: { decimal:0.0247, katha:0.0408, bigha:0.000741, acre:0.000247, sqft:10.764, sqm:1 }
+};
+
+document.getElementById('convertLandBtn')?.addEventListener('click', () => {
+  const amount = parseFloat(document.getElementById('landAmount').value);
+  const from = document.getElementById('landFrom').value;
+  if (!amount || isNaN(amount)) { Toast.show('Please enter a value', 'warning'); return; }
+  const conv = landUnits[from];
+  const labels = {decimal:'Decimal (শতাংশ)', katha:'Katha (কাঠা)', bigha:'Bigha (বিঘা)', acre:'Acre (একর)', sqft:'Sq. Feet', sqm:'Sq. Meter'};
+  document.getElementById('landConvTable').innerHTML = Object.entries(conv).map(([unit, factor]) => `
+    <div style="display:flex;justify-content:space-between;padding:8px 12px;background:var(--bg-secondary);border-radius:8px;margin-bottom:6px;font-size:14px;">
+      <span style="color:var(--text-muted);">${labels[unit]}</span>
+      <span style="font-weight:700;">${(amount * factor).toFixed(4).replace(/\.?0+$/, '')}</span>
+    </div>
+  `).join('');
+  document.getElementById('landConvResult').style.display = 'block';
+});
+
+document.getElementById('calcTaxBtn')?.addEventListener('click', () => {
+  const area = parseFloat(document.getElementById('taxLandArea').value);
+  const type = document.getElementById('landType').value;
+  const district = document.getElementById('taxDistrict').value;
+  if (!area) { Toast.show('Please enter land area', 'warning'); return; }
+  
+  const ratesPerDecimal = { agricultural: { Dhaka: 45, Chittagong: 50, Sylhet: 40, Other: 35 }, homestead: { Dhaka: 80, Chittagong: 90, Sylhet: 75, Other: 60 }, commercial: { Dhaka: 150, Chittagong: 160, Sylhet: 130, Other: 100 } };
+  const rate = ratesPerDecimal[type][district] || ratesPerDecimal[type]['Other'];
+  const tax = area * rate;
+  document.getElementById('taxAmount').textContent = '৳' + tax.toFixed(2);
+  document.getElementById('taxResult').style.display = 'block';
+});
+
+document.addEventListener('DOMContentLoaded', () => { ThemeManager.init(); LanguageManager.init(); });
+</script>
+</body>
+</html>

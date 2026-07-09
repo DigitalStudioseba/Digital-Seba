@@ -28,12 +28,7 @@
   <div class="nav-container">
     <a href="../../index.html" class="nav-logo">
       <div class="logo-icon">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-          <defs><linearGradient id="dnLG3" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#2563EB"/><stop offset="100%" style="stop-color:#4F46E5"/></linearGradient></defs>
-          <circle cx="18" cy="18" r="17" fill="url(#dnLG3)" opacity="0.2"/>
-          <path d="M9 12 L18 7 L27 12 L27 24 L18 29 L9 24 Z" fill="url(#dnLG3)"/>
-          <path d="M13 17 L17 21 L23 15" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        </svg>
+        <img src="../../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo">
       </div>
       <div class="logo-text">
         <span class="logo-name">Digital Seba</span>
@@ -78,7 +73,7 @@
     <div class="gov-card" style="max-width:100%;">
       <h3>🔐 Account</h3>
       <p class="ds-clamp">Password changes and account deletion are being finalized for the next update.</p>
-      <a href="../auth/forgot-password.html" class="btn-outline" style="margin-top:10px;display:inline-block;">Reset Password</a>
+      <button type="button" class="btn-outline" style="margin-top:10px;" disabled title="Coming soon with account login">Reset Password</button>
     </div>
   </div>
 </main>
@@ -99,7 +94,7 @@
       try { return JSON.parse(localStorage.getItem('ds_user')); } catch { return null; }
     })();
     if (!cached) {
-      window.location.href = '../auth/login.html';
+      window.location.href = '../../index.html';
       return;
     }
 

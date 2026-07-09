@@ -2,6 +2,11 @@
  * DIGITAL SEBA - Authentication Module
  * Handles user authentication state management
  * Author: Monir Hossain
+ *
+ * RESERVED / NOT CURRENTLY LOADED: Login & Register were removed from the
+ * live site. This file is kept as ready-to-wire scaffolding for when
+ * authentication is reintroduced — it is not <script>-included anywhere
+ * right now, so it has no effect on the current build.
  */
 
 'use strict';

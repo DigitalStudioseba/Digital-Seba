@@ -153,17 +153,6 @@
 </a>
     </a>
 
-    <!-- Search Bar -->
-    <div class="nav-search" id="navSearch">
-      <div class="search-wrapper">
-        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-        </svg>
-        <input type="text" id="globalSearch" placeholder="Search services, tools..." data-placeholder-en="Search services, tools..." data-placeholder-bn="সেবা, টুলস খুঁজুন...">
-        <kbd class="search-shortcut">⌘K</kbd>
-      </div>
-      <div class="search-dropdown" id="searchDropdown"></div>
-    </div>
 
     <!-- Nav Links -->
     <ul class="nav-links" id="navLinks">
@@ -183,22 +172,22 @@
               <div class="mega-title">📷 Photo & PDF</div>
               <a href="pages/tools/photo/index.html">Photo Studio</a>
               <a href="pages/tools/pdf/index.html">PDF Tools</a>
-              <a href="#">Signature Maker</a>
-              <a href="#">Background Remover</a>
+              <a href="pages/tools/photo/index.html">Signature Maker</a>
+              <a href="pages/tools/photo/index.html">Background Remover</a>
             </div>
             <div class="mega-col">
               <div class="mega-title">🤖 AI Tools</div>
               <a href="pages/tools/ai/index.html">AI Chat</a>
-              <a href="#">AI Image Generator</a>
-              <a href="#">AI OCR</a>
-              <a href="#">AI Writer</a>
+              <a href="pages/tools/ai/index.html">AI Image Generator</a>
+              <a href="pages/tools/pdf/index.html">AI OCR</a>
+              <a href="pages/tools/ai/index.html">AI Writer</a>
             </div>
             <div class="mega-col">
               <div class="mega-title">🔧 Utilities</div>
               <a href="pages/tools/utility/index.html">Age Calculator</a>
-              <a href="#">BMI Calculator</a>
-              <a href="#">Currency Converter</a>
-              <a href="#">QR Generator</a>
+              <a href="pages/tools/utility/index.html">BMI Calculator</a>
+              <a href="pages/tools/utility/index.html">Currency Converter</a>
+              <a href="pages/tools/utility/index.html">QR Generator</a>
             </div>
           </div>
         </div>
@@ -246,7 +235,6 @@
           <span data-livetv-badge style="font-size:10px;background:var(--bg-secondary);color:var(--text-muted);padding:2px 8px;border-radius:var(--radius-full);font-weight:600;">Coming Soon</span>
         </a>
       </li>
-      <li><a href="#pricing" class="nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a></li>
       <li><a href="#about" class="nav-link" data-en="About" data-bn="আমাদের">About</a></li>
       <li><a href="#contact" class="nav-link" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
     </ul>
@@ -269,51 +257,6 @@
         </svg>
       </button>
 
-      <!-- Auth Buttons -->
-      <div class="auth-buttons" id="authButtons">
-        <a href="pages/auth/login.html" class="btn-outline" data-en="Login" data-bn="লগইন">Login</a>
-        <a href="pages/auth/register.html" class="btn-primary" data-en="Register" data-bn="নিবন্ধন">Register</a>
-      </div>
-
-      <!-- User Menu (shown when logged in) -->
-      <div class="user-menu hidden" id="userMenu">
-        <button class="user-avatar-btn" id="userAvatarBtn">
-          <div class="user-avatar" id="userAvatarNav">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-          </div>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div class="user-dropdown" id="userDropdown">
-          <div class="user-info-header">
-            <div class="user-avatar-lg" id="userAvatarDropdown"></div>
-            <div>
-              <div class="user-name" id="userDisplayName">User</div>
-              <div class="user-email" id="userEmailDisplay">user@email.com</div>
-            </div>
-          </div>
-          <div class="dropdown-divider"></div>
-          <a href="pages/dashboard/index.html" class="dropdown-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span data-en="Dashboard" data-bn="ড্যাশবোর্ড">Dashboard</span>
-          </a>
-          <a href="pages/dashboard/profile.html" class="dropdown-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span data-en="Profile" data-bn="প্রোফাইল">Profile</span>
-          </a>
-          <a href="pages/dashboard/settings.html" class="dropdown-item">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-            <span data-en="Settings" data-bn="সেটিংস">Settings</span>
-          </a>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item logout-item" id="logoutBtn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
-            <span data-en="Logout" data-bn="লগআউট">Logout</span>
-          </button>
-        </div>
-      </div>
-
       <!-- Mobile Menu Toggle -->
       <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -330,14 +273,9 @@
       <li><a href="live-tv/index.html" class="mobile-nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV <span data-livetv-badge style="font-size:10px;color:var(--text-muted);">Coming Soon</span></a></li>
       <li><a href="#services" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
       <li><a href="#categories" class="mobile-nav-link" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a></li>
-      <li><a href="#pricing" class="mobile-nav-link" data-en="Pricing" data-bn="মূল্য">Pricing</a></li>
       <li><a href="#about" class="mobile-nav-link" data-en="About" data-bn="আমাদের">About</a></li>
       <li><a href="#contact" class="mobile-nav-link" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
     </ul>
-    <div class="mobile-auth">
-      <a href="pages/auth/login.html" class="btn-outline w-full" data-en="Login" data-bn="লগইন">Login</a>
-      <a href="pages/auth/register.html" class="btn-primary w-full" data-en="Register" data-bn="নিবন্ধন">Register</a>
-    </div>
   </div>
 </nav>
 
@@ -438,6 +376,38 @@
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
       <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- Resource Shortcuts (links into the Resources Hub, data-driven counts) -->
+  <section class="section" id="resource-shortcuts">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-badge">🚀 Quick Access</div>
+        <h2 data-en="Resource Shortcuts" data-bn="রিসোর্স শর্টকাট">Resource Shortcuts</h2>
+        <p data-en="Jump straight into the resource you need" data-bn="আপনার প্রয়োজনীয় রিসোর্সে সরাসরি যান">Jump straight into the resource you need</p>
+      </div>
+      <div class="ds-shortcuts-grid">
+        <a href="pages/resources/index.html?sort=popular" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">🔥</div><div class="ds-shortcut-label">Most Popular</div></a>
+        <a href="pages/tools/ai/index.html" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="100"><div class="ds-shortcut-icon">🧠</div><div class="ds-shortcut-label">AI Tools</div></a>
+        <a href="pages/resources/index.html?qf=software-download" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="100"><div class="ds-shortcut-icon">📥</div><div class="ds-shortcut-label">Software Download</div></a>
+        <a href="pages/resources/index.html?qf=government" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="200"><div class="ds-shortcut-icon">🏛️</div><div class="ds-shortcut-label">Government Services</div></a>
+        <a href="pages/resources/index.html?qf=applications" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="200"><div class="ds-shortcut-icon">📝</div><div class="ds-shortcut-label">Online Applications</div></a>
+        <a href="pages/resources/index.html?qf=education" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="300"><div class="ds-shortcut-icon">🎓</div><div class="ds-shortcut-label">Education</div></a>
+        <a href="pages/resources/index.html?qf=nid-passport" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="300"><div class="ds-shortcut-icon">🪪</div><div class="ds-shortcut-label">NID &amp; Passport</div></a>
+        <a href="pages/resources/index.html?qf=visa" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="400"><div class="ds-shortcut-icon">🌍</div><div class="ds-shortcut-label">Visa Services</div></a>
+        <a href="pages/resources/index.html?qf=police" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="400"><div class="ds-shortcut-icon">🚓</div><div class="ds-shortcut-label">Police Services</div></a>
+        <a href="pages/resources/index.html?qf=land" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="500"><div class="ds-shortcut-icon">🏞️</div><div class="ds-shortcut-label">Land Services</div></a>
+        <a href="pages/resources/index.html?qf=medical" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="500"><div class="ds-shortcut-icon">💊</div><div class="ds-shortcut-label">Medical Services</div></a>
+        <a href="pages/resources/index.html?qf=photo-editing" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="600"><div class="ds-shortcut-icon">🖼️</div><div class="ds-shortcut-label">Photo Editing Tools</div></a>
+        <a href="pages/resources/index.html?qf=video-tools" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="600"><div class="ds-shortcut-icon">🎥</div><div class="ds-shortcut-label">Video Tools</div></a>
+        <a href="pages/tools/pdf/index.html" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="700"><div class="ds-shortcut-icon">📄</div><div class="ds-shortcut-label">PDF Tools</div></a>
+        <a href="pages/resources/index.html?qf=file-sharing" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="700"><div class="ds-shortcut-icon">☁️</div><div class="ds-shortcut-label">File Sharing</div></a>
+        <a href="pages/resources/index.html?qf=fonts" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="800"><div class="ds-shortcut-icon">🎨</div><div class="ds-shortcut-label">Fonts Collection</div></a>
+        <a href="pages/resources/index.html?qf=adobe" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="800"><div class="ds-shortcut-icon">💻</div><div class="ds-shortcut-label">Adobe Collection</div></a>
+        <a href="pages/resources/index.html?qf=tax-finance" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">💰</div><div class="ds-shortcut-label">Tax &amp; Finance</div></a>
+        <a href="live-tv/index.html" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">📺</div><div class="ds-shortcut-label">Live TV <span data-livetv-badge style="display:block;font-size:10px;color:var(--text-muted);">Coming Soon</span></div></a>
+      </div>
     </div>
   </section>
 
@@ -549,8 +519,8 @@
           <h3 data-en="Passport Department" data-bn="পাসপোর্ট অধিদপ্তর">Passport Department</h3>
           <p data-en="MRP & ePassport application, renewal, and status tracking" data-bn="এমআরপি ও ই-পাসপোর্ট আবেদন, নবায়ন এবং স্ট্যাটাস ট্র্যাকিং">MRP & ePassport application, renewal, and status tracking</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Apply Now</a>
-            <a href="#" class="gov-link">Check Status</a>
+            <a href="https://www.epassport.gov.bd/" target="_blank" rel="noopener" class="gov-link">Apply Now</a>
+            <a href="https://www.epassport.gov.bd/authorization/application-status" target="_blank" rel="noopener" class="gov-link">Check Status</a>
           </div>
         </div>
         <div class="gov-card" data-aos="zoom-in" data-aos-delay="100">
@@ -559,8 +529,8 @@
           <h3 data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</h3>
           <p data-en="National ID registration, correction, smart card collection" data-bn="জাতীয় পরিচয়পত্র নিবন্ধন, সংশোধন, স্মার্ট কার্ড সংগ্রহ">National ID registration, correction, smart card collection</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Verify NID</a>
-            <a href="#" class="gov-link">Download</a>
+            <a href="https://services.nidw.gov.bd" target="_blank" rel="noopener" class="gov-link">Verify NID</a>
+            <a href="https://services.nidw.gov.bd" target="_blank" rel="noopener" class="gov-link">Download</a>
           </div>
         </div>
         <div class="gov-card" data-aos="zoom-in" data-aos-delay="200">
@@ -569,8 +539,8 @@
           <h3 data-en="Birth & Death" data-bn="জন্ম ও মৃত্যু">Birth & Death</h3>
           <p data-en="Birth certificate online registration, death certificate services" data-bn="জন্ম নিবন্ধন অনলাইন, মৃত্যু সনদ সেবা">Birth certificate online registration, death certificate services</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Register</a>
-            <a href="#" class="gov-link">Verify</a>
+            <a href="https://bdris.gov.bd" target="_blank" rel="noopener" class="gov-link">Register</a>
+            <a href="https://bdris.gov.bd" target="_blank" rel="noopener" class="gov-link">Verify</a>
           </div>
         </div>
         <div class="gov-card" data-aos="zoom-in" data-aos-delay="300">
@@ -579,8 +549,8 @@
           <h3 data-en="Land Records" data-bn="ভূমি রেকর্ড">Land Records</h3>
           <p data-en="Check khatian, mutation, mouza maps and land ownership" data-bn="খতিয়ান, মিউটেশন, মৌজা ম্যাপ এবং জমির মালিকানা যাচাই">Check khatian, mutation, mouza maps and land ownership</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Search</a>
-            <a href="#" class="gov-link">Map View</a>
+            <a href="https://land.gov.bd" target="_blank" rel="noopener" class="gov-link">Search</a>
+            <a href="https://mutation.land.gov.bd" target="_blank" rel="noopener" class="gov-link">Map View</a>
           </div>
         </div>
         <div class="gov-card" data-aos="zoom-in" data-aos-delay="400">
@@ -589,8 +559,8 @@
           <h3 data-en="Driving License" data-bn="ড্রাইভিং লাইসেন্স">Driving License</h3>
           <p data-en="Apply, renew, and track your driving license application" data-bn="ড্রাইভিং লাইসেন্স আবেদন, নবায়ন ও ট্র্যাকিং">Apply, renew, and track your driving license application</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Apply</a>
-            <a href="#" class="gov-link">Status</a>
+            <a href="https://bsp.brta.gov.bd" target="_blank" rel="noopener" class="gov-link">Apply</a>
+            <a href="https://bsp.brta.gov.bd" target="_blank" rel="noopener" class="gov-link">Status</a>
           </div>
         </div>
         <div class="gov-card" data-aos="zoom-in" data-aos-delay="500">
@@ -599,8 +569,8 @@
           <h3 data-en="Trade License" data-bn="ট্রেড লাইসেন্স">Trade License</h3>
           <p data-en="Business registration, trade license application and renewal" data-bn="ব্যবসা নিবন্ধন, ট্রেড লাইসেন্স আবেদন ও নবায়ন">Business registration, trade license application and renewal</p>
           <div class="gov-links">
-            <a href="#" class="gov-link">Apply</a>
-            <a href="#" class="gov-link">Renew</a>
+            <a href="https://www.etradelicense.gov.bd/DefaultEng" target="_blank" rel="noopener" class="gov-link">Apply</a>
+            <a href="https://www.etradelicense.gov.bd/DefaultEng" target="_blank" rel="noopener" class="gov-link">Renew</a>
           </div>
         </div>
       </div>
@@ -623,11 +593,11 @@
             <span class="cat-count">12 Tools</span>
           </div>
           <ul class="cat-list">
-            <li><a href="#">Passport Services</a></li>
-            <li><a href="#">NID Verification</a></li>
-            <li><a href="#">Birth Certificate</a></li>
-            <li><a href="#">Land Records</a></li>
-            <li><a href="#">TIN / BIN</a></li>
+            <li><a href="pages/tools/passport/index.html">Passport Services</a></li>
+            <li><a href="pages/tools/nid/index.html">NID Verification</a></li>
+            <li><a href="pages/tools/birth/index.html">Birth Certificate</a></li>
+            <li><a href="pages/tools/land/index.html">Land Records</a></li>
+            <li><a href="pages/resources/index.html?cat=Tax%20%26%20Finance">TIN / BIN</a></li>
           </ul>
         </div>
         <div class="category-card" data-aos="fade-right" data-aos-delay="100">
@@ -637,11 +607,11 @@
             <span class="cat-count">8 Tools</span>
           </div>
           <ul class="cat-list">
-            <li><a href="#">Passport Photo</a></li>
-            <li><a href="#">Background Remove</a></li>
-            <li><a href="#">Image Resize</a></li>
-            <li><a href="#">Image Compress</a></li>
-            <li><a href="#">Signature Maker</a></li>
+            <li><a href="pages/tools/photo/index.html">Passport Photo</a></li>
+            <li><a href="pages/tools/photo/index.html">Background Remove</a></li>
+            <li><a href="pages/tools/photo/index.html">Image Resize</a></li>
+            <li><a href="pages/tools/photo/index.html">Image Compress</a></li>
+            <li><a href="pages/tools/photo/index.html">Signature Maker</a></li>
           </ul>
         </div>
         <div class="category-card" data-aos="fade-left" data-aos-delay="200">
@@ -651,11 +621,11 @@
             <span class="cat-count">10 Tools</span>
           </div>
           <ul class="cat-list">
-            <li><a href="#">PDF Merge</a></li>
-            <li><a href="#">PDF Split</a></li>
-            <li><a href="#">PDF Compress</a></li>
-            <li><a href="#">Word to PDF</a></li>
-            <li><a href="#">OCR Text Extract</a></li>
+            <li><a href="pages/tools/pdf/index.html">PDF Merge</a></li>
+            <li><a href="pages/tools/pdf/index.html">PDF Split</a></li>
+            <li><a href="pages/tools/pdf/index.html">PDF Compress</a></li>
+            <li><a href="pages/tools/pdf/index.html">Word to PDF</a></li>
+            <li><a href="pages/tools/pdf/index.html">OCR Text Extract</a></li>
           </ul>
         </div>
         <div class="category-card" data-aos="fade-left" data-aos-delay="300">
@@ -665,76 +635,12 @@
             <span class="cat-count">6 Tools</span>
           </div>
           <ul class="cat-list">
-            <li><a href="#">AI Chat Assistant</a></li>
-            <li><a href="#">AI Image Generate</a></li>
-            <li><a href="#">AI OCR</a></li>
-            <li><a href="#">AI Content Writer</a></li>
-            <li><a href="#">AI Translator</a></li>
+            <li><a href="pages/tools/ai/index.html">AI Chat Assistant</a></li>
+            <li><a href="pages/tools/ai/index.html">AI Image Generate</a></li>
+            <li><a href="pages/tools/pdf/index.html">AI OCR</a></li>
+            <li><a href="pages/tools/ai/index.html">AI Content Writer</a></li>
+            <li><a href="pages/tools/ai/index.html">AI Translator</a></li>
           </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Resource Shortcuts (links into the Resources Hub, data-driven counts) -->
-  <section class="section" id="resource-shortcuts">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge">🚀 Quick Access</div>
-        <h2 data-en="Resource Shortcuts" data-bn="রিসোর্স শর্টকাট">Resource Shortcuts</h2>
-        <p data-en="Jump straight into the resource you need" data-bn="আপনার প্রয়োজনীয় রিসোর্সে সরাসরি যান">Jump straight into the resource you need</p>
-      </div>
-      <div class="ds-shortcuts-grid">
-        <a href="pages/resources/index.html?sort=popular" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">🔥</div><div class="ds-shortcut-label">Most Popular</div></a>
-        <a href="pages/tools/ai/index.html" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="100"><div class="ds-shortcut-icon">🧠</div><div class="ds-shortcut-label">AI Tools</div></a>
-        <a href="pages/resources/index.html?qf=software-download" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="100"><div class="ds-shortcut-icon">📥</div><div class="ds-shortcut-label">Software Download</div></a>
-        <a href="pages/resources/index.html?qf=government" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="200"><div class="ds-shortcut-icon">🏛️</div><div class="ds-shortcut-label">Government Services</div></a>
-        <a href="pages/resources/index.html?qf=applications" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="200"><div class="ds-shortcut-icon">📝</div><div class="ds-shortcut-label">Online Applications</div></a>
-        <a href="pages/resources/index.html?qf=education" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="300"><div class="ds-shortcut-icon">🎓</div><div class="ds-shortcut-label">Education</div></a>
-        <a href="pages/resources/index.html?qf=nid-passport" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="300"><div class="ds-shortcut-icon">🪪</div><div class="ds-shortcut-label">NID &amp; Passport</div></a>
-        <a href="pages/resources/index.html?qf=visa" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="400"><div class="ds-shortcut-icon">🌍</div><div class="ds-shortcut-label">Visa Services</div></a>
-        <a href="pages/resources/index.html?qf=police" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="400"><div class="ds-shortcut-icon">🚓</div><div class="ds-shortcut-label">Police Services</div></a>
-        <a href="pages/resources/index.html?qf=land" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="500"><div class="ds-shortcut-icon">🏞️</div><div class="ds-shortcut-label">Land Services</div></a>
-        <a href="pages/resources/index.html?qf=medical" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="500"><div class="ds-shortcut-icon">💊</div><div class="ds-shortcut-label">Medical Services</div></a>
-        <a href="pages/resources/index.html?qf=photo-editing" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="600"><div class="ds-shortcut-icon">🖼️</div><div class="ds-shortcut-label">Photo Editing Tools</div></a>
-        <a href="pages/resources/index.html?qf=video-tools" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="600"><div class="ds-shortcut-icon">🎥</div><div class="ds-shortcut-label">Video Tools</div></a>
-        <a href="pages/tools/pdf/index.html" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="700"><div class="ds-shortcut-icon">📄</div><div class="ds-shortcut-label">PDF Tools</div></a>
-        <a href="pages/resources/index.html?qf=file-sharing" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="700"><div class="ds-shortcut-icon">☁️</div><div class="ds-shortcut-label">File Sharing</div></a>
-        <a href="pages/resources/index.html?qf=fonts" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="800"><div class="ds-shortcut-icon">🎨</div><div class="ds-shortcut-label">Fonts Collection</div></a>
-        <a href="pages/resources/index.html?qf=adobe" class="ds-shortcut-card" data-aos="fade-up" data-aos-delay="800"><div class="ds-shortcut-icon">💻</div><div class="ds-shortcut-label">Adobe Collection</div></a>
-        <a href="pages/resources/index.html?qf=tax-finance" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">💰</div><div class="ds-shortcut-label">Tax &amp; Finance</div></a>
-        <a href="live-tv/index.html" class="ds-shortcut-card" data-aos="fade-up"><div class="ds-shortcut-icon">📺</div><div class="ds-shortcut-label">Live TV <span data-livetv-badge style="display:block;font-size:10px;color:var(--text-muted);">Coming Soon</span></div></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Stats Counter -->
-  <section class="stats-section">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-card" data-aos="zoom-in">
-          <div class="stat-icon">👥</div>
-          <div class="stat-number" data-target="50000">0</div>
-          <div class="stat-suffix">+</div>
-          <div class="stat-label" data-en="Registered Users" data-bn="নিবন্ধিত ব্যবহারকারী">Registered Users</div>
-        </div>
-        <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-          <div class="stat-icon">🔧</div>
-          <div class="stat-number" data-target="100">0</div>
-          <div class="stat-suffix">+</div>
-          <div class="stat-label" data-en="Digital Tools" data-bn="ডিজিটাল টুলস">Digital Tools</div>
-        </div>
-        <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-          <div class="stat-icon">📋</div>
-          <div class="stat-number" data-target="500000">0</div>
-          <div class="stat-suffix">+</div>
-          <div class="stat-label" data-en="Services Completed" data-bn="সম্পন্ন সেবাসমূহ">Services Completed</div>
-        </div>
-        <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-          <div class="stat-icon">⭐</div>
-          <div class="stat-number" data-target="4">0</div>
-          <div class="stat-suffix">.9/5</div>
-          <div class="stat-label" data-en="User Rating" data-bn="ব্যবহারকারী রেটিং">User Rating</div>
         </div>
       </div>
     </div>
@@ -1091,8 +997,8 @@
           <ul>
             <li><a href="pages/privacy.html" data-en="Privacy Policy" data-bn="গোপনীয়তা নীতি">Privacy Policy</a></li>
             <li><a href="pages/terms.html" data-en="Terms of Service" data-bn="সেবার শর্তাবলী">Terms of Service</a></li>
-            <li><a href="#" data-en="Cookie Policy" data-bn="কুকি নীতি">Cookie Policy</a></li>
-            <li><a href="#" data-en="Disclaimer" data-bn="দায়মুক্তি">Disclaimer</a></li>
+            <li><a href="pages/privacy.html#cookie-policy" data-en="Cookie Policy" data-bn="কুকি নীতি">Cookie Policy</a></li>
+            <li><a href="pages/terms.html#disclaimer" data-en="Disclaimer" data-bn="দায়মুক্তি">Disclaimer</a></li>
           </ul>
         </div>
       </div>
@@ -1139,8 +1045,6 @@
 </div>
 
 <!-- Scripts -->
-<script src="assets/js/firebase-config.js"></script>
-<script src="assets/js/auth.js"></script>
 <script src="assets/js/theme.js"></script>
 <script src="assets/js/language.js"></script>
 <script src="assets/js/tv-config.js"></script>
@@ -1158,5 +1062,8 @@ if ('serviceWorker' in navigator) {
   });
 }
 </script>
+<button id="backToTop" aria-label="Back to Top">
+    ↑
+</button>
 </body>
 </html>

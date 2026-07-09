@@ -50,7 +50,6 @@
 
   /* Navbar */
   .nav-links { display: none; }
-  .nav-search { max-width: 260px; }
   .auth-buttons { display: none; }
   .mobile-menu-toggle { display: flex; }
   .logo-tagline { display: none; }
@@ -73,10 +72,6 @@
   .gov-grid { grid-template-columns: repeat(2, 1fr); }
   .categories-grid { grid-template-columns: repeat(2, 1fr); }
   .why-grid { grid-template-columns: repeat(2, 1fr); }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-
-  /* Pricing */
-  .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
 
   /* Contact */
   .contact-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -106,8 +101,6 @@
     --container-pad: 16px;
   }
 
-  /* Navbar */
-  .nav-search { display: none; }
 
   /* Hero */
   .hero-section {
@@ -160,7 +153,6 @@
   .gov-grid { grid-template-columns: 1fr; }
   .categories-grid { grid-template-columns: 1fr; }
   .why-grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
   /* Testimonials */
   .testimonial-card { min-width: 100%; }
@@ -180,8 +172,6 @@
     gap: 12px;
   }
 
-  /* Pricing - make cards simpler on mobile */
-  .pricing-grid { grid-template-columns: 1fr; }
 
   /* Contact */
   .contact-form { padding: 24px; }
@@ -194,7 +184,6 @@
   .mobile-auth { gap: 8px; }
 
   /* Stats section */
-  .stats-section { padding: 50px var(--container-pad); }
 
   /* Toast */
   .toast-container {
@@ -247,9 +236,6 @@
 
   .service-card { padding: 16px; }
   .service-icon { width: 44px; height: 44px; }
-
-  .pricing-card { padding: 24px 20px; }
-  .price-num { font-size: 36px; }
 
   .faq-question { padding: 16px 18px; font-size: 14px; }
   .faq-answer p { padding: 0 18px 18px; font-size: 14px; }

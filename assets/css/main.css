@@ -390,13 +390,6 @@ width:100%;
   line-height: 1;
 }
 
-/* Nav Search */
-.nav-search {
-  flex: 1;
-  max-width: 380px;
-  position: relative;
-}
-
 .search-wrapper {
   display: flex;
   align-items: center;
@@ -618,6 +611,9 @@ width:100%;
 [data-theme="light"] .theme-toggle .sun-icon { display: block; }
 [data-theme="light"] .theme-toggle .moon-icon { display: none; }
 
+/* RESERVED / CURRENTLY UNUSED: Login & Register UI was removed from the
+   live site (see Task 8). These rules are kept so auth can be re-added
+   without rebuilding the styling. */
 .auth-buttons {
   display: flex;
   align-items: center;
@@ -1460,25 +1456,8 @@ width:100%;
 }
 
 /* ============================================
-   STATS SECTION
+   STAT CARDS (used on Resources page)
    ============================================ */
-.stats-section {
-  position: relative;
-  z-index: 1;
-  padding: 80px var(--container-pad);
-  background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(79,70,229,0.05));
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
 .stat-card {
   text-align: center;
   padding: 32px 24px;
@@ -1556,42 +1535,6 @@ width:100%;
   font-size: 14px;
   color: var(--text-muted);
   line-height: 1.7;
-}
-
-/* ============================================
-   PRICING
-   ============================================ */
-.pricing-section { background: var(--bg-secondary); }
-
-.pricing-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.pricing-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-2xl);
-  padding: 36px 28px;
-  transition: all var(--transition-normal);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  position: relative;
-}
-
-.pricing-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
-
-.popular-plan {
-  border-color: var(--primary);
-  background: linear-gradient(135deg, rgba(37,99,235,0.05), rgba(79,70,229,0.05));
-  box-shadow: var(--shadow-glow);
 }
 
 .plan-badge {
@@ -2439,4 +2382,75 @@ width:100%;
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     background-clip:text;
+}.logo-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+
+.logo-text h1{
+    margin:0;
+    line-height:1.1;
+}
+
+.logo-text p{
+    margin-top:6px;   /* 4px থেকে 8px এর মধ্যে রেখে দেখো */
+    font-size:14px;
+    font-weight:500;
+    color:#6b7280;
+    line-height:1.4;
+}.logo-tagline{
+    display:block;
+    margin-top:8px;
+}.logo-title{
+    font-size:42px;
+    font-weight:800;
+    line-height:1;
+}
+
+.logo-tagline{
+
+    margin-top:5px;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    color:#6b7280;
+
+    letter-spacing:.3px;
+
+    line-height:1.35;
+}.nav-logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-text{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    transform:translateY(4px);
+}#backToTop{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    font-size:22px;
+    cursor:pointer;
+    display:none;
+    z-index:9999;
+    box-shadow:0 8px 25px rgba(37,99,235,.35);
+    transition:.3s;
+}
+
+#backToTop:hover{
+    transform:translateY(-5px);
+    background:#1d4ed8;
 }

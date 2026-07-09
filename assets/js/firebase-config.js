@@ -2,6 +2,12 @@
  * DIGITAL SEBA - Firebase Configuration
  * Replace with your actual Firebase project credentials
  * Author: Monir Hossain
+ *
+ * RESERVED / NOT CURRENTLY LOADED on the homepage: Login & Register were
+ * removed from the live site. This file is kept as ready-to-wire
+ * scaffolding for when authentication is reintroduced. It is still loaded
+ * by the Dashboard pages, which pre-date this change and remain
+ * unmodified except for their now-dead login redirect targets.
  */
 
 // Firebase SDK imports via CDN (added to HTML pages that need Firebase)

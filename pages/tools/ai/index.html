@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI Tools - Digital Seba</title>
+  <link rel="icon" href="../../../assets/images/logo.png" type="image/png">
   <meta name="description" content="AI-powered tools including AI Chat, Image Generator, OCR, and Content Writer for Bangladeshi citizens.">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../../assets/css/main.css">
@@ -23,6 +24,7 @@
 <nav class="navbar scrolled">
   <div class="nav-container">
     <a href="../../../index.html" class="nav-logo">
+      <div class="logo-icon"><img src="../../../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo"></div>
       <span class="logo-name">Digital Seba</span>
     </a>
     <div style="flex:1;"></div>
@@ -393,7 +395,34 @@ const knowledgeBase = {
 
 📞 **হেল্পলাইন:** ১৬১২২ (ভূমি সেবা)
 
-⚠️ **গুরুত্বপূর্ণ:** সব ভূমি লেনদেনের জন্য আইনজীবীর পরামর্শ নিন।`
+⚠️ **গুরুত্বপূর্ণ:** সব ভূমি লেনদেনের জন্য আইনজীবীর পরামর্শ নিন।`,
+
+  license: `**ড্রাইভিং লাইসেন্স সম্পর্কিত তথ্য:**
+
+📋 **লার্নার লাইসেন্স:**
+1. bsp.brta.gov.bd তে অনলাইনে আবেদন করুন
+2. প্রয়োজনীয় কাগজপত্র ও ছবি আপলোড করুন
+3. ফি পরিশোধ করে সাথে সাথে লার্নার লাইসেন্স প্রিন্ট করুন
+
+📝 **স্মার্ট কার্ড লাইসেন্সের জন্য:**
+1. ২-৩ মাস প্রশিক্ষণের পর লিখিত, মৌখিক ও ফিল্ড টেস্ট দিন
+2. পরীক্ষায় উত্তীর্ণ হলে স্মার্ট কার্ড ইস্যু হবে
+
+🎂 **বয়সসীমা:** অপেশাদার ১৮+, পেশাদার ২১+
+
+🌐 **অ্যাপ্লাই ও স্ট্যাটাস চেক:** bsp.brta.gov.bd`,
+
+  tin: `**TIN (ট্যাক্স আইডেন্টিফিকেশন নম্বর) সম্পর্কিত তথ্য:**
+
+📋 **e-TIN রেজিস্ট্রেশন:**
+1. secure.incometax.gov.bd ভিজিট করুন
+2. NID দিয়ে অ্যাকাউন্ট তৈরি করুন
+3. প্রয়োজনীয় তথ্য দিয়ে আবেদন সম্পন্ন করুন
+4. তাৎক্ষণিক TIN সার্টিফিকেট ডাউনলোড করুন
+
+✅ **সম্পূর্ণ বিনামূল্যে ও তাৎক্ষণিক** — কোনো অফিসে যাওয়ার দরকার নেই।
+
+📞 **হেল্পলাইন:** ১৬৫৫৫ (জাতীয় রাজস্ব বোর্ড)`
 };
 
 // AI Chat
@@ -457,21 +486,26 @@ const getAIResponse = (query) => {
   if (q.includes('nid') || q.includes('national id') || q.includes('জাতীয় পরিচয়')) return knowledgeBase.nid;
   if (q.includes('birth') || q.includes('জন্ম')) return knowledgeBase.birth;
   if (q.includes('land') || q.includes('ভূমি') || q.includes('জমি')) return knowledgeBase.land;
+  if (q.includes('driving') || q.includes('license') || q.includes('licence') || q.includes('ড্রাইভিং') || q.includes('লাইসেন্স')) return knowledgeBase.license;
+  if (q.includes('tin') || q.includes('tax') || q.includes('টিআইএন') || q.includes('ট্যাক্স')) return knowledgeBase.tin;
 
-  return `আপনার প্রশ্নের জন্য ধন্যবাদ! 
+  return `হুম, এই নির্দিষ্ট বিষয়ে আমার কাছে এখনো প্রস্তুত তথ্য নেই — কিন্তু চিন্তা নেই, আমি নিচের বিষয়গুলোতে ভালোভাবে সাহায্য করতে পারি:
 
-আমি বাংলাদেশের নিম্নলিখিত বিষয়ে সাহায্য করতে পারি:
 - 🛂 পাসপোর্ট সেবা
 - 🪪 NID কার্ড
-- 📜 জন্ম/মৃত্যু নিবন্ধন  
+- 📜 জন্ম/মৃত্যু নিবন্ধন
 - 🗺️ ভূমি রেকর্ড
-- 📄 পিডিএফ টুলস
-- 🤖 ডিজিটাল সেবা গাইড
+- 🚗 ড্রাইভিং লাইসেন্স
+- 💼 TIN সার্টিফিকেট
 
-আপনার নির্দিষ্ট প্রশ্নটি আরেকটু বিস্তারিত বলুন, আমি সাহায্য করার চেষ্টা করবো!
+উপরের যেকোনো একটি নিয়ে জিজ্ঞেস করুন, অথবা আপনার প্রশ্নটি একটু ভিন্নভাবে লিখে দেখুন — আমি চেষ্টা করবো!
 
-*(Note: In production, this integrates with OpenAI GPT-4 API for advanced responses)*`;
+*(Note: this is a rule-based demo assistant. In production it integrates with a live GPT-4-class API for open-ended questions.)*`;
 };
+
+// Simple in-session response cache — repeated/quick-prompt questions answer
+// almost instantly instead of re-running the full simulated "thinking" delay.
+const responseCache = new Map();
 
 const sendMessage = async () => {
   const text = chatInput.value.trim();
@@ -484,12 +518,28 @@ const sendMessage = async () => {
   addMessage(text, true);
   showTyping();
 
-  await new Promise(r => setTimeout(r, 1200 + Math.random() * 800));
+  try {
+    const cacheKey = text.trim().toLowerCase();
+    const cached = responseCache.get(cacheKey);
 
-  removeTyping();
-  const response = getAIResponse(text);
-  addMessage(response);
-  sendChatBtn.disabled = false;
+    // Cached answers still get a brief, honest "typing" beat so the UI doesn't
+    // flicker, but skip the full simulated latency for a noticeably faster feel.
+    const delay = cached ? 200 + Math.random() * 150 : 500 + Math.random() * 400;
+    await new Promise(r => setTimeout(r, delay));
+
+    const response = cached ?? getAIResponse(text);
+    if (!cached) responseCache.set(cacheKey, response);
+
+    removeTyping();
+    addMessage(response);
+  } catch (err) {
+    removeTyping();
+    addMessage('দুঃখিত, একটি সমস্যা হয়েছে। আবার চেষ্টা করুন। 🙏\n\n*(Sorry, something went wrong. Please try again.)*');
+    Toast.show('Something went wrong sending your message.', 'error');
+  } finally {
+    sendChatBtn.disabled = false;
+    chatInput.focus();
+  }
 };
 
 sendChatBtn?.addEventListener('click', sendMessage);
@@ -530,30 +580,39 @@ document.getElementById('generateWriterBtn')?.addEventListener('click', () => {
   if (!prompt.trim()) { Toast.show('Please describe what you need.', 'warning'); return; }
 
   const btn = document.getElementById('generateWriterBtn');
-  btn.textContent = 'Generating...';
+  btn.textContent = '⏳ Generating...';
   btn.disabled = true;
 
   setTimeout(() => {
-    const sample = `[${type} - Sample Output]\n\n` +
-      `This is a demonstration of the AI Writer feature.\n` +
-      `In production, this integrates with OpenAI GPT-4 API.\n\n` +
-      `Your prompt: "${prompt}"\n\n` +
-      `The actual response would be a professionally written ${type.toLowerCase()} ` +
-      `in the selected language, customized to your specific requirements.\n\n` +
-      `প্রোডাকশনে এটি OpenAI GPT-4 API ব্যবহার করে আপনার প্রয়োজন অনুযায়ী ` +
-      `পেশাদার কন্টেন্ট তৈরি করবে।`;
+    try {
+      const sample = `[${type} - Sample Output]\n\n` +
+        `This is a demonstration of the AI Writer feature.\n` +
+        `In production, this integrates with OpenAI GPT-4 API.\n\n` +
+        `Your prompt: "${prompt}"\n\n` +
+        `The actual response would be a professionally written ${type.toLowerCase()} ` +
+        `in the selected language, customized to your specific requirements.\n\n` +
+        `প্রোডাকশনে এটি OpenAI GPT-4 API ব্যবহার করে আপনার প্রয়োজন অনুযায়ী ` +
+        `পেশাদার কন্টেন্ট তৈরি করবে।`;
 
-    document.getElementById('writerOutput').innerHTML = `<pre style="white-space:pre-wrap;font-size:14px;line-height:1.8;">${sample}</pre>`;
-    btn.textContent = '✍️ Generate Content';
-    btn.disabled = false;
-    Toast.show('✅ Content generated!', 'success');
-  }, 2000);
+      document.getElementById('writerOutput').innerHTML = `<pre style="white-space:pre-wrap;font-size:14px;line-height:1.8;">${sample}</pre>`;
+      Toast.show('✅ Content generated!', 'success');
+    } catch (err) {
+      Toast.show('Could not generate content. Please try again.', 'error');
+    } finally {
+      btn.textContent = '✍️ Generate Content';
+      btn.disabled = false;
+    }
+  }, 700);
 });
 
 document.getElementById('copyWriterText')?.addEventListener('click', async () => {
-  const text = document.getElementById('writerOutput').textContent;
-  await navigator.clipboard.writeText(text);
-  Toast.show('✅ Copied to clipboard!', 'success');
+  try {
+    const text = document.getElementById('writerOutput').textContent;
+    await navigator.clipboard.writeText(text);
+    Toast.show('✅ Copied to clipboard!', 'success');
+  } catch (err) {
+    Toast.show('Could not copy — please select and copy manually.', 'error');
+  }
 });
 
 // Translator
@@ -573,21 +632,26 @@ document.getElementById('swapLangBtn')?.addEventListener('click', () => {
 
 document.getElementById('translateBtn')?.addEventListener('click', () => {
   const text = document.getElementById('translateInput').value.trim();
-  if (!text) return;
+  if (!text) { Toast.show('Type something to translate first.', 'warning'); return; }
 
   const btn = document.getElementById('translateBtn');
-  btn.textContent = 'Translating...';
+  btn.textContent = '⏳ Translating...';
   btn.disabled = true;
 
   setTimeout(() => {
-    const isEN = document.getElementById('transFromLang').value === 'en';
-    const sample = isEN ?
-      'এটি একটি ডেমো অনুবাদ। প্রোডাকশনে Google Translate API বা DeepL API ব্যবহার করা হয়।' :
-      'This is a demo translation. In production, Google Translate API or DeepL API is used.';
-    document.getElementById('translateOutput').value = sample;
-    btn.textContent = '🌐 Translate';
-    btn.disabled = false;
-  }, 1000);
+    try {
+      const isEN = document.getElementById('transFromLang').value === 'en';
+      const sample = isEN ?
+        'এটি একটি ডেমো অনুবাদ। প্রোডাকশনে Google Translate API বা DeepL API ব্যবহার করা হয়।' :
+        'This is a demo translation. In production, Google Translate API or DeepL API is used.';
+      document.getElementById('translateOutput').value = sample;
+    } catch (err) {
+      Toast.show('Translation failed. Please try again.', 'error');
+    } finally {
+      btn.textContent = '🌐 Translate';
+      btn.disabled = false;
+    }
+  }, 450);
 });
 
 document.getElementById('clearTranslateBtn')?.addEventListener('click', () => {
@@ -597,8 +661,12 @@ document.getElementById('clearTranslateBtn')?.addEventListener('click', () => {
 });
 
 document.getElementById('copyTranslation')?.addEventListener('click', async () => {
-  await navigator.clipboard.writeText(document.getElementById('translateOutput').value);
-  Toast.show('✅ Copied!', 'success');
+  try {
+    await navigator.clipboard.writeText(document.getElementById('translateOutput').value);
+    Toast.show('✅ Copied!', 'success');
+  } catch (err) {
+    Toast.show('Could not copy — please select and copy manually.', 'error');
+  }
 });
 
 window.quickTranslate = (text) => {
@@ -612,24 +680,29 @@ document.getElementById('generateImageBtn')?.addEventListener('click', () => {
   if (!prompt) { Toast.show('Please describe the image you want.', 'warning'); return; }
 
   const btn = document.getElementById('generateImageBtn');
-  btn.textContent = 'Generating...';
+  btn.textContent = '⏳ Generating...';
   btn.disabled = true;
 
   setTimeout(() => {
-    // Placeholder gradient image
-    document.getElementById('imageOutput').innerHTML = `
-      <div style="text-align:center;">
-        <div style="width:300px;height:300px;background:linear-gradient(135deg, #2563EB, #4F46E5, #06B6D4);border-radius:12px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;padding:24px;text-align:center;">
-          🎨 AI Generated Image<br><br><small>"${prompt}"</small><br><br>
-          <small style="opacity:0.7;">In production: DALL-E 3 / Stable Diffusion</small>
+    try {
+      // Placeholder gradient image
+      document.getElementById('imageOutput').innerHTML = `
+        <div style="text-align:center;">
+          <div style="width:300px;height:300px;background:linear-gradient(135deg, #2563EB, #4F46E5, #06B6D4);border-radius:12px;margin:0 auto 20px;display:flex;align-items:center;justify-content:center;color:white;font-size:14px;padding:24px;text-align:center;">
+            🎨 AI Generated Image<br><br><small>"${prompt}"</small><br><br>
+            <small style="opacity:0.7;">In production: DALL-E 3 / Stable Diffusion</small>
+          </div>
+          <button class="btn-primary" onclick="Toast.show('⬇️ Download started!', 'info')">⬇️ Download Image</button>
         </div>
-        <button class="btn-primary" onclick="Toast.show('⬇️ Download started!', 'info')">⬇️ Download Image</button>
-      </div>
-    `;
-    btn.textContent = '🎨 Generate Image';
-    btn.disabled = false;
-    Toast.show('✅ Image generated!', 'success');
-  }, 2500);
+      `;
+      Toast.show('✅ Image generated!', 'success');
+    } catch (err) {
+      Toast.show('Image generation failed. Please try again.', 'error');
+    } finally {
+      btn.textContent = '🎨 Generate Image';
+      btn.disabled = false;
+    }
+  }, 1000);
 });
 
 document.addEventListener('DOMContentLoaded', () => {

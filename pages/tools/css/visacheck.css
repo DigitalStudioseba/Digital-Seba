@@ -1,0 +1,58 @@
+.vchk-modal-content { max-width: 1000px !important; width: 95% !important; }
+  
+  .vchk-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+      gap: 15px; 
+      margin-top: 20px; 
+      padding: 10px; 
+  }
+  .vchk-grid::-webkit-scrollbar { width: 6px; }
+  .vchk-grid::-webkit-scrollbar-thumb { background: #6ee7b7; border-radius: 10px; }
+
+  .vchk-card { 
+      background: #f8fafc; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 15px; 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      transition: 0.3s; 
+      text-decoration: none; 
+      color: #1e293b; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+  }
+  .vchk-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(16, 185, 129, 0.2); 
+      border-color: #10b981; 
+      background: #ecfdf5;
+  }
+  .vchk-card img { width: 45px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .vchk-card span { font-weight: 800; font-size: 13px; font-family: &quot;Inter&quot;, sans-serif; }
+  
+  .vchk-search-box { 
+      width: 100%; 
+      padding: 12px 15px 12px 45px; 
+      border-radius: 12px; 
+      border: 2px solid #cbd5e1; 
+      font-size: 16px; 
+      outline: none; 
+      font-family: &quot;Inter&quot;, sans-serif; 
+      transition: 0.3s; 
+      box-sizing: border-box;
+  }
+  .vchk-search-box:focus { border-color: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2); }
+  .vchk-search-wrap { position: relative; max-width: 600px; margin: 0 auto; }
+  .vchk-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 18px; }
+  
+  @media (max-width: 600px) {
+      .vchk-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .vchk-card { padding: 10px; }
+      .vchk-card img { width: 35px; }
+      .vchk-card span { font-size: 12px; }
+  }

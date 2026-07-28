@@ -1,0 +1,12 @@
+.barcode-main-layout { display: flex; flex-direction: column; gap: 20px; }
+.barcode-settings { background: #f8fafc; padding: 20px; border-radius: 15px; border: 1px solid #e2e8f0; }
+.barcode-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 15px; }
+
+.barcode-preview-box { background: var(--tool-card-bg, #fff); border: 1px solid #e2e8f0; border-radius: 15px; padding: 30px 15px; text-align: center; }
+.barcode-render-area { background: var(--tool-card-bg, #fff); padding: 20px; border-radius: 8px; display: inline-block; min-height: 100px; }
+#barcode-output { max-width: 100%; height: auto; }
+
+@media (max-width: 600px) {
+    .barcode-grid-3 { grid-template-columns: 1fr; }
+    .barcode-settings { padding: 15px; }
+}

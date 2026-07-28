@@ -1,0 +1,46 @@
+.travel-pro-width { max-width: 1100px !important; width: 95% !important; margin: auto; }
+.travel-search-wrap { position: relative; margin-bottom: 20px; }
+.travel-search-wrap input { width: 100%; padding: 12px 20px 12px 45px; border: 2px solid #e2e8f0; border-radius: 12px; font-size: 16px; outline: none; transition: 0.3s; font-family: &#39;Inter&#39;, sans-serif; }
+.travel-search-wrap input:focus { border-color: #0ea5e9; }
+.travel-search-wrap .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
+
+.travel-tabs { display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding: 5px 0; scrollbar-width: none; }
+.travel-tabs::-webkit-scrollbar { display: none; }
+
+.t-tab { 
+    display: flex; align-items: center; gap: 8px; padding: 10px 22px; 
+    border: none; background: #f1f5f9; border-radius: 50px; 
+    font-weight: 700; color: #64748b; cursor: pointer; 
+    white-space: nowrap; transition: 0.3s; font-size: 14px;
+}
+.t-tab i { font-size: 16px; }
+.t-tab.active { background: #0ea5e9; color: #fff; box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3); }
+
+.travel-grid-container { 
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 15px; padding: 10px; 
+    background: #f8fafc; border-radius: 15px; 
+}
+.travel-item-card { 
+    background: var(--tool-card-bg, #fff); border: 1px solid #e2e8f0; border-radius: 15px; 
+    padding: 15px; text-align: center; transition: 0.3s; 
+    display: flex; flex-direction: column; align-items: center; 
+}
+.travel-item-card:hover { transform: translateY(-5px); border-color: #0ea5e9; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+
+.travel-img-box { width: 100%; height: 90px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; }
+.travel-img-box img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; }
+
+.travel-item-card strong { font-size: 14px; color: #1e293b; margin-bottom: 12px; height: 36px; overflow: hidden; display: flex; align-items: center; }
+.travel-go-btn { 
+    width: 100%; background: #0ea5e9; color: #fff !important; 
+    text-decoration: none; padding: 8px; border-radius: 8px; 
+    font-weight: 700; font-size: 13px; transition: 0.3s;
+}
+.travel-go-btn:hover { background: #0284c7; }
+
+@media (max-width: 600px) {
+  .travel-grid-container { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .t-tab { padding: 8px 15px; font-size: 13px; }
+  .travel-img-box { height: 70px; }
+}

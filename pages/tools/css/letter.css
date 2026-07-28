@@ -1,0 +1,18 @@
+#lt-page-unit { font-family: &#39;SolaimanLipi&#39;, Arial, sans-serif !important; }
+#letter-editor { min-height: 297mm; }
+      
+.xph-lang-toggle {
+  display: flex;
+  background: #e2e8f0;
+  padding: 4px;
+  border-radius: 10px;
+
+@media (max-width: 850px) {
+    #lt-scroll-area { height: 500px; overflow: auto; display: flex; justify-content: center; align-items: flex-start; }
+    #lt-page-unit { 
+        transform: scale(0.42); 
+        transform-origin: top center;
+        margin-bottom: -160mm;
+        width: 210mm !important;
+    }
+}

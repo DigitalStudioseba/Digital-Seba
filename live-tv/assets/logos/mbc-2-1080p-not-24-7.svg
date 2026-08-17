@@ -1,0 +1,12 @@
+<svg width="600" height="400" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#84fab0" />
+      <stop offset="100%" stop-color="#8fd3f4" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#g)" rx="40"/>
+  <text x="50%" y="50%" fill="#333333" font-family="Arial, sans-serif" font-size="45" font-weight="bold" text-anchor="middle" dominant-baseline="middle">
+    MBC 2 1080P not 247
+  </text>
+</svg>

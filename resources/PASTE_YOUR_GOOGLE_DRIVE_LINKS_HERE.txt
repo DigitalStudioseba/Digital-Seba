@@ -1,0 +1,32 @@
+================================================================================
+DIGITAL SEBA - GOOGLE DRIVE RESOURCES
+================================================================================
+
+INSTRUCTIONS:
+1. Copy the content from your Google Drive document (the link you shared)
+2. Paste it below this line
+3. Visit http://localhost:3000/admin
+4. Paste the content there
+5. Click "Parse & Validate"
+6. Fix any errors shown
+7. Click "Copy Code"
+8. Paste into src/data/resources-data.ts
+9. Save and refresh http://localhost:3000/resources
+
+================================================================================
+EXPECTED FORMAT:
+================================================================================
+
+## Folder Name / Bengali Name
+File Name 1 https://drive.google.com/file/d/FILE_ID_1/view
+File Name 2 https://drive.google.com/file/d/FILE_ID_2/view
+
+## Another Folder / আরেকটি ফোল্ডার
+File Name 3 https://drive.google.com/file/d/FILE_ID_3/view
+File Name 4 https://docs.google.com/document/d/DOC_ID/edit
+
+================================================================================
+PASTE YOUR GOOGLE DRIVE LINKS BELOW:
+================================================================================
+
+

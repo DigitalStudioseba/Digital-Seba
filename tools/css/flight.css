@@ -1,0 +1,58 @@
+.flight-modal-content { max-width: 1000px !important; width: 95% !important; }
+  .flight-grid { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); 
+      gap: 15px; 
+      margin-top: 20px; 
+ 
+      padding: 10px; 
+  }
+  .flight-grid::-webkit-scrollbar { width: 6px; }
+  .flight-grid::-webkit-scrollbar-thumb { background: #7dd3fc; border-radius: 10px; }
+
+  .flight-card { 
+      background: #f8fafc; 
+      border: 1px solid #e2e8f0; 
+      border-radius: 12px; 
+      padding: 15px; 
+      text-align: center; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      justify-content: center;
+      gap: 10px; 
+      transition: 0.3s; 
+      text-decoration: none; 
+      color: #1e293b; 
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+  }
+  .flight-card:hover { 
+      transform: translateY(-5px); 
+      box-shadow: 0 10px 20px rgba(2, 132, 199, 0.2); 
+      border-color: #0284c7; 
+      background: #f0f9ff;
+  }
+  .flight-card img { width: 45px; height: auto; border-radius: 4px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+  .flight-card span { font-weight: 800; font-size: 14px; font-family: &quot;Inter&quot;, sans-serif; }
+  
+  .flight-search-box { 
+      width: 100%; 
+      padding: 12px 15px 12px 45px; 
+      border-radius: 12px; 
+      border: 2px solid #cbd5e1; 
+      font-size: 16px; 
+      outline: none; 
+      font-family: &quot;Inter&quot;, sans-serif; 
+      transition: 0.3s; 
+      box-sizing: border-box;
+  }
+  .flight-search-box:focus { border-color: #0284c7; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.2); }
+  .flight-search-container { position: relative; max-width: 600px; margin: 0 auto; }
+  .flight-search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 18px; }
+  
+  @media (max-width: 600px) {
+      .flight-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .flight-card { padding: 10px; }
+      .flight-card img { width: 35px; }
+      .flight-card span { font-size: 13px; }
+  }

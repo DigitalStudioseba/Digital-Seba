@@ -1,0 +1,299 @@
+/* ==========================================
+   footer.css - Home footer panel and links
+   ========================================== */
+
+.site-footer {
+    background:
+        radial-gradient(circle at 12% 0%, rgba(50, 230, 180, 0.11), transparent 30%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 8px;
+    padding: 28px;
+    margin: 36px 0 8px;
+    position: relative;
+    font-size: 0.8rem;
+    color: var(--text3);
+    overflow: hidden;
+    box-shadow: 0 18px 70px rgba(0, 0, 0, 0.34);
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), transparent);
+    opacity: 0.85;
+}
+
+.site-footer::after {
+    content: "";
+    display: none;
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: minmax(240px, 1.5fr) minmax(150px, 0.65fr) minmax(210px, 0.85fr);
+    gap: clamp(22px, 4vw, 48px);
+    align-items: start;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text);
+    width: fit-content;
+}
+
+.footer-logo-mark {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(53, 214, 164, 0.11);
+    border: 1px solid rgba(53, 214, 164, 0.26);
+    box-shadow: inset 0 0 24px rgba(53, 214, 164, 0.08);
+}
+
+.footer-logo-mark img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+.footer-logo-text {
+    color: var(--text);
+    font-size: 1.08rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+}
+
+.footer-logo-text sub {
+    bottom: 0;
+    color: #7fa8ff;
+    font-size: 0.66em;
+    font-weight: 900;
+}
+
+.footer-tagline {
+    max-width: 420px;
+    font-size: 0.86rem;
+    color: var(--text2);
+    line-height: 1.55;
+}
+
+.footer-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 4px;
+}
+
+.footer-chips span {
+    padding: 5px 9px;
+    border-radius: 999px;
+    color: var(--text2);
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.footer-dev {
+    font-size: 0.75rem;
+    color: var(--text3);
+}
+
+.footer-dev a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.footer-dev a:hover {
+    color: var(--accent);
+}
+
+.footer-links,
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.footer-col-label {
+    font-size: 0.66rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    margin-bottom: 2px;
+}
+
+.footer-links a,
+.footer-discord {
+    font-size: 0.82rem;
+    color: var(--text2);
+    text-decoration: none;
+    transition: color 0.15s;
+    width: fit-content;
+    font-weight: 700;
+}
+
+.footer-links a:hover,
+.footer-discord:hover {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.footer-note {
+    font-size: 0.78rem;
+    color: var(--text3);
+    line-height: 1.5;
+    margin-top: 2px;
+}
+
+.footer-copy {
+    font-size: 0.75rem;
+    color: var(--text3);
+    font-family: "JetBrains Mono", monospace;
+    margin-top: 2px;
+}
+
+@media (max-width: 640px) {
+    .site-footer {
+        padding: 22px 18px;
+        margin-top: 26px;
+    }
+
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 22px;
+    }
+
+    .footer-tagline {
+        max-width: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .site-footer {
+        padding: 20px 16px;
+    }
+
+    .footer-logo-text {
+        font-size: 1rem;
+    }
+}
+
+/* ==========================================
+   Digital Seba Navbar + Footer integration overrides
+   Applied only within live-tv/ context
+   ========================================== */
+
+/* 1. Push the IPTV body content below the fixed 72px Digital Seba navbar.
+      The body uses display:flex + height:100dvh, so we set padding-top
+      and subtract it from the app height so nothing overflows. */
+body.hide-offline-active,
+body.streamdeck-theme {
+  padding-top: var(--nav-height, 72px);
+  height: auto !important;
+  min-height: 100dvh;
+  box-sizing: border-box;
+  overflow-y: auto !important;
+  display: flex;
+  flex-direction: column;
+}
+
+body .app {
+  min-height: calc(100dvh - var(--nav-height, 72px));
+  height: auto !important;
+  flex: none !important;
+  overflow: visible !important;
+}
+
+/* Ensure the fixed navbar sits above the IPTV sidebar (z-index 200+) */
+.navbar {
+  z-index: 1100 !important;
+}
+
+/* 2. Digital Seba footer — reset the dark IPTV variables so the footer
+      renders with the main site colors rather than the IPTV dark palette */
+body .footer {
+  background: var(--footer-bg, #0a0f1a);
+  color: var(--footer-text, #8892a0);
+  font-family: var(--font-primary, Inter, sans-serif);
+  position: relative;
+  z-index: 1;
+}
+
+body .footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+body .footer-top {
+  padding: 60px 0 40px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+body .footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 20px 0;
+}
+
+body .footer-bottom-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+}
+
+body .footer-bottom-links {
+  display: flex;
+  gap: 20px;
+}
+
+body .footer-bottom-links a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+body .footer-bottom-links a:hover {
+  color: #fff;
+}
+
+/* Phase 3 Fix: Lock body from scrolling when watching TV so sticky player isn't scrolled away by footer layout overrides */
+body.is-watching.hide-offline-active,
+body.is-watching.streamdeck-theme {
+  overflow: hidden !important;
+  height: 100dvh !important;
+}
+
+body.is-watching .footer {
+  display: none !important;
+}
+
+body.is-watching .app {
+  height: calc(100dvh - var(--nav-height, 72px)) !important;
+  flex: none !important;
+  overflow: hidden !important;
+}
+

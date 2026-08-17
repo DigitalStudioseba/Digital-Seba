@@ -1,0 +1,112 @@
+#fqMakerModal, #fqMakerModal *, #fq-render-area, #fq-render-area * {
+    font-family: &#39;SolaimanLipi&#39;, Arial, sans-serif !important;
+}
+
+#fqMakerModal input::placeholder, 
+#fqMakerModal textarea::placeholder {
+    font-family: &#39;SolaimanLipi&#39;, sans-serif !important;
+    opacity: 0.8;
+}
+  
+#fqMakerModal i.fa-solid, 
+#fqMakerModal i.fa-brands, 
+#fqMakerModal i.fas,
+#fqMakerModal .fa-plus {
+    font-family: &quot;Font Awesome 6 Free&quot; !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+}
+
+.fq-main-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.fq-group-box { background: #f8fafc; padding: 15px; border-radius: 12px; border: 1px solid #e2e8f0; margin-bottom: 15px; text-align: left; }
+.fq-step-title { margin: 0 0 10px; font-weight: 800; color: #4f46e5; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+.fq-logo-row { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.fq-logo-upload { cursor:pointer; border: 2px dashed #4f46e5; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: var(--tool-card-bg, #fff); flex-shrink: 0; overflow: hidden; }
+.fq-logo-upload img { max-width: 100%; max-height: 100%; }
+.fq-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.fq-q-card { background: var(--tool-card-bg, #fff); padding: 10px; border-radius: 8px; border: 1px solid #cbd5e1; position: relative; margin-bottom: 10px; text-align: left; }
+.fq-rem-btn { position: absolute; top: 5px; right: 5px; background: #fee2e2; color: #ef4444; border: none; width: 22px; height: 22px; border-radius: 50%; cursor: pointer; }
+.fq-preview-container { background:#52525b; border-radius: 12px; padding: 15px; border: 4px solid #f1f5f9; position: sticky; top: 20px; }
+#fq-render-area { background: white; width: 100%; aspect-ratio: 1/1.414; padding: 30px; box-sizing: border-box; color: #000; font-size: 13px; overflow: hidden; text-align: left; }
+.fq-lang-box { display: flex; justify-content: center; background: #f1f5f9; padding: 5px; border-radius: 50px; width: fit-content; margin: 0 auto 20px; }
+.fq-action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+.fq-action-grid button { padding: 10px; border: none; border-radius: 8px; color: #fff; cursor: pointer; font-weight: bold; }
+.btn-desc { background: #6366f1; }
+.btn-mcq { background: #0ea5e9; }
+.fq-final-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+
+#fqMakerModal input, #fqMakerModal textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+#fqMakerModal textarea {
+    resize: vertical !important;
+}
+
+@media (max-width: 768px) {
+    .fq-main-layout { grid-template-columns: 1fr; }
+    .fq-preview-side { order: -1; }
+    .fq-preview-container { position: relative; top: 0; margin-bottom: 20px; }
+    #fq-render-area { padding: 15px; font-size: 11px; }
+}
+  
+.fq-final-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 15px !important;
+    margin-top: 25px !important;
+    width: 100% !important;
+}
+
+.fq-final-actions button {
+    border: none !important;
+    padding: 14px 20px !important;
+    border-radius: 12px !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    transition: all 0.3s ease !important;
+    color: #ffffff !important;
+    text-transform: none !important;
+}
+
+#btn-fq-print {
+    background: linear-gradient(135deg, #059669, #10b981) !important;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.2) !important;
+}
+
+#btn-fq-print:hover {
+    background: linear-gradient(135deg, #047857, #059669) !important;
+    transform: translateY(-2px) !important;
+}
+
+#btn-fq-reset {
+    background: linear-gradient(135deg, #ef4444, #dc2626) !important;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2) !important;
+}
+
+#btn-fq-reset:hover {
+    background: linear-gradient(135deg, #dc2626, #b91c1c) !important;
+    transform: translateY(-2px) !important;
+}
+
+@media (max-width: 480px) {
+    .fq-final-actions {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+    }
+    .fq-final-actions button {
+        padding: 12px !important;
+        font-size: 14px !important;
+    }
+}

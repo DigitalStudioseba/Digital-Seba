@@ -1,0 +1,132 @@
+.crop-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 999999;
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.crop-modal-content {
+    margin: auto; 
+    position: relative;
+}
+
+.pnd-solaiman {
+    font-family: &#39;SolaimanLipi&#39;, Arial, sans-serif !important;
+}
+
+.idm-upload-mini {
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1; 
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.idm-upload-mini:hover { 
+    background: #f1f5f9; 
+    border-color: #0891b2; 
+    border-style: dashed; 
+}
+
+.idm-upload-mini i { 
+    display: block; 
+    font-size: 22px; 
+    color: #0891b2; 
+    margin-bottom: 5px; 
+}
+
+.idm-upload-mini span { 
+    font-size: 11px; 
+    font-weight: 700; 
+    color: #475563; 
+}
+
+.idm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 20px;
+}
+
+.idm-inputs-side {
+    display: grid;
+    gap: 10px;
+    max-height: 550px;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+#idm-preview-box {
+    background: #334155;
+    border-radius: 12px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 4px solid #f1f5f9;
+}
+
+#idm-canvas {
+    max-height: 100%;
+    max-width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    image-rendering: -webkit-optimize-contrast;
+}
+
+#idCardModal .ph-tab {
+    border: none;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 12px;
+    transition: 0.3s;
+    background: transparent;
+    color: #64748b;
+}
+
+#idCardModal .ph-tab.active {
+    background: #0891b2;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(8, 145, 178, 0.3);
+}
+
+@media (max-width: 768px) {
+    .crop-modal-overlay {
+        padding: 10px 0;
+    }
+
+    .idm-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .idm-preview-side {
+        order: -1;
+        margin-bottom: 15px;
+    }
+    
+    #idm-preview-box {
+        height: 300px !important;
+    }
+    
+    .idm-inputs-side {
+        max-height: none;
+        overflow-y: visible;
+        padding-right: 0;
+    }
+
+    .idm-inputs-side input {
+        font-size: 14px;
+    }
+}

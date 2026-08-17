@@ -1,0 +1,21 @@
+ #gdMakerModal input, #gdMakerModal select, #gdMakerModal textarea {
+    font-family: &quot;SolaimanLipi&quot;, Arial, sans-serif !important;
+    width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; margin-bottom: 5px;
+}
+#gdMakerModal input::placeholder, #gdMakerModal textarea::placeholder { font-family: &#39;SolaimanLipi&#39;, sans-serif !important; opacity: 0.7; }
+
+#gdMakerModal i.fa-solid, #gdMakerModal .fa-brands {
+    font-family: &quot;Font Awesome 6 Free&quot; !important;
+    font-weight: 900 !important;
+    display: inline-block !important;
+}
+
+@media (max-width: 1024px) {
+    .leaflet-main-grid { grid-template-columns: 1fr !important; }
+    .leaflet-preview-area { min-height: auto; }
+    #gdm-a4-page { width: 100% !important; }
+}
+
+.section-header { background: #f1f5f9; font-weight: 800; color: #059669; font-size: 16px; border-top: 2px solid #059669; }
+    #ram-table-body td { padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 700; color: #1e293b; }
+    #ram-table-body tr:hover { background: #f0fdf4; }

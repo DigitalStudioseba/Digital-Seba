@@ -1,0 +1,1079 @@
+/* ==========================================
+   app.css — App tokens, reset, shell layout, navigation, search, and toasts
+   ========================================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    scrollbar-width: thin;
+    scrollbar-color: var(--surface3) transparent;
+}
+
+.hidden {
+    display: none !important;
+}
+
+:root {
+    --bg: #0f0f0f;
+    --bg-elevated: #1a1a1a;
+    --surface: #212121;
+    --surface2: #2a2a2a;
+    --surface3: #3a3a3a;
+    --border: rgba(255, 255, 255, 0.1);
+    --border2: rgba(255, 255, 255, 0.2);
+
+    --text: #ffffff;
+    --text2: #aaaaaa;
+    --text3: #717171;
+
+    --red: #ff0000;
+    --red-dim: #cc0000;
+    --accent: #ff0000;
+    --accent-bg: rgba(255, 0, 0, 0.12);
+    --accent-glow: rgba(255, 0, 0, 0.35);
+    --blue: #3ea6ff;
+    --orange: #fb923c;
+
+    --guide-w: 320px;
+    --chat-w: 360px;
+    --nav-h: 56px;
+    --radius: 10px;
+    --radius-lg: 14px;
+    --ease: cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    --transition-fast: 0.15s var(--ease);
+    --transition-normal: 0.25s var(--ease);
+    --transition-slow: 0.35s var(--ease);
+
+    --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-ui);
+    background: var(--bg);
+    color: var(--text);
+    height: 100dvh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    -webkit-font-smoothing: antialiased;
+}
+
+body.is-watching .catalog-view {
+    display: none;
+}
+
+body.is-watching .player-shell {
+    display: flex;
+    flex: 1;
+}
+
+body.is-watching .player-idle-screen {
+    display: none;
+}
+
+body.is-watching .app-main {
+    background: #000;
+}
+
+.chat-panel {
+    display: none !important;
+}
+
+#btn-chat {
+    display: none !important;
+}
+
+body.is-watching .chat-panel {
+    display: flex !important;
+}
+
+body.is-watching #btn-chat {
+    display: inline-flex !important;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--surface3);
+    border-radius: 99px;
+    transition: background var(--transition-fast);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes tIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes tOut {
+    to {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+}
+
+@keyframes qmIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes flashScale {
+    0% {
+        transform: scale(0.6);
+        opacity: 0;
+    }
+
+    20% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+
+    80% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* ── Top Nav ── */
+.app-nav {
+    height: var(--nav-h);
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    gap: 20px;
+    flex-shrink: 0;
+    z-index: 300;
+    user-select: none;
+    position: relative;
+    backdrop-filter: blur(8px);
+    background: rgba(15, 15, 15, 0.92);
+}
+
+.app-nav-left,
+.app-nav-right {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.app-nav-center {
+    flex: 1;
+    max-width: 600px;
+    min-width: 0;
+}
+
+.app-nav-btn {
+    min-width: 44px;
+    width: 44px;
+    height: 44px;
+    border: none;
+    background: transparent;
+    color: var(--text2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    line-height: 0;
+    /* prevent inline text spacing from shifting icons */
+}
+
+.app-nav-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--text);
+    transform: scale(1.02);
+}
+
+.app-nav-btn.on {
+    color: var(--red);
+    background: var(--accent-bg);
+}
+
+.app-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: var(--radius);
+    transition: all var(--transition-fast);
+}
+
+.app-brand:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: scale(1.02);
+}
+
+.app-brand-icon {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+    /* filter: invert(1) drop-shadow(0 1px 2px rgba(255, 255, 255, 0.15)); for inverting logo's original color*/
+}
+
+.app-brand .brand-logo {
+    width: 32px;
+    height: 32px;
+    max-width: 32px;
+    max-height: 32px;
+    display: block;
+    flex: 0 0 32px;
+    object-fit: contain;
+}
+
+
+
+.app-tv-badge {
+    background: var(--red);
+    color: #fff;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    box-shadow: 0 0 6px rgba(255, 0, 0, 0.4);
+}
+
+.search-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.app-nav-center:empty {
+    display: none;
+}
+
+.search-icon {
+    position: absolute;
+    left: 16px;
+    color: var(--text3);
+    pointer-events: none;
+    transition: color var(--transition-fast);
+}
+
+.search-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 18px 0 42px;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 40px;
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    outline: none;
+    transition: all var(--transition-fast);
+}
+
+.search-input::placeholder {
+    color: var(--text3);
+}
+
+.search-input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: #000;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.search-input::-webkit-search-cancel-button {
+    display: none;
+}
+
+.app-now-playing {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 240px;
+    overflow: hidden;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 40px;
+}
+
+.app-live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--red);
+    flex-shrink: 0;
+    animation: blink 1.6s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.np-name {
+    font-size: 0.82rem;
+    color: var(--text2);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.np-name strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+body.is-watching .np-name strong {
+    color: var(--text);
+}
+
+/* ── App Shell ── */
+.app {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.guide-backdrop {
+    position: fixed;
+    inset: var(--nav-h) 0 0 0;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    z-index: 150;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-normal);
+}
+
+.guide-backdrop.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--bg);
+}
+
+/* ── Search Dropdown Results ── */
+.search-results {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    max-height: 70vh;
+    overflow-y: auto;
+    z-index: 400;
+    display: none;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.7);
+    max-width: 100%;
+}
+
+.search-results.show {
+    display: block;
+}
+
+.sr-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+
+.sr-item:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.sr-item .ch-logo-box--guide {
+    width: 36px;
+    height: 36px;
+    padding: 2px;
+    border-radius: 8px;
+}
+
+.sr-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.sr-name {
+    font-size: 0.85rem;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sr-meta {
+    font-size: 0.7rem;
+    color: var(--text3);
+    margin-top: 2px;
+}
+
+.sr-no-results {
+    padding: 20px 14px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text3);
+}
+
+/* ── Toasts ── */
+.toasts {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.toast {
+    font-size: 0.82rem;
+    color: var(--text);
+    background: rgba(30, 30, 30, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 8px 16px;
+    border-radius: 40px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    max-width: calc(100vw - 32px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    animation: tIn 0.2s var(--ease) both;
+}
+
+.toast.out {
+    animation: tOut 0.2s var(--ease) both;
+}
+
+/* ============================================
+   DESKTOP FIX: Responsive Push Sidebar
+   ============================================ */
+@media (min-width: 769px) {
+    .app {
+        flex-direction: row;
+    }
+
+    .guide-shell {
+        position: relative;
+        top: 0;
+        transform: translateX(0) !important;
+        width: 72px;
+        border-right: 1px solid var(--border);
+        flex-shrink: 0;
+        transition: width 0.28s var(--ease);
+    }
+
+    .guide-shell:not(.closed) {
+        width: 320px;
+        border-right: 1px solid var(--border);
+    }
+
+    .guide-backdrop {
+        display: none !important;
+    }
+
+    .app-main {
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+/* ── Responsive Queries ── */
+@media (min-width: 1400px) {
+    .catalog-view {
+        padding: 40px 56px 56px;
+        gap: 48px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+        gap: 24px;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 1200px) {
+    :root {
+        --chat-w: 300px;
+        --guide-w: 280px;
+    }
+
+    .app-now-playing {
+        max-width: 180px;
+    }
+
+    .ctrl-channel-name {
+        max-width: 140px;
+        font-size: 0.82rem;
+    }
+
+    .catalog-view {
+        padding: 28px 36px 48px;
+        gap: 36px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --chat-w: 280px;
+        --guide-w: 260px;
+    }
+
+    .app-nav-center {
+        max-width: 480px;
+    }
+
+    .catalog-view {
+        padding: 24px 32px 48px;
+        gap: 32px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --nav-h: 52px;
+        --guide-w: 85vw;
+    }
+
+    body {
+        height: auto;
+        overflow: visible;
+        padding-bottom: var(--nav-h);
+    }
+
+    .app-nav {
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        padding: 0 12px;
+        gap: 8px;
+        flex-wrap: nowrap;
+        border-bottom: none;
+        border-top: 1px solid var(--border);
+        justify-content: space-between;
+    }
+
+    .app-nav-left {
+        gap: 8px;
+    }
+
+    .app-nav-center {
+        flex: 1;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .app-nav-btn,
+    .app-brand {
+        min-width: 40px;
+    }
+
+    .app-brand {
+        padding: 4px 6px;
+        gap: 4px;
+    }
+
+    .app-brand-icon {
+        width: 28px;
+        height: 28px;
+    }
+
+    .app-tv-badge,
+    .app-now-playing {
+        display: none;
+    }
+
+
+    .search-box .search-input {
+        font-size: 0.85rem;
+        height: 36px;
+        padding: 0 12px 0 36px;
+    }
+
+    .search-icon {
+        left: 10px;
+        width: 16px;
+        height: 16px;
+    }
+
+    .search-results {
+        top: auto;
+        bottom: calc(100% + 8px);
+        max-height: 50vh;
+        max-width: calc(100vw - 16px);
+    }
+
+    .app {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .guide-shell {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: var(--nav-h);
+        width: var(--guide-w);
+        background: var(--bg);
+        border-right: 1px solid var(--border);
+        z-index: 300;
+        box-shadow: 4px 0 40px rgba(0, 0, 0, 0.85);
+        transition: transform 0.28s var(--ease);
+        transform: translateX(-100%);
+    }
+
+    .guide-shell:not(.closed) {
+        transform: translateX(0);
+    }
+
+    .player-shell {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    body.is-watching .player-shell {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+    .guide-backdrop {
+        inset: 0 0 var(--nav-h) 0;
+    }
+
+    .app-main {
+        min-height: 0;
+        overflow: visible;
+    }
+
+    .stage {
+        max-height: none;
+        aspect-ratio: 16 / 9;
+        width: 100%;
+    }
+
+    body.is-watching .app-main {
+        flex: none;
+    }
+
+    body.is-watching .stage {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        flex: none;
+    }
+
+    body.is-watching .player-shell {
+        flex-direction: column;
+        flex: none;
+    }
+
+    body.is-watching .chat-panel {
+        height: 0 !important;
+        min-height: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden;
+        border: none;
+    }
+
+    body.is-watching.chat-open {
+        height: 100dvh !important;
+        overflow: hidden !important;
+    }
+
+    body.is-watching.chat-open .app {
+        height: calc(100dvh - var(--nav-h));
+        overflow: hidden;
+    }
+
+    body.is-watching.chat-open .app-main {
+        flex: none;
+    }
+
+    body.is-watching.chat-open .chat-panel {
+        flex: 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        overflow: hidden !important;
+        border-top: 1px solid var(--border) !important;
+    }
+
+    body.is-watching.chat-open #watch-more {
+        display: none !important;
+    }
+
+    .chat-panel {
+        width: 100% !important;
+        border-left: none;
+    }
+
+    body.is-watching #watch-more {
+        display: block;
+        padding-bottom: 24px;
+    }
+
+    /* Fix: Ensure the iframe expands to fill the 16/9 sticky viewport container */
+    .stage.is-embed #embed-player {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 5;
+        background: #000;
+    }
+
+    /* Prevent background compression rules from overriding the layout shell */
+    body.is-watching .stage.is-embed {
+        display: block;
+        position: relative;
+        aspect-ratio: 16 / 9;
+        height: auto;
+        width: 100%;
+    }
+
+    .catalog-view {
+        padding: 16px 14px 40px;
+        gap: 24px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        padding: 2px 0;
+    }
+
+    .ctrl-bar {
+        padding: 28px 12px 10px;
+        gap: 4px;
+    }
+
+    .ctrl-btn {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9em;
+    }
+
+    .ctrl-live-btn {
+        padding: 3px 6px;
+        font-size: 0.68rem;
+    }
+
+    .ctrl-channel-name,
+    .vol-slider {
+        display: none;
+    }
+
+    .toasts {
+        top: 60px;
+        right: 12px;
+        left: 12px;
+    }
+
+    .err-bar {
+        max-width: calc(100% - 16px);
+        left: 8px;
+        right: 8px;
+    }
+
+    .err-bar-msg {
+        max-width: 140px;
+    }
+
+    .ch-item {
+        padding: 10px 16px;
+        min-height: 52px;
+    }
+
+    .ch-logo-box--guide {
+        width: 40px;
+        height: 40px;
+    }
+
+    .sr-item {
+        padding: 8px 12px;
+    }
+
+    .sr-item .ch-logo-box--guide {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --guide-w: 92vw;
+        --nav-h: 48px;
+    }
+
+    .app-nav {
+        padding: 0 10px;
+        gap: 6px;
+    }
+
+    .app-nav-btn,
+    .app-brand {
+        width: 40px;
+        height: 40px;
+    }
+
+    .app-brand-icon {
+        width: 24px;
+        height: 24px;
+    }
+
+    .app-nav-center {
+        max-width: 160px;
+    }
+
+    .search-box .search-input {
+        height: 34px;
+        font-size: 0.8rem;
+        padding: 0 10px 0 32px;
+    }
+
+    .search-icon {
+        left: 8px;
+        width: 14px;
+        height: 14px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .catalog-view {
+        padding: 12px 10px 40px;
+        gap: 18px;
+    }
+
+    .section-title {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+
+    .ctrl-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .ctrl-bar {
+        gap: 2px;
+        padding: 24px 8px 8px;
+    }
+
+    .ctrl-qual-btn {
+        height: 28px;
+        padding: 0 8px;
+        font-size: 0.62rem;
+    }
+
+    .ctrl-live-btn {
+        padding: 2px 4px;
+        font-size: 0.6rem;
+    }
+
+    .ch-item {
+        padding: 10px 14px;
+        min-height: 48px;
+    }
+
+    .ch-logo-box--guide {
+        width: 36px;
+        height: 36px;
+    }
+
+    .ch-name {
+        font-size: 0.82rem;
+    }
+
+    .home-ch-name,
+    .channel-card-title {
+        font-size: 0.78rem;
+    }
+
+    .channel-card-meta {
+        font-size: 0.68rem;
+    }
+
+    .guide-shell {
+        width: min(290px, 92vw);
+    }
+
+    .guide-head {
+        padding: 12px 14px 10px;
+    }
+
+    .guide-title {
+        font-size: 0.95rem;
+    }
+
+    .wm-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+        padding: 0 8px 12px;
+    }
+
+    .wm-name {
+        font-size: 0.72rem;
+        margin-top: 4px;
+    }
+
+    .wm-meta {
+        font-size: 0.62rem;
+        margin-top: 1px;
+    }
+
+    #embed-player:not(.hidden) {
+        display: block !important;
+        border: none;
+    }
+}
+
+/* ── BACK TO TOP BUTTON ── */
+.back-to-top {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: var(--primary-color, #0a84ff);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease, background-color 0.2s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background-color: var(--primary-hover, #006ee6);
+    transform: translateY(-3px) scale(1.05);
+}
+
+.back-to-top:focus-visible {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.back-to-top:active {
+    transform: translateY(0) scale(0.95);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        right: 16px;
+        width: 40px;
+        height: 40px;
+    }
+}

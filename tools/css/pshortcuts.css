@@ -1,0 +1,70 @@
+.ps-master-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 10px;
+  }
+
+  .ps-card-item {
+    background: #fdfbff;
+    border: 1px solid #e0e7ff;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: left;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .ps-card-item:hover {
+    border-color: #312e81;
+    box-shadow: 0 5px 15px rgba(49, 46, 129, 0.1);
+  }
+
+  .ps-key-box {
+    background: #312e81;
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-family: &#39;Courier New&#39;, monospace;
+    font-weight: bold;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 8px;
+    width: fit-content;
+  }
+
+  .ps-desc-text {
+    font-weight: 700;
+    font-size: 14px;
+    color: #1e293b;
+    line-height: 1.4;
+  }
+
+  .ps-cat-btn {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .ps-cat-btn.active {
+    background: #312e81;
+    color: #fff;
+    border-color: #312e81;
+  }
+
+  .ps-master-grid::-webkit-scrollbar { width: 5px; }
+  .ps-master-grid::-webkit-scrollbar-thumb { background: #312e81; border-radius: 10px; }
+
+  @media (max-width: 480px) {
+    .ps-master-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ps-desc-text { font-size: 12.5px; }
+  }

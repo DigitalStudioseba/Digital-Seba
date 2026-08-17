@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ছাত্র রেজিস্ট্রেশন ও প্রত্যয়নপত্র — Digital Seba</title>
+    ${headContent}
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet">
+    <style>
+        /* Registration App Specific CSS */
+        :root {
+            --primary-green: #006a4e;
+            --govt-red: #f42a41;
+            --navy-blue: #005088;
+        }
+
+        .reg-app-container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        /* Tabs System */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: rgba(0,0,0,0.05);
+            padding: 10px;
+            border-radius: 12px;
+        }
+        .tab-btn {
+            padding: 12px 24px;
+            border: none;
+            background: transparent;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--text-color, #333);
+        }
+        .tab-btn.active {
+            background: var(--primary-color, #3182ce);
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Form Styling */
+        .form-container {
+            background: var(--card-bg, #ffffff);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color, #e2e8f0);
+            max-width: 850px;
+            margin: 0 auto;
+        }
+        .form-container h2 {
+            text-align: center;
+            color: var(--primary-color, #3182ce);
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 24px;
+        }
+        .grid-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        .full-width {
+            grid-column: span 2;
+        }
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-color, #334155);
+            font-size: 14px;
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        input, select {
+            padding: 10px;
+            border: 1.5px solid var(--border-color, #cbd5e1);
+            border-radius: 6px;
+            font-size: 15px;
+            font-family: 'Hind Siliguri', sans-serif;
+            background: var(--input-bg, #fff);
+            color: var(--text-color, #333);
+        }
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color, #3182ce);
+        }
+        
+        .action-btn {
+            background: var(--primary-color, #3182ce);
+            color: white;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+            font-family: 'Hind Siliguri', sans-serif;
+            transition: 0.2s;
+        }
+        .action-btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Certificate Area */
+        #certificate-area {
+            background-color: #fffdf5;
+            width: 1050px;
+            height: 680px;
+            padding: 45px 65px;
+            border: 15px double var(--navy-blue);
+            box-sizing: border-box;
+            position: relative;
+            font-family: 'Tiro Bangla', serif;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin: 20px auto;
+        }
+        .outer-border {
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            border: 2px solid var(--navy-blue);
+            pointer-events: none;
+        }
+        .cert-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .cert-header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .header-text h3 { margin: 0; font-size: 22px; font-weight: normal; letter-spacing: 0.5px; color: #000; }
+        .header-text h2 { margin: 8px 0; font-size: 34px; color: var(--navy-blue); font-weight: bold; }
+        .header-text p { margin: 4px 0; font-size: 20px; color: #000; }
+        .cert-title-wrapper {
+            text-align: center;
+            margin: 15px 0;
+        }
+        .cert-title {
+            background: #ffecb3;
+            display: inline-block;
+            padding: 4px 55px;
+            border: 1.5px solid var(--navy-blue);
+            border-radius: 4px;
+            color: #000;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        .cert-meta-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 19px;
+            color: #000;
+        }
+        .cert-body {
+            font-size: 24px;
+            line-height: 2.3;
+            text-align: justify;
+            text-justify: inter-word;
+            margin-top: 15px;
+            word-break: keep-all;
+            color: #000;
+        }
+        .dynamic-text {
+            display: inline-block;
+            text-align: center;
+            padding: 0 4px;
+            font-weight: bold;
+            color: #004080;
+        }
+        .cert-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 10px;
+            padding-bottom: 45px;
+            color: #000;
+        }
+        .sig-box {
+            border-top: 1px dotted #000;
+            text-align: center;
+            min-width: 240px;
+            padding-top: 6px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .cert-search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        .cert-search-box input {
+            width: 300px;
+        }
+        
+        .alert-box {
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 600;
+        }
+        .alert-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .alert-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            html, body {
+                margin: 0;
+                padding: 0;
+                background: white !important;
+                width: 100%;
+                height: 100%;
+            }
+            #certificate-area, #certificate-area * {
+                visibility: visible;
+            }
+            #certificate-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100% !important;
+                height: 100vh !important;
+                border: 15px double var(--navy-blue) !important;
+                box-shadow: none !important;
+                padding: 45px 65px !important;
+                margin: 0 !important;
+                page-break-inside: avoid;
+            }
+            @page {
+                size: landscape A4;
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200">
+
+${headerContent}
+
+<main class="reg-app-container">
+    
+    <!-- Back Button -->
+    <div style="margin-bottom: 20px;">
+        <a href="../index.html" style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 600; color: var(--text-color, #333); text-decoration: none; padding: 6px 12px; border-radius: 6px; background: rgba(0,0,0,0.05); border: 1px solid rgba(0,0,0,0.1); transition: all 0.2s ease;">
+            <span style="font-size: 1.1em;">&larr;</span> ফিরে যান
+        </a>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('registration')">রেজিস্ট্রেশন ফর্ম</button>
+        <button class="tab-btn" onclick="switchTab('certificate')">সার্টিফিকেট প্রিন্ট / প্রিভিউ</button>
+    </div>
+
+    <!-- Tab 1: Registration -->
+    <div id="tab-registration" class="tab-content active">
+        <div class="form-container">
+            <h2>শিক্ষার্থী রেজিস্ট্রেশন ফর্ম</h2>
+            
+            <div id="reg-alert" class="alert-box"></div>
+            
+            <form id="reg-form" onsubmit="handleRegistration(event)">
+                <div class="grid-form">
+                    <div class="form-group full-width">
+                        <label>বিদ্যালয়ের নাম (শেষে 'সরকারি প্রাথমিক বিদ্যালয়' যুক্ত হবে)</label>
+                        <input type="text" id="inSchool" required placeholder="যেমন: ৭৫ নং কয়রিয়া ঈদগাহ">
+                    </div>
+                    <div class="form-group">
+                        <label>উপজেলা</label>
+                        <input type="text" id="inUpazila" required placeholder="যেমন: কালকিনি">
+                    </div>
+                    <div class="form-group">
+                        <label>জেলা</label>
+                        <input type="text" id="inZila" required placeholder="যেমন: মাদারীপুর">
+                    </div>
+                    <div class="form-group">
+                        <label>স্থাপিত (খ্রি.)</label>
+                        <input type="text" id="inEstablished" required placeholder="যেমন: ১৯৯৫">
+                    </div>
+                    <div class="form-group">
+                        <label>সিরিয়াল নং</label>
+                        <input type="text" id="inSerial" required placeholder="যেমন: ২৩৪৫/২৬">
+                    </div>
+                    <div class="form-group">
+                        <label>ছাত্র/ছাত্রীর নাম</label>
+                        <input type="text" id="inName" required placeholder="শিক্ষার্থীর নাম">
+                    </div>
+                    <div class="form-group">
+                        <label>পিতার নাম</label>
+                        <input type="text" id="inFather" required placeholder="পিতার নাম">
+                    </div>
+                    <div class="form-group">
+                        <label>মাতার নাম</label>
+                        <input type="text" id="inMother" required placeholder="মাতার নাম">
+                    </div>
+                    <div class="form-group">
+                        <label>জন্ম তারিখ</label>
+                        <input type="date" id="inDOB" required>
+                    </div>
+                    <div class="form-group">
+                        <label>রোল নং</label>
+                        <input type="number" id="inRoll" required placeholder="যেমন: ৭">
+                    </div>
+                    <div class="form-group">
+                        <label>শিক্ষাবর্ষ</label>
+                        <input type="text" id="inSession" required placeholder="যেমন: ২০২৫-২৬">
+                    </div>
+                    <div class="form-group">
+                        <label>শ্রেণি নির্বাচন করুন</label>
+                        <select id="inClass" required>
+                            <option value="প্রথম">প্রথম শ্রেণি</option>
+                            <option value="দ্বিতীয়">দ্বিতীয় শ্রেণি</option>
+                            <option value="তৃতীয়">তৃতীয় শ্রেণি</option>
+                            <option value="চতুর্থ">চতুর্থ শ্রেণি</option>
+                            <option value="পঞ্চম">পঞ্চম শ্রেণি</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <button type="submit" class="action-btn">রেজিস্ট্রেশন সম্পন্ন করুন</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tab 2: Certificate -->
+    <div id="tab-certificate" class="tab-content">
+        <div class="cert-search-box">
+            <input type="text" id="searchId" placeholder="রেজিস্ট্রেশন আইডি (যেমন: DS-26-0001)">
+            <button class="action-btn" style="margin-top:0;" onclick="searchCertificate()">খুঁজুন</button>
+            <button class="action-btn" style="margin-top:0; background: var(--navy-blue);" onclick="window.print()" id="printBtn" disabled>প্রিন্ট করুন</button>
+        </div>
+        
+        <div id="cert-alert" class="alert-box"></div>
+
+        <div style="overflow-x: auto; display: flex; justify-content: center; align-items: center;">
+            <div id="certificate-area" style="opacity: 0.5;">
+                <div class="outer-border"></div>
+                <div class="cert-content">
+                    <div class="cert-header">
+                        <div class="header-text">
+                            <h3>গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</h3>
+                            <h3>প্রাথমিক শিক্ষা অধিদপ্তর</h3>
+                            <h2 id="outSchool">.................................................. সরকারি প্রাথমিক বিদ্যালয়</h2>
+                            <p style="font-size: 20px; font-weight: bold;">
+                                উপজেলা: <span id="outUpazila" style="font-weight: bold;">........................</span>, 
+                                জেলা: <span id="outZila" style="font-weight: bold;">........................</span>।
+                            </p>
+                            <p style="font-size: 18px; margin-top: 2px;">স্থাপিত: <span id="outEstablished">............</span>খ্রি.</p>
+                        </div>
+                    </div>
+                    <div class="cert-title-wrapper">
+                        <div class="cert-title">প্রত্যয়নপত্র</div>
+                    </div>
+                    <div class="cert-meta-info">
+                        <div>সিরিয়াল নং: <span id="outSerial" style="font-weight: bold;">........................</span></div>
+                        <div>তারিখ: <span id="outDate" style="font-weight: bold;">--/--/----</span></div>
+                    </div>
+                    <div class="cert-body">
+                        এই মর্মে প্রত্যয়ন করা যাচ্ছে যে, <span class="dynamic-text" id="outName">..................................................</span>, 
+                        পিতা: <span class="dynamic-text" id="outFather">........................................</span>, 
+                        মাতা: <span class="dynamic-text" id="outMother">........................................</span>। 
+                        তার জন্ম তারিখ: <span class="dynamic-text" id="outDOB">--/--/----</span>, 
+                        রোল নং: <span class="dynamic-text" id="outRoll">............</span>। 
+                        সে এই বিদ্যালয়ে <span class="dynamic-text" id="outSession">....................</span> শিক্ষাবর্ষে 
+                        <span class="dynamic-text" id="outClass">প্রথম</span> শ্রেণিতে অধ্যয়ন করেছে। তার স্বভাব ও চরিত্র ভাল।
+                        <br><br>
+                        আমি তার সর্বাঙ্গীণ সাফল্য কামনা করি।
+                    </div>
+                    <div class="cert-footer">
+                        <div class="sig-box">প্রধান শিক্ষকের স্বাক্ষর</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+${footerContent}
+${scriptsContent}
+
+<script>
+    // Header/Footer Path Correction
+    document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("header a").forEach(a => {
+            const href = a.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                a.href = "../../index.html" + href;
+            } else if (href && !href.startsWith("http") && !href.startsWith("../../")) {
+                a.href = "../../" + href;
+            }
+        });
+        document.querySelectorAll("footer a").forEach(a => {
+            const href = a.getAttribute("href");
+            if (href && href.startsWith("#")) {
+                a.href = "../../index.html" + href;
+            } else if (href && !href.startsWith("http") && !href.startsWith("../../")) {
+                a.href = "../../" + href;
+            }
+        });
+        const brandLink = document.querySelector(".brand") || document.querySelector("header a[href='./']");
+        if(brandLink) brandLink.href = "../../index.html";
+        
+        // Default print date
+        const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('outDate').innerText = new Date().toLocaleDateString('bn-BD', dateOptions);
+    });
+
+    // Tab Logic
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        if (typeof event !== 'undefined' && event && event.target) {
+            event.target.classList.add('active');
+        } else {
+            // Find the button associated with this tabId
+            if(tabId === 'registration') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+            }
+        }
+        document.getElementById('tab-' + tabId).classList.add('active');
+    }
+
+    // Database Logic (localStorage)
+    const DB_KEY = 'digitalseba_students';
+    function getDatabase() {
+        return JSON.parse(localStorage.getItem(DB_KEY) || '[]');
+    }
+    function saveDatabase(data) {
+        localStorage.setItem(DB_KEY, JSON.stringify(data));
+    }
+    function generateID() {
+        const db = getDatabase();
+        const year = new Date().getFullYear().toString().slice(-2);
+        const count = db.length + 1;
+        return 'DS-' + year + '-' + count.toString().padStart(4, '0');
+    }
+
+    // Form Handling
+    function handleRegistration(e) {
+        e.preventDefault();
+        const db = getDatabase();
+        
+        const roll = document.getElementById('inRoll').value;
+        const session = document.getElementById('inSession').value;
+        const studentClass = document.getElementById('inClass').value;
+        const school = document.getElementById('inSchool').value;
+        
+        // Duplicate check
+        const isDuplicate = db.find(s => s.roll === roll && s.session === session && s.class === studentClass && s.school === school);
+        if (isDuplicate) {
+            showAlert('reg-alert', 'এই রোল, শিক্ষাবর্ষ এবং শ্রেণির একজন শিক্ষার্থী ইতোমধ্যে নিবন্ধিত আছে!', 'error');
+            return;
+        }
+
+        const newStudent = {
+            id: generateID(),
+            school: school,
+            upazila: document.getElementById('inUpazila').value,
+            zila: document.getElementById('inZila').value,
+            established: document.getElementById('inEstablished').value,
+            serial: document.getElementById('inSerial').value,
+            name: document.getElementById('inName').value,
+            father: document.getElementById('inFather').value,
+            mother: document.getElementById('inMother').value,
+            dob: document.getElementById('inDOB').value,
+            roll: roll,
+            session: session,
+            class: studentClass,
+            createdAt: new Date().toISOString()
+        };
+
+        db.push(newStudent);
+        saveDatabase(db);
+        
+        showAlert('reg-alert', 'রেজিস্ট্রেশন সফল হয়েছে! শিক্ষার্থীর আইডি: <strong>' + newStudent.id + '</strong>', 'success');
+        document.getElementById('reg-form').reset();
+    }
+
+    function showAlert(boxId, message, type) {
+        const box = document.getElementById(boxId);
+        box.innerHTML = message;
+        box.className = 'alert-box ' + (type === 'success' ? 'alert-success' : 'alert-error');
+        box.style.display = 'block';
+        setTimeout(() => { box.style.display = 'none'; }, 6000);
+    }
+
+    // Search & Generate Certificate
+    function searchCertificate() {
+        const searchId = document.getElementById('searchId').value.trim().toUpperCase();
+        if(!searchId) return;
+
+        const db = getDatabase();
+        const student = db.find(s => s.id === searchId);
+
+        if (!student) {
+            showAlert('cert-alert', 'এই আইডির কোনো শিক্ষার্থী পাওয়া যায়নি!', 'error');
+            document.getElementById('certificate-area').style.opacity = '0.5';
+            document.getElementById('printBtn').disabled = true;
+            return;
+        }
+
+        showAlert('cert-alert', 'শিক্ষার্থীর তথ্য সফলভাবে লোড হয়েছে।', 'success');
+        
+        // Fill Certificate
+        document.getElementById('outSchool').innerText = student.school + " সরকারি প্রাথমিক বিদ্যালয়";
+        document.getElementById('outUpazila').innerText = student.upazila;
+        document.getElementById('outZila').innerText = student.zila;
+        document.getElementById('outEstablished').innerText = student.established;
+        document.getElementById('outSerial').innerText = student.serial;
+        document.getElementById('outName').innerText = student.name;
+        document.getElementById('outFather').innerText = student.father;
+        document.getElementById('outMother').innerText = student.mother;
+        document.getElementById('outRoll').innerText = student.roll;
+        document.getElementById('outSession').innerText = student.session;
+        document.getElementById('outClass').innerText = student.class;
+        
+        const dateObj = new Date(student.dob);
+        document.getElementById('outDOB').innerText = dateObj.toLocaleDateString('bn-BD', { year: 'numeric', month: 'long', day: 'numeric' });
+        
+        document.getElementById('certificate-area').style.opacity = '1';
+        document.getElementById('printBtn').disabled = false;
+    }
+</script>
+
+</body>
+</html>

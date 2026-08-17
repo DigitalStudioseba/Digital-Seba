@@ -1,0 +1,23 @@
+.bio-grid { grid-template-columns: 1fr 1fr; }
+@media (max-width: 850px) {
+    .bio-grid { grid-template-columns: 1fr !important; }
+    .bio-preview-side { order: -1; }
+    #bio-preview-box { height: 400px !important; }
+}
+#bio-render-area { font-family: &#39;Inter&#39;, &#39;SolaimanLipi&#39;, Arial, sans-serif; }
+#biodataModal .ph-tab { border: none; padding: 7px 18px; border-radius: 50px; cursor: pointer; font-weight: 800; font-size: 12px; background: transparent; color: #64748b; }
+#biodataModal .ph-tab.active { background: #7c3aed; color: #fff; }
+.st-input-group textarea {
+    width: 100%; 
+    max-width: 100%;
+    padding: 8px; 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    outline: none; 
+    font-size: 14px;
+    box-sizing: border-box;
+    resize: vertical;
+}
+
+  .st-input-group label { font-size: 12px; font-weight: bold; margin-bottom: 4px; color: var(--tool-text, #0f172a); }
+.st-input-group input, .st-input-group textarea { padding: 8px; border: 1px solid #cbd5e1; border-radius: 6px; font-size: 14px; }

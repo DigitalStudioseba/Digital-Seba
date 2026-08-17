@@ -1,0 +1,206 @@
+#grid-page-unit {
+    width: 210mm;
+    height: 297mm; 
+    background: #ffffff !important;
+    margin: 0 auto;
+    padding: 5px; 
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden; 
+    display: block;
+    clear: both;
+}
+
+/* ২. ছব&#2495;র গ&#2509;র&#2495;ড র&#2503;ন&#2509;ড&#2494;র */
+#photo-grid-render {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center; 
+    align-content: flex-start; 
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* ৩. ছব&#2495;র বর&#2509;ড&#2494;র এব&#2434; ড&#2495;জ&#2494;ইন */
+.grid-photo-item {
+    background: #f8fafc;
+    border: 1px solid #000000 !important; 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.grid-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ৪. ক&#2494;উন&#2509;ট&#2494;র বক&#2509;স */
+.counter-box { 
+    display: flex; 
+    align-items: center; 
+    background: var(--tool-card-bg, #fff); 
+    border: 1px solid #cbd5e1; 
+    border-radius: 8px; 
+    overflow: hidden; 
+}
+
+.counter-box button { 
+    padding: 8px 15px; 
+    background: #f1f5f9; 
+    border: none; 
+    cursor: pointer; 
+    font-weight: 900; 
+    font-size: 18px;
+    transition: 0.2s;
+}
+.counter-box button:hover { background: #3b82f6; color: #fff; }
+.counter-box input { 
+    width: 45px; 
+    text-align: center; 
+    border: none; 
+    font-weight: 800; 
+    font-size: 16px;
+    background: transparent; 
+    outline: none; 
+}
+
+/* ৫. প&#2509;র&#2495;ন&#2509;ট&#2495;&#2434; ইন&#2509;সট&#2509;র&#2494;কশন বক&#2509;স (নত&#2497;ন) */
+.print-instruction-box {
+    margin-top: 25px;
+    padding: 15px 20px;
+    background: #f0f9ff;
+    border: 1px dashed #3b82f6;
+    border-radius: 12px;
+    text-align: left;
+    color: #1e40af;
+    line-height: 1.6;
+}
+.print-instruction-box strong {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #1d4ed8;
+}
+.print-instruction-box ul { margin: 0; padding-left: 20px; }
+.print-instruction-box li { font-size: 13px; margin-bottom: 5px; font-weight: 500; }
+
+/* --- ৬. প&#2509;রফ&#2503;শন&#2494;ল ম&#2507;ব&#2494;ইল ফ&#2509;র&#2503;ন&#2509;ডল&#2495; স&#2495;এসএস (১০০% প&#2494;রফ&#2503;ক&#2509;ট ভ&#2495;উ) --- */
+@media (max-width: 850px) {
+    /* ম&#2503;ইন কন&#2509;ট&#2503;ইন&#2494;র ফ&#2495;ক&#2509;স */
+    #grid-scroll-wrapper { 
+        width: 100%;
+        height: auto; 
+        min-height: 450px;
+        max-height: 550px; 
+        overflow: hidden; /* স&#2509;ক&#2509;র&#2495;ন&#2503;র ব&#2494;ইর&#2503; য&#2494;ওয়&#2494; বন&#2509;ধ করব&#2503; */
+        background: #1e293b; 
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    /* প&#2503;জ স&#2509;ক&#2503;ল&#2495;&#2434; লজ&#2495;ক (সব ম&#2507;ব&#2494;ইল স&#2509;ক&#2509;র&#2495;ন&#2503; ফ&#2495;ট কর&#2494;র জন&#2509;য) */
+    #grid-page-unit { 
+        /* চওড়&#2494; অর&#2495;জ&#2495;ন&#2494;ল থ&#2494;কব&#2503; ক&#2495;ন&#2509;ত&#2497; ভ&#2495;জ&#2509;য&#2497;য়&#2494;ল&#2495; স&#2509;ক&#2503;ল হয়&#2503; ফ&#2495;ট হব&#2503; */
+        width: 210mm !important; 
+        position: relative;
+        transform: scale(0.42); /* স&#2509;ট&#2509;য&#2494;ন&#2509;ড&#2494;র&#2509;ড ম&#2507;ব&#2494;ইল&#2503;র জন&#2509;য জ&#2497;ম আউট */
+        transform-origin: top center;
+        margin: 0 auto;
+        /* স&#2509;ক&#2503;ল&#2495;&#2434; এর ক&#2494;রণ&#2503; ন&#2495;চ&#2503; ত&#2504;র&#2495; হওয়&#2494; অত&#2495;র&#2495;ক&#2509;ত ফ&#2494;&#2433;ক&#2494; জ&#2494;য়গ&#2494; কম&#2494;ন&#2507; */
+        margin-bottom: -165mm; 
+        box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+        z-index: 1;
+    }
+
+    /* ট&#2497;লব&#2494;র ড&#2495;জ&#2494;ইন (ম&#2507;ব&#2494;ইল&#2503;র জন&#2509;য প&#2509;রফ&#2503;শন&#2494;ল ক&#2494;র&#2509;ড ল&#2497;ক) */
+    .sheet-pro-toolbar {
+        padding: 10px;
+        gap: 8px;
+        border-radius: 0; /* ম&#2507;ব&#2494;ইল&#2503; ফ&#2497;ল উইডথ ভ&#2494;ল&#2507; দ&#2503;খ&#2494;য় */
+    }
+    
+    .toolbar-row {
+        gap: 5px !important;
+        justify-content: space-around; /* ব&#2494;টনগ&#2497;ল&#2507; স&#2497;ন&#2509;দর দ&#2498;রত&#2509;ব&#2503; থ&#2494;কব&#2503; */
+    }
+
+    /* ছ&#2507;ট স&#2509;ক&#2509;র&#2495;ন&#2503; ফন&#2509;ট এব&#2434; ইনপ&#2497;ট অ&#2509;য&#2494;ডজ&#2494;স&#2509;টম&#2503;ন&#2509;ট */
+    .toolbar-row select, 
+    .toolbar-row button, 
+    .counter-box {
+        font-size: 11px !important;
+        padding: 7px 5px !important;
+        height: 35px !important;
+    }
+    
+    .counter-box input {
+        width: 25px !important;
+        font-size: 12px !important;
+    }
+
+    /* অ&#2509;য&#2494;কশন ব&#2494;টনগ&#2497;ল&#2507; অ&#2509;য&#2494;প&#2503;র মত ন&#2495;চ&#2503; একট&#2494;র পর একট&#2494; থ&#2494;কব&#2503; */
+    .actions {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 10px;
+        margin-top: 15px;
+        padding: 0 10px;
+    }
+    
+    .actions button {
+        width: 100%;
+        padding: 14px !important;
+        font-size: 15px !important;
+        border-radius: 12px !important;
+    }
+
+    /* ইনস&#2509;ট&#2509;র&#2494;কশন বক&#2509;স ম&#2507;ব&#2494;ইল&#2503; ক&#2509;ল&#2495;ন র&#2495;ড&#2494;ব&#2495;ল&#2495;ট&#2495; */
+    .print-instruction-box { 
+        padding: 12px; 
+        margin: 20px 10px; 
+        border-radius: 12px;
+        font-size: 11px;
+    }
+}
+
+/* আইফ&#2507;ন&#2503;র মত&#2507; খ&#2497;ব ছ&#2507;ট স&#2509;ক&#2509;র&#2495;ন&#2503;র জন&#2509;য ব&#2495;শ&#2503;ষ ফ&#2495;ট (ম&#2509;য&#2494;ক&#2509;স ৩৯০প&#2495;এক&#2509;স) */
+@media (max-width: 390px) {
+    #grid-page-unit { 
+        transform: scale(0.36); /* আরও ছ&#2507;ট স&#2509;ক&#2509;র&#2495;ন&#2503;র জন&#2509;য ব&#2494;ড়ত&#2495; স&#2509;ক&#2503;ল&#2495;&#2434; */
+        margin-bottom: -180mm;
+    }
+}
+
+/* --- ৭. প&#2509;র&#2495;ন&#2509;ট স&#2503;ট&#2495;&#2434;স (এট&#2495; অর&#2495;জ&#2495;ন&#2494;ল স&#2494;ইজ বজ&#2494;য় র&#2494;খব&#2503;) --- */
+@media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: #fff !important; padding: 0 !important; margin: 0 !important; }
+    
+    /* প&#2509;র&#2495;ন&#2509;ট&#2503; স&#2509;ক&#2503;ল&#2495;&#2434; বন&#2509;ধ থ&#2494;কব&#2503; */
+    #grid-page-unit { 
+        transform: none !important; 
+        width: 210mm !important;
+        height: 297mm !important;
+        box-shadow: none !important; 
+        margin: 0 !important; 
+        padding: 5px !important; 
+        display: block !important;
+    }
+    
+    .grid-photo-item { border: 1px solid #000000 !important; }
+    .print-instruction-box, .sheet-pro-toolbar, .actions, .close-crop-modal { display: none !important; }
+}

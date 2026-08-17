@@ -1,0 +1,42 @@
+.visa-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 20px; }
+  .visa-controls { background: #f8fafc; padding: 15px; border-radius: 15px; border: 1px solid #e2e8f0; display: flex; flex-direction: column; gap: 12px; }
+  .visa-cropper-area { background: #e2e8f0; border-radius: 15px; min-height: 400px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; border: 2px dashed #94a3b8; }
+  .visa-cropper-area img { max-width: 100%; max-height: 500px; display: block; }
+  
+  .visa-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+  .visa-btn { padding: 12px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; transition: 0.3s; color: #fff; font-size: 14px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .visa-btn:disabled { background: #cbd5e1 !important; cursor: not-allowed; opacity: 0.7; }
+  .visa-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+  
+  #visa-result-preview { max-width: 100%; max-height: 350px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); border: 2px solid #fff; border-radius: 5px; display: none; }
+
+  /* Searchable Dropdown CSS */
+  .custom-search-dropdown { position: relative; width: 100%; font-family: &quot;Inter&quot;, sans-serif; }
+  .dropdown-selected { background: var(--tool-card-bg, #fff); border: 1px solid #cbd5e1; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 14px; color: #1e293b; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .dropdown-menu { display: none; position: absolute; top: 100%; left: 0; width: 100%; background: var(--tool-card-bg, #fff); border: 1px solid #cbd5e1; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); z-index: 1000; margin-top: 5px; overflow: hidden; }
+  .dropdown-menu.show { display: block; }
+  .dropdown-search { padding: 10px; border-bottom: 1px solid #e2e8f0; background: #f8fafc; }
+  .dropdown-search input { width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 6px; outline: none; font-size: 14px; }
+  .dropdown-list { max-height: 250px; overflow-y: auto; list-style: none; padding: 0; margin: 0; }
+  .dropdown-list li { padding: 10px 15px; font-size: 14px; color: var(--tool-text, #0f172a); cursor: pointer; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; }
+  .dropdown-list li:hover { background: #e0f2fe; color: #0284c7; font-weight: 700; }
+  .dropdown-list li span { font-size: 12px; color: #64748b; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+
+  /* --- NEW: Custom Copies UI CSS --- */
+  .visa-copies-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.7); z-index: 2000; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(4px); border-radius: 20px; }
+  .visa-copies-box { background: var(--tool-card-bg, #fff); border-radius: 16px; padding: 25px; width: 90%; max-width: 320px; text-align: center; box-shadow: 0 15px 30px rgba(0,0,0,0.2); border: 2px solid #0284c7; font-family: &quot;Inter&quot;, &quot;SolaimanLipi&quot;, sans-serif; animation: popInVisa 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+  @keyframes popInVisa { 0% { transform: scale(0.8); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+  .visa-copies-box h3 { color: #0284c7; margin: 0 0 8px; font-weight: 800; font-size: 20px; }
+  .visa-copies-box p { color: #64748b; font-size: 13px; margin: 0 0 20px; font-weight: 600; }
+  .copies-input-wrap { display: flex; align-items: center; justify-content: center; gap: 15px; margin-bottom: 25px; }
+  .copies-input-wrap button { background: #f1f5f9; border: 1px solid #cbd5e1; width: 45px; height: 45px; border-radius: 50%; font-size: 22px; font-weight: bold; color: var(--tool-text, #0f172a); cursor: pointer; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+  .copies-input-wrap button:hover { background: #e0f2fe; color: #0284c7; border-color: #0284c7; }
+  .copies-input-wrap input { width: 80px; height: 45px; text-align: center; font-size: 22px; font-weight: 800; border: 2px solid #0284c7; border-radius: 10px; outline: none; color: var(--tool-text, #0f172a); background: #f0f9ff; }
+  .copies-action { display: flex; gap: 10px; }
+  .copies-action button { flex: 1; padding: 12px; border: none; border-radius: 10px; font-weight: 800; cursor: pointer; transition: 0.2s; font-size: 14px; }
+  .btn-v-cancel { background: #f1f5f9; color: #64748b; }
+  .btn-v-cancel:hover { background: #e2e8f0; color: #ef4444; }
+  .btn-v-confirm { background: #059669; color: #fff; }
+  .btn-v-confirm:hover { background: #047857; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(5,150,105,0.3); }
+
+  @media (max-width: 768px) { .visa-grid { grid-template-columns: 1fr; } .visa-cropper-area { min-height: 300px; } }

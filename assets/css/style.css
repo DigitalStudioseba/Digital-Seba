@@ -1,0 +1,167 @@
+/* ============================================
+   DIGITAL SEBA (ডিজিটাল সেবা প্ল্যাটফর্ম) - Core Design System
+   Phase 0: Theme Configuration & Branding
+   ============================================ */
+
+/* --------------------------------------------
+   1. CSS Variables & Theming
+   -------------------------------------------- */
+:root {
+  /* Primary Theme Colors */
+  --primary-blue: #2563EB; /* Modern Trust Blue */
+  --primary-blue-hover: #1D4ED8;
+  --primary-blue-light: #3B82F6;
+
+  /* Slate Gray Palette */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+
+  /* Surfaces & Backgrounds (Default: Light Mode) */
+  --bg-body: var(--slate-50);
+  --bg-surface: #FFFFFF;
+  --bg-surface-hover: var(--slate-50);
+  --border-color: var(--slate-200);
+
+  /* Typography Colors */
+  --text-primary: var(--slate-900);
+  --text-secondary: var(--slate-600);
+  --text-muted: var(--slate-400);
+
+  /* Typography Setup */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-bengali: 'SolaimanLipi', 'Noto Sans Bengali', sans-serif;
+  
+  /* Utilities */
+  --theme-transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg-body: var(--slate-900);
+  --bg-surface: var(--slate-800);
+  --bg-surface-hover: var(--slate-700);
+  --border-color: var(--slate-700);
+
+  --text-primary: var(--slate-50);
+  --text-secondary: var(--slate-300);
+  --text-muted: var(--slate-500);
+  
+  --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.5), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+}
+
+/* --------------------------------------------
+   2. Resets & Base Typography
+   -------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-body);
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Bengali Typography Utility */
+.font-bn {
+  font-family: var(--font-bengali);
+}
+
+/* --------------------------------------------
+   3. Branding Elements & Logo
+   -------------------------------------------- */
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: var(--theme-transition);
+}
+
+.brand-logo:hover {
+  opacity: 0.9;
+}
+
+/* Lightning / Digital Motif Icon */
+.brand-icon-lightning {
+  color: var(--primary-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+}
+
+.brand-icon-lightning svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  filter: drop-shadow(0 0 8px rgba(37, 99, 235, 0.4));
+}
+
+/* --------------------------------------------
+   4. Modular Architecture (Phase Imports)
+   -------------------------------------------- */
+/* 
+  Digital Seba Individual Pages (Upcoming phases):
+  @import url('pages/home.css');
+  @import url('pages/services.css');
+  @import url('pages/tools.css');
+  @import url('pages/resources.css');
+  @import url('pages/live-tv.css');
+  @import url('pages/focus-mode.css');
+  @import url('pages/about.css');
+*/
+
+/* --------------------------------------------
+   5. Back to Top Button
+   -------------------------------------------- */
+#backToTop {
+  position: fixed !important;
+  bottom: 90px !important; /* Above WhatsApp icon */
+  right: 24px !important;
+  width: 48px !important;
+  height: 48px !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 50% !important;
+  background: var(--bg-surface) !important;
+  color: var(--primary-blue) !important;
+  font-size: 20px !important;
+  cursor: pointer !important;
+  z-index: 9999 !important;
+  box-shadow: var(--shadow-md) !important;
+  transition: var(--theme-transition) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  text-align: center !important;
+  line-height: 46px !important;
+}
+#backToTop:hover {
+  transform: translateY(-5px) !important;
+  background: var(--primary-blue) !important;
+  color: #fff !important;
+  box-shadow: var(--shadow-card) !important;
+}

@@ -1,0 +1,187 @@
+================================================================================
+DIGITAL SEBA - EXAMPLE DATA FORMAT
+================================================================================
+
+This file shows the exact format expected for your Google Drive links.
+Copy this template and replace with your actual data.
+
+================================================================================
+BASIC FORMAT
+================================================================================
+
+## Folder Name / বাংলা নাম
+File Name 1 https://drive.google.com/file/d/FILE_ID/view
+File Name 2 https://drive.google.com/file/d/FILE_ID/view
+
+## Another Folder
+File Name 3 https://drive.google.com/file/d/FILE_ID/view
+
+================================================================================
+COMPLETE EXAMPLE WITH REAL STRUCTURE
+================================================================================
+
+## Academic Reference Books / একাডেমিক রেফারেন্স বই
+Economics Introduction PDF https://drive.google.com/file/d/1ABC123XYZ/view
+Bengali Grammar Guide https://drive.google.com/file/d/1DEF456UVW/view
+English Grammar Book https://drive.google.com/file/d/1GHI789RST/view
+Mathematics Fundamentals https://drive.google.com/file/d/1JKL012MNO/view
+Physics Reference Manual https://drive.google.com/file/d/1PQR345STU/view
+
+## Training Materials / প্রশিক্ষণ উপকরণ
+Digital Marketing Video Course https://drive.google.com/file/d/1VWX678YZA/view
+Graphic Design Tutorial Series https://drive.google.com/file/d/1BCD901EFG/view
+Web Development Complete Guide https://docs.google.com/document/d/1HIJ234KLM/edit
+Python Programming Basics https://drive.google.com/file/d/1NOP567QRS/view
+Data Analysis Workshop Materials https://docs.google.com/presentation/d/1TUV890WXY/edit
+
+## Forms and Templates / ফরম এবং টেমপ্লেট
+Job Application Form https://docs.google.com/document/d/1ZAB123CDE/edit
+Employee Registration Sheet https://docs.google.com/spreadsheets/d/1FGH456IJK/edit
+Event Planning Checklist https://drive.google.com/file/d/1LMN789OPQ/view
+Invoice Template https://docs.google.com/spreadsheets/d/1RST012UVW/edit
+Meeting Minutes Template https://docs.google.com/document/d/1XYZ345ABC/edit
+
+## Reference Materials / রেফারেন্স ম্যাটেরিয়াল
+Complete API Documentation https://docs.google.com/document/d/1DEF678GHI/edit
+Quick Reference Guide https://drive.google.com/file/d/1JKL901MNO/view
+Best Practices Manual https://drive.google.com/file/d/1PQR234STU/view
+Troubleshooting Guide https://docs.google.com/document/d/1VWX567YZA/edit
+FAQ Document https://drive.google.com/file/d/1BCD890EFG/view
+
+## Certification Materials / সার্টিফিকেশন উপকরণ
+Certificate Template Design https://docs.google.com/presentation/d/1HIJ123KLM/edit
+Training Completion Certificate https://drive.google.com/file/d/1NOP456QRS/view
+Achievement Award Template https://docs.google.com/document/d/1TUV789WXY/edit
+Participation Certificate https://drive.google.com/file/d/1ZAB012CDE/view
+
+## Project Documentation / প্রকল্প ডকুমেন্টেশন
+Project Proposal Template https://docs.google.com/document/d/1FGH345IJK/edit
+Progress Report Format https://docs.google.com/spreadsheets/d/1LMN678OPQ/edit
+Final Report Guidelines https://drive.google.com/file/d/1RST901UVW/view
+Project Charter Template https://docs.google.com/document/d/1XYZ234ABC/edit
+
+## Multimedia Resources / মাল্টিমিডিয়া রিসোর্স
+Tutorial Video - Introduction https://drive.google.com/file/d/1DEF567GHI/view
+Presentation Slides PDF https://drive.google.com/file/d/1JKL890MNO/view
+Infographic Collection https://drive.google.com/file/d/1PQR123STU/view
+Audio Lectures Series https://drive.google.com/file/d/1VWX456YZA/view
+
+## Legal and Compliance / আইনি এবং সম্মতি
+Terms and Conditions Document https://docs.google.com/document/d/1BCD789EFG/edit
+Privacy Policy Template https://docs.google.com/document/d/1HIJ012KLM/edit
+Consent Form https://drive.google.com/file/d/1NOP345QRS/view
+Compliance Checklist https://docs.google.com/spreadsheets/d/1TUV678WXY/edit
+
+## Research Papers / গবেষণা পত্র
+Market Research Analysis 2024 https://drive.google.com/file/d/1ZAB901CDE/view
+Consumer Behavior Study https://docs.google.com/document/d/1FGH234IJK/edit
+Industry Trends Report https://drive.google.com/file/d/1LMN567OPQ/view
+Competitive Analysis https://docs.google.com/spreadsheets/d/1RST890UVW/edit
+
+## Workshop Materials / কর্মশালা সামগ্রী
+Leadership Workshop Guide https://drive.google.com/file/d/1XYZ123ABC/view
+Communication Skills Training https://docs.google.com/presentation/d/1DEF456GHI/edit
+Time Management Workshop https://drive.google.com/file/d/1JKL789MNO/view
+Team Building Activities https://docs.google.com/document/d/1PQR012STU/edit
+
+================================================================================
+IMPORTANT RULES
+================================================================================
+
+1. Each folder starts with ## followed by the folder name
+2. Bilingual names use format: English Name / বাংলা নাম
+3. Each file on its own line: File Name URL
+4. No empty lines between files in same folder
+5. One empty line between folders
+6. URLs must be valid Google Drive links
+7. File names should be descriptive
+8. No special characters in file names (except spaces and dashes)
+
+================================================================================
+SUPPORTED URL TYPES
+================================================================================
+
+✅ Google Drive Files:
+https://drive.google.com/file/d/FILE_ID/view
+https://drive.google.com/file/d/FILE_ID/view?usp=sharing
+
+✅ Google Docs:
+https://docs.google.com/document/d/DOC_ID/edit
+
+✅ Google Sheets:
+https://docs.google.com/spreadsheets/d/SHEET_ID/edit
+
+✅ Google Slides:
+https://docs.google.com/presentation/d/SLIDES_ID/edit
+
+✅ Google Drive Folders (will be listed as single item):
+https://drive.google.com/folders/FOLDER_ID
+
+❌ NOT Supported:
+- Non-Google Drive URLs
+- Shortened URLs (bit.ly, etc.)
+- Private/restricted links (make public or anyone with link)
+
+================================================================================
+FILE TYPE DETECTION
+================================================================================
+
+The system automatically detects file types from:
+- File extension in name (.pdf, .doc, .zip, etc.)
+- Google Drive URL patterns
+- Document type (Docs, Sheets, Slides)
+
+Common types:
+PDF, DOC, DOCX, SHEET, SLIDES, VIDEO, IMAGE, ZIP, FILE
+
+================================================================================
+TESTING YOUR DATA
+================================================================================
+
+1. Copy your formatted data
+2. Visit /admin in your browser
+3. Paste into the text area
+4. Click "Auto Convert Format" if needed
+5. Click "Parse & Validate"
+6. Check results:
+   - ✅ No duplicates
+   - ✅ No invalid URLs
+   - ✅ All folders listed
+   - ✅ File counts correct
+7. Click "Copy Code"
+8. Paste into src/data/resources-data.ts
+9. Save and refresh /resources
+
+================================================================================
+TIPS FOR SUCCESS
+================================================================================
+
+✓ Make all Google Drive files "Anyone with link can view"
+✓ Use descriptive file names (not "Document1", "File2")
+✓ Group related content in folders
+✓ Keep folder names short but meaningful
+✓ Add Bengali translations for local users
+✓ Test each link before adding
+✓ Remove any duplicate URLs
+✓ Use consistent naming conventions
+
+================================================================================
+COMMON MISTAKES TO AVOID
+================================================================================
+
+✗ Forgetting ## before folder names
+✗ Using special characters like | or " in names
+✗ Adding extra spaces before/after URLs
+✗ Using private/restricted Google Drive links
+✗ Mixing different formats in one file
+✗ Forgetting to add file names before URLs
+✗ Using shortened URLs instead of full Drive links
+
+================================================================================
+
+After formatting your data correctly, you'll have a fully functional,
+searchable, and filterable resources portal in minutes!
+
+Good luck! 🚀
+
+================================================================================

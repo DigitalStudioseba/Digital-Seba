@@ -1,0 +1,23 @@
+.tele-preset-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px; }
+.preset-card { background: var(--tool-card-bg, #fff); border: 2px solid #e2e8f0; border-radius: 16px; padding: 15px; display: flex; align-items: center; gap: 12px; cursor: pointer; position: relative; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+.preset-card:hover { border-color: #059669; background: #f0fdf4; transform: translateY(-3px); }
+.preset-card.active { border-color: #059669; background: #f0fdf4; box-shadow: 0 10px 15px -3px rgba(5, 150, 105, 0.1); }
+.preset-icon { width: 45px; height: 45px; background: #f1f5f9; color: #059669; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.preset-card.active .preset-icon { background: #059669; color: #ffffff; }
+.preset-info { text-align: left; }
+.preset-info strong { display: block; font-size: 15px; color: #1e293b; font-weight: 800; }
+.preset-info span { font-size: 12px; color: #64748b; font-weight: 600; }
+.active-badge { position: absolute; top: -8px; right: -8px; background: var(--tool-card-bg, #fff); color: #059669; font-size: 18px; border-radius: 50%; display: none; line-height: 1; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.preset-card.active .active-badge { display: block; animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes popIn { from { transform: scale(0); } to { transform: scale(1); } }
+
+/* Cropper Result Layout */
+.cropper-container-wrapper { width: 100%; max-height: 450px; background: #f8fafc; border-radius: 15px; overflow: hidden; margin-bottom: 20px; border: 1px solid #e2e8f0; }
+#tele-crop-image { max-width: 100%; display: block; } /* এট&#2495; জর&#2497;র&#2495; */
+
+.tele-result-card { background: #f0fdf4; border: 1px solid #bdfbd7; border-radius: 20px; padding: 20px; text-align: center; margin-top: 20px; display: flex; flex-direction: column; align-items: center; gap: 15px; }
+.result-img-box { background: var(--tool-card-bg, #fff); border: 1px solid #ddd; padding: 5px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+
+@media (max-width: 600px) {
+    .tele-preset-row { grid-template-columns: 1fr; }
+}

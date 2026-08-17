@@ -1,0 +1,249 @@
+/* ==========================================================================
+   FAMILY CARD FORM MODAL STYLES (familycard1.css)
+   Original Homepage Design System - Functionality & Dark Mode Bug Fixes Only
+   ========================================================================== */
+
+.fc-modal-content {
+    max-width: 1200px !important;
+    width: 98% !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.fc-main-box {
+    border: 1px solid #7c3aed;
+    border-radius: 20px;
+    padding: 20px;
+    background: var(--tool-card-bg, #fff);
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    font-family: "SolaimanLipi", sans-serif !important;
+}
+
+.fc-grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 20px;
+    flex: 1;
+}
+
+/* Left Input Panel */
+.fc-input-side {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+}
+
+.fc-input-card {
+    background: #f8fafc;
+    padding: 18px;
+    border-radius: 12px;
+    border: 1px solid #e7d9ff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.fc-section-title {
+    margin: 0 0 15px;
+    font-weight: 800;
+    font-size: 16px;
+    color: #7c3aed;
+    border-bottom: 2px solid #e0f2fe;
+    padding-bottom: 8px;
+}
+
+.fc-field-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.fc-label {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--tool-text, #0f172a);
+    display: block;
+    margin-bottom: 6px;
+}
+
+.fc-input, .fc-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #7c3aed;
+    font-family: "SolaimanLipi", sans-serif !important;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+    box-sizing: border-box;
+    background: var(--tool-card-bg, #fff);
+    color: var(--tool-text, #0f172a);
+}
+
+.fc-input:focus, .fc-select:focus {
+    border-color: #0ea5e9;
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+}
+
+/* Right Column Structure */
+.fc-right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    height: 100%;
+}
+
+/* Right Preview Panel */
+.fc-preview-side {
+    background: #475569;
+    border-radius: 15px;
+    padding: 20px;
+    border: 4px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* A4 Paper strictly defined with proper margin mapping */
+.fc-a4-paper {
+    background: white !important;
+    width: 210mm;
+    height: 295mm; 
+    padding: 20mm; 
+    box-sizing: border-box;
+    color: #000 !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    font-family: "SolaimanLipi", sans-serif !important;
+    flex-shrink: 0; 
+    position: relative;
+    transform-origin: top center;
+    display: flex;
+    flex-direction: column;
+
+    /* Desktop Scale */
+    transform: scale(0.7);
+    margin-bottom: -88.5mm; /* 295 * (0.7 - 1) */
+    margin-left: -31.5mm;   /* 210 * (0.7 - 1) / 2 */
+    margin-right: -31.5mm;  /* 210 * (0.7 - 1) / 2 */
+}
+
+/* FUNCTIONAL BUG FIX: Force A4 preview text to black in dark mode */
+#fc-pdf-container,
+#fc-pdf-container *,
+[data-theme='dark'] #fc-pdf-container,
+[data-theme='dark'] #fc-pdf-container * {
+    color: #000000 !important;
+    background-color: transparent;
+}
+#fc-pdf-container {
+    background-color: #ffffff !important;
+}
+
+.fc-btn-action {
+    background: #0ea5e9;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 800;
+    font-size: 16px;
+    width: 100%;
+    font-family: "SolaimanLipi", sans-serif !important;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.fc-btn-action:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.2); transform: translateY(-2px); }
+
+/* FUNCTIONAL BUG FIX: Preserve action button colors in dark mode */
+[data-theme='dark'] #familyCardModal #btn-fc-download,
+body.dark-mode #familyCardModal #btn-fc-download {
+    background: #059669 !important;
+    color: #ffffff !important;
+}
+
+[data-theme='dark'] #familyCardModal .fc-btn-reset,
+[data-theme='dark'] #familyCardModal button[onclick*="resetFamilyCard"],
+body.dark-mode #familyCardModal .fc-btn-reset,
+body.dark-mode #familyCardModal button[onclick*="resetFamilyCard"] {
+    background: #ef4444 !important;
+    color: #ffffff !important;
+}
+
+/* FUNCTIONAL BUG FIX: High contrast dark mode for inputs & labels */
+[data-theme='dark'] .fc-main-box,
+body.dark-mode .fc-main-box {
+    background: #1e293b !important;
+    border-color: #7c3aed !important;
+    color: #f8fafc !important;
+}
+
+[data-theme='dark'] .fc-input-card,
+body.dark-mode .fc-input-card {
+    background: #0f172a !important;
+    border-color: var(--tool-text, #0f172a) !important;
+}
+
+[data-theme='dark'] .fc-label,
+body.dark-mode .fc-label {
+    color: #cbd5e1 !important;
+}
+
+[data-theme='dark'] .fc-input,
+[data-theme='dark'] .fc-select,
+body.dark-mode .fc-input,
+body.dark-mode .fc-select {
+    background: #0f172a !important;
+    color: #f8fafc !important;
+    border-color: #7c3aed !important;
+}
+
+[data-theme='dark'] .fc-input::placeholder,
+body.dark-mode .fc-input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Responsive Mobile View Calculations (Original Unaltered) */
+@media (max-width: 1024px) {
+    .fc-grid-layout { grid-template-columns: 1fr; }
+    .fc-input-side { padding-right: 0; }
+    .fc-main-box { padding: 2px;}
+    
+    .fc-a4-paper {
+        transform: scale(0.6);
+        margin-bottom: -118mm;
+        margin-left: -42mm;
+        margin-right: -42mm;
+    }
+}
+
+@media (max-width: 768px) {
+    .fc-field-grid { grid-template-columns: 1fr; gap: 10px; }
+    .fc-preview-side { padding: 10px; }
+    .fc-main-box { padding: 2px;}
+    
+    .fc-a4-paper {
+        transform: scale(0.45);
+        margin-bottom: -162.25mm;
+        margin-left: -57.75mm;
+        margin-right: -57.75mm;
+    }
+    .fc-btn-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 450px) {
+    .fc-main-box { padding: 2px;}
+      
+    .fc-a4-paper {
+        transform: scale(0.35);
+        margin-bottom: -191.75mm;
+        margin-left: -68.25mm;
+        margin-right: -68.25mm;
+    }
+}

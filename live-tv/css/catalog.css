@@ -1,0 +1,391 @@
+/* ==========================================
+   catalog.css — Channel catalog rows, cards, watch-more lists, footer, and offline states
+   ========================================== */
+
+/* ── Browse Rows & Grid ── */
+.catalog-view {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 40px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.catalog-view.hidden {
+    display: none;
+}
+
+.home-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-title {
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+}
+
+.section-icon {
+    margin-right: 8px;
+}
+
+.carousel-track {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 20px;
+    padding: 8px 0;
+}
+
+/* ── Initial Home Skeleton ── */
+.home-skeleton {
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+    pointer-events: none;
+}
+
+.skeleton-section {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.skeleton-title,
+.skeleton-card::before,
+.skeleton-card::after {
+    display: block;
+    border-radius: 8px;
+    background:
+        linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.075), transparent),
+        rgba(255, 255, 255, 0.075);
+    background-size: 220% 100%;
+    animation: skeletonShimmer 1.35s ease-in-out infinite;
+}
+
+.skeleton-title {
+    width: clamp(128px, 18vw, 220px);
+    height: clamp(20px, 2.2vw, 28px);
+}
+
+.skeleton-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: clamp(170px, 18vw, 250px);
+    grid-template-columns: none;
+    gap: 16px;
+    overflow: hidden;
+    margin: -12px -16px -8px;
+    padding: 18px 16px 28px;
+}
+
+.skeleton-card {
+    min-width: 0;
+}
+
+.skeleton-card::before {
+    content: "";
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-lg);
+}
+
+.skeleton-card::after {
+    content: "";
+    width: 72%;
+    height: 14px;
+    margin-top: 12px;
+    opacity: 0.78;
+}
+
+.skeleton-card--wide {
+    width: 100%;
+}
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 120% 0;
+    }
+
+    100% {
+        background-position: -120% 0;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .skeleton-title,
+    .skeleton-card::before,
+    .skeleton-card::after {
+        animation: none;
+    }
+}
+
+@media (min-width: 769px) {
+    .live-carousel-track {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 24px;
+    }
+}
+
+.home-ch-card,
+.channel-card {
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.25s var(--ease);
+}
+
+.home-ch-card:hover,
+.channel-card:hover {
+    transform: translateY(-4px);
+}
+
+.channel-card-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: var(--surface2);
+    transition: box-shadow var(--transition-fast);
+}
+
+.home-ch-card:hover .channel-card-thumb {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.channel-card-live {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.home-ch-name,
+.channel-card-title {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.channel-card-meta {
+    margin-top: 4px;
+    font-size: 0.75rem;
+    color: var(--text3);
+}
+
+/* ── Watch More (Mobile Stack UI) ── */
+.watch-more {
+    display: none;
+}
+
+.wm-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 16px 12px;
+    border-top: 1px solid var(--border);
+}
+
+.wm-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text2);
+}
+
+.wm-toggle-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text2);
+    padding: 4px 10px;
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.wm-toggle-btn:hover {
+    background: var(--surface2);
+    color: var(--text1);
+}
+
+.wm-category {
+    margin-bottom: 16px;
+}
+
+.wm-cat-title {
+    padding: 0 16px;
+    font-size: 1.05rem;
+    margin-bottom: 12px;
+}
+
+.wm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+    padding: 0 16px 20px;
+}
+
+.wm-thumb {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    position: relative;
+    background: var(--surface2);
+    transition: transform var(--transition-fast);
+}
+
+.wm-card {
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+}
+
+.wm-card:hover {
+    transform: translateY(-2px);
+}
+
+.wm-name {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.wm-meta {
+    font-size: 0.7rem;
+    color: var(--text3);
+    margin-top: 2px;
+}
+
+/* ── Offline Tracker Visual Styling ── */
+body.hide-offline-active .ch-item.is-offline,
+body.hide-offline-active .home-ch-card.is-offline,
+body.hide-offline-active .wm-card.is-offline {
+    display: none !important;
+}
+
+body:not(.hide-offline-active) .ch-item.is-offline,
+body:not(.hide-offline-active) .home-ch-card.is-offline,
+body:not(.hide-offline-active) .wm-card.is-offline {
+    opacity: 0.45;
+    filter: grayscale(0.85);
+    transition: all var(--transition-fast);
+}
+
+/* Hide live badges & dot indicators for offline channels when visible */
+body:not(.hide-offline-active) .ch-item.is-offline .ch-live-dot,
+body:not(.hide-offline-active) .home-ch-card.is-offline .home-live-badge,
+body:not(.hide-offline-active) .wm-card.is-offline .home-live-badge {
+    display: none !important;
+}
+
+/* ── Responsive / Mobile Media Queries ── */
+@media (max-width: 768px) {
+    .catalog-view {
+        padding: 16px 14px 40px;
+        gap: 24px;
+    }
+
+    .home-skeleton {
+        gap: 24px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+        margin-bottom: 6px;
+    }
+
+    .carousel-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: initial;
+        gap: 12px;
+        padding: 6px 0 14px;
+        overflow-x: visible;
+        scroll-snap-type: none;
+    }
+
+    .skeleton-track {
+        grid-auto-flow: row;
+        grid-auto-columns: initial;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0;
+        padding: 6px 0 14px;
+    }
+
+    .skeleton-feature-row .skeleton-track {
+        grid-template-columns: 1fr;
+    }
+
+    .skeleton-feature-row .skeleton-card:nth-child(n + 2) {
+        display: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .carousel-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-auto-flow: row;
+        grid-auto-columns: initial;
+        gap: 12px;
+        padding: 6px 0 14px;
+    }
+
+    .ch-logo-box--tile {
+        padding: 4px 6px;
+    }
+
+    .ch-logo-box--tile .ch-logo-fallback {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-view {
+        padding: 12px 10px 40px;
+        gap: 18px;
+    }
+
+    .home-skeleton {
+        gap: 18px;
+    }
+
+    .section-title {
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+    }
+
+    .home-ch-name,
+    .channel-card-title {
+        font-size: 0.78rem;
+        margin-top: 8px;
+    }
+
+    .channel-card-meta {
+        font-size: 0.68rem;
+        margin-top: 2px;
+    }
+}

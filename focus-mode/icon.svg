@@ -1,0 +1,52 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180" rx="40" fill="#09090b" />
+  
+  <defs>
+    <linearGradient id="ashRingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="50%" stop-color="#ec4899" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Outer Focus Ring -->
+  <circle
+    cx="90"
+    cy="90"
+    r="72"
+    stroke="url(#ashRingGrad)"
+    stroke-width="7"
+    stroke-linecap="round"
+    stroke-dasharray="360 80"
+    filter="url(#glow)"
+  />
+
+  <!-- Minimalist Geometric 'A' Monogram -->
+  <g filter="url(#glow)">
+    <path
+      d="M 90 40 L 50 135"
+      stroke="#ffffff"
+      stroke-width="11"
+      stroke-linecap="round"
+    />
+    <path
+      d="M 90 40 L 130 135"
+      stroke="#ffffff"
+      stroke-width="11"
+      stroke-linecap="round"
+    />
+    <path
+      d="M 66 100 L 114 100"
+      stroke="#f59e0b"
+      stroke-width="9"
+      stroke-linecap="round"
+    />
+  </g>
+
+  <!-- Apex Gem -->
+  <circle cx="90" cy="40" r="6" fill="#f59e0b" />
+</svg>

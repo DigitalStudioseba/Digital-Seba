@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+
+Host: https://digiseba.shop
+Sitemap: https://digiseba.shop/sitemap.xml

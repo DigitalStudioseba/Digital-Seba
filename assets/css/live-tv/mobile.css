@@ -1,0 +1,17 @@
+/* mobile.css - Digital Seba Identity */
+@media (max-width: 992px) {
+  .iptv-layout { grid-template-columns: 1fr; }
+  .iptv-sidebar { position: static; max-height: none; padding: 16px; }
+  .sidebar-title { display: none; }
+  .iptv-categories { flex-direction: row; overflow-x: auto; overflow-y: hidden; padding-bottom: 8px; -webkit-overflow-scrolling: touch; touch-action: pan-x; }
+  .cat-tab { flex: 0 0 auto; padding: 8px 16px; border-radius: 20px; border: 1px solid var(--border); background: var(--bg-secondary); }
+}
+@media (max-width: 576px) {
+  .iptv-channel-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .iptv-channel-info { padding: 16px; gap: 12px; }
+  .info-logo-wrapper { flex: 0 0 60px; height: 60px; }
+  #info-name { font-size: 18px; }
+  .channel-card { padding: 16px 8px; }
+  .channel-card img { width: 60px; height: 60px; }
+  .channel-card-name { font-size: 13px; }
+}

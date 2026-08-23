@@ -269,6 +269,42 @@
     </ul>
   </div>
 </nav>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('mobileMenuToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      var spans = btn.querySelectorAll('span');
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        if (!isExpanded) {
+          menu.style.transform = 'translateX(0)';
+          if (spans.length === 3) {
+            spans[0].style.transform = 'translateY(7px) rotate(45deg)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'translateY(-7px) rotate(-45deg)';
+          }
+          document.body.style.overflow = 'hidden';
+        } else {
+          menu.style.transform = 'translateX(100%)';
+          if (spans.length === 3) {
+            spans[0].style.transform = 'none';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'none';
+          }
+          document.body.style.overflow = '';
+        }
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          btn.click();
+        }
+      });
+    }
+  });
+</script>
 
 <!-- Main Content -->
 <main id="main-content" class="ds-votesondhan-page container" style="padding-top:100px; min-height: 80vh;">

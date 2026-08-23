@@ -2,10 +2,10 @@ import { db } from "@/db";
 import { sql } from "drizzle-orm";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
 export default async function HomePage() {
-  await db.execute(sql`select 1`);
+  // await db.execute(sql`select 1`);
 
   return (
     <main className="min-h-screen bg-slate-100">

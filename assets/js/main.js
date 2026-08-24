@@ -383,6 +383,7 @@ const App = (() => {
   // Initialize the application
   const init = () => {
     setupLazyImages();
+    registerSW();
     setupNetworkDetection();
     setupKeyboardShortcuts();
     setupVisibilityTracking();

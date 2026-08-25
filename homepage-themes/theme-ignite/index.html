@@ -1,0 +1,2122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Seba â€” à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ | Digital Services, Tools & Resources</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform. à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ - à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à¦¾à¦°à§à¦­à¦¿à¦¸, à¦Ÿà§à¦²à¦¸, à¦°à¦¿à¦¸à§‹à¦°à§à¦¸ à¦“ à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦à¦• à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡à¥¤">
+    <meta name="keywords" content="Digital Seba, à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾, Digital Services Bangladesh, Online Tools, Resources, Live TV, Voteshondhan, à¦­à§‹à¦Ÿ à¦¸à¦¨à§à¦§à¦¾à¦¨">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Digital Seba">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://digiseba.shop/">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Digital Seba â€” à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ | Digital Services, Tools & Resources">
+    <meta property="og:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+    <meta property="og:url" content="https://digiseba.shop/">
+    <meta property="og:site_name" content="Digital Seba">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Seba â€” à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾">
+    <meta name="twitter:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#050507">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <style>
+        /* CSS Variables */
+        :root {
+            --bg: #050507;
+            --surface: #0b0b10;
+            --surface-soft: #11111a;
+            --surface-lighter: #1a1a26;
+            --text: #ffffff;
+            --text-muted: #9b9ba8;
+            --accent: #7c5cff;
+            --accent-2: #27d9ff;
+            --accent-glow: rgba(124, 92, 255, 0.4);
+            --accent-2-glow: rgba(39, 217, 255, 0.4);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif, 'Noto Sans Bengali', 'Hind Siliguri';
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Bengali Font */
+        @import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+        .bengali {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 7, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 400px;
+            height: 100vh;
+            background: var(--surface);
+            z-index: 2000;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* Hero 3D Container */
+        .hero-3d-container {
+            perspective: 1500px;
+            transform-style: preserve-3d;
+        }
+
+        .hero-3d-scene {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            transform-style: preserve-3d;
+            transition: transform 0.3s ease;
+        }
+
+        /* Floating Cards */
+        .floating-card {
+            position: absolute;
+            background: linear-gradient(135deg, var(--surface-soft) 0%, var(--surface) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .floating-card:hover {
+            transform: translateZ(30px) scale(1.05);
+            box-shadow: 0 30px 80px rgba(124, 92, 255, 0.3);
+            border-color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateZ(0); }
+            50% { transform: translateY(-20px) translateZ(20px); }
+        }
+
+        @keyframes float-delayed {
+            0%, 100% { transform: translateY(0px) translateZ(0); }
+            50% { transform: translateY(-15px) translateZ(15px); }
+        }
+
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes draw-line {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 8s ease-in-out infinite;
+        }
+
+        /* Card Hover Effects */
+        .category-card {
+            background: var(--surface-soft);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 40px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--accent-glow), var(--accent-2-glow));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(124, 92, 255, 0.3);
+        }
+
+        .category-card:hover::before {
+            opacity: 0.1;
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px var(--accent-glow);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-secondary {
+            background: var(--surface-soft);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-lighter);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Glow Effects */
+        .glow-accent {
+            box-shadow: 0 0 40px var(--accent-glow);
+        }
+
+        .glow-accent-2 {
+            box-shadow: 0 0 40px var(--accent-2-glow);
+        }
+
+        /* Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: var(--accent);
+            top: -200px;
+            right: -100px;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: var(--accent-2);
+            bottom: -150px;
+            left: -100px;
+            animation: float-delayed 15s ease-in-out infinite;
+        }
+
+        /* Constellation */
+        .constellation-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+        }
+
+        .constellation-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--accent-glow);
+            animation: glow-pulse 3s ease-in-out infinite;
+        }
+
+        .constellation-center {
+            width: 24px;
+            height: 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+        }
+
+        /* Section Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Device Frame */
+        .device-stack {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .device-frame {
+            position: absolute;
+            background: var(--surface-soft);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+
+        .device-frame:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px var(--accent-glow);
+        }
+
+        /* Focus Timer */
+        .focus-timer {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .focus-circle {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .focus-circle-bg {
+            fill: none;
+            stroke: var(--surface-soft);
+            stroke-width: 8;
+        }
+
+        .focus-circle-progress {
+            fill: none;
+            stroke: url(#focusGradient);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-dasharray: 565;
+            stroke-dashoffset: 141;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        /* TV Frame */
+        .tv-frame {
+            position: relative;
+            background: var(--surface-soft);
+            border-radius: 24px;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .tv-screen {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a26, #0b0b10);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-3d-scene {
+                height: 400px;
+            }
+
+            .floating-card {
+                padding: 16px;
+                font-size: 0.875rem;
+            }
+
+            .constellation-container {
+                height: 300px;
+            }
+
+            .device-stack {
+                height: 300px;
+            }
+        }
+
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Focus States */
+        *:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--surface-lighter);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent);
+        }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="p-6 border-b border-white/10">
+            <div class="flex items-center justify-between mb-6">
+                <div>
+                    <h3 class="text-xl font-bold">Digital Seba</h3>
+                    <p class="text-sm text-gray-400 bengali">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</p>
+                </div>
+                <button id="closeMobileMenu" class="p-2 hover:bg-white/10 rounded-lg transition-colors">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 6l12 12M6 18L18 6"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="flex gap-2">
+                <button class="lang-switch flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors" data-lang="en">English</button>
+                <button class="lang-switch flex-1 px-4 py-2 rounded-lg text-sm font-medium bengali transition-colors" data-lang="bn">à¦¬à¦¾à¦‚à¦²à¦¾</button>
+            </div>
+        </div>
+        <nav class="p-6">
+            <a href="/services/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">Services</span>
+                <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+            </a>
+            <a href="/tools/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">Tools</span>
+                <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+            </a>
+            <a href="/resources/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">Resources</span>
+                <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+            </a>
+            <a href="/live-tv/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">Live TV</span>
+                <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+            </a>
+            <a href="/focus-mode/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">Focus Mode</span>
+                <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+            </a>
+            <a href="/about/" class="mobile-nav-link block py-3 text-lg hover:text-accent transition-colors">
+                <span class="en-text">About</span>
+                <span class="bn-text bengali hidden">à¦ªà¦°à¦¿à¦šà¦¿à¦¤à¦¿</span>
+            </a>
+        </nav>
+        <div class="p-6 border-t border-white/10">
+            <a href="/services/" class="btn-primary w-full justify-center">
+                <span class="en-text">Explore Digital Seba</span>
+                <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0">
+                    <a href="/" class="flex flex-col">
+                        <span class="text-xl font-bold">Digital Seba</span>
+                        <span class="text-xs text-gray-400 bengali">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="/services/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">Services</span>
+                        <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+                    </a>
+                    <a href="/tools/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">Tools</span>
+                        <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+                    </a>
+                    <a href="/resources/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">Resources</span>
+                        <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                    </a>
+                    <a href="/live-tv/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">Live TV</span>
+                        <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                    </a>
+                    <a href="/focus-mode/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">Focus Mode</span>
+                        <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+                    </a>
+                    <a href="/about/" class="text-sm hover:text-accent transition-colors">
+                        <span class="en-text">About</span>
+                        <span class="bn-text bengali hidden">à¦ªà¦°à¦¿à¦šà¦¿à¦¤à¦¿</span>
+                    </a>
+                </div>
+
+                <!-- Right Section -->
+                <div class="flex items-center gap-4">
+                    <!-- Date/Time -->
+                    <div class="hidden md:flex flex-col items-end text-xs">
+                        <div id="currentDate" class="text-gray-400"></div>
+                        <div id="currentTime" class="font-mono"></div>
+                    </div>
+
+                    <!-- Language Switcher (Desktop) -->
+                    <div class="hidden lg:flex items-center gap-1 bg-surface-soft rounded-lg p-1">
+                        <button class="lang-switch px-3 py-1.5 rounded text-xs font-medium transition-colors" data-lang="en">EN</button>
+                        <button class="lang-switch px-3 py-1.5 rounded text-xs font-medium bengali transition-colors" data-lang="bn">à¦¬à¦¾à¦‚à¦²à¦¾</button>
+                    </div>
+
+                    <!-- CTA Button (Desktop) -->
+                    <a href="/services/" class="hidden lg:block btn-primary text-sm">
+                        <span class="en-text">Explore</span>
+                        <span class="bn-text bengali hidden">à¦¦à§‡à¦–à§à¦¨</span>
+                    </a>
+
+                    <!-- Mobile Menu Button -->
+                    <button id="mobileMenuButton" class="lg:hidden p-2 hover:bg-white/10 rounded-lg transition-colors">
+                        <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+        <!-- Background Orbs -->
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Content -->
+                <div class="text-center lg:text-left">
+                    <!-- Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-surface-soft border border-white/10 rounded-full text-sm mb-6">
+                        <div class="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                        <span class="en-text">Digital Platform</span>
+                        <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                        <span class="en-text">
+                            Everything Digital.<br>
+                            <span class="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">One Place.</span>
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦¸à¦¬à¦•à¦¿à¦›à§ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦²à¥¤<br>
+                            <span class="bg-gradient-to-r from-accent to-accent-2 bg-clip-text text-transparent">à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼à¥¤</span>
+                        </span>
+                    </h1>
+
+                    <!-- Supporting Text -->
+                    <p class="text-lg sm:text-xl text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0">
+                        <span class="en-text">
+                            Digital services, smart tools, resources, Live TV and productivity utilities â€” all in one platform.
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾, à¦Ÿà§à¦²à¦¸, à¦°à¦¿à¦¸à§‹à¦°à§à¦¸, à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦“ à¦†à¦°à¦“ à¦…à¦¨à§‡à¦• à¦•à¦¿à¦›à§ à¦à¦• à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡à¥¤
+                        </span>
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="/services/" class="btn-primary text-base">
+                            <span class="en-text">Explore Digital Seba</span>
+                            <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </a>
+                        <a href="/services/" class="btn-secondary text-base">
+                            <span class="en-text">Browse Services</span>
+                            <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right 3D Scene -->
+                <div class="hero-3d-container">
+                    <div class="hero-3d-scene" id="hero3D">
+                        <!-- Center Card -->
+                        <div class="floating-card animate-float" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                            <div class="text-center">
+                                <div class="text-3xl font-bold mb-2">Digital Seba</div>
+                                <div class="text-sm text-gray-400 bengali">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</div>
+                            </div>
+                        </div>
+
+                        <!-- Services Card -->
+                        <div class="floating-card animate-float-delayed" style="top: 10%; left: 10%; width: 150px;">
+                            <div class="text-xs font-semibold text-accent mb-1">
+                                <span class="en-text">SERVICES</span>
+                                <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+                            </div>
+                            <div class="text-sm font-bold">Voteshondhan</div>
+                            <div class="text-xs text-gray-400 bengali">à¦­à§‹à¦Ÿ à¦¸à¦¨à§à¦§à¦¾à¦¨</div>
+                        </div>
+
+                        <!-- Tools Card -->
+                        <div class="floating-card animate-float" style="top: 20%; right: 5%; width: 140px;">
+                            <div class="text-xs font-semibold text-accent-2 mb-1">
+                                <span class="en-text">TOOLS</span>
+                                <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+                            </div>
+                            <div class="text-sm font-bold">
+                                <span class="en-text">Utilities</span>
+                                <span class="bn-text bengali hidden">à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿</span>
+                            </div>
+                        </div>
+
+                        <!-- Resources Card -->
+                        <div class="floating-card animate-float-delayed" style="bottom: 25%; left: 5%; width: 160px;">
+                            <div class="text-xs font-semibold text-accent mb-1">
+                                <span class="en-text">RESOURCES</span>
+                                <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                            </div>
+                            <div class="text-sm font-bold">
+                                <span class="en-text">Digital Library</span>
+                                <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿</span>
+                            </div>
+                        </div>
+
+                        <!-- Live TV Card -->
+                        <div class="floating-card animate-float" style="bottom: 10%; right: 15%; width: 130px;">
+                            <div class="text-xs font-semibold text-accent-2 mb-1">
+                                <span class="en-text">LIVE TV</span>
+                                <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                            </div>
+                            <div class="text-sm font-bold">
+                                <span class="en-text">Watch Live</span>
+                                <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦¦à§‡à¦–à§à¦¨</span>
+                            </div>
+                        </div>
+
+                        <!-- Focus Mode Card -->
+                        <div class="floating-card animate-float-delayed" style="top: 50%; right: 10%; width: 120px;">
+                            <div class="text-xs font-semibold text-accent mb-1">
+                                <span class="en-text">FOCUS</span>
+                                <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸</span>
+                            </div>
+                            <div class="text-2xl font-bold font-mono">25:00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One Platform Section -->
+    <section class="relative py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    <span class="en-text">One Platform.<br>Many Possibilities.</span>
+                    <span class="bn-text bengali hidden">à¦à¦• à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡<br>à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¸à¦¬à¦•à¦¿à¦›à§à¥¤</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <span class="en-text">Discover a complete digital ecosystem designed for everyday use.</span>
+                    <span class="bn-text bengali hidden">à¦¦à§ˆà¦¨à¦¨à§à¦¦à¦¿à¦¨ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°à§‡à¦° à¦œà¦¨à§à¦¯ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨ à¦•à¦°à¦¾ à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦‡à¦•à§‹à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®à¥¤</span>
+                </p>
+            </div>
+
+            <!-- Constellation -->
+            <div class="constellation-container reveal">
+                <svg class="absolute inset-0 w-full h-full" style="z-index: 0;">
+                    <defs>
+                        <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color: var(--accent); stop-opacity: 0.5" />
+                            <stop offset="100%" style="stop-color: var(--accent-2); stop-opacity: 0.5" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Lines connecting nodes -->
+                    <line x1="50%" y1="50%" x2="50%" y2="10%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5"/>
+                    <line x1="50%" y1="50%" x2="15%" y2="30%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5"/>
+                    <line x1="50%" y1="50%" x2="85%" y2="30%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5"/>
+                    <line x1="50%" y1="50%" x2="30%" y2="70%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5"/>
+                    <line x1="50%" y1="50%" x2="70%" y2="70%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5"/>
+                </svg>
+
+                <!-- Center Node -->
+                <div class="constellation-node constellation-center" style="top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span class="text-xs font-bold whitespace-nowrap">Digital Seba</span>
+                    </div>
+                </div>
+
+                <!-- Services Node -->
+                <div class="constellation-node" style="top: 10%; left: 50%; transform: translateX(-50%);">
+                    <div class="absolute top-full mt-2 left-1/2 transform -translate-x-1/2 text-xs whitespace-nowrap">
+                        <span class="en-text">Services</span>
+                        <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+                    </div>
+                </div>
+
+                <!-- Tools Node -->
+                <div class="constellation-node" style="top: 30%; left: 15%;">
+                    <div class="absolute top-full mt-2 text-xs whitespace-nowrap">
+                        <span class="en-text">Tools</span>
+                        <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+                    </div>
+                </div>
+
+                <!-- Resources Node -->
+                <div class="constellation-node" style="top: 30%; right: 15%;">
+                    <div class="absolute top-full mt-2 text-xs whitespace-nowrap">
+                        <span class="en-text">Resources</span>
+                        <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                    </div>
+                </div>
+
+                <!-- Live TV Node -->
+                <div class="constellation-node" style="bottom: 30%; left: 30%;">
+                    <div class="absolute top-full mt-2 text-xs whitespace-nowrap">
+                        <span class="en-text">Live TV</span>
+                        <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                    </div>
+                </div>
+
+                <!-- Focus Mode Node -->
+                <div class="constellation-node" style="bottom: 30%; right: 30%;">
+                    <div class="absolute top-full mt-2 text-xs whitespace-nowrap">
+                        <span class="en-text">Focus Mode</span>
+                        <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Cards Section -->
+    <section class="relative py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Services Card -->
+                <a href="/services/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent-2 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                <path d="M9 3v18M3 9h18M3 15h18"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">Digital Services</span>
+                            <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Access essential digital and public service utilities with ease.</span>
+                            <span class="bn-text bengali hidden">à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦“ à¦ªà¦¾à¦¬à¦²à¦¿à¦• à¦¸à¦¾à¦°à§à¦­à¦¿à¦¸ à¦¸à¦¹à¦œà§‡ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à§à¦¨à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Explore Services</span>
+                            <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Tools Card -->
+                <a href="/tools/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent-2 to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">Smart Tools</span>
+                            <span class="bn-text bengali hidden">à¦¸à§à¦®à¦¾à¦°à§à¦Ÿ à¦Ÿà§à¦²à¦¸</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Make your everyday digital tasks faster and easier.</span>
+                            <span class="bn-text bengali hidden">à¦¦à§ˆà¦¨à¦¨à§à¦¦à¦¿à¦¨ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦•à¦¾à¦œà¦•à§‡ à¦†à¦°à¦“ à¦¦à§à¦°à§à¦¤ à¦“ à¦¸à¦¹à¦œ à¦•à¦°à§à¦¨à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent-2 font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Explore Tools</span>
+                            <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸ à¦¦à§‡à¦–à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Resources Card -->
+                <a href="/resources/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent-2 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                                <path d="M13 2v7h7"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">Digital Resources</span>
+                            <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Software, documents, PDF, fonts and essential files in one place.</span>
+                            <span class="bn-text bengali hidden">à¦¸à¦«à¦Ÿà¦“à¦¯à¦¼à§à¦¯à¦¾à¦°, à¦¡à¦•à§à¦®à§‡à¦¨à§à¦Ÿ, PDF, à¦«à¦¨à§à¦Ÿ à¦“ à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦«à¦¾à¦‡à¦² à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Browse Resources</span>
+                            <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸ à¦¦à§‡à¦–à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Live TV Card -->
+                <a href="/live-tv/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent-2 to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <rect x="2" y="7" width="20" height="15" rx="2"/>
+                                <path d="M17 2l-5 5-5-5"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">Live TV</span>
+                            <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Watch various channels all in one place.</span>
+                            <span class="bn-text bengali hidden">à¦¬à¦¿à¦­à¦¿à¦¨à§à¦¨ à¦šà§à¦¯à¦¾à¦¨à§‡à¦² à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼ à¦¦à§‡à¦–à§à¦¨à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent-2 font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Watch Live</span>
+                            <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦¦à§‡à¦–à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Focus Mode Card -->
+                <a href="/focus-mode/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent to-accent-2 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">Focus Mode</span>
+                            <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Make the most of your time. Stay focused.</span>
+                            <span class="bn-text bengali hidden">à¦¸à¦®à¦¯à¦¼à¦•à§‡ à¦•à¦¾à¦œà§‡ à¦²à¦¾à¦—à¦¾à¦¨à¥¤ à¦®à¦¨à§‹à¦¯à§‹à¦— à¦§à¦°à§‡ à¦°à¦¾à¦–à§à¦¨à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Start Focusing</span>
+                            <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦¶à§à¦°à§ à¦•à¦°à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- About Card -->
+                <a href="/about/" class="category-card reveal group">
+                    <div class="relative z-10">
+                        <div class="w-16 h-16 bg-gradient-to-br from-accent-2 to-accent rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg width="32" height="32" fill="none" stroke="white" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 16v-4M12 8h.01"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">
+                            <span class="en-text">About</span>
+                            <span class="bn-text bengali hidden">à¦ªà¦°à¦¿à¦šà¦¿à¦¤à¦¿</span>
+                        </h3>
+                        <p class="text-gray-400 mb-6">
+                            <span class="en-text">Learn more about Digital Seba and our mission.</span>
+                            <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦à¦¬à¦‚ à¦†à¦®à¦¾à¦¦à§‡à¦° à¦²à¦•à§à¦·à§à¦¯ à¦¸à¦®à§à¦ªà¦°à§à¦•à§‡ à¦œà¦¾à¦¨à§à¦¨à¥¤</span>
+                        </p>
+                        <div class="flex items-center gap-2 text-accent-2 font-semibold group-hover:gap-4 transition-all">
+                            <span class="en-text">Learn More</span>
+                            <span class="bn-text bengali hidden">à¦†à¦°à¦“ à¦œà¦¾à¦¨à§à¦¨</span>
+                            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M5 12h14m-7-7l7 7-7 7"/>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Detail Section -->
+    <section class="relative py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-sm mb-6">
+                        <span class="en-text">Services</span>
+                        <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        <span class="en-text">Digital Services<br>Made Simple</span>
+                        <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾<br>à¦¸à¦¹à¦œà¦­à¦¾à¦¬à§‡</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mb-8">
+                        <span class="en-text">
+                            Access essential digital utilities designed to make public services more accessible.
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦ªà¦¾à¦¬à¦²à¦¿à¦• à¦¸à§‡à¦¬à¦¾à¦•à§‡ à¦†à¦°à¦“ à¦¸à¦¹à¦œà¦²à¦­à§à¦¯ à¦•à¦°à¦¾à¦° à¦œà¦¨à§à¦¯ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨ à¦•à¦°à¦¾ à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿à¥¤
+                        </span>
+                    </p>
+
+                    <!-- Featured Service -->
+                    <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 mb-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                                </svg>
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="text-xl font-bold mb-1">Voteshondhan</h3>
+                                <p class="text-sm text-gray-400 bengali mb-2">à¦­à§‹à¦Ÿ à¦¸à¦¨à§à¦§à¦¾à¦¨</p>
+                                <p class="text-gray-400 text-sm mb-3">
+                                    <span class="en-text">Search voter information from PDF documents</span>
+                                    <span class="bn-text bengali hidden">PDF à¦¡à¦•à§à¦®à§‡à¦¨à§à¦Ÿ à¦¥à§‡à¦•à§‡ à¦­à§‹à¦Ÿà¦¾à¦° à¦¤à¦¥à§à¦¯ à¦…à¦¨à§à¦¸à¦¨à§à¦§à¦¾à¦¨ à¦•à¦°à§à¦¨</span>
+                                </p>
+                                <a href="/services/Voteshondhan/" class="text-accent text-sm font-semibold hover:underline">
+                                    <span class="en-text">Try Voteshondhan â†’</span>
+                                    <span class="bn-text bengali hidden">à¦­à§‹à¦Ÿ à¦¸à¦¨à§à¦§à¦¾à¦¨ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à§à¦¨ â†’</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/services/" class="btn-primary">
+                        <span class="en-text">View All Services</span>
+                        <span class="bn-text bengali hidden">à¦¸à¦¬ à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Visual Representation -->
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-gradient-to-br from-accent/20 to-accent-2/20 rounded-3xl transform rotate-3"></div>
+                        <div class="relative bg-surface-soft border border-white/10 rounded-3xl p-8">
+                            <div class="space-y-4">
+                                <div class="bg-surface p-4 rounded-xl border border-white/5 flex items-center gap-4">
+                                    <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                            <circle cx="12" cy="7" r="4"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold">
+                                            <span class="en-text">Voter Information</span>
+                                            <span class="bn-text bengali hidden">à¦­à§‹à¦Ÿà¦¾à¦° à¦¤à¦¥à§à¦¯</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400">
+                                            <span class="en-text">PDF Search Utility</span>
+                                            <span class="bn-text bengali hidden">PDF à¦…à¦¨à§à¦¸à¦¨à§à¦§à¦¾à¦¨</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface p-4 rounded-xl border border-white/5 flex items-center gap-4 opacity-60">
+                                    <div class="w-10 h-10 bg-accent-2/20 rounded-lg flex items-center justify-center">
+                                        <svg width="20" height="20" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                                            <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold">
+                                            <span class="en-text">Digital Utilities</span>
+                                            <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400">
+                                            <span class="en-text">Various Services</span>
+                                            <span class="bn-text bengali hidden">à¦¬à¦¿à¦­à¦¿à¦¨à§à¦¨ à¦¸à§‡à¦¬à¦¾</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bg-surface p-4 rounded-xl border border-white/5 flex items-center gap-4 opacity-40">
+                                    <div class="w-10 h-10 bg-accent/20 rounded-lg flex items-center justify-center">
+                                        <svg width="20" height="20" fill="none" stroke="var(--accent)" stroke-width="2">
+                                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="text-sm font-semibold">
+                                            <span class="en-text">More Services</span>
+                                            <span class="bn-text bengali hidden">à¦†à¦°à¦“ à¦¸à§‡à¦¬à¦¾</span>
+                                        </div>
+                                        <div class="text-xs text-gray-400">
+                                            <span class="en-text">Coming Soon</span>
+                                            <span class="bn-text bengali hidden">à¦¶à§€à¦˜à§à¦°à¦‡</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="relative py-32 bg-surface-soft/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Visual First on Mobile, Second on Desktop -->
+                <div class="reveal order-2 lg:order-1">
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="category-card p-6 text-center">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                <svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"/>
+                                    <path d="M16 2v4M8 2v4M3 10h18"/>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">
+                                <span class="en-text">Age Calculator</span>
+                                <span class="bn-text bengali hidden">à¦¬à¦¯à¦¼à¦¸ à¦•à§à¦¯à¦¾à¦²à¦•à§à¦²à§‡à¦Ÿà¦°</span>
+                            </div>
+                        </div>
+                        <div class="category-card p-6 text-center">
+                            <div class="w-12 h-12 bg-accent-2/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                <svg width="24" height="24" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2"/>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">
+                                <span class="en-text">Business Card</span>
+                                <span class="bn-text bengali hidden">à¦¬à¦¿à¦œà¦¨à§‡à¦¸ à¦•à¦¾à¦°à§à¦¡</span>
+                            </div>
+                        </div>
+                        <div class="category-card p-6 text-center">
+                            <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                <svg width="24" height="24" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z"/>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">
+                                <span class="en-text">Scanner</span>
+                                <span class="bn-text bengali hidden">à¦¸à§à¦•à§à¦¯à¦¾à¦¨à¦¾à¦°</span>
+                            </div>
+                        </div>
+                        <div class="category-card p-6 text-center">
+                            <div class="w-12 h-12 bg-accent-2/20 rounded-xl flex items-center justify-center mx-auto mb-3">
+                                <svg width="24" height="24" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                                    <path d="M4 7h16M4 12h16M4 17h16"/>
+                                </svg>
+                            </div>
+                            <div class="text-sm font-semibold">
+                                <span class="en-text">Text Utils</span>
+                                <span class="bn-text bengali hidden">à¦Ÿà§‡à¦•à§à¦¸à¦Ÿ à¦Ÿà§à¦²à¦¸</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content -->
+                <div class="reveal order-1 lg:order-2">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent-2/10 border border-accent-2/20 rounded-full text-sm mb-6">
+                        <span class="en-text">Tools</span>
+                        <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        <span class="en-text">Powerful Tools<br>For Everyday Tasks</span>
+                        <span class="bn-text bengali hidden">à¦¶à¦•à§à¦¤à¦¿à¦¶à¦¾à¦²à§€ à¦Ÿà§à¦²à¦¸<br>à¦¦à§ˆà¦¨à¦¨à§à¦¦à¦¿à¦¨ à¦•à¦¾à¦œà§‡à¦° à¦œà¦¨à§à¦¯</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mb-8">
+                        <span class="en-text">
+                            A collection of practical utilities designed to make your digital work faster and easier.
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦†à¦ªà¦¨à¦¾à¦° à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦•à¦¾à¦œà¦•à§‡ à¦¦à§à¦°à§à¦¤ à¦à¦¬à¦‚ à¦¸à¦¹à¦œ à¦•à¦°à¦¾à¦° à¦œà¦¨à§à¦¯ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨ à¦•à¦°à¦¾ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°à¦¿à¦• à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿à¦° à¦¸à¦‚à¦—à§à¦°à¦¹à¥¤
+                        </span>
+                    </p>
+
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold mb-1">
+                                    <span class="en-text">Multiple Categories</span>
+                                    <span class="bn-text bengali hidden">à¦à¦•à¦¾à¦§à¦¿à¦• à¦•à§à¦¯à¦¾à¦Ÿà¦¾à¦—à¦°à¦¿</span>
+                                </div>
+                                <div class="text-sm text-gray-400">
+                                    <span class="en-text">From calculators to scanners and text utilities</span>
+                                    <span class="bn-text bengali hidden">à¦•à§à¦¯à¦¾à¦²à¦•à§à¦²à§‡à¦Ÿà¦° à¦¥à§‡à¦•à§‡ à¦¸à§à¦•à§à¦¯à¦¾à¦¨à¦¾à¦° à¦à¦¬à¦‚ à¦Ÿà§‡à¦•à§à¦¸à¦Ÿ à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold mb-1">
+                                    <span class="en-text">Easy to Use</span>
+                                    <span class="bn-text bengali hidden">à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à¦¾ à¦¸à¦¹à¦œ</span>
+                                </div>
+                                <div class="text-sm text-gray-400">
+                                    <span class="en-text">Simple interfaces designed for everyone</span>
+                                    <span class="bn-text bengali hidden">à¦¸à¦¬à¦¾à¦° à¦œà¦¨à§à¦¯ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨ à¦•à¦°à¦¾ à¦¸à¦¹à¦œ à¦‡à¦¨à§à¦Ÿà¦¾à¦°à¦«à§‡à¦¸</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-6 h-6 bg-accent/20 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <svg width="14" height="14" fill="none" stroke="var(--accent)" stroke-width="2">
+                                    <path d="M20 6L9 17l-5-5"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-semibold mb-1">
+                                    <span class="en-text">Always Available</span>
+                                    <span class="bn-text bengali hidden">à¦¸à¦°à§à¦¬à¦¦à¦¾ à¦‰à¦ªà¦²à¦¬à§à¦§</span>
+                                </div>
+                                <div class="text-sm text-gray-400">
+                                    <span class="en-text">Access anytime, anywhere from any device</span>
+                                    <span class="bn-text bengali hidden">à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¸à¦®à¦¯à¦¼, à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦œà¦¾à¦¯à¦¼à¦—à¦¾ à¦¥à§‡à¦•à§‡ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à§à¦¨</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/tools/" class="btn-primary">
+                        <span class="en-text">Explore All Tools</span>
+                        <span class="bn-text bengali hidden">à¦¸à¦¬ à¦Ÿà§à¦²à¦¸ à¦¦à§‡à¦–à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="relative py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-sm mb-6">
+                        <span class="en-text">Resources</span>
+                        <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        <span class="en-text">Your Digital<br>Resource Library</span>
+                        <span class="bn-text bengali hidden">à¦†à¦ªà¦¨à¦¾à¦° à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦²<br>à¦°à¦¿à¦¸à§‹à¦°à§à¦¸ à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mb-8">
+                        <span class="en-text">
+                            A comprehensive collection of software, documents, fonts, and essential files organized for easy access.
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦¸à¦«à¦Ÿà¦“à¦¯à¦¼à§à¦¯à¦¾à¦°, à¦¡à¦•à§à¦®à§‡à¦¨à§à¦Ÿ, à¦«à¦¨à§à¦Ÿ à¦à¦¬à¦‚ à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦«à¦¾à¦‡à¦²à§‡à¦° à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¸à¦‚à¦—à§à¦°à¦¹ à¦¸à¦¹à¦œ à¦…à§à¦¯à¦¾à¦•à§à¦¸à§‡à¦¸à§‡à¦° à¦œà¦¨à§à¦¯ à¦¸à¦‚à¦—à¦ à¦¿à¦¤à¥¤
+                        </span>
+                    </p>
+
+                    <div class="grid grid-cols-2 gap-3 mb-8">
+                        <div class="bg-surface-soft border border-white/10 rounded-xl p-4">
+                            <div class="text-sm text-gray-400 mb-1">
+                                <span class="en-text">Software</span>
+                                <span class="bn-text bengali hidden">à¦¸à¦«à¦Ÿà¦“à¦¯à¦¼à§à¦¯à¦¾à¦°</span>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <span class="en-text">Apps & Programs</span>
+                                <span class="bn-text bengali hidden">à¦…à§à¦¯à¦¾à¦ªà¦¸ à¦“ à¦ªà§à¦°à§‹à¦—à§à¦°à¦¾à¦®</span>
+                            </div>
+                        </div>
+                        <div class="bg-surface-soft border border-white/10 rounded-xl p-4">
+                            <div class="text-sm text-gray-400 mb-1">
+                                <span class="en-text">Documents</span>
+                                <span class="bn-text bengali hidden">à¦¡à¦•à§à¦®à§‡à¦¨à§à¦Ÿ</span>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <span class="en-text">PDF & Files</span>
+                                <span class="bn-text bengali hidden">PDF à¦“ à¦«à¦¾à¦‡à¦²</span>
+                            </div>
+                        </div>
+                        <div class="bg-surface-soft border border-white/10 rounded-xl p-4">
+                            <div class="text-sm text-gray-400 mb-1">
+                                <span class="en-text">Media</span>
+                                <span class="bn-text bengali hidden">à¦®à¦¿à¦¡à¦¿à¦¯à¦¼à¦¾</span>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <span class="en-text">Images & Videos</span>
+                                <span class="bn-text bengali hidden">à¦›à¦¬à¦¿ à¦“ à¦­à¦¿à¦¡à¦¿à¦“</span>
+                            </div>
+                        </div>
+                        <div class="bg-surface-soft border border-white/10 rounded-xl p-4">
+                            <div class="text-sm text-gray-400 mb-1">
+                                <span class="en-text">Fonts</span>
+                                <span class="bn-text bengali hidden">à¦«à¦¨à§à¦Ÿ</span>
+                            </div>
+                            <div class="text-xs text-gray-500">
+                                <span class="en-text">Typography</span>
+                                <span class="bn-text bengali hidden">à¦Ÿà¦¾à¦‡à¦ªà§‹à¦—à§à¦°à¦¾à¦«à¦¿</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/resources/" class="btn-primary">
+                        <span class="en-text">Browse Resources</span>
+                        <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸ à¦¦à§‡à¦–à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Visual -->
+                <div class="reveal">
+                    <div class="relative">
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="space-y-4">
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-32 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2" class="mb-2">
+                                        <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/>
+                                        <path d="M13 2v7h7"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">PDF</span>
+                                </div>
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-24 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="28" height="28" fill="none" stroke="var(--accent-2)" stroke-width="2" class="mb-1">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">App</span>
+                                </div>
+                            </div>
+                            <div class="space-y-4 translate-y-8">
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-24 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="28" height="28" fill="none" stroke="var(--accent)" stroke-width="2" class="mb-1">
+                                        <rect x="3" y="3" width="18" height="18" rx="2"/>
+                                        <circle cx="8.5" cy="8.5" r="1.5"/>
+                                        <path d="M21 15l-5-5L5 21"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">IMG</span>
+                                </div>
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-32 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="32" height="32" fill="none" stroke="var(--accent-2)" stroke-width="2" class="mb-2">
+                                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                        <path d="M14 2v6h6"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">DOC</span>
+                                </div>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-28 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="30" height="30" fill="none" stroke="var(--accent)" stroke-width="2" class="mb-2">
+                                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">Font</span>
+                                </div>
+                                <div class="bg-surface-soft border border-white/10 rounded-2xl p-6 h-28 flex flex-col items-center justify-center transform hover:scale-105 transition-transform">
+                                    <svg width="30" height="30" fill="none" stroke="var(--accent-2)" stroke-width="2" class="mb-2">
+                                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+                                    </svg>
+                                    <span class="text-xs text-gray-400">ISO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live TV Section -->
+    <section class="relative py-32 bg-surface-soft/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent-2/10 border border-accent-2/20 rounded-full text-sm mb-6">
+                    <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    <span class="en-text">Live TV</span>
+                    <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    <span class="en-text">Entertainment,<br>Without The Clutter</span>
+                    <span class="bn-text bengali hidden">à¦¬à¦¿à¦¨à§‹à¦¦à¦¨,<br>à¦œà¦Ÿà¦¿à¦²à¦¤à¦¾ à¦›à¦¾à¦¡à¦¼à¦¾</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <span class="en-text">Watch various TV channels all in one place with a clean, modern interface.</span>
+                    <span class="bn-text bengali hidden">à¦ªà¦°à¦¿à¦·à§à¦•à¦¾à¦°, à¦†à¦§à§à¦¨à¦¿à¦• à¦‡à¦¨à§à¦Ÿà¦¾à¦°à¦«à§‡à¦¸à§‡ à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼ à¦¬à¦¿à¦­à¦¿à¦¨à§à¦¨ à¦Ÿà¦¿à¦­à¦¿ à¦šà§à¦¯à¦¾à¦¨à§‡à¦² à¦¦à§‡à¦–à§à¦¨à¥¤</span>
+                </p>
+            </div>
+
+            <div class="reveal max-w-4xl mx-auto">
+                <div class="tv-frame">
+                    <div class="tv-screen">
+                        <div class="flex items-center justify-center flex-col">
+                            <div class="w-20 h-20 bg-accent/20 rounded-full flex items-center justify-center mb-4 group-hover:bg-accent/30 transition-colors">
+                                <svg width="40" height="40" fill="var(--accent)" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                            <div class="text-2xl font-bold mb-2">
+                                <span class="en-text">Live Streaming</span>
+                                <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦¸à§à¦Ÿà§à¦°à¦¿à¦®à¦¿à¦‚</span>
+                            </div>
+                            <div class="text-gray-400">
+                                <span class="en-text">Multiple Channels Available</span>
+                                <span class="bn-text bengali hidden">à¦à¦•à¦¾à¦§à¦¿à¦• à¦šà§à¦¯à¦¾à¦¨à§‡à¦² à¦‰à¦ªà¦²à¦¬à§à¦§</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Channel Chips -->
+                    <div class="flex flex-wrap gap-2 mt-6 justify-center">
+                        <div class="px-4 py-2 bg-surface rounded-lg text-sm">
+                            <span class="en-text">News</span>
+                            <span class="bn-text bengali hidden">à¦¸à¦‚à¦¬à¦¾à¦¦</span>
+                        </div>
+                        <div class="px-4 py-2 bg-surface rounded-lg text-sm">
+                            <span class="en-text">Entertainment</span>
+                            <span class="bn-text bengali hidden">à¦¬à¦¿à¦¨à§‹à¦¦à¦¨</span>
+                        </div>
+                        <div class="px-4 py-2 bg-surface rounded-lg text-sm">
+                            <span class="en-text">Sports</span>
+                            <span class="bn-text bengali hidden">à¦–à§‡à¦²à¦¾</span>
+                        </div>
+                        <div class="px-4 py-2 bg-surface rounded-lg text-sm">
+                            <span class="en-text">Music</span>
+                            <span class="bn-text bengali hidden">à¦¸à¦™à§à¦—à§€à¦¤</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-12">
+                    <a href="/live-tv/" class="btn-primary">
+                        <span class="en-text">Watch Live TV</span>
+                        <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦¦à§‡à¦–à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Mode Section -->
+    <section class="relative py-32 bg-gradient-to-b from-bg to-surface">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Content -->
+                <div class="reveal text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full text-sm mb-6">
+                        <span class="en-text">Focus Mode</span>
+                        <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+                    </div>
+                    <h2 class="text-4xl sm:text-5xl font-bold mb-6">
+                        <span class="en-text">Less Distraction.<br>More Focus.</span>
+                        <span class="bn-text bengali hidden">à¦•à¦® à¦¬à¦¿à¦­à§à¦°à¦¾à¦¨à§à¦¤à¦¿à¥¤<br>à¦¬à§‡à¦¶à¦¿ à¦®à¦¨à§‹à¦¯à§‹à¦—à¥¤</span>
+                    </h2>
+                    <p class="text-xl text-gray-400 mb-8">
+                        <span class="en-text">
+                            A dedicated productivity workspace to help you stay focused and get more done.
+                        </span>
+                        <span class="bn-text bengali hidden">
+                            à¦®à¦¨à§‹à¦¯à§‹à¦—à§€ à¦¥à¦¾à¦•à¦¤à§‡ à¦à¦¬à¦‚ à¦†à¦°à¦“ à¦¬à§‡à¦¶à¦¿ à¦•à¦¾à¦œ à¦•à¦°à¦¤à§‡ à¦¸à¦¾à¦¹à¦¾à¦¯à§à¦¯ à¦•à¦°à¦¾à¦° à¦œà¦¨à§à¦¯ à¦à¦•à¦Ÿà¦¿ à¦¨à¦¿à¦¬à§‡à¦¦à¦¿à¦¤ à¦‰à§Žà¦ªà¦¾à¦¦à¦¨à¦¶à§€à¦²à¦¤à¦¾ à¦“à¦¯à¦¼à¦¾à¦°à§à¦•à¦¸à§à¦ªà§‡à¦¸à¥¤
+                        </span>
+                    </p>
+
+                    <a href="/focus-mode/" class="btn-primary">
+                        <span class="en-text">Enter Focus Mode</span>
+                        <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡ à¦¶à§à¦°à§ à¦•à¦°à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Focus Timer Visual -->
+                <div class="reveal flex justify-center">
+                    <div class="focus-timer">
+                        <svg class="focus-circle">
+                            <defs>
+                                <linearGradient id="focusGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color: var(--accent)" />
+                                    <stop offset="100%" style="stop-color: var(--accent-2)" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="focus-circle-bg" cx="100" cy="100" r="90"/>
+                            <circle class="focus-circle-progress" cx="100" cy="100" r="90"/>
+                        </svg>
+                        <div class="absolute inset-0 flex flex-col items-center justify-center">
+                            <div class="text-5xl font-bold font-mono mb-2">25:00</div>
+                            <div class="text-sm text-gray-400">
+                                <span class="en-text">Focus Time</span>
+                                <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦¸à¦®à¦¯à¦¼</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Digital Seba Section -->
+    <section class="relative py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    <span class="en-text">Why Digital Seba?</span>
+                    <span class="bn-text bengali hidden">à¦•à§‡à¦¨ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾?</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <span class="en-text">Built for everyday use with simplicity and efficiency in mind.</span>
+                    <span class="bn-text bengali hidden">à¦¸à¦°à¦²à¦¤à¦¾ à¦à¦¬à¦‚ à¦¦à¦•à§à¦·à¦¤à¦¾ à¦®à¦¾à¦¥à¦¾à¦¯à¦¼ à¦°à§‡à¦–à§‡ à¦¦à§ˆà¦¨à¦¨à§à¦¦à¦¿à¦¨ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°à§‡à¦° à¦œà¦¨à§à¦¯ à¦¤à§ˆà¦°à¦¿à¥¤</span>
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Simple -->
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent-2/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="en-text">Simple</span>
+                        <span class="bn-text bengali hidden">à¦¸à¦¹à¦œ</span>
+                    </h3>
+                    <p class="text-gray-400">
+                        <span class="en-text">Easy to use interface</span>
+                        <span class="bn-text bengali hidden">à¦¸à¦¹à¦œ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦°</span>
+                    </p>
+                </div>
+
+                <!-- Fast -->
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent-2/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="32" height="32" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="en-text">Fast</span>
+                        <span class="bn-text bengali hidden">à¦¦à§à¦°à§à¦¤</span>
+                    </h3>
+                    <p class="text-gray-400">
+                        <span class="en-text">Quick performance</span>
+                        <span class="bn-text bengali hidden">à¦¦à§à¦°à§à¦¤ à¦…à¦­à¦¿à¦œà§à¦žà¦¤à¦¾</span>
+                    </p>
+                </div>
+
+                <!-- Useful -->
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent-2/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <path d="M22 4L12 14.01l-3-3"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="en-text">Useful</span>
+                        <span class="bn-text bengali hidden">à¦•à¦¾à¦°à§à¦¯à¦•à¦°</span>
+                    </h3>
+                    <p class="text-gray-400">
+                        <span class="en-text">Practical tools & resources</span>
+                        <span class="bn-text bengali hidden">à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦Ÿà§à¦²à¦¸ à¦“ à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                    </p>
+                </div>
+
+                <!-- Bilingual -->
+                <div class="reveal text-center">
+                    <div class="w-16 h-16 bg-gradient-to-br from-accent/20 to-accent-2/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <svg width="32" height="32" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">
+                        <span class="en-text">Bilingual</span>
+                        <span class="bn-text bengali hidden">à¦¦à§à¦¬à¦¿à¦­à¦¾à¦·à¦¿à¦•</span>
+                    </h3>
+                    <p class="text-gray-400">
+                        <span class="en-text">à¦¬à¦¾à¦‚à¦²à¦¾ + English</span>
+                        <span class="bn-text bengali hidden">à¦¬à¦¾à¦‚à¦²à¦¾ + English</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Device Compatibility Section -->
+    <section class="relative py-32 bg-surface-soft/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl sm:text-5xl font-bold mb-4">
+                    <span class="en-text">Made For Every Screen</span>
+                    <span class="bn-text bengali hidden">à¦¸à¦¬ à¦¡à¦¿à¦­à¦¾à¦‡à¦¸à§‡à¦° à¦œà¦¨à§à¦¯ à¦¤à§ˆà¦°à¦¿</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                    <span class="en-text">Access Digital Seba from any device â€” phone, tablet, laptop, or desktop.</span>
+                    <span class="bn-text bengali hidden">à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¡à¦¿à¦­à¦¾à¦‡à¦¸ à¦¥à§‡à¦•à§‡ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à§à¦¨ â€” à¦«à§‹à¦¨, à¦Ÿà§à¦¯à¦¾à¦¬à¦²à§‡à¦Ÿ, à¦²à§à¦¯à¦¾à¦ªà¦Ÿà¦ª à¦¬à¦¾ à¦¡à§‡à¦¸à§à¦•à¦Ÿà¦ªà¥¤</span>
+                </p>
+            </div>
+
+            <div class="reveal">
+                <div class="device-stack">
+                    <!-- Desktop -->
+                    <div class="device-frame" style="width: 350px; height: 220px; z-index: 1;">
+                        <div class="absolute inset-4 bg-gradient-to-br from-surface to-surface-soft rounded-lg flex items-center justify-center">
+                            <svg width="48" height="48" fill="none" stroke="var(--accent)" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                                <path d="M8 21h8M12 17v4"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Tablet -->
+                    <div class="device-frame" style="width: 200px; height: 280px; right: 20%; z-index: 2;">
+                        <div class="absolute inset-4 bg-gradient-to-br from-surface to-surface-soft rounded-lg flex items-center justify-center">
+                            <svg width="40" height="40" fill="none" stroke="var(--accent-2)" stroke-width="2">
+                                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="device-frame" style="width: 160px; height: 300px; left: 20%; z-index: 3;">
+                        <div class="absolute inset-4 bg-gradient-to-br from-surface to-surface-soft rounded-lg flex items-center justify-center">
+                            <svg width="32" height="32" fill="none" stroke="var(--accent)" stroke-width="2">
+                                <rect x="5" y="2" width="14" height="20" rx="2"/>
+                                <path d="M12 18h.01"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="relative py-32">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
+            <div class="bg-gradient-to-br from-accent/10 to-accent-2/10 border border-accent/20 rounded-3xl p-12 sm:p-16">
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                    <span class="en-text">Everything You Need,<br>Just One Click Away</span>
+                    <span class="bn-text bengali hidden">à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦¸à¦¬à¦•à¦¿à¦›à§<br>à¦à¦–à¦¨ à¦à¦• à¦•à§à¦²à¦¿à¦•à§‡</span>
+                </h2>
+                <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                    <span class="en-text">
+                        Start exploring Digital Seba today and experience a complete digital platform.
+                    </span>
+                    <span class="bn-text bengali hidden">
+                        à¦†à¦œà¦‡ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦…à¦¨à§à¦¬à§‡à¦·à¦£ à¦¶à§à¦°à§ à¦•à¦°à§à¦¨ à¦à¦¬à¦‚ à¦à¦•à¦Ÿà¦¿ à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦® à¦…à¦¨à§à¦­à¦¬ à¦•à¦°à§à¦¨à¥¤
+                    </span>
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/services/" class="btn-primary text-lg">
+                        <span class="en-text">Explore Digital Seba</span>
+                        <span class="bn-text bengali hidden">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14m-7-7l7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="/services/" class="btn-secondary text-lg">
+                        <span class="en-text">Browse Services</span>
+                        <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾ à¦¦à§‡à¦–à§à¦¨</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="relative border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Brand -->
+                <div>
+                    <h3 class="text-2xl font-bold mb-2">Digital Seba</h3>
+                    <p class="text-sm text-gray-400 bengali mb-4">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</p>
+                    <p class="text-sm text-gray-400">
+                        <span class="en-text">Your complete digital platform for services, tools, and resources.</span>
+                        <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾, à¦Ÿà§à¦²à¦¸ à¦à¦¬à¦‚ à¦°à¦¿à¦¸à§‹à¦°à§à¦¸à§‡à¦° à¦œà¦¨à§à¦¯ à¦†à¦ªà¦¨à¦¾à¦° à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à¥¤</span>
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-text">Quick Links</span>
+                        <span class="bn-text bengali hidden">à¦²à¦¿à¦‚à¦•</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/services/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Services</span>
+                            <span class="bn-text bengali hidden">à¦¸à§‡à¦¬à¦¾</span>
+                        </a></li>
+                        <li><a href="/tools/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Tools</span>
+                            <span class="bn-text bengali hidden">à¦Ÿà§à¦²à¦¸</span>
+                        </a></li>
+                        <li><a href="/resources/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Resources</span>
+                            <span class="bn-text bengali hidden">à¦°à¦¿à¦¸à§‹à¦°à§à¦¸</span>
+                        </a></li>
+                        <li><a href="/live-tv/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Live TV</span>
+                            <span class="bn-text bengali hidden">à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- More -->
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-text">More</span>
+                        <span class="bn-text bengali hidden">à¦†à¦°à¦“</span>
+                    </h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="/focus-mode/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Focus Mode</span>
+                            <span class="bn-text bengali hidden">à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡</span>
+                        </a></li>
+                        <li><a href="/about/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">About</span>
+                            <span class="bn-text bengali hidden">à¦ªà¦°à¦¿à¦šà¦¿à¦¤à¦¿</span>
+                        </a></li>
+                        <li><a href="/link-auditor/" class="text-gray-400 hover:text-accent transition-colors">
+                            <span class="en-text">Link Auditor</span>
+                            <span class="bn-text bengali hidden">à¦²à¦¿à¦‚à¦• à¦…à¦¡à¦¿à¦Ÿà¦°</span>
+                        </a></li>
+                    </ul>
+                </div>
+
+                <!-- Language -->
+                <div>
+                    <h4 class="font-semibold mb-4">
+                        <span class="en-text">Language</span>
+                        <span class="bn-text bengali hidden">à¦­à¦¾à¦·à¦¾</span>
+                    </h4>
+                    <div class="flex gap-2">
+                        <button class="lang-switch px-4 py-2 bg-surface-soft rounded-lg text-sm transition-colors hover:bg-surface-lighter" data-lang="en">English</button>
+                        <button class="lang-switch px-4 py-2 bg-surface-soft rounded-lg text-sm bengali transition-colors hover:bg-surface-lighter" data-lang="bn">à¦¬à¦¾à¦‚à¦²à¦¾</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom -->
+            <div class="pt-8 border-t border-white/10 text-center text-sm text-gray-400">
+                <p>&copy; Digital Seba.
+                    <span class="en-text">All rights reserved.</span>
+                    <span class="bn-text bengali hidden">à¦¸à¦°à§à¦¬à¦¸à§à¦¬à¦¤à§à¦¬ à¦¸à¦‚à¦°à¦•à§à¦·à¦¿à¦¤à¥¤</span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language System
+        const langData = {
+            en: 'English',
+            bn: 'à¦¬à¦¾à¦‚à¦²à¦¾'
+        };
+
+        let currentLang = localStorage.getItem('digitalSebaLang') || 'en';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('digitalSebaLang', lang);
+
+            // Update text visibility
+            document.querySelectorAll('.en-text').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'en');
+            });
+            document.querySelectorAll('.bn-text').forEach(el => {
+                el.classList.toggle('hidden', lang !== 'bn');
+            });
+
+            // Update active state on language switches
+            document.querySelectorAll('.lang-switch').forEach(btn => {
+                const btnLang = btn.getAttribute('data-lang');
+                if (btnLang === lang) {
+                    btn.style.background = 'var(--accent)';
+                    btn.style.color = 'white';
+                } else {
+                    btn.style.background = '';
+                    btn.style.color = '';
+                }
+            });
+
+            // Update date/time display
+            updateDateTime();
+        }
+
+        // Language switch buttons
+        document.querySelectorAll('.lang-switch').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.getAttribute('data-lang');
+                setLanguage(lang);
+            });
+        });
+
+        // Initialize language
+        setLanguage(currentLang);
+
+        // Mobile Menu
+        const mobileMenuButton = document.getElementById('mobileMenuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        const closeMobileMenu = document.getElementById('closeMobileMenu');
+
+        function openMobileMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenuFn() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuButton.addEventListener('click', openMobileMenu);
+        closeMobileMenu.addEventListener('click', closeMobileMenuFn);
+        mobileMenuOverlay.addEventListener('click', closeMobileMenuFn);
+
+        // Close menu on navigation
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenuFn);
+        });
+
+        // Close menu on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenuFn();
+            }
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        let lastScroll = 0;
+
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        });
+
+        // Date and Time - Bangladesh Timezone
+        function updateDateTime() {
+            const now = new Date();
+
+            // Bangladesh is UTC+6
+            const bdOffset = 6 * 60; // minutes
+            const localOffset = now.getTimezoneOffset(); // minutes
+            const bdTime = new Date(now.getTime() + (bdOffset + localOffset) * 60000);
+
+            const dateEl = document.getElementById('currentDate');
+            const timeEl = document.getElementById('currentTime');
+
+            if (currentLang === 'bn') {
+                // Bengali date
+                const bnMonths = ['à¦œà¦¾à¦¨à§à¦¯à¦¼à¦¾à¦°à¦¿', 'à¦«à§‡à¦¬à§à¦°à§à¦¯à¦¼à¦¾à¦°à¦¿', 'à¦®à¦¾à¦°à§à¦š', 'à¦à¦ªà§à¦°à¦¿à¦²', 'à¦®à§‡', 'à¦œà§à¦¨', 'à¦œà§à¦²à¦¾à¦‡', 'à¦†à¦—à¦¸à§à¦Ÿ', 'à¦¸à§‡à¦ªà§à¦Ÿà§‡à¦®à§à¦¬à¦°', 'à¦…à¦•à§à¦Ÿà§‹à¦¬à¦°', 'à¦¨à¦­à§‡à¦®à§à¦¬à¦°', 'à¦¡à¦¿à¦¸à§‡à¦®à§à¦¬à¦°'];
+                const bnDays = ['à¦°à¦¬à¦¿', 'à¦¸à§‹à¦®', 'à¦®à¦™à§à¦—à¦²', 'à¦¬à§à¦§', 'à¦¬à§ƒà¦¹à¦¸à§à¦ªà¦¤à¦¿', 'à¦¶à§à¦•à§à¦°', 'à¦¶à¦¨à¦¿'];
+                const bnNumbers = ['à§¦', 'à§§', 'à§¨', 'à§©', 'à§ª', 'à§«', 'à§¬', 'à§­', 'à§®', 'à§¯'];
+
+                const day = bdTime.getDate();
+                const month = bnMonths[bdTime.getMonth()];
+                const weekday = bnDays[bdTime.getDay()];
+
+                const convertToBengali = (num) => {
+                    return num.toString().split('').map(d => bnNumbers[parseInt(d)]).join('');
+                };
+
+                dateEl.textContent = `${weekday}, ${convertToBengali(day)} ${month}`;
+
+                // Bengali time
+                let hours = bdTime.getHours();
+                const minutes = bdTime.getMinutes();
+                const seconds = bdTime.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+
+                const timeStr = `${convertToBengali(hours)}:${convertToBengali(minutes.toString().padStart(2, '0'))}:${convertToBengali(seconds.toString().padStart(2, '0'))} ${ampm}`;
+                timeEl.textContent = timeStr;
+            } else {
+                // English date
+                const options = { weekday: 'short', month: 'short', day: 'numeric' };
+                dateEl.textContent = bdTime.toLocaleDateString('en-US', options);
+
+                // English time with seconds
+                let hours = bdTime.getHours();
+                const minutes = bdTime.getMinutes();
+                const seconds = bdTime.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+
+                const timeStr = `${hours}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')} ${ampm}`;
+                timeEl.textContent = timeStr;
+            }
+        }
+
+        // Update time every second
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Hero 3D Parallax Effect
+        const hero3D = document.getElementById('hero3D');
+
+        if (window.matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+            document.addEventListener('mousemove', (e) => {
+                if (window.innerWidth >= 1024) {
+                    const { clientX, clientY } = e;
+                    const { innerWidth, innerHeight } = window;
+
+                    const xPos = (clientX / innerWidth - 0.5) * 30;
+                    const yPos = (clientY / innerHeight - 0.5) * 30;
+
+                    hero3D.style.transform = `rotateY(${xPos}deg) rotateX(${-yPos}deg)`;
+                }
+            });
+        }
+
+        // Intersection Observer for Reveal Animations
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Prevent horizontal overflow
+        document.body.style.overflowX = 'hidden';
+    </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

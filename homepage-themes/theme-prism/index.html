@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Digital Seba — এক প্ল্যাটফর্মে সব ডিজিটাল সেবা | Services, Tools, Live TV & Focus Mode</title>
+<meta name="description" content="Digital Seba is a premium all-in-one digital platform — government & online services, smart tools, curated resources, Live TV and a distraction-free Focus Mode. Bengali + English friendly." />
+<meta name="theme-color" content="#05060f" />
+<meta property="og:title" content="Digital Seba — All Your Digital Services in One Place" />
+<meta property="og:description" content="Services, Tools, Resources, Live TV and Focus Mode — beautifully unified." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Digital Seba","description":"All-in-one digital services platform: Services, Tools, Resources, Live TV, Focus Mode.","inLanguage":["bn","en"]}
+</script>
+<style>
+:root{
+  --bg:#05060f; --bg2:#080a18; --ink:#eef1ff; --muted:#9aa3c7;
+  --a:#6c5cff; --b:#00e0c6; --c:#ff5fa2; --line:rgba(255,255,255,.09);
+  --card:rgba(255,255,255,.045); --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:'Sora','Hind Siliguri',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+body::before{content:"";position:fixed;inset:0;background:
+ radial-gradient(60vw 60vw at 15% -10%,rgba(108,92,255,.28),transparent 60%),
+ radial-gradient(50vw 50vw at 90% 10%,rgba(0,224,198,.16),transparent 60%),
+ radial-gradient(60vw 60vw at 50% 110%,rgba(255,95,162,.14),transparent 60%);
+ pointer-events:none;z-index:0}
+.bn{font-family:'Hind Siliguri',sans-serif}
+.wrap{width:min(1200px,92vw);margin:0 auto;position:relative;z-index:2}
+a{color:inherit;text-decoration:none}
+/* NAV */
+header{position:fixed;top:0;left:0;right:0;z-index:60;transition:.35s}
+header.s{background:rgba(5,6,15,.82);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:-.02em}
+.mark{width:36px;height:36px;border-radius:12px;background:linear-gradient(140deg,var(--a),var(--b));display:grid;place-items:center;font-size:18px;box-shadow:0 8px 26px rgba(108,92,255,.5);animation:spin3d 9s linear infinite;transform-style:preserve-3d}
+@keyframes spin3d{to{transform:rotateY(360deg)}}
+.links{display:flex;gap:26px;font-size:14px;color:var(--muted)}
+.links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:14px;transition:.3s;border:1px solid transparent}
+.btn-p{background:linear-gradient(120deg,var(--a),var(--b));color:#04060f;box-shadow:0 12px 34px rgba(108,92,255,.42)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(108,92,255,.6)}
+.btn-g{border-color:var(--line);background:var(--card);color:#fff}
+.btn-g:hover{border-color:rgba(255,255,255,.3);transform:translateY(-3px)}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:#fff;font-size:18px}
+/* HERO */
+.hero{padding:150px 0 90px;text-align:center}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--card);font-size:12.5px;color:var(--muted)}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--b);box-shadow:0 0 12px var(--b);animation:p 1.8s infinite}
+@keyframes p{50%{opacity:.3}}
+h1{font-size:clamp(2.4rem,6.4vw,4.6rem);line-height:1.05;font-weight:800;letter-spacing:-.035em;margin:22px 0 18px}
+.grad{background:linear-gradient(100deg,var(--a),var(--b) 55%,var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:clamp(1rem,2.2vw,1.16rem);max-width:660px;margin:0 auto}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:56px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 12px}
+.stat b{display:block;font-size:clamp(1.3rem,3.4vw,2rem);background:linear-gradient(120deg,var(--b),var(--a));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:12px;color:var(--muted)}
+/* 3D ECOSYSTEM */
+.eco{height:520px;display:grid;place-items:center;perspective:1400px;margin:40px 0 20px}
+.orbits{position:relative;width:340px;height:340px;transform-style:preserve-3d;animation:tilt 22s linear infinite}
+@keyframes tilt{0%{transform:rotateX(66deg) rotateZ(0)}100%{transform:rotateX(66deg) rotateZ(360deg)}}
+.ring{position:absolute;inset:0;border:1px solid rgba(255,255,255,.13);border-radius:50%}
+.ring:nth-child(2){inset:52px;border-color:rgba(0,224,198,.25)}
+.ring:nth-child(3){inset:104px;border-color:rgba(255,95,162,.22)}
+.node{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px;border-radius:20px;display:grid;place-items:center;font-size:24px;background:rgba(12,14,30,.9);border:1px solid var(--line);box-shadow:0 14px 40px rgba(0,0,0,.6);animation:unti 22s linear infinite}
+@keyframes unti{0%{transform:var(--pos) rotateZ(0) rotateX(-66deg)}100%{transform:var(--pos) rotateZ(-360deg) rotateX(-66deg)}}
+.core{position:absolute;top:50%;left:50%;width:130px;height:130px;margin:-65px;border-radius:44px;background:linear-gradient(140deg,var(--a),var(--b));display:grid;place-items:center;font-weight:800;font-size:14px;color:#05060f;text-align:center;box-shadow:0 0 90px rgba(108,92,255,.7);transform:rotateX(-66deg);animation:float 5s ease-in-out infinite}
+@keyframes float{50%{transform:rotateX(-66deg) translateZ(30px)}}
+/* SECTIONS */
+section{padding:90px 0;position:relative;z-index:2}
+.tag{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--b);font-weight:600}
+h2{font-size:clamp(1.9rem,4.6vw,3rem);font-weight:800;letter-spacing:-.03em;margin:12px 0 14px}
+.sub{color:var(--muted);max-width:640px}
+.center{text-align:center}.center .sub{margin:0 auto}
+.grid{display:grid;gap:18px;margin-top:44px}
+.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;transition:.4s;transform-style:preserve-3d;position:relative;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(108,92,255,.16),transparent 60%);opacity:0;transition:.4s}
+.card:hover{transform:translateY(-8px) rotateX(6deg) rotateY(-6deg);border-color:rgba(108,92,255,.5);box-shadow:0 26px 60px rgba(0,0,0,.55)}
+.card:hover::after{opacity:1}
+.ico{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:24px;background:linear-gradient(140deg,rgba(108,92,255,.3),rgba(0,224,198,.18));border:1px solid var(--line);margin-bottom:16px}
+.card h3{font-size:1.1rem;margin-bottom:8px;font-weight:700}
+.card p{color:var(--muted);font-size:14px}
+.chip{display:inline-block;margin:12px 6px 0 0;padding:5px 12px;border-radius:999px;font-size:11.5px;color:var(--muted);border:1px solid var(--line)}
+/* LIVE TV */
+.tv{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:center}
+.screen{aspect-ratio:16/10;border-radius:26px;border:1px solid var(--line);background:linear-gradient(160deg,#0b0e1f,#12081f);position:relative;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.6);transform:perspective(1200px) rotateY(-11deg) rotateX(6deg);transition:.6s}
+.screen:hover{transform:perspective(1200px) rotateY(0) rotateX(0)}
+.bar{display:flex;gap:6px;padding:12px;border-bottom:1px solid var(--line)}
+.bar i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.play{position:absolute;inset:0;display:grid;place-items:center}
+.play b{width:76px;height:76px;border-radius:50%;background:linear-gradient(140deg,var(--c),var(--a));display:grid;place-items:center;font-size:26px;box-shadow:0 0 0 0 rgba(255,95,162,.5);animation:rip 2.2s infinite}
+@keyframes rip{70%{box-shadow:0 0 0 34px rgba(255,95,162,0)}}
+.live{position:absolute;top:52px;left:16px;background:#ff2d55;font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:.1em}
+.chlist{position:absolute;bottom:14px;left:14px;right:14px;display:flex;gap:8px;overflow:hidden}
+.chlist span{flex:1;height:44px;border-radius:10px;background:rgba(255,255,255,.07);border:1px solid var(--line);display:grid;place-items:center;font-size:11px;color:var(--muted)}
+/* FOCUS */
+.focus{border-radius:32px;border:1px solid var(--line);background:linear-gradient(140deg,rgba(108,92,255,.14),rgba(0,224,198,.06));padding:clamp(28px,5vw,64px);display:grid;grid-template-columns:1fr 300px;gap:44px;align-items:center}
+.timer{aspect-ratio:1;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--b) 0 68%,rgba(255,255,255,.07) 68% 100%);box-shadow:0 0 70px rgba(0,224,198,.28);animation:float2 6s ease-in-out infinite}
+@keyframes float2{50%{transform:translateY(-14px)}}
+.timer div{width:80%;aspect-ratio:1;border-radius:50%;background:#080a18;display:grid;place-items:center;flex-direction:column;text-align:center}
+.timer b{font-size:2.1rem;display:block}
+.timer small{color:var(--muted);font-size:11px;letter-spacing:.2em}
+ul.ticks{list-style:none;margin-top:22px;display:grid;gap:12px}
+ul.ticks li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:var(--muted)}
+ul.ticks li::before{content:"✓";color:var(--b);font-weight:800}
+/* WHY */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.why div{padding:24px;border-radius:20px;border:1px solid var(--line);background:var(--card)}
+.why b{display:block;font-size:1.5rem;margin-bottom:6px}
+/* FINAL */
+.final{text-align:center;border-radius:34px;padding:clamp(40px,7vw,84px) 24px;border:1px solid var(--line);background:radial-gradient(70% 120% at 50% 0%,rgba(108,92,255,.28),rgba(255,255,255,.03));position:relative;overflow:hidden}
+footer{border-top:1px solid var(--line);padding:44px 0;color:var(--muted);font-size:13.5px}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px}
+.fgrid a{display:block;padding:5px 0}.fgrid a:hover{color:#fff}
+.fgrid h4{color:#fff;font-size:13px;margin-bottom:8px;letter-spacing:.08em;text-transform:uppercase}
+.rev{opacity:0;transform:translateY(34px);transition:.9s cubic-bezier(.2,.7,.2,1)}
+.rev.in{opacity:1;transform:none}
+@media(max-width:900px){
+ .links,.nav .btn-g{display:none}.burger{display:block}
+ .g3,.g4,.g2,.tv,.focus,.why,.fgrid{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .screen{transform:none}.eco{height:400px;transform:scale(.82)}
+ .focus{grid-template-columns:1fr}.timer{max-width:230px;margin:0 auto}
+}
+#mob{position:fixed;inset:0;z-index:70;background:rgba(5,6,15,.97);backdrop-filter:blur(14px);display:none;flex-direction:column;gap:8px;padding:96px 8vw;font-size:1.2rem}
+#mob.o{display:flex}
+#mob a{padding:14px 0;border-bottom:1px solid var(--line)}
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+<header id="hd"><div class="wrap nav">
+  <a class="logo" href="#"><span class="mark">◆</span> Digital<span class="grad">Seba</span></a>
+  <nav class="links">
+    <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
+    <a href="#livetv">Live TV</a><a href="#focus">Focus Mode</a><a href="#why">About</a>
+  </nav>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="#final" class="btn btn-g">Sign in</a>
+    <a href="#final" class="btn btn-p">Get Started →</a>
+    <button class="burger" id="bg">☰</button>
+  </div>
+</div></header>
+<div id="mob">
+  <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
+  <a href="#livetv">Live TV</a><a href="#focus">Focus Mode</a><a href="#why">About</a>
+  <a href="#final" class="btn btn-p" style="justify-content:center;margin-top:18px">Get Started</a>
+</div>
+
+<section class="hero"><div class="wrap">
+  <span class="pill"><span class="dot"></span> এক প্ল্যাটফর্মে সব ডিজিটাল সেবা · v3.0 Live</span>
+  <h1>Every digital service<br>you need — <span class="grad">unified.</span></h1>
+  <p class="lead">Digital Seba brings government &amp; online services, smart tools, curated resources, Live TV and a distraction-free Focus Mode into one beautifully fast platform. <span class="bn">বাংলা ও ইংরেজি — দুই ভাষাতেই।</span></p>
+  <div class="cta"><a href="#final" class="btn btn-p">Start free →</a><a href="#ecosystem" class="btn btn-g">▶ Explore ecosystem</a></div>
+  <div class="stats">
+    <div class="stat rev"><b data-c="120">0</b><span>+ Services</span></div>
+    <div class="stat rev"><b data-c="60">0</b><span>+ Smart Tools</span></div>
+    <div class="stat rev"><b data-c="150">0</b><span>+ Live Channels</span></div>
+    <div class="stat rev"><b data-c="99">0</b><span>% Uptime</span></div>
+  </div>
+</div></section>
+
+<section id="ecosystem"><div class="wrap center">
+  <span class="tag">The Ecosystem</span>
+  <h2>One core. <span class="grad">Five orbits.</span></h2>
+  <p class="sub">A living system where every module talks to the others — no tabs, no chaos, no friction.</p>
+  <div class="eco"><div class="orbits" id="orb">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+    <div class="core">DIGITAL<br>SEBA</div>
+  </div></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <span class="tag">Services</span><h2>Services that actually <span class="grad">save your day</span></h2>
+  <p class="sub">From national ID and bill payments to job circulars — guided, verified, and in plain language.</p>
+  <div class="grid g3">
+    <div class="card rev"><div class="ico">🪪</div><h3>NID &amp; Citizen Services</h3><p>Apply, correct and download national documents with step-by-step guidance.</p><span class="chip bn">জাতীয় পরিচয়পত্র</span></div>
+    <div class="card rev"><div class="ico">💳</div><h3>Bills &amp; Payments</h3><p>Electricity, gas, water and internet — track dues and pay without hunting portals.</p><span class="chip bn">বিল পরিশোধ</span></div>
+    <div class="card rev"><div class="ico">🎓</div><h3>Education &amp; Results</h3><p>Admissions, scholarships, board results and academic notices in one feed.</p><span class="chip">Results</span></div>
+    <div class="card rev"><div class="ico">💼</div><h3>Jobs &amp; Circulars</h3><p>Fresh government and private circulars with deadline reminders.</p><span class="chip bn">চাকরির খবর</span></div>
+    <div class="card rev"><div class="ico">🏥</div><h3>Health Services</h3><p>Hospital directories, ambulance lines, doctor lists and emergency numbers.</p><span class="chip">24/7</span></div>
+    <div class="card rev"><div class="ico">🛡️</div><h3>Legal &amp; Support</h3><p>Forms, rights explainers and helpline routing — clear and jargon-free.</p><span class="chip">Verified</span></div>
+  </div>
+</div></section>
+
+<section id="resources"><div class="wrap">
+  <span class="tag">Resources</span><h2>A library that <span class="grad">respects your time</span></h2>
+  <p class="sub">Curated guides, templates and knowledge — organised, searchable and offline-friendly.</p>
+  <div class="grid g4">
+    <div class="card rev"><div class="ico">📚</div><h3>Guides</h3><p>Long-form how-tos for every service.</p></div>
+    <div class="card rev"><div class="ico">📝</div><h3>Templates</h3><p>Applications, CVs and official letters.</p></div>
+    <div class="card rev"><div class="ico">🎧</div><h3>Audio Notes</h3><p>Listen while you commute.</p></div>
+    <div class="card rev"><div class="ico">🌐</div><h3>Bilingual</h3><p class="bn">সব কনটেন্ট বাংলা ও ইংরেজিতে।</p></div>
+  </div>
+</div></section>
+
+<section id="tools"><div class="wrap">
+  <span class="tag">Tools</span><h2>60+ micro-tools. <span class="grad">Zero clutter.</span></h2>
+  <p class="sub">Instant, browser-based utilities that load in milliseconds and never touch your data.</p>
+  <div class="grid g3">
+    <div class="card rev"><div class="ico">🧮</div><h3>Calculators</h3><p>Tax, EMI, GPA, age, salary and currency — precise and instant.</p></div>
+    <div class="card rev"><div class="ico">🖼️</div><h3>File &amp; Image</h3><p>Compress, convert, resize and merge PDFs fully on-device.</p></div>
+    <div class="card rev"><div class="ico">🔤</div><h3>Text &amp; Language</h3><p>Bangla ↔ English transliteration, word count and formatting.</p></div>
+    <div class="card rev"><div class="ico">🔐</div><h3>Privacy Tools</h3><p>Password generator, QR maker and secure hashing.</p></div>
+    <div class="card rev"><div class="ico">📅</div><h3>Planner Tools</h3><p>Countdown, date difference and Bangla calendar converter.</p></div>
+    <div class="card rev"><div class="ico">⚡</div><h3>Dev Utilities</h3><p>JSON, Base64, colour and unit conversions.</p></div>
+  </div>
+</div></section>
+
+<section id="livetv"><div class="wrap tv">
+  <div class="rev">
+    <span class="tag">Live TV</span><h2>News &amp; entertainment, <span class="grad">buffer-free</span></h2>
+    <p class="sub">150+ curated channels in an adaptive player built for slow networks and small screens.</p>
+    <ul class="ticks">
+      <li>Adaptive bitrate — smooth even on 3G</li>
+      <li>Picture-in-picture while you browse Digital Seba</li>
+      <li>Favourites, categories and instant channel switching</li>
+      <li class="bn">দেশি ও আন্তর্জাতিক চ্যানেল একসাথে</li>
+    </ul>
+    <a href="#final" class="btn btn-p" style="margin-top:26px">Watch now →</a>
+  </div>
+  <div class="screen rev">
+    <div class="bar"><i></i><i></i><i></i></div>
+    <span class="live">● LIVE</span>
+    <div class="play"><b>▶</b></div>
+    <div class="chlist"><span>News</span><span>Sports</span><span>Music</span><span>Kids</span></div>
+  </div>
+</div></section>
+
+<section id="focus"><div class="wrap"><div class="focus">
+  <div class="rev">
+    <span class="tag">Focus Mode</span><h2>Deep work, <span class="grad">on demand</span></h2>
+    <p class="sub">One tap silences everything — notifications, feeds, noise. Just you, a timer and the task.</p>
+    <ul class="ticks">
+      <li>Pomodoro sessions with ambient soundscapes</li>
+      <li>Session analytics &amp; daily streaks</li>
+      <li>Distraction blocking across the platform</li>
+      <li class="bn">পড়াশোনা ও কাজের জন্য নিখুঁত পরিবেশ</li>
+    </ul>
+  </div>
+  <div class="timer rev"><div><b id="tm">25:00</b><small>FOCUS</small></div></div>
+</div></div></section>
+
+<section id="why"><div class="wrap center">
+  <span class="tag">Why Digital Seba</span><h2>Built for <span class="grad">real people</span>, not demos</h2>
+  <p class="sub">Fast on any phone, honest with your data, and readable in the language you think in.</p>
+  <div class="why">
+    <div class="rev"><b>⚡</b><h3>Lightning fast</h3><p class="sub">Under 100KB core, instant loads even on 2G.</p></div>
+    <div class="rev"><b>🔒</b><h3>Privacy first</h3><p class="sub">Tools run on-device. No selling of your data. Ever.</p></div>
+    <div class="rev"><b>🇧🇩</b><h3>Bilingual by design</h3><p class="sub">Bangla and English as first-class citizens.</p></div>
+    <div class="rev"><b>📱</b><h3>Android &amp; iOS ready</h3><p class="sub">Installable PWA with offline essentials.</p></div>
+    <div class="rev"><b>🧭</b><h3>Zero confusion</h3><p class="sub">Guided flows instead of endless government portals.</p></div>
+    <div class="rev"><b>♾️</b><h3>Always growing</h3><p class="sub">New services and tools shipped every week.</p></div>
+  </div>
+</div></section>
+
+<section id="final"><div class="wrap"><div class="final rev">
+  <span class="tag">Get Started</span>
+  <h2>Your digital life,<br><span class="grad">finally in one place.</span></h2>
+  <p class="sub" style="margin:0 auto 30px">Join thousands using Digital Seba every day. Free to start — no card required.</p>
+  <div class="cta"><a href="#" class="btn btn-p">Create free account →</a><a href="#services" class="btn btn-g">Browse services</a></div>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div><a class="logo" href="#"><span class="mark">◆</span> Digital<span class="grad">Seba</span></a>
+      <p style="margin-top:12px;max-width:280px">এক প্ল্যাটফর্মে সব ডিজিটাল সেবা — services, tools, resources, live TV and focus.</p></div>
+    <div><h4>Platform</h4><a href="#services">Services</a><a href="#tools">Tools</a><a href="#resources">Resources</a></div>
+    <div><h4>Explore</h4><a href="#livetv">Live TV</a><a href="#focus">Focus Mode</a><a href="#why">About</a></div>
+    <div><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Contact</a></div>
+  </div>
+  <p style="margin-top:34px;border-top:1px solid var(--line);padding-top:20px">© <span id="yr"></span> Digital Seba. All rights reserved.</p>
+</div></footer>
+
+<script>
+const nodes=[["🏛️","Services",0],["🧰","Tools",60],["📚","Resources",120],["📺","Live TV",180],["🎯","Focus",240],["👤","Account",300]];
+const orb=document.getElementById('orb'),R=170;
+nodes.forEach(([e,t,d])=>{const n=document.createElement('div');n.className='node';n.title=t;n.textContent=e;
+ const r=d*Math.PI/180;n.style.setProperty('--pos',`translate3d(${Math.cos(r)*R}px,${Math.sin(r)*R}px,0)`);
+ n.style.animationDelay=(-22*d/360)+'s';orb.appendChild(n);});
+document.getElementById('yr').textContent=new Date().getFullYear();
+const hd=document.getElementById('hd');addEventListener('scroll',()=>hd.classList.toggle('s',scrollY>20));
+const mob=document.getElementById('mob');document.getElementById('bg').onclick=()=>mob.classList.toggle('o');
+mob.querySelectorAll('a').forEach(a=>a.onclick=()=>mob.classList.remove('o'));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+ const b=e.target.querySelector('[data-c]')||(e.target.dataset.c?e.target:null);
+ if(b&&!b.done){b.done=1;let v=0,t=+b.dataset.c;const i=setInterval(()=>{v+=Math.ceil(t/28);if(v>=t){v=t;clearInterval(i)}b.textContent=v},34);}
+ io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rev').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+let s=1500;setInterval(()=>{s=s>0?s-1:1500;document.getElementById('tm').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')},1000);
+</script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

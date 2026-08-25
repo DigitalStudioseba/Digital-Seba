@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources</title>
+  <meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Digital Seba">
+  <meta name="theme-color" content="#0c0b09">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://digiseba.shop/">
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="apple-touch-icon" href="/assets/images/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Digital Seba">
+  <meta property="og:url" content="https://digiseba.shop/">
+  <meta property="og:title" content="Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources">
+  <meta property="og:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta property="og:image" content="https://digiseba.shop/assets/images/logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="bn_BD">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Digital Seba — ডিজিটাল সেবা">
+  <meta name="twitter:description" content="Useful digital services, tools, resources, Live TV and focus utilities — in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","name":"Digital Seba","alternateName":"ডিজিটাল সেবা","url":"https://digiseba.shop/","inLanguage":["en","bn"],"description":"Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform."},
+    {"@type":"Organization","name":"Digital Seba","alternateName":"ডিজিটাল সেবা","url":"https://digiseba.shop/","logo":"https://digiseba.shop/assets/images/logo.png"}
+  ]}
+  </script>
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem("ds-lang");
+        if (l === "bn" || l === "en") {
+          document.documentElement.setAttribute("data-lang", l);
+          document.documentElement.lang = l === "bn" ? "bn" : "en";
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --ink: #0c0b09;
+      --void: #080807;
+      --bone: #efe8dc;
+      --bone-2: #e4d9c8;
+      --mute: #8a8378;
+      --chart: #d8ff3e;
+      --ice: #8ec2ff;
+      --line: rgba(239,232,220,.14);
+      --serif: "Instrument Serif", "Noto Sans Bengali", Georgia, serif;
+      --sans: "Space Grotesk", "Noto Sans Bengali", system-ui, sans-serif;
+    }
+    html[data-lang="bn"] { --serif: "Noto Sans Bengali", "Instrument Serif", serif; --sans: "Noto Sans Bengali", "Space Grotesk", sans-serif; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--ink); color: var(--bone); }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); line-height: 1.5; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: 0; }
+    :focus-visible { outline: 2px solid var(--chart); outline-offset: 3px; }
+    .skip { position: absolute; left: 12px; top: -40px; z-index: 90; background: var(--chart); color: #111; padding: 8px 12px; }
+    .skip:focus { top: 12px; }
+    html[data-lang="en"] .t-bn, html[data-lang="bn"] .t-en { display: none !important; }
+
+    #space { position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%; display: block; pointer-events: none; }
+    .fall {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(70% 50% at 70% 20%, rgba(216,255,62,.08), transparent 50%),
+        radial-gradient(50% 40% at 10% 90%, rgba(142,194,255,.08), transparent 50%),
+        var(--void);
+    }
+    html.has-webgl .fall { opacity: .45; }
+    .plus {
+      position: fixed; width: 18px; height: 18px; pointer-events: none; z-index: 80;
+      mix-blend-mode: difference; display: none;
+    }
+    .plus:before, .plus:after { content: ""; position: absolute; background: #fff; }
+    .plus:before { left: 8px; top: 0; width: 1px; height: 18px; }
+    .plus:after { left: 0; top: 8px; width: 18px; height: 1px; }
+    @media (hover:hover) and (pointer:fine) { .plus { display: block; } }
+
+    .hud {
+      position: fixed; inset: 0; z-index: 30; pointer-events: none;
+    }
+    .hud > * { pointer-events: auto; }
+    .hud-top {
+      position: absolute; top: 0; left: 0; right: 0;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 22px 28px;
+    }
+    .mark { display: flex; flex-direction: column; gap: 2px; }
+    .mark b { font-size: 11px; letter-spacing: .28em; }
+    .mark span { font-size: 11px; color: var(--mute); }
+    .hud-r { display: flex; align-items: center; gap: 18px; }
+    .coord { font-size: 11px; letter-spacing: .14em; text-align: right; font-variant-numeric: tabular-nums; }
+    .coord i { display: block; font-style: normal; color: var(--mute); font-size: 10px; }
+    .lang { display: flex; gap: 8px; font-size: 11px; letter-spacing: .16em; }
+    .lang button { color: var(--mute); }
+    html[data-lang="en"] .lang [data-set-lang="en"],
+    html[data-lang="bn"] .lang [data-set-lang="bn"] { color: var(--chart); }
+    .xbtn {
+      width: 36px; height: 36px; position: relative;
+    }
+    .xbtn i, .xbtn i:after {
+      position: absolute; background: var(--bone); content: "";
+    }
+    .xbtn i { left: 17px; top: 8px; width: 1px; height: 20px; }
+    .xbtn i:after { left: -10px; top: 10px; width: 20px; height: 1px; }
+    body.open .xbtn i { transform: rotate(45deg); }
+    body.open .xbtn i:after { transform: rotate(45deg); top: 10px; }
+
+    .chapters {
+      position: absolute; left: 22px; top: 50%; transform: translateY(-50%);
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .chapters a {
+      font-size: 10px; letter-spacing: .18em; color: var(--mute);
+      writing-mode: horizontal-tb;
+    }
+    .chapters a:hover, .chapters a.on { color: var(--chart); }
+
+    .menu {
+      display: none; position: fixed; inset: 0; z-index: 40; background: var(--ink);
+      padding: 100px 40px 40px;
+    }
+    body.open .menu { display: block; }
+    body.open { overflow: hidden; }
+    .menu a {
+      display: block; font-family: var(--serif); font-size: clamp(2rem, 7vw, 4rem);
+      line-height: 1.05; padding: 6px 0; border-bottom: 1px solid var(--line);
+    }
+
+    .page { position: relative; z-index: 2; }
+
+    .intro {
+      min-height: 100vh; display: grid; place-items: center; text-align: left;
+      padding: 120px 12vw 80px;
+    }
+    .ey { letter-spacing: .32em; text-transform: uppercase; font-size: 11px; color: var(--chart); margin-bottom: 24px; }
+    h1 {
+      font-family: var(--serif); font-weight: 400; font-size: clamp(3.2rem, 11vw, 8.8rem);
+      line-height: .88; margin: 0 0 28px; max-width: 12ch; letter-spacing: -.03em;
+    }
+    h1 em { font-style: italic; color: var(--chart); }
+    .lede { max-width: 34ch; color: var(--mute); font-size: 1.05rem; }
+    .row { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 36px; }
+    .go {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border: 1px solid var(--bone);
+      letter-spacing: .12em; text-transform: uppercase; font-size: 11px;
+    }
+    .go.solid { background: var(--chart); color: #111; border-color: var(--chart); }
+    .go:hover { background: var(--bone); color: #111; }
+
+    .void { padding: 0; }
+    .paper { background: var(--bone); color: var(--ink); position: relative; z-index: 3; }
+    .paper .mute { color: #6b645a; }
+    .paper .go { border-color: #111; color: #111; }
+    .paper .go.solid { background: #111; color: var(--bone); border-color: #111; }
+    .paper .go:hover { background: var(--chart); color: #111; border-color: var(--chart); }
+
+    .band { padding: 110px 12vw; }
+    .no { font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: var(--chart); }
+    .paper .no { color: #3a4a12; }
+    h2 {
+      font-family: var(--serif); font-weight: 400;
+      font-size: clamp(2.2rem, 6vw, 5.2rem); line-height: .95; margin: 10px 0 18px;
+    }
+
+    .catalog { width: 100%; border-collapse: collapse; margin-top: 48px; }
+    .catalog a { display: grid; grid-template-columns: 72px 1fr auto; gap: 24px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); }
+    .paper .catalog a { border-top-color: rgba(12,11,9,.14); }
+    .catalog a:last-child { border-bottom: 1px solid var(--line); }
+    .catalog em { font-style: normal; font-size: 12px; letter-spacing: .2em; color: var(--mute); }
+    .catalog b { font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.6rem); font-weight: 400; }
+    .catalog span { color: var(--mute); font-size: 14px; }
+    .catalog a:hover b { color: var(--chart); }
+    .paper .catalog a:hover b { color: #1a2a00; }
+
+    .wall {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid rgba(12,11,9,.14);
+    }
+    .wall a {
+      min-height: 220px; padding: 28px 22px; border-right: 1px solid rgba(12,11,9,.14); border-bottom: 1px solid rgba(12,11,9,.14);
+      display: flex; flex-direction: column; justify-content: space-between;
+      transform: perspective(800px) rotateX(0);
+      transition: transform .4s, background .3s;
+    }
+    .wall a:hover { background: #111; color: var(--bone); transform: perspective(800px) rotateX(8deg) translateZ(12px); }
+    .wall small { letter-spacing: .2em; font-size: 10px; }
+    .wall strong { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 400; }
+
+    .object {
+      display: grid; grid-template-columns: 140px 1fr 1fr;
+      border-top: 1px solid var(--line); min-height: 280px;
+    }
+    .object .num {
+      font-family: var(--serif); font-size: 4rem; padding: 36px 12vw 36px 12vw;
+      color: var(--chart); grid-column: 1;
+    }
+    .object .body { padding: 40px 8vw 40px 0; display: flex; flex-direction: column; justify-content: center; }
+    .object h3 { font-family: var(--serif); font-size: clamp(1.8rem, 4vw, 3.2rem); font-weight: 400; margin: 0 0 12px; }
+    .viz {
+      border-left: 1px solid var(--line); display: grid; place-items: center;
+      background: radial-gradient(circle at 50% 80%, rgba(216,255,62,.12), transparent 55%);
+    }
+    .viz.t { letter-spacing: .3em; font-size: 12px; color: var(--chart); }
+    .ring { width: 140px; height: 140px; }
+
+    .console {
+      border: 1px solid rgba(12,11,9,.2); padding: 32px;
+      background: rgba(255,255,255,.28);
+    }
+    .console label { display: block; letter-spacing: .24em; text-transform: uppercase; font-size: 11px; margin-bottom: 10px; }
+    .console input {
+      width: 100%; background: 0; border: 0; border-bottom: 1px solid #111;
+      font-family: var(--serif); font-size: clamp(1.8rem, 5vw, 3.4rem); padding: 6px 0 14px; outline: 0;
+    }
+    .hints { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+    .hints a {
+      border: 1px solid rgba(12,11,9,.25); padding: 7px 10px; font-size: 12px; letter-spacing: .06em;
+    }
+    .hints a:hover, .hints a.on { background: #111; color: var(--bone); }
+
+    .signal { padding: 140px 12vw; }
+    .signal h2 { max-width: 14ch; }
+
+    .depart { padding: 140px 12vw 160px; }
+    .depart h2 { font-size: clamp(2.8rem, 8vw, 7rem); max-width: 11ch; }
+
+    footer {
+      position: relative; z-index: 3;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 24px; padding: 40px 12vw 32px;
+      border-top: 1px solid var(--line); color: var(--mute); font-size: 13px;
+    }
+    footer a { display: block; padding: 3px 0; }
+    footer a:hover { color: var(--bone); }
+    .copy { grid-column: 1 / -1; margin-top: 20px; letter-spacing: .12em; font-size: 11px; }
+
+    .labels { position: fixed; inset: 0; z-index: 1; pointer-events: none; }
+    .lab {
+      position: absolute; transform: translate(-50%, -50%);
+      font-size: 10px; letter-spacing: .2em; color: var(--bone);
+      text-shadow: 0 2px 12px #000; white-space: nowrap; opacity: .7;
+    }
+
+    @media (max-width: 980px) {
+      .chapters { display: none; }
+      .intro, .band, .signal, .depart, footer { padding-left: 28px; padding-right: 28px; }
+      .object { grid-template-columns: 1fr; }
+      .object .num { padding: 28px 28px 0; }
+      .object .body { padding: 12px 28px 28px; }
+      .viz { min-height: 180px; border-left: 0; border-top: 1px solid var(--line); }
+      .wall { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .hud-top { padding: 16px; }
+      .wall { grid-template-columns: 1fr; }
+      .catalog a { grid-template-columns: 48px 1fr; }
+      .catalog span { grid-column: 2; }
+      h1 { font-size: clamp(2.6rem, 16vw, 4rem); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .wall a { transform: none; }
+    }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="fall" aria-hidden="true"></div>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="labels" id="labels" aria-hidden="true"></div>
+  <div class="plus" id="plus" hidden></div>
+
+  <div class="hud">
+    <div class="hud-top">
+      <a class="mark" href="/" aria-label="Digital Seba home">
+        <b>DIGITAL SEBA</b>
+        <span>ডিজিটাল সেবা</span>
+      </a>
+      <div class="hud-r">
+        <div class="coord"><i id="dateLine"></i><span id="timeLine"></span></div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="bn">বাংলা</button>
+        </div>
+        <button class="xbtn" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><i></i></button>
+      </div>
+    </div>
+    <nav class="chapters" aria-label="Chapters">
+      <a href="#intro">01</a>
+      <a href="#catalog">02</a>
+      <a href="#objects">03</a>
+      <a href="#archive">04</a>
+      <a href="#locate">05</a>
+      <a href="#depart">06</a>
+    </nav>
+  </div>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Menu">
+      <a href="#intro"><span class="t-en">The Archive</span><span class="t-bn">আর্কাইভ</span></a>
+      <a href="#catalog"><span class="t-en">Catalog</span><span class="t-bn">ক্যাটালগ</span></a>
+      <a href="#archive"><span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></a>
+      <a href="/services/"><span class="t-en">Services</span><span class="t-bn">সেবা</span></a>
+      <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+      <a href="/resources/"><span class="t-en">Resources</span><span class="t-bn">রিসোর্স</span></a>
+      <a href="/live-tv/">Live TV</a>
+      <a href="/focus-mode/">Focus Mode</a>
+      <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+    </nav>
+  </div>
+
+  <div class="page">
+    <main id="main">
+      <section class="intro" id="intro">
+        <div>
+          <div class="ey"><span class="t-en">Flagship archive · 2026</span><span class="t-bn">ফ্ল্যাগশিপ আর্কাইভ · ২০২৬</span></div>
+          <h1>
+            <span class="t-en">The <em>archive</em> of everyday digital work.</span>
+            <span class="t-bn">প্রতিদিনের ডিজিটাল কাজের <em>আর্কাইভ।</em></span>
+          </h1>
+          <p class="lede">
+            <span class="t-en">Digital Seba is one place to find software, documents, tools, live television and a quiet focus workspace. A library — not a shop.</span>
+            <span class="t-bn">ডিজিটাল সেবা — সফটওয়্যার, ডকুমেন্ট, টুলস, লাইভ টিভি ও ফোকাস ওয়ার্কস্পেস এক জায়গায়। লাইব্রেরি — দোকান নয়।</span>
+          </p>
+          <div class="row">
+            <a class="go solid" href="#catalog"><span class="t-en">Enter the archive</span><span class="t-bn">আর্কাইভে প্রবেশ</span></a>
+            <button class="go" type="button" id="heroLang"><span class="t-en">বাংলায় দেখুন</span><span class="t-bn">View in English</span></button>
+          </div>
+        </div>
+      </section>
+
+      <section class="void band" id="catalog">
+        <div class="no">02 — <span class="t-en">Catalog</span><span class="t-bn">ক্যাটালগ</span></div>
+        <h2><span class="t-en">Five rooms.<br>One coordinate.</span><span class="t-bn">পাঁচটি কক্ষ।<br>এক স্থানাঙ্ক।</span></h2>
+        <p class="lede"><span class="t-en">Move through the rooms. Each line is a real destination.</span><span class="t-bn">প্রতিটি লাইন একটি আসল গন্তব্য।</span></p>
+        <nav class="catalog" aria-label="Platform">
+          <a href="/services/"><em>01</em><b><span class="t-en">Services</span><span class="t-bn">সেবা</span></b><span><span class="t-en">Digital utilities — Voteshondhan and more. Not a government office.</span><span class="t-bn">ডিজিটাল ইউটিলিটি — সরকারি অফিস নয়।</span></span></a>
+          <a href="/tools/"><em>02</em><b><span class="t-en">Tools</span><span class="t-bn">টুলস</span></b><span><span class="t-en">Age calculator, scanner, CV, cards, QR, text.</span><span class="t-bn">বয়স ক্যালকুলেটর, স্ক্যানার, সিভি, কার্ড, কিউআর।</span></span></a>
+          <a href="/resources/"><em>03</em><b><span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></b><span><span class="t-en">Software, PDF, fonts, ISO, documents.</span><span class="t-bn">সফটওয়্যার, PDF, ফন্ট, ISO, ডকুমেন্ট।</span></span></a>
+          <a href="/live-tv/"><em>04</em><b>Live TV</b><span><span class="t-en">Channels in one player.</span><span class="t-bn">চ্যানেল এক প্লেয়ারে।</span></span></a>
+          <a href="/focus-mode/"><em>05</em><b>Focus Mode</b><span><span class="t-en">Stay focused. Get more done.</span><span class="t-bn">মনোযোগ ধরে রাখুন।</span></span></a>
+        </nav>
+      </section>
+
+      <section class="paper" id="archive">
+        <div class="band" style="padding-bottom:48px">
+          <div class="no">04 — <span class="t-en">Objects in the library</span><span class="t-bn">লাইব্রেরির বস্তু</span></div>
+          <h2><span class="t-en">Twelve doors,<br>one shelf.</span><span class="t-bn">বারোটি দরজা,<br>এক তাক।</span></h2>
+          <p class="lede mute"><span class="t-en">Hover a door. Open it into the resource library.</span><span class="t-bn">দরজায় হোভার করুন। লাইব্রেরিতে খুলুন।</span></p>
+        </div>
+        <div class="wall" id="wall">
+          <a href="/resources/" data-key="software"><small>01</small><strong>Software</strong></a>
+          <a href="/resources/" data-key="apps"><small>02</small><strong>Apps</strong></a>
+          <a href="/resources/" data-key="drivers"><small>03</small><strong>Drivers</strong></a>
+          <a href="/resources/" data-key="windows"><small>04</small><strong>Windows</strong></a>
+          <a href="/resources/" data-key="android"><small>05</small><strong>Android</strong></a>
+          <a href="/resources/" data-key="books"><small>06</small><strong>Books</strong></a>
+          <a href="/resources/" data-key="pdf"><small>07</small><strong>PDF</strong></a>
+          <a href="/resources/" data-key="images"><small>08</small><strong>Images</strong></a>
+          <a href="/resources/" data-key="videos"><small>09</small><strong>Videos</strong></a>
+          <a href="/resources/" data-key="iso"><small>10</small><strong>ISO</strong></a>
+          <a href="/resources/" data-key="fonts"><small>11</small><strong>Fonts</strong></a>
+          <a href="/resources/" data-key="documents"><small>12</small><strong>Documents</strong></a>
+        </div>
+      </section>
+
+      <section class="void" id="objects">
+        <div class="band" style="padding-bottom:20px">
+          <div class="no">03 — <span class="t-en">Selected objects</span><span class="t-bn">নির্বাচিত বস্তু</span></div>
+          <h2><span class="t-en">Open a room,<br>not a tile.</span><span class="t-bn">টাইল নয়,<br>একটি কক্ষ খুলুন।</span></h2>
+        </div>
+        <article class="object">
+          <div class="num">01</div>
+          <div class="body">
+            <h3>Voteshondhan · ভোট সন্ধান</h3>
+            <p class="lede"><span class="t-en">Search voter information from PDF documents — in the browser. A digital utility, not a government office.</span><span class="t-bn">PDF থেকে ভোটার তথ্য — ব্রাউজারে। ডিজিটাল ইউটিলিটি, সরকারি অফিস নয়।</span></p>
+            <div class="row"><a class="go solid" href="/services/Voteshondhan/"><span class="t-en">Open Voteshondhan</span><span class="t-bn">ভোট সন্ধান খুলুন</span></a></div>
+          </div>
+          <div class="viz t">PDF · LOOKUP</div>
+        </article>
+        <article class="object">
+          <div class="num">02</div>
+          <div class="body">
+            <h3><span class="t-en">Live television,<br>without the clutter.</span><span class="t-bn">লাইভ টিভি<br>এক জায়গায়।</span></h3>
+            <p class="lede"><span class="t-en">A channel catalog and player. Preview only here — streams live on the TV page.</span><span class="t-bn">চ্যানেল ক্যাটালগ ও প্লেয়ার। এখানে শুধু প্রিভিউ।</span></p>
+            <div class="row"><a class="go solid" href="/live-tv/"><span class="t-en">Watch Live TV</span><span class="t-bn">লাইভ টিভি দেখুন</span></a></div>
+          </div>
+          <div class="viz t">▶  LIVE</div>
+        </article>
+        <article class="object">
+          <div class="num">03</div>
+          <div class="body">
+            <h3><span class="t-en">Less distraction.<br>More focus.</span><span class="t-bn">কম বিভ্রান্তি।<br>বেশি মনোযোগ।</span></h3>
+            <p class="lede"><span class="t-en">A calm Pomodoro workspace. Stay focused. Get more done.</span><span class="t-bn">শান্ত পোমোডোরো ওয়ার্কস্পেস।</span></p>
+            <div class="row"><a class="go solid" href="/focus-mode/"><span class="t-en">Enter Focus Mode</span><span class="t-bn">ফোকাস মোডে যান</span></a></div>
+          </div>
+          <div class="viz">
+            <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="60" cy="60" r="50" fill="none" stroke="rgba(239,232,220,.15)" stroke-width="4"/>
+              <circle cx="60" cy="60" r="50" fill="none" stroke="#d8ff3e" stroke-width="4" stroke-dasharray="314" stroke-dashoffset="90" transform="rotate(-90 60 60)"/>
+              <text x="60" y="66" text-anchor="middle" fill="#efe8dc" font-size="16" font-family="Space Grotesk,sans-serif">25:00</text>
+            </svg>
+          </div>
+        </article>
+        <article class="object">
+          <div class="num">04</div>
+          <div class="body">
+            <h3><span class="t-en">Tools for the work<br>you already do.</span><span class="t-bn">যে কাজ আপনি করেন,<br>তার টুলস।</span></h3>
+            <p class="lede"><span class="t-en">Age calculator, business card, scanner, CV builder, Link Auditor, text utilities, QR, image crop.</span><span class="t-bn">বয়স ক্যালকুলেটর, বিজনেস কার্ড, স্ক্যানার, সিভি, লিংক অডিটর, টেক্সট, কিউআর।</span></p>
+            <div class="row">
+              <a class="go solid" href="/tools/"><span class="t-en">Explore tools</span><span class="t-bn">টুলস দেখুন</span></a>
+              <a class="go" href="/link-auditor/">Link Auditor</a>
+            </div>
+          </div>
+          <div class="viz t">AGE · CV · QR</div>
+        </article>
+      </section>
+
+      <section class="paper band" id="locate">
+        <div class="no">05 — <span class="t-en">Locate</span><span class="t-bn">খুঁজুন</span></div>
+        <h2><span class="t-en">Name the object<br>you need.</span><span class="t-bn">যা লাগবে,<br>তার নাম বলুন।</span></h2>
+        <form class="console" action="/resources/" method="get" role="search">
+          <label for="q"><span class="t-en">Find a digital resource</span><span class="t-bn">ডিজিটাল রিসোর্স খুঁজুন</span></label>
+          <input id="q" name="q" type="search" autocomplete="off" placeholder="Software, PDF, fonts, Windows…">
+          <div class="hints" id="hints">
+            <a href="/resources/" data-filter="software">Software</a>
+            <a href="/resources/" data-filter="windows">Windows</a>
+            <a href="/resources/" data-filter="android">Android</a>
+            <a href="/resources/" data-filter="pdf">PDF</a>
+            <a href="/resources/" data-filter="iso">ISO</a>
+            <a href="/resources/" data-filter="fonts">Fonts</a>
+            <a href="/services/Voteshondhan/">Voteshondhan</a>
+            <a href="/live-tv/">Live TV</a>
+            <a href="/focus-mode/">Focus</a>
+            <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+          </div>
+        </form>
+      </section>
+
+      <section class="paper signal">
+        <div class="no">Digital Seba</div>
+        <h2><span class="t-en">One destination for everyday digital work.</span><span class="t-bn">প্রতিদিনের ডিজিটাল কাজের একটি সহজ ঠিকানা।</span></h2>
+        <p class="lede mute" style="margin-top:18px"><span class="t-en">English and বাংলা. No invented counts. No fake awards. Fast on a phone.</span><span class="t-bn">বাংলা + English। বানানো সংখ্যা নয়। মোবাইলে দ্রুত।</span></p>
+      </section>
+
+      <section class="void depart" id="depart">
+        <div class="no">06 — <span class="t-en">Continue</span><span class="t-bn">চলুন</span></div>
+        <h2><span class="t-en">Step into<br>the library.</span><span class="t-bn">লাইব্রেরিতে<br>পা রাখুন।</span></h2>
+        <div class="row">
+          <a class="go solid" href="/resources/"><span class="t-en">Open the library</span><span class="t-bn">লাইব্রেরি খুলুন</span></a>
+          <a class="go" href="/services/"><span class="t-en">Browse services</span><span class="t-bn">সেবাসমূহ দেখুন</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div>
+        <b style="color:var(--bone);letter-spacing:.2em;font-size:11px">DIGITAL SEBA</b>
+        <p style="max-width:32ch"><span class="t-en">Everyday digital services, tools, resources and online utilities — one archive.</span><span class="t-bn">প্রতিদিনের ডিজিটাল সেবা, টুলস ও রিসোর্সের আর্কাইভ।</span></p>
+      </div>
+      <div>
+        <a href="/services/"><span class="t-en">Services</span><span class="t-bn">সেবা</span></a>
+        <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+        <a href="/resources/"><span class="t-en">Resources</span><span class="t-bn">রিসোর্স</span></a>
+        <a href="/live-tv/">Live TV</a>
+      </div>
+      <div>
+        <a href="/focus-mode/">Focus Mode</a>
+        <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+        <a href="/link-auditor/">Link Auditor</a>
+      </div>
+      <div class="copy">© Digital Seba</div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var fine = window.matchMedia("(pointer: fine)").matches;
+      var narrow = window.matchMedia("(max-width: 820px)").matches;
+      var saveData = navigator.connection && navigator.connection.saveData;
+      var lite = reduced || saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) || narrow;
+
+      function lang() { return root.getAttribute("data-lang") === "bn" ? "bn" : "en"; }
+      function setLang(n) {
+        root.setAttribute("data-lang", n);
+        root.lang = n === "bn" ? "bn" : "en";
+        try { localStorage.setItem("ds-lang", n); } catch (e) {}
+        tick();
+      }
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+      });
+      var hl = document.getElementById("heroLang");
+      if (hl) hl.addEventListener("click", function () { setLang(lang() === "bn" ? "en" : "bn"); });
+
+      var bnM = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+      var enM = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+      var bnN = "০১২৩৪৫৬৭৮৯";
+      function toBn(n) { return String(n).replace(/\d/g, function (d) { return bnN[d]; }); }
+      function pad(n) { return n < 10 ? "0" + n : "" + n; }
+      function tick() {
+        var now = new Date(), d = document.getElementById("dateLine"), t = document.getElementById("timeLine");
+        if (!d || !t) return;
+        if (lang() === "bn") {
+          d.textContent = toBn(now.getDate()) + " " + bnM[now.getMonth()];
+          var h = now.getHours();
+          var p = h < 5 ? "রাত" : h < 12 ? "সকাল" : h < 16 ? "দুপুর" : h < 19 ? "বিকাল" : "রাত";
+          t.textContent = p + " " + toBn(h % 12 || 12) + ":" + toBn(pad(now.getMinutes()));
+        } else {
+          d.textContent = pad(now.getDate()) + " " + enM[now.getMonth()] + " " + now.getFullYear();
+          t.textContent = pad(now.getHours()) + ":" + pad(now.getMinutes()) + " LOC";
+        }
+      }
+      tick(); setInterval(tick, 1000);
+
+      var btn = document.getElementById("menuBtn"), menu = document.getElementById("menu");
+      function close() { document.body.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); menu.hidden = true; }
+      function open() { document.body.classList.add("open"); btn.setAttribute("aria-expanded", "true"); menu.hidden = false; }
+      btn.addEventListener("click", function (e) { e.stopPropagation(); document.body.classList.contains("open") ? close() : open(); });
+      menu.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+      var plus = document.getElementById("plus");
+      if (plus && fine && !narrow) {
+        plus.hidden = false;
+        window.addEventListener("pointermove", function (e) {
+          plus.style.transform = "translate(" + (e.clientX - 9) + "px," + (e.clientY - 9) + "px)";
+        }, { passive: true });
+      }
+
+      var q = document.getElementById("q");
+      if (q) {
+        q.addEventListener("input", function () {
+          var v = q.value.trim().toLowerCase();
+          document.querySelectorAll("#wall a").forEach(function (a) {
+            var ok = !v || (a.getAttribute("data-key") || "").indexOf(v) !== -1 || a.textContent.toLowerCase().indexOf(v) !== -1;
+            a.style.opacity = ok ? "1" : ".28";
+          });
+          document.querySelectorAll("#hints [data-filter]").forEach(function (c) {
+            c.classList.toggle("on", !!v && c.getAttribute("data-filter").indexOf(v) !== -1);
+          });
+        });
+      }
+
+      var ids = ["intro","catalog","objects","archive","locate","depart"];
+      var ch = document.querySelectorAll(".chapters a");
+      if ("IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (ents) {
+          ents.forEach(function (en) {
+            if (!en.isIntersecting) return;
+            var id = en.target.id;
+            ch.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + id); });
+          });
+        }, { threshold: 0.35 });
+        ids.forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+      }
+
+      if (reduced) return;
+
+      var s = document.createElement("script");
+      s.src = "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js";
+      s.defer = true;
+      s.onload = function () { try { boot(lite); } catch (err) {} };
+      document.head.appendChild(s);
+
+      function boot(liteMode) {
+        if (!window.THREE) return;
+        var canvas = document.getElementById("space");
+        var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true, powerPreference: "high-performance" });
+        renderer.setClearColor(0x000000, 0);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, liteMode ? 1 : 1.4));
+        renderer.setSize(window.innerWidth, window.innerHeight, false);
+        var scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x0c0b09, 0.05);
+        var camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 80);
+        camera.position.set(0, 0.2, 10);
+
+        var count = liteMode ? 700 : 2200;
+        var pos = new Float32Array(count * 3);
+        for (var i = 0; i < count; i++) {
+          var r = 14 * Math.cbrt(Math.random());
+          var th = Math.random() * Math.PI * 2;
+          var ph = Math.acos(2 * Math.random() - 1);
+          pos[i * 3] = r * Math.sin(ph) * Math.cos(th);
+          pos[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th);
+          pos[i * 3 + 2] = r * Math.cos(ph);
+        }
+        var stars = new THREE.Points(
+          new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pos, 3)),
+          new THREE.PointsMaterial({ color: 0xefe8dc, size: liteMode ? 0.028 : 0.018, sizeAttenuation: true, transparent: true, opacity: 0.75, depthWrite: false })
+        );
+        scene.add(stars);
+
+        var ring = new THREE.Mesh(
+          new THREE.TorusGeometry(2.6, 0.012, 8, liteMode ? 64 : 128),
+          new THREE.MeshBasicMaterial({ color: 0xd8ff3e, transparent: true, opacity: 0.55 })
+        );
+        ring.rotation.x = Math.PI / 2.4;
+        scene.add(ring);
+
+        var names = ["SOFTWARE","APPS","WINDOWS","ANDROID","PDF","ISO","FONTS","VIDEO","BOOKS","DRIVERS"];
+        var group = new THREE.Group();
+        var nodes = [];
+        var n = liteMode ? 6 : names.length;
+        for (var j = 0; j < n; j++) {
+          var mesh = new THREE.Mesh(
+            new THREE.OctahedronGeometry(0.12 + (j % 3) * 0.04, 0),
+            new THREE.MeshBasicMaterial({ color: j % 2 ? 0xd8ff3e : 0x8ec2ff, wireframe: true, transparent: true, opacity: 0.85 })
+          );
+          var a = (j / n) * Math.PI * 2;
+          mesh.position.set(Math.cos(a) * 2.6, Math.sin(a * 0.35) * 0.4, Math.sin(a) * 2.6);
+          mesh.userData = { name: names[j], s: 0.4 + j * 0.05 };
+          group.add(mesh);
+          nodes.push(mesh);
+        }
+        scene.add(group);
+
+        var box = document.getElementById("labels");
+        var labs = nodes.map(function (mesh) {
+          var el = document.createElement("div");
+          el.className = "lab";
+          el.textContent = mesh.userData.name;
+          box.appendChild(el);
+          return el;
+        });
+
+        var mx = 0, my = 0, run = true;
+        window.addEventListener("pointermove", function (e) {
+          mx = (e.clientX / window.innerWidth) * 2 - 1;
+          my = (e.clientY / window.innerHeight) * 2 - 1;
+        }, { passive: true });
+        document.addEventListener("visibilitychange", function () { run = !document.hidden; if (run) loop(); });
+
+        var v = new THREE.Vector3();
+        function loop() {
+          if (!run) return;
+          requestAnimationFrame(loop);
+          var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          var sc = window.scrollY / max;
+          camera.position.z = 10 - sc * 5.5;
+          camera.position.x += (mx * 0.9 - camera.position.x) * 0.04;
+          camera.position.y += (-my * 0.4 - camera.position.y) * 0.04;
+          camera.lookAt(0, 0, 0);
+          stars.rotation.y += 0.00028;
+          ring.rotation.z += 0.0012;
+          group.rotation.y += 0.0015;
+          nodes.forEach(function (m, i) {
+            m.rotation.y += 0.01 * m.userData.s;
+            v.copy(m.getWorldPosition(v)).project(camera);
+            var x = (v.x * 0.5 + 0.5) * window.innerWidth;
+            var y = (-v.y * 0.5 + 0.5) * window.innerHeight;
+            labs[i].style.left = x + "px";
+            labs[i].style.top = y + "px";
+            labs[i].style.opacity = (v.z < 1 && sc < 0.45) ? "0.8" : "0";
+          });
+          renderer.render(scene, camera);
+        }
+        loop();
+        window.addEventListener("resize", function () {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight, false);
+        });
+        root.classList.add("has-webgl");
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

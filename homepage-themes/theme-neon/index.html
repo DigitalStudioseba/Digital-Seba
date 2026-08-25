@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform. ডিজিটাল সেবা - সব ডিজিটাল সেবা এক জায়গায়।">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#7c5cff">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources">
+    <meta property="og:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://digiseba.shop/">
+    <meta property="og:image" content="https://digiseba.shop/og-image.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Digital Seba — ডিজিটাল সেবা">
+    <meta name="twitter:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+
+    <link rel="canonical" href="https://digiseba.shop/">
+
+    <title>Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050507;
+            --surface: #0b0b10;
+            --surface-soft: #11111a;
+            --text: #ffffff;
+            --text-muted: #9b9ba8;
+            --accent: #7c5cff;
+            --accent-2: #27d9ff;
+            --transition: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--surface);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 4px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.2;
+            font-weight: 700;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: background 0.3s var(--transition), backdrop-filter 0.3s var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: rgba(5, 5, 7, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(124, 92, 255, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            gap: 0.125rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .brand-en {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.02em;
+        }
+
+        .brand-bn {
+            font-size: 0.875rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex: 1;
+            justify-content: center;
+        }
+
+        .nav-links {
+            display: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--text);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -0.5rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .datetime {
+            display: none;
+            flex-direction: column;
+            align-items: flex-end;
+            font-size: 0.8125rem;
+            line-height: 1.3;
+        }
+
+        .datetime-date {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .datetime-time {
+            color: var(--text-muted);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            padding: 0.375rem 0.75rem;
+            background: var(--surface-soft);
+            border-radius: 6px;
+            border: 1px solid rgba(124, 92, 255, 0.2);
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            color: var(--text);
+            background: var(--accent);
+        }
+
+        .mobile-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            background: none;
+            border: none;
+        }
+
+        .mobile-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            transition: all 0.3s var(--transition);
+            border-radius: 2px;
+        }
+
+        .mobile-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+
+        .mobile-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: min(320px, 80vw);
+            height: 100vh;
+            background: var(--surface);
+            border-left: 1px solid rgba(124, 92, 255, 0.2);
+            padding: 6rem 2rem 2rem;
+            transition: right 0.4s var(--transition);
+            z-index: 999;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(4px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 998;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .mobile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .mobile-link {
+            color: var(--text);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 600;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: color 0.2s;
+        }
+
+        .mobile-link:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            width: 100%;
+        }
+
+        .hero-content {
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(124, 92, 255, 0.1);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--accent-2);
+            margin-bottom: 2rem;
+        }
+
+        .hero-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent-2);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title-gradient {
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.375rem);
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .hero-cta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s var(--transition);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 40px rgba(124, 92, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: var(--surface-soft);
+            border-color: var(--accent);
+        }
+
+        /* 3D Hero Visualization */
+        .hero-3d {
+            position: relative;
+            height: 600px;
+            perspective: 1000px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ecosystem-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .ecosystem-card {
+            position: absolute;
+            width: 200px;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(39, 217, 255, 0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.4s var(--transition);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .ecosystem-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 12px 48px rgba(124, 92, 255, 0.4);
+        }
+
+        .ecosystem-card-icon {
+            font-size: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .ecosystem-card-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+
+        .ecosystem-card-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotateY(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotateY(5deg);
+            }
+        }
+
+        .card-1 { top: 5%; left: 5%; animation-delay: 0s; }
+        .card-2 { top: 5%; right: 5%; animation-delay: 1s; }
+        .card-3 { top: 50%; left: 0; transform: translateY(-50%); animation-delay: 2s; }
+        .card-4 { top: 50%; right: 0; transform: translateY(-50%); animation-delay: 3s; }
+        .card-5 { bottom: 5%; left: 50%; transform: translateX(-50%); animation-delay: 4s; }
+
+        .ecosystem-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 0 60px rgba(124, 92, 255, 0.6);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* Constellation Section */
+        .constellation {
+            padding: 8rem 2rem;
+            position: relative;
+        }
+
+        .constellation-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+        }
+
+        .constellation-visual {
+            position: relative;
+            height: 400px;
+            margin: 4rem auto;
+        }
+
+        .constellation-node {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 40px rgba(124, 92, 255, 0.5);
+            animation: pulse-node 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse-node {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 40px rgba(124, 92, 255, 0.5);
+            }
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 60px rgba(124, 92, 255, 0.8);
+            }
+        }
+
+        .node-center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            font-size: 2rem;
+        }
+
+        .node-top { top: 0; left: 50%; transform: translateX(-50%); animation-delay: 0.5s; }
+        .node-right { top: 50%; right: 10%; transform: translateY(-50%); animation-delay: 1s; }
+        .node-bottom { bottom: 0; left: 50%; transform: translateX(-50%); animation-delay: 1.5s; }
+        .node-left { top: 50%; left: 10%; transform: translateY(-50%); animation-delay: 2s; }
+
+        .constellation-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform-origin: 0 0;
+            opacity: 0.5;
+            animation: flow 3s linear infinite;
+        }
+
+        @keyframes flow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+            100% { opacity: 0.3; }
+        }
+
+        /* Category Cards */
+        .categories {
+            padding: 4rem 2rem 8rem;
+        }
+
+        .categories-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            position: relative;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(17, 17, 26, 0.8), rgba(11, 11, 16, 0.9));
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.4s var(--transition);
+            text-decoration: none;
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.05), rgba(39, 217, 255, 0.05));
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .category-card:hover::before {
+            opacity: 1;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 60px rgba(124, 92, 255, 0.3);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-title-bn {
+            font-size: 1rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .category-description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-2);
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+
+        .category-card:hover .category-cta {
+            gap: 1rem;
+        }
+
+        /* Service Preview Section */
+        .service-preview {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(17, 17, 26, 0.5), transparent);
+        }
+
+        .service-preview-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .service-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .service-visual {
+            position: relative;
+            padding: 3rem;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(39, 217, 255, 0.05));
+            border-radius: 24px;
+            border: 1px solid rgba(124, 92, 255, 0.3);
+        }
+
+        .service-card-stack {
+            position: relative;
+            height: 400px;
+        }
+
+        .service-card-item {
+            position: absolute;
+            width: 100%;
+            max-width: 350px;
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s var(--transition);
+        }
+
+        .service-card-item:nth-child(1) {
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            z-index: 3;
+        }
+
+        .service-card-item:nth-child(2) {
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%) rotate(1deg);
+            z-index: 2;
+            opacity: 0.7;
+        }
+
+        .service-card-item:nth-child(3) {
+            top: 80px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-1deg);
+            z-index: 1;
+            opacity: 0.4;
+        }
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .feature-text h4 {
+            font-size: 1.125rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .feature-text p {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+
+        /* Tools Section */
+        .tools-section {
+            padding: 8rem 2rem;
+        }
+
+        .tools-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr));
+            gap: 1.5rem;
+            margin-top: 4rem;
+        }
+
+        .tool-card {
+            aspect-ratio: 1;
+            padding: 2rem 1rem;
+            background: var(--surface-soft);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition);
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .tool-card:hover {
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.15), rgba(39, 217, 255, 0.1));
+            border-color: var(--accent);
+            transform: translateY(-8px) rotateZ(2deg);
+            box-shadow: 0 12px 40px rgba(124, 92, 255, 0.3);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .tool-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(17, 17, 26, 0.5), transparent);
+        }
+
+        .resources-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .resources-visual {
+            position: relative;
+            height: 500px;
+            margin: 4rem 0;
+            perspective: 1000px;
+        }
+
+        .resource-stack {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotateX(10deg);
+            transform-style: preserve-3d;
+        }
+
+        .resource-file {
+            width: 200px;
+            padding: 2rem;
+            background: var(--surface);
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 16px;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s var(--transition);
+            cursor: pointer;
+        }
+
+        .resource-file:hover {
+            transform: translateZ(40px) scale(1.05);
+            border-color: var(--accent);
+        }
+
+        .resource-categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .resource-category {
+            padding: 1.5rem 1rem;
+            background: var(--surface-soft);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .resource-category:hover {
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(39, 217, 255, 0.05));
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .resource-category-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-category-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Live TV Section */
+        .livetv-section {
+            padding: 8rem 2rem;
+        }
+
+        .livetv-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .livetv-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 4rem;
+        }
+
+        .tv-player-preview {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a2e, #0f0f1a);
+            border-radius: 24px;
+            border: 2px solid rgba(124, 92, 255, 0.3);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .tv-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.2), rgba(39, 217, 255, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .tv-controls {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .live-indicator {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 0, 0, 0.2);
+            border: 1px solid #ff0000;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            font-weight: 700;
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .channel-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .channel-item {
+            padding: 1rem;
+            background: var(--surface-soft);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.875rem;
+        }
+
+        .channel-item:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Focus Mode Section */
+        .focus-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, rgba(17, 17, 26, 0.5), var(--bg));
+        }
+
+        .focus-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .focus-timer {
+            width: 300px;
+            height: 300px;
+            margin: 4rem auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.2), rgba(39, 217, 255, 0.1));
+            border: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 80px rgba(124, 92, 255, 0.4);
+        }
+
+        .timer-display {
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .timer-label {
+            position: absolute;
+            bottom: 3rem;
+            font-size: 1rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .focus-sounds {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .sound-item {
+            padding: 1.5rem 1rem;
+            background: var(--surface-soft);
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sound-item:hover {
+            background: var(--surface);
+            border-color: var(--accent);
+            transform: translateY(-4px);
+        }
+
+        .sound-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .sound-name {
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 8rem 2rem;
+        }
+
+        .benefits-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-card {
+            padding: 2.5rem 2rem;
+            background: linear-gradient(135deg, rgba(17, 17, 26, 0.8), rgba(11, 11, 16, 0.9));
+            border: 1px solid rgba(124, 92, 255, 0.2);
+            border-radius: 20px;
+            transition: all 0.3s var(--transition);
+        }
+
+        .benefit-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(124, 92, 255, 0.2);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-title-bn {
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        /* Device Compatibility */
+        .devices {
+            padding: 8rem 2rem;
+            background: linear-gradient(180deg, transparent, rgba(17, 17, 26, 0.5), transparent);
+        }
+
+        .devices-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .devices-visual {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 2rem;
+            margin: 4rem 0;
+            flex-wrap: wrap;
+        }
+
+        .device {
+            background: var(--surface);
+            border: 2px solid rgba(124, 92, 255, 0.3);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+
+        .device:hover {
+            transform: translateY(-12px);
+            border-color: var(--accent);
+        }
+
+        .device-phone {
+            width: 80px;
+            height: 140px;
+            border-radius: 12px;
+        }
+
+        .device-tablet {
+            width: 120px;
+            height: 160px;
+        }
+
+        .device-laptop {
+            width: 180px;
+            height: 120px;
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+
+        .device-laptop::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: -20px;
+            right: -20px;
+            height: 8px;
+            background: var(--surface);
+            border-radius: 0 0 4px 4px;
+        }
+
+        .device-desktop {
+            width: 200px;
+            height: 140px;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            padding: 8rem 2rem;
+        }
+
+        .final-cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(124, 92, 255, 0.1), rgba(39, 217, 255, 0.05));
+            border: 1px solid rgba(124, 92, 255, 0.3);
+            border-radius: 32px;
+        }
+
+        .final-cta-icon {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        .final-cta-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 4rem 2rem 2rem;
+            border-top: 1px solid rgba(124, 92, 255, 0.2);
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-brand-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-brand-tagline {
+            color: var(--text-muted);
+            font-size: 0.9375rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-2);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9375rem;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--text);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.875rem;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s var(--transition);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: none;
+            }
+
+            .datetime {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .service-content,
+            .livetv-content {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .hero-3d {
+                height: 400px;
+            }
+
+            .ecosystem-card {
+                width: 140px;
+                padding: 1rem;
+            }
+
+            .ecosystem-card-icon {
+                font-size: 1.5rem;
+            }
+
+            .ecosystem-card-title {
+                font-size: 0.875rem;
+            }
+
+            .ecosystem-card-subtitle {
+                font-size: 0.625rem;
+            }
+
+            .ecosystem-center {
+                width: 80px;
+                height: 80px;
+                font-size: 2rem;
+            }
+
+            .constellation-visual {
+                height: 300px;
+            }
+
+            .constellation-node {
+                width: 60px;
+                height: 60px;
+                font-size: 1.25rem;
+            }
+
+            .node-center {
+                width: 70px;
+                height: 70px;
+                font-size: 1.5rem;
+            }
+
+            .focus-timer {
+                width: 240px;
+                height: 240px;
+            }
+
+            .timer-display {
+                font-size: 3rem;
+            }
+
+            .channel-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-container {
+                padding: 0 1rem;
+            }
+
+            .hero,
+            .constellation,
+            .categories,
+            .service-preview,
+            .tools-section,
+            .resources-section,
+            .livetv-section,
+            .focus-section,
+            .benefits,
+            .devices,
+            .final-cta {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <a href="/" class="brand">
+                <span class="brand-en">Digital Seba</span>
+                <span class="brand-bn">ডিজিটাল সেবা</span>
+            </a>
+
+            <div class="nav-center">
+                <div class="nav-links">
+                    <a href="#services" class="nav-link" data-en="Services" data-bn="সেবা">Services</a>
+                    <a href="#tools" class="nav-link" data-en="Tools" data-bn="টুলস">Tools</a>
+                    <a href="#resources" class="nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a>
+                    <a href="#livetv" class="nav-link" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</a>
+                    <a href="#focus" class="nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a>
+                    <a href="/about/" class="nav-link" data-en="About" data-bn="সম্পর্কে">About</a>
+                </div>
+            </div>
+
+            <div class="nav-right">
+                <div class="datetime" id="datetime">
+                    <span class="datetime-date" id="datetime-date">Thu, 20 Aug</span>
+                    <span class="datetime-time" id="datetime-time">08:42 PM</span>
+                </div>
+
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="bn">বাংলা</button>
+                </div>
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <nav class="mobile-links">
+            <a href="#services" class="mobile-link" data-en="Services" data-bn="সেবা">Services</a>
+            <a href="#tools" class="mobile-link" data-en="Tools" data-bn="টুলস">Tools</a>
+            <a href="#resources" class="mobile-link" data-en="Resources" data-bn="রিসোর্স">Resources</a>
+            <a href="#livetv" class="mobile-link" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</a>
+            <a href="#focus" class="mobile-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a>
+            <a href="/about/" class="mobile-link" data-en="About" data-bn="সম্পর্কে">About</a>
+        </nav>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span data-en="Your Digital Universe" data-bn="আপনার ডিজিটাল মহাবিশ্ব">Your Digital Universe</span>
+                </div>
+
+                <h1 class="hero-title">
+                    <span data-en="Everything Digital." data-bn="সবকিছু ডিজিটাল।">Everything Digital.</span><br>
+                    <span class="hero-title-gradient" data-en="One Place." data-bn="এক জায়গায়।">One Place.</span>
+                </h1>
+
+                <p class="hero-subtitle" data-en="Access essential digital services, productivity tools, resources, live TV streaming and more — all unified in one powerful platform designed for Bangladesh." data-bn="প্রয়োজনীয় ডিজিটাল সেবা, টুলস, রিসোর্স, লাইভ টিভি ও আরও অনেক কিছু এক প্ল্যাটফর্মে।">
+                    Access essential digital services, productivity tools, resources, live TV streaming and more — all unified in one powerful platform designed for Bangladesh.
+                </p>
+
+                <div class="hero-cta">
+                    <a href="/services/" class="btn btn-primary">
+                        <span data-en="Explore Digital Seba" data-bn="ডিজিটাল সেবা দেখুন">Explore Digital Seba</span>
+                        <span>→</span>
+                    </a>
+                    <a href="/services/" class="btn btn-secondary">
+                        <span data-en="Browse Services" data-bn="সেবা দেখুন">Browse Services</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 3D Ecosystem Visualization -->
+            <div class="hero-3d">
+                <div class="ecosystem-container" id="ecosystem">
+                    <div class="ecosystem-center">🌐</div>
+
+                    <a href="/services/" class="ecosystem-card card-1">
+                        <div class="ecosystem-card-icon">📋</div>
+                        <div class="ecosystem-card-title" data-en="Services" data-bn="সেবা">Services</div>
+                        <div class="ecosystem-card-subtitle" data-en="Digital utilities" data-bn="ডিজিটাল সেবা">Digital utilities</div>
+                    </a>
+
+                    <a href="/tools/" class="ecosystem-card card-2">
+                        <div class="ecosystem-card-icon">🛠️</div>
+                        <div class="ecosystem-card-title" data-en="Tools" data-bn="টুলস">Tools</div>
+                        <div class="ecosystem-card-subtitle" data-en="50+ Utilities" data-bn="৫০+ টুলস">50+ Utilities</div>
+                    </a>
+
+                    <a href="/resources/" class="ecosystem-card card-3">
+                        <div class="ecosystem-card-icon">📚</div>
+                        <div class="ecosystem-card-title" data-en="Resources" data-bn="রিসোর্স">Resources</div>
+                        <div class="ecosystem-card-subtitle" data-en="Digital Library" data-bn="ডিজিটাল লাইব্রেরি">Digital Library</div>
+                    </a>
+
+                    <a href="/live-tv/" class="ecosystem-card card-4">
+                        <div class="ecosystem-card-icon">📺</div>
+                        <div class="ecosystem-card-title" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</div>
+                        <div class="ecosystem-card-subtitle" data-en="Watch Live" data-bn="লাইভ দেখুন">Watch Live</div>
+                    </a>
+
+                    <a href="/focus-mode/" class="ecosystem-card card-5">
+                        <div class="ecosystem-card-icon">🎯</div>
+                        <div class="ecosystem-card-title" data-en="Focus" data-bn="ফোকাস">Focus</div>
+                        <div class="ecosystem-card-subtitle" data-en="25:00 Timer" data-bn="২৫:০০ টাইমার">25:00 Timer</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Constellation Section -->
+    <section class="constellation reveal">
+        <div class="constellation-container">
+            <h2 class="section-title">
+                <span data-en="One Platform." data-bn="এক প্ল্যাটফর্মে">One Platform.</span><br>
+                <span data-en="Many Possibilities." data-bn="প্রয়োজনীয় সবকিছু।">Many Possibilities.</span>
+            </h2>
+            <p class="section-subtitle" data-en="Everything connected, everything accessible" data-bn="সব কিছু সংযুক্ত, সব কিছু সহজলভ্য">
+                Everything connected, everything accessible
+            </p>
+
+            <div class="constellation-visual">
+                <div class="constellation-node node-center">🌐</div>
+                <div class="constellation-node node-top">📋</div>
+                <div class="constellation-node node-right">🛠️</div>
+                <div class="constellation-node node-bottom">📚</div>
+                <div class="constellation-node node-left">📺</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Cards -->
+    <section class="categories" id="services">
+        <div class="categories-container">
+            <h2 class="section-title reveal">
+                <span data-en="Explore the Ecosystem" data-bn="ইকোসিস্টেম দেখুন">Explore the Ecosystem</span>
+            </h2>
+
+            <div class="category-grid">
+                <!-- Services Card -->
+                <a href="/services/" class="category-card reveal">
+                    <span class="category-icon">📋</span>
+                    <h3 class="category-title" data-en="Digital Services" data-bn="ডিজিটাল সেবা">Digital Services</h3>
+                    <span class="category-title-bn" data-en="" data-bn="ডিজিটাল সেবা"></span>
+                    <p class="category-description" data-en="Access essential digital and public service utilities with ease. From voter information to document services." data-bn="প্রয়োজনীয় ডিজিটাল ও পাবলিক সার্ভিস সহজে ব্যবহার করুন।">
+                        Access essential digital and public service utilities with ease. From voter information to document services.
+                    </p>
+                    <span class="category-cta">
+                        <span data-en="Explore Services" data-bn="সেবা দেখুন">Explore Services</span>
+                        <span>→</span>
+                    </span>
+                </a>
+
+                <!-- Tools Card -->
+                <a href="/tools/" class="category-card reveal" id="tools">
+                    <span class="category-icon">🛠️</span>
+                    <h3 class="category-title" data-en="Smart Tools" data-bn="স্মার্ট টুলস">Smart Tools</h3>
+                    <span class="category-title-bn" data-en="" data-bn="স্মার্ট টুলস"></span>
+                    <p class="category-description" data-en="Boost your productivity with practical digital utilities. From calculators to scanners and text tools." data-bn="দৈনন্দিন ডিজিটাল কাজকে আরও দ্রুত ও সহজ করুন।">
+                        Boost your productivity with practical digital utilities. From calculators to scanners and text tools.
+                    </p>
+                    <span class="category-cta">
+                        <span data-en="Explore Tools" data-bn="টুলস দেখুন">Explore Tools</span>
+                        <span>→</span>
+                    </span>
+                </a>
+
+                <!-- Resources Card -->
+                <a href="/resources/" class="category-card reveal" id="resources">
+                    <span class="category-icon">📚</span>
+                    <h3 class="category-title" data-en="Digital Resources" data-bn="ডিজিটাল রিসোর্স">Digital Resources</h3>
+                    <span class="category-title-bn" data-en="" data-bn="ডিজিটাল রিসোর্স"></span>
+                    <p class="category-description" data-en="Organized library of software, documents, PDFs, fonts and essential files in one place." data-bn="সফটওয়্যার, ডকুমেন্ট, PDF, ফন্ট ও প্রয়োজনীয় ফাইল এক জায়গায়।">
+                        Organized library of software, documents, PDFs, fonts and essential files in one place.
+                    </p>
+                    <span class="category-cta">
+                        <span data-en="Browse Resources" data-bn="রিসোর্স দেখুন">Browse Resources</span>
+                        <span>→</span>
+                    </span>
+                </a>
+
+                <!-- Live TV Card -->
+                <a href="/live-tv/" class="category-card reveal" id="livetv">
+                    <span class="category-icon">📺</span>
+                    <h3 class="category-title" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</h3>
+                    <span class="category-title-bn" data-en="" data-bn="লাইভ টিভি"></span>
+                    <p class="category-description" data-en="Watch your favorite channels in one place. HD streaming anytime, anywhere." data-bn="বিভিন্ন চ্যানেল এক জায়গায় দেখুন।">
+                        Watch your favorite channels in one place. HD streaming anytime, anywhere.
+                    </p>
+                    <span class="category-cta">
+                        <span data-en="Watch Live" data-bn="লাইভ দেখুন">Watch Live</span>
+                        <span>→</span>
+                    </span>
+                </a>
+
+                <!-- Focus Mode Card -->
+                <a href="/focus-mode/" class="category-card reveal" id="focus">
+                    <span class="category-icon">🎯</span>
+                    <h3 class="category-title" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</h3>
+                    <span class="category-title-bn" data-en="" data-bn="ফোকাস মোড"></span>
+                    <p class="category-description" data-en="Maximize productivity with distraction-free workspace. Pomodoro timer and ambient sounds." data-bn="সময়কে কাজে লাগান। মনোযোগ ধরে রাখুন।">
+                        Maximize productivity with distraction-free workspace. Pomodoro timer and ambient sounds.
+                    </p>
+                    <span class="category-cta">
+                        <span data-en="Start Focusing" data-bn="ফোকাস করুন">Start Focusing</span>
+                        <span>→</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Preview Section -->
+    <section class="service-preview">
+        <div class="service-preview-container">
+            <h2 class="section-title reveal">
+                <span data-en="Essential Services" data-bn="প্রয়োজনীয় সেবা">Essential Services</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Digital utilities that make everyday tasks easier" data-bn="দৈনন্দিন কাজকে সহজ করে এমন ডিজিটাল সেবা">
+                Digital utilities that make everyday tasks easier
+            </p>
+
+            <div class="service-content">
+                <div class="service-visual reveal">
+                    <div class="service-card-stack">
+                        <div class="service-card-item">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">🗳️</div>
+                            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Voteshondhan" data-bn="ভোট সন্ধান">Voteshondhan</h4>
+                            <p style="color: var(--text-muted); font-size: 0.9375rem;" data-en="Voter Information Search" data-bn="ভোটার তথ্য অনুসন্ধান">Voter Information Search</p>
+                        </div>
+                        <div class="service-card-item">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">📄</div>
+                            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Document Services" data-bn="ডকুমেন্ট সেবা">Document Services</h4>
+                        </div>
+                        <div class="service-card-item">
+                            <div style="font-size: 2rem; margin-bottom: 1rem;">🔍</div>
+                            <h4 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;" data-en="Search Utilities" data-bn="সার্চ ইউটিলিটি">Search Utilities</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="service-info reveal">
+                    <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;" data-en="Powerful Digital Services" data-bn="শক্তিশালী ডিজিটাল সেবা">Powerful Digital Services</h3>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">🗳️</div>
+                            <div class="feature-text">
+                                <h4 data-en="Voteshondhan / ভোট সন্ধান" data-bn="ভোট সন্ধান">Voteshondhan / ভোট সন্ধান</h4>
+                                <p data-en="Search voter information from PDF documents quickly and efficiently" data-bn="পিডিএফ ডকুমেন্ট থেকে ভোটার তথ্য দ্রুত খুঁজুন">Search voter information from PDF documents quickly and efficiently</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-text">
+                                <h4 data-en="Fast & Reliable" data-bn="দ্রুত ও নির্ভরযোগ্য">Fast & Reliable</h4>
+                                <p data-en="Optimized for quick access to essential services" data-bn="প্রয়োজনীয় সেবায় দ্রুত প্রবেশাধিকার">Optimized for quick access to essential services</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">🔒</div>
+                            <div class="feature-text">
+                                <h4 data-en="Secure & Private" data-bn="নিরাপদ ও ব্যক্তিগত">Secure & Private</h4>
+                                <p data-en="Your data is protected with secure handling" data-bn="আপনার তথ্য নিরাপদভাবে সংরক্ষিত">Your data is protected with secure handling</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="/services/Voteshondhan/" class="btn btn-primary" style="margin-top: 2rem;">
+                        <span data-en="Try Voteshondhan" data-bn="ভোট সন্ধান ব্যবহার করুন">Try Voteshondhan</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools-section">
+        <div class="tools-container">
+            <h2 class="section-title reveal">
+                <span data-en="Productivity Tools" data-bn="প্রোডাক্টিভিটি টুলস">Productivity Tools</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Practical utilities for everyday digital work" data-bn="দৈনন্দিন ডিজিটাল কাজের জন্য টুলস">
+                Practical utilities for everyday digital work
+            </p>
+
+            <div class="tools-grid">
+                <div class="tool-card reveal">
+                    <div class="tool-icon">📅</div>
+                    <div class="tool-name" data-en="Age Calculator" data-bn="বয়স ক্যালকুলেটর">Age Calculator</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">💳</div>
+                    <div class="tool-name" data-en="Business Card" data-bn="বিজনেস কার্ড">Business Card</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">🔢</div>
+                    <div class="tool-name" data-en="CVC Utility" data-bn="সিভিসি ইউটিলিটি">CVC Utility</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">📱</div>
+                    <div class="tool-name" data-en="Scanner" data-bn="স্ক্যানার">Scanner</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">📝</div>
+                    <div class="tool-name" data-en="Text Tools" data-bn="টেক্সট টুলস">Text Tools</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">🔗</div>
+                    <div class="tool-name" data-en="Link Auditor" data-bn="লিংক অডিটর">Link Auditor</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">📊</div>
+                    <div class="tool-name" data-en="Data Tools" data-bn="ডেটা টুলস">Data Tools</div>
+                </div>
+
+                <div class="tool-card reveal">
+                    <div class="tool-icon">🎨</div>
+                    <div class="tool-name" data-en="Media Tools" data-bn="মিডিয়া টুলস">Media Tools</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" class="reveal">
+                <a href="/tools/" class="btn btn-primary">
+                    <span data-en="Explore all tools" data-bn="সব টুলস দেখুন">Explore all tools</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+        <div class="resources-container">
+            <h2 class="section-title reveal">
+                <span data-en="Digital Resource Library" data-bn="ডিজিটাল রিসোর্স লাইব্রেরি">Digital Resource Library</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Everything you need, organized and accessible" data-bn="যা কিছু প্রয়োজন, সংগঠিত এবং সহজলভ্য">
+                Everything you need, organized and accessible
+            </p>
+
+            <div class="resource-categories">
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">📱</div>
+                    <div class="resource-category-name" data-en="Apps" data-bn="অ্যাপস">Apps</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">💻</div>
+                    <div class="resource-category-name" data-en="Software" data-bn="সফটওয়্যার">Software</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🖥️</div>
+                    <div class="resource-category-name" data-en="Drivers" data-bn="ড্রাইভার">Drivers</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🪟</div>
+                    <div class="resource-category-name" data-en="Windows" data-bn="উইন্ডোজ">Windows</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🤖</div>
+                    <div class="resource-category-name" data-en="Android" data-bn="অ্যান্ড্রয়েড">Android</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">📚</div>
+                    <div class="resource-category-name" data-en="Books" data-bn="বই">Books</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">📄</div>
+                    <div class="resource-category-name" data-en="PDF" data-bn="পিডিএফ">PDF</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🖼️</div>
+                    <div class="resource-category-name" data-en="Images" data-bn="ছবি">Images</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🎥</div>
+                    <div class="resource-category-name" data-en="Videos" data-bn="ভিডিও">Videos</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">💿</div>
+                    <div class="resource-category-name" data-en="ISO" data-bn="আইএসও">ISO</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">🔤</div>
+                    <div class="resource-category-name" data-en="Fonts" data-bn="ফন্ট">Fonts</div>
+                </div>
+
+                <div class="resource-category reveal">
+                    <div class="resource-category-icon">📑</div>
+                    <div class="resource-category-name" data-en="Documents" data-bn="ডকুমেন্ট">Documents</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;" class="reveal">
+                <a href="/resources/" class="btn btn-primary">
+                    <span data-en="Open Resource Library" data-bn="রিসোর্স লাইব্রেরি খুলুন">Open Resource Library</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live TV Section -->
+    <section class="livetv-section">
+        <div class="livetv-container">
+            <h2 class="section-title reveal">
+                <span data-en="Live TV Streaming" data-bn="লাইভ টিভি স্ট্রিমিং">Live TV Streaming</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Entertainment, without the clutter" data-bn="লাইভ টিভি এক জায়গায়">
+                Entertainment, without the clutter
+            </p>
+
+            <div class="livetv-content">
+                <div class="tv-player-preview reveal">
+                    <div class="tv-screen">📺</div>
+                    <div class="tv-controls">
+                        <div class="live-indicator">
+                            <div class="live-dot"></div>
+                            <span>LIVE</span>
+                        </div>
+                        <div style="color: var(--text-muted); font-size: 0.875rem;">HD Quality</div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <h3 style="font-size: 2rem; font-weight: 700; margin-bottom: 1.5rem;" data-en="Watch Anytime, Anywhere" data-bn="যেকোনো সময়, যেকোনো জায়গায়">Watch Anytime, Anywhere</h3>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-icon">📺</div>
+                            <div class="feature-text">
+                                <h4 data-en="Multiple Channels" data-bn="একাধিক চ্যানেল">Multiple Channels</h4>
+                                <p data-en="Access a wide variety of channels in one place" data-bn="এক জায়গায় বিভিন্ন চ্যানেল দেখুন">Access a wide variety of channels in one place</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">🎬</div>
+                            <div class="feature-text">
+                                <h4 data-en="HD Streaming" data-bn="এইচডি স্ট্রিমিং">HD Streaming</h4>
+                                <p data-en="Crystal clear picture quality on all devices" data-bn="সব ডিভাইসে পরিষ্কার ছবি">Crystal clear picture quality on all devices</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon">📱</div>
+                            <div class="feature-text">
+                                <h4 data-en="Multi-Device Support" data-bn="মাল্টি-ডিভাইস সাপোর্ট">Multi-Device Support</h4>
+                                <p data-en="Watch on mobile, tablet, or desktop" data-bn="মোবাইল, ট্যাবলেট বা ডেস্কটপে দেখুন">Watch on mobile, tablet, or desktop</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="channel-grid" style="margin-top: 2rem;">
+                        <div class="channel-item">📺 CH 1</div>
+                        <div class="channel-item">🎬 CH 2</div>
+                        <div class="channel-item">⚽ CH 3</div>
+                        <div class="channel-item">🎵 CH 4</div>
+                    </div>
+
+                    <a href="/live-tv/" class="btn btn-primary" style="margin-top: 2rem;">
+                        <span data-en="Watch Live TV" data-bn="লাইভ টিভি দেখুন">Watch Live TV</span>
+                        <span>→</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Mode Section -->
+    <section class="focus-section">
+        <div class="focus-container">
+            <h2 class="section-title reveal">
+                <span data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Less distraction. More focus." data-bn="কম বিভ্রান্তি। বেশি মনোযোগ।">
+                Less distraction. More focus.
+            </p>
+
+            <div class="focus-timer reveal">
+                <div class="timer-display">25:00</div>
+                <div class="timer-label" data-en="FOCUS" data-bn="ফোকাস">FOCUS</div>
+            </div>
+
+            <div class="focus-sounds">
+                <div class="sound-item reveal">
+                    <div class="sound-icon">🌧️</div>
+                    <div class="sound-name" data-en="Rain" data-bn="বৃষ্টি">Rain</div>
+                </div>
+
+                <div class="sound-item reveal">
+                    <div class="sound-icon">🔥</div>
+                    <div class="sound-name" data-en="Fireplace" data-bn="আগুন">Fireplace</div>
+                </div>
+
+                <div class="sound-item reveal">
+                    <div class="sound-icon">🌊</div>
+                    <div class="sound-name" data-en="Ocean" data-bn="সমুদ্র">Ocean</div>
+                </div>
+
+                <div class="sound-item reveal">
+                    <div class="sound-icon">☕</div>
+                    <div class="sound-name" data-en="Cafe" data-bn="ক্যাফে">Cafe</div>
+                </div>
+
+                <div class="sound-item reveal">
+                    <div class="sound-icon">🌲</div>
+                    <div class="sound-name" data-en="Forest" data-bn="বন">Forest</div>
+                </div>
+
+                <div class="sound-item reveal">
+                    <div class="sound-icon">⚡</div>
+                    <div class="sound-name" data-en="Thunder" data-bn="বজ্রপাত">Thunder</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 3rem;" class="reveal">
+                <a href="/focus-mode/" class="btn btn-primary">
+                    <span data-en="Enter Focus Mode" data-bn="ফোকাস মোড চালু করুন">Enter Focus Mode</span>
+                    <span>→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-container">
+            <h2 class="section-title reveal">
+                <span data-en="Why Digital Seba" data-bn="কেন ডিজিটাল সেবা">Why Digital Seba</span>
+            </h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">⚡</div>
+                    <h3 class="benefit-title" data-en="Simple" data-bn="সহজ">Simple</h3>
+                    <span class="benefit-title-bn" data-en="" data-bn="সহজ ব্যবহার"></span>
+                    <p style="color: var(--text-muted);" data-en="Intuitive interface designed for everyone" data-bn="সবার জন্য সহজ ইন্টারফেস">Intuitive interface designed for everyone</p>
+                </div>
+
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🚀</div>
+                    <h3 class="benefit-title" data-en="Fast" data-bn="দ্রুত">Fast</h3>
+                    <span class="benefit-title-bn" data-en="" data-bn="দ্রুত অভিজ্ঞতা"></span>
+                    <p style="color: var(--text-muted);" data-en="Optimized for speed and performance" data-bn="গতি এবং কর্মক্ষমতার জন্য অপ্টিমাইজড">Optimized for speed and performance</p>
+                </div>
+
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🎯</div>
+                    <h3 class="benefit-title" data-en="Useful" data-bn="উপকারী">Useful</h3>
+                    <span class="benefit-title-bn" data-en="" data-bn="প্রয়োজনীয় টুলস ও রিসোর্স"></span>
+                    <p style="color: var(--text-muted);" data-en="Practical tools and resources you actually need" data-bn="আসলেই প্রয়োজনীয় টুলস এবং রিসোর্স">Practical tools and resources you actually need</p>
+                </div>
+
+                <div class="benefit-card reveal">
+                    <div class="benefit-icon">🌍</div>
+                    <h3 class="benefit-title" data-en="Bilingual" data-bn="দ্বিভাষিক">Bilingual</h3>
+                    <span class="benefit-title-bn" data-en="" data-bn="বাংলা + English"></span>
+                    <p style="color: var(--text-muted);" data-en="Fully supports both Bengali and English" data-bn="বাংলা এবং ইংরেজি উভয় ভাষা সমর্থন করে">Fully supports both Bengali and English</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Device Compatibility -->
+    <section class="devices">
+        <div class="devices-container">
+            <h2 class="section-title reveal">
+                <span data-en="Made for every screen" data-bn="সব ডিভাইসের জন্য তৈরি">Made for every screen</span>
+            </h2>
+            <p class="section-subtitle reveal" data-en="Works perfectly on all your devices" data-bn="আপনার সব ডিভাইসে নিখুঁতভাবে কাজ করে">
+                Works perfectly on all your devices
+            </p>
+
+            <div class="devices-visual reveal">
+                <div class="device device-phone"></div>
+                <div class="device device-tablet"></div>
+                <div class="device device-laptop"></div>
+                <div class="device device-desktop"></div>
+            </div>
+
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;" class="reveal" data-en="Android • iOS • Tablets • Laptops • Desktop" data-bn="অ্যান্ড্রয়েড • আইওএস • ট্যাবলেট • ল্যাপটপ • ডেস্কটপ">
+                Android • iOS • Tablets • Laptops • Desktop
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-container reveal">
+            <div class="final-cta-icon">✨</div>
+            <h2 class="final-cta-title">
+                <span data-en="Everything you need," data-bn="আপনার প্রয়োজনীয় ডিজিটাল জিনিসগুলো">Everything you need,</span><br>
+                <span data-en="just one click away." data-bn="এখন এক জায়গায়।">just one click away.</span>
+            </h2>
+            <p class="final-cta-subtitle" data-en="Join thousands using Digital Seba for their daily digital needs. Experience the complete digital ecosystem built for Bangladesh." data-bn="হাজারো মানুষ প্রতিদিন ডিজিটাল সেবা ব্যবহার করছেন। বাংলাদেশের জন্য তৈরি সম্পূর্ণ ডিজিটাল ইকোসিস্টেম অনুভব করুন।">
+                Join thousands using Digital Seba for their daily digital needs. Experience the complete digital ecosystem built for Bangladesh.
+            </p>
+            <div class="hero-cta">
+                <a href="/services/" class="btn btn-primary">
+                    <span data-en="Explore Digital Seba" data-bn="ডিজিটাল সেবা দেখুন">Explore Digital Seba</span>
+                    <span>→</span>
+                </a>
+                <a href="/about/" class="btn btn-secondary">
+                    <span data-en="Learn More" data-bn="আরও জানুন">Learn More</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-brand-name">Digital Seba</div>
+                    <div class="footer-brand-tagline" data-en="Your complete digital ecosystem" data-bn="আপনার সম্পূর্ণ ডিজিটাল ইকোসিস্টেম">Your complete digital ecosystem</div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-en="Platform" data-bn="প্ল্যাটফর্ম">Platform</h4>
+                    <div class="footer-links">
+                        <a href="/services/" class="footer-link" data-en="Services" data-bn="সেবা">Services</a>
+                        <a href="/tools/" class="footer-link" data-en="Tools" data-bn="টুলস">Tools</a>
+                        <a href="/resources/" class="footer-link" data-en="Resources" data-bn="রিসোর্স">Resources</a>
+                        <a href="/live-tv/" class="footer-link" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-en="Features" data-bn="বৈশিষ্ট্য">Features</h4>
+                    <div class="footer-links">
+                        <a href="/focus-mode/" class="footer-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a>
+                        <a href="/services/Voteshondhan/" class="footer-link" data-en="Voteshondhan" data-bn="ভোট সন্ধান">Voteshondhan</a>
+                        <a href="/link-auditor/" class="footer-link" data-en="Link Auditor" data-bn="লিংক অডিটর">Link Auditor</a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4 data-en="About" data-bn="সম্পর্কে">About</h4>
+                    <div class="footer-links">
+                        <a href="/about/" class="footer-link" data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</a>
+                        <a href="https://digiseba.shop/" class="footer-link" data-en="Website" data-bn="ওয়েবসাইট">Website</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© <span id="year">2024</span> Digital Seba. <span data-en="All rights reserved." data-bn="সর্বস্বত্ব সংরক্ষিত।">All rights reserved.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Language System
+        const translations = {
+            en: {},
+            bn: {}
+        };
+
+        let currentLang = localStorage.getItem('digital-seba-lang') || 'en';
+
+        function updateLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('digital-seba-lang', lang);
+
+            // Update all elements with data-en and data-bn
+            document.querySelectorAll('[data-en][data-bn]').forEach(el => {
+                const text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-bn');
+                if (text) {
+                    el.textContent = text;
+                }
+            });
+
+            // Update active language button
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
+        }
+
+        // Language switch buttons
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                updateLanguage(btn.getAttribute('data-lang'));
+            });
+        });
+
+        // Initialize language
+        updateLanguage(currentLang);
+
+        // Mobile Menu
+        const mobileToggle = document.getElementById('mobileToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+
+        function toggleMobileMenu() {
+            mobileToggle.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            mobileOverlay.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
+
+        function closeMobileMenu() {
+            mobileToggle.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            mobileOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileToggle.addEventListener('click', toggleMobileMenu);
+        mobileOverlay.addEventListener('click', closeMobileMenu);
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', closeMobileMenu);
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Date & Time
+        function updateDateTime() {
+            const now = new Date();
+
+            const dateOptions = { weekday: 'short', day: 'numeric', month: 'short' };
+            const timeOptions = { hour: '2-digit', minute: '2-digit', hour12: true };
+
+            const dateEl = document.getElementById('datetime-date');
+            const timeEl = document.getElementById('datetime-time');
+
+            if (currentLang === 'bn') {
+                // Bengali numerals
+                const bnDigits = ['০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯'];
+                const bnMonths = ['জানুয়ারি', 'ফেব্রুয়ারি', 'মার্চ', 'এপ্রিল', 'মে', 'জুন', 'জুলাই', 'আগস্ট', 'সেপ্টেম্বর', 'অক্টোবর', 'নভেম্বর', 'ডিসেম্বর'];
+
+                const day = now.getDate().toString().split('').map(d => bnDigits[d]).join('');
+                const month = bnMonths[now.getMonth()];
+                const hours = now.getHours();
+                const minutes = now.getMinutes().toString().padStart(2, '0').split('').map(d => bnDigits[d]).join('');
+                const hour12 = (hours % 12 || 12).toString().split('').map(d => bnDigits[d]).join('');
+                const period = hours >= 12 ? 'রাত' : 'সকাল';
+
+                dateEl.textContent = `${day} ${month}`;
+                timeEl.textContent = `${period} ${hour12}:${minutes}`;
+            } else {
+                dateEl.textContent = now.toLocaleDateString('en-US', dateOptions);
+                timeEl.textContent = now.toLocaleTimeString('en-US', timeOptions);
+            }
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3D Ecosystem Parallax (Desktop only)
+        if (window.innerWidth > 768) {
+            const ecosystem = document.getElementById('ecosystem');
+
+            document.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                if (ecosystem) {
+                    ecosystem.style.transform = `rotateY(${x}deg) rotateX(${-y}deg)`;
+                }
+            });
+        }
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#' || href === '') return;
+
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Active Nav Link on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

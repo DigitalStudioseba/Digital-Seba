@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Theme Selector - Digital Seba</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0b0b0c; color: #fff; margin: 0; padding: 2rem; }
+    h1 { text-align: center; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 2rem; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto; }
+    .card { background: #161618; border: 1px solid #333; border-radius: 8px; overflow: hidden; transition: transform 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+    .card:hover { transform: translateY(-5px); border-color: #666; }
+    .preview-box { width: 100%; aspect-ratio: 16 / 9; background: #1a1a1c; position: relative; overflow: hidden; display:flex; align-items:center; justify-content:center; border-bottom: 1px solid #333; border-radius: 8px 8px 0 0; }
+    .preview-box span { color: #555; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.8rem; }
+    .preview-iframe { width: 400%; height: 400%; border: none; transform: scale(0.25); transform-origin: top left; pointer-events: none; position: absolute; top:0; left:0; opacity: 0; transition: opacity 0.5s; background: #000; }
+    .info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .info h2 { margin: 0.5rem 0 0.75rem 0; font-size: 1.25rem; font-weight: 500; }
+    .info p { margin: 0 0 1.5rem 0; color: #888; font-size: 0.9rem; line-height: 1.5; flex: 1; }
+    .actions { display: flex; gap: 1rem; margin-top: auto; }
+    button { flex: 1; padding: 0.75rem; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.3s, color 0.3s; }
+    .btn-preview { background: #333; color: #fff; }
+    .btn-preview:hover { background: #444; }
+    .btn-use { background: #fff; color: #000; }
+    .btn-use:hover { background: #ccc; }
+    .active-badge { position: absolute; top: 1rem; right: 1rem; background: #10b981; color: #fff; padding: 0.25rem 0.75rem; border-radius: 99px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; z-index: 10; display: none; }
+    .card.active .active-badge { display: block; }
+    .card.active { border-color: #10b981; box-shadow: 0 0 0 1px #10b981; }
+
+    #notification { position: fixed; bottom: 2rem; right: 2rem; background: #10b981; color: white; padding: 1rem 2rem; border-radius: 8px; font-weight: bold; transform: translateY(150%); transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    #notification.show { transform: translateY(0); }
+
+    .back-btn { position: absolute; top: 2rem; left: 2rem; color: #fff; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; display:flex; align-items:center; gap: 0.5rem; opacity: 0.7; transition: opacity 0.2s; }
+    .back-btn:hover { opacity: 1; }
+
+    @media (max-width: 768px) {
+      .back-btn { position: relative; top: 0; left: 0; margin-bottom: 2rem; display: inline-block; }
+      h1 { margin-top: 0; }
+    }
+
+    .scroll-container {
+      max-height: calc(100vh - 180px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-right: 10px;
+    }
+    /* Scrollbar styling for a cleaner look */
+    .scroll-container::-webkit-scrollbar { width: 8px; }
+    .scroll-container::-webkit-scrollbar-track { background: rgba(0,0,0,0.1); border-radius: 4px; }
+    .scroll-container::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+    .scroll-container::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
+
+      .loading-text { color: #888; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; position: absolute; z-index: 1; }
+    .preview-iframe { z-index: 2; }
+  </style>
+</head>
+<body>
+  <a href="/" class="back-btn">&larr; Back to Portal</a>
+  <h1>Theme Selector</h1>
+  <div class="scroll-container"><div class="grid" id="theme-grid"></div></div>
+  <div id="notification">Theme activated successfully</div>
+
+  <script>
+    const themes = [
+      { id: 'theme-alpha', name: 'Alpha', path: '../index.html', desc: 'Sleek and minimal government portal architecture.' },
+      { id: 'theme-nexus', name: 'Nexus', path: '../homepage-themes/theme-nexus/index.html', desc: 'Centralized hub with dynamic content routing.' },
+      { id: 'theme-horizon', name: 'Horizon', path: '../homepage-themes/theme-horizon/index.html', desc: 'Expansive layouts designed for massive data presentation.' },
+      { id: 'theme-quantum', name: 'Quantum', path: '../homepage-themes/theme-quantum/index.html', desc: 'High-performance framework for rapid digital delivery.' },
+      { id: 'theme-vertex', name: 'Vertex', path: '../homepage-themes/theme-vertex/index.html', desc: 'Cutting-edge geometric design with sharp, clean edges.' },
+      { id: 'theme-pulse', name: 'Pulse', path: '../homepage-themes/theme-pulse/index.html', desc: 'Vibrant, energetic layouts that capture immediate attention.' },
+      { id: 'theme-orbit', name: 'Orbit', path: '../homepage-themes/theme-orbit/index.html', desc: 'Circular motifs and smooth, flowing content transitions.' },
+      { id: 'theme-spark', name: 'Spark', path: '../homepage-themes/theme-spark/index.html', desc: 'Lightweight and engaging architecture for quick interactions.' },
+      { id: 'theme-lumina', name: 'Lumina', path: '../homepage-themes/theme-lumina/out/index.html', desc: 'Bright, focus-driven layout built on strict App Router principles.' },
+      { id: 'theme-zenith', name: 'Zenith', path: '../homepage-themes/theme-zenith/dist/index.html', desc: 'Peak performance with ultra-optimized single-file bundling.' },
+      { id: 'theme-aero', name: 'Aero', path: '../homepage-themes/theme-aero/dist/index.html', desc: 'Sleek, airy design language with expansive negative space.' },
+      { id: 'theme-nova', name: 'Nova', path: '../homepage-themes/theme-nova/dist/index.html', desc: 'Bold, explosive aesthetics meant for maximum visual impact.' },
+      { id: 'theme-prism', name: 'Prism', path: '../homepage-themes/theme-prism/index.html', desc: 'Multi-faceted layout designed to handle complex data structures.' },
+      { id: 'theme-echo', name: 'Echo', path: '../homepage-themes/theme-echo/index.html', desc: 'Resonant, typography-heavy design for deep and focused reading.' },
+      { id: 'theme-flux', name: 'Flux', path: '../homepage-themes/theme-flux/index.html', desc: 'Dynamic, motion-driven interfaces that adapt beautifully to scroll.' },
+      { id: 'theme-neon', name: 'Neon', path: '../homepage-themes/theme-neon/index.html', desc: 'High-contrast, cyberpunk-inspired visual language and colors.' },
+      { id: 'theme-core', name: 'Core', path: '../homepage-themes/theme-core/index.html', desc: 'Minimalist foundation focusing strictly on content delivery.' },
+      { id: 'theme-apex', name: 'Apex', path: '../homepage-themes/theme-apex/index.html', desc: 'Premium, corporate-tier architecture designed for high trust.' },
+      { id: 'theme-ignite', name: 'Ignite', path: '../homepage-themes/theme-ignite/index.html', desc: 'Conversion-optimized layout engineered for immediate user action.' },
+      { id: 'theme-infinity', name: 'Infinity', path: '../homepage-themes/theme-infinity/index.html', desc: 'Endless scrolling grids built for massive content libraries.' },
+      { id: 'theme-genesis', name: 'Genesis', path: '../homepage-themes/theme-genesis/index.html', desc: 'The origin architecture. Classic, reliable, and battle-tested.' },
+    ];
+
+    const currentTheme = localStorage.getItem('activeTheme') || 'theme-alpha';
+    const grid = document.getElementById('theme-grid');
+
+    themes.forEach(theme => {
+      const isAct = theme.id === currentTheme;
+      const card = document.createElement('div');
+      card.className = 'card' + (isAct ? ' active' : '');
+      card.id = 'card-' + theme.id;
+
+      card.innerHTML = `
+        <div class="preview-box">
+          <div class="active-badge">&#10004; Active Theme</div>
+          <span class="loading-text">Loading preview...</span>
+          <iframe class="preview-iframe" data-src="${theme.path}" loading="lazy"></iframe>
+        </div>
+        <div class="info">
+          <h2>${theme.name}</h2>
+          <p>${theme.desc}</p>
+          <div class="actions">
+            <button class="btn-preview" onclick="window.open('${theme.path}', '_blank')">Preview</button>
+            <button class="btn-use" onclick="activateTheme('${theme.id}')">${isAct ? 'Selected' : 'Use Theme'}</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const ifr = entry.target;
+        if (!ifr.src && ifr.dataset.src) {
+          ifr.src = ifr.dataset.src;
+          ifr.onload = () => ifr.style.opacity = '1';
+        }
+        observer.unobserve(ifr);
+      });
+    }, { rootMargin: '300px' });
+
+    document.querySelectorAll('.preview-iframe').forEach(ifr => observer.observe(ifr));
+
+        function activateTheme(id) {
+      localStorage.setItem('activeTheme', id);
+      window.location.href = '/portal/index.html';
+    }
+  </script>
+</body>
+</html>

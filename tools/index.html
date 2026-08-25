@@ -21,7 +21,7 @@
 <!-- 3. TITLE & DESCRIPTION -->
 <title>
  Digital Seba - Free Online Tool
-      
+
 </title>
 <!-- Meta Description -->
 <meta content="For Studio, Photocopy, and Online Computer Shop Owners: Use all professional tools for your Digital Studio, 100% free." name="description">
@@ -187,7 +187,7 @@
           "name": "Home",
           "item": "https://digiseba.shop/"
         }
-        
+
         ]
       }
     </script>
@@ -654,7 +654,7 @@ max-width: 100%;
     gap: 10px;
     width: 100%;
   }
-  
+
   .mode-card-btn {
     background: var(--glass-bg, var(--bg-card)) !important;
     border: 1px solid var(--glass-border, var(--border)) !important;
@@ -673,25 +673,25 @@ max-width: 100%;
     cursor: pointer !important;
     color: var(--text-primary) !important;
   }
-  
+
   .mode-card-btn:hover {
     transform: translateY(-4px) !important;
     box-shadow: var(--shadow-lg, 0 10px 15px -3px rgba(0,0,0,0.1)) !important;
     background: var(--bg-card-hover) !important;
     border-color: var(--primary-light) !important;
   }
-  
+
   .mode-card-btn .mode-icon {
     font-size: 32px !important;
     color: var(--btn-color, var(--primary)) !important;
     margin-bottom: 5px !important;
     transition: all 0.3s ease !important;
   }
-  
+
   .mode-card-btn:hover .mode-icon {
     transform: scale(1.1) !important;
   }
-  
+
   .mode-card-btn span {
     font-size: 15px !important;
     font-weight: 600 !important;
@@ -1002,7 +1002,7 @@ body.dark-mode .mode-card-btn:hover {
   #particles-container { display: none !important; }
   .site-header { display: none !important; }
   .bhero-divider { display: none !important; }
-  
+
   /* Fix tool card containers explicitly */
   .main-wrapper {
     background-color: transparent !important;
@@ -1097,7 +1097,7 @@ body.dark-mode .mode-card-btn:hover {
     flex-direction: column !important;
     margin: auto !important; /* Ensure perfect centering */
 }
-.crop-modal-overlay[style*="display: block"], 
+.crop-modal-overlay[style*="display: block"],
 .crop-modal-overlay[style*="display:block"] {
     display: flex !important; /* Force flex even if JS slips up */
     align-items: center !important;
@@ -1157,9 +1157,9 @@ body.dark-mode .mode-card-btn:hover {
 }
 
 /* 7. Action Buttons (Match .fo-btn-action) */
-.crop-modal-content button:not(.close-crop-modal):not(.share-btn-main):not(.tab-btn), 
-.pco-modal-content button:not(.pco-close-modal), 
-.ep-cropper-box button:not(.close-crop-modal), 
+.crop-modal-content button:not(.close-crop-modal):not(.share-btn-main):not(.tab-btn),
+.pco-modal-content button:not(.pco-close-modal),
+.ep-cropper-box button:not(.close-crop-modal),
 .njpro_modal_content button:not(.njpro_close_btn) {
     background: #0ea5e9 !important;
     color: white !important;
@@ -1198,7 +1198,7 @@ body.dark-mode .mode-card-btn:hover {
 }
 
 /* All other text elements bright in dark mode */
-[data-theme='dark'] .crop-modal-content h1, [data-theme='dark'] .crop-modal-content h2, [data-theme='dark'] .crop-modal-content p, [data-theme='dark'] .crop-modal-content span:not(.close-crop-modal):not(.a4-paper *), [data-theme='dark'] .crop-modal-content div:not(#fc-pdf-container):not(#aff-editor-box):not(#ag-editor-box):not(.stamp-page-unit):not(.paper-wrapper):not(.invoice-box):not(.a4-paper *), 
+[data-theme='dark'] .crop-modal-content h1, [data-theme='dark'] .crop-modal-content h2, [data-theme='dark'] .crop-modal-content p, [data-theme='dark'] .crop-modal-content span:not(.close-crop-modal):not(.a4-paper *), [data-theme='dark'] .crop-modal-content div:not(#fc-pdf-container):not(#aff-editor-box):not(#ag-editor-box):not(.stamp-page-unit):not(.paper-wrapper):not(.invoice-box):not(.a4-paper *),
 [data-theme='dark'] .pco-modal-content h2, [data-theme='dark'] .pco-modal-content p, [data-theme='dark'] .pco-modal-content span:not(.pco-close-modal),
 [data-theme='dark'] .ep-cropper-box h2, [data-theme='dark'] .ep-cropper-box p, [data-theme='dark'] .ep-cropper-box span,
 [data-theme='dark'] .njpro_modal_content h2, [data-theme='dark'] .njpro_modal_content p, [data-theme='dark'] .njpro_modal_content span:not(.njpro_close_btn) {
@@ -1224,9 +1224,9 @@ body.dark-mode .mode-card-btn:hover {
 }
 
 /* Action Buttons in Dark Mode */
-[data-theme='dark'] .crop-modal-content button:not(.close-crop-modal):not(.share-btn-main):not(.tab-btn), 
-[data-theme='dark'] .pco-modal-content button:not(.pco-close-modal), 
-[data-theme='dark'] .ep-cropper-box button:not(.close-crop-modal), 
+[data-theme='dark'] .crop-modal-content button:not(.close-crop-modal):not(.share-btn-main):not(.tab-btn),
+[data-theme='dark'] .pco-modal-content button:not(.pco-close-modal),
+[data-theme='dark'] .ep-cropper-box button:not(.close-crop-modal),
 [data-theme='dark'] .njpro_modal_content button:not(.njpro_close_btn) {
     background: #0284c7 !important; /* Slightly darker blue */
 }
@@ -1269,7 +1269,7 @@ body.dark-mode .mode-card-btn:hover {
         </span>
     </div>
 </a>
-    
+
 
 
     <!-- Nav Links -->
@@ -1381,9 +1381,12 @@ body.dark-mode .mode-card-btn:hover {
   </div>
 
   <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
+</nav>
+
+  <!-- Mobile Menu (Reparented) -->
+  <div id="mobileMenu" class="mobile-menu" style="display:block;position:fixed;top:70px;left:0;right:0;height:calc(100vh - 70px);max-height:calc(100dvh - 70px);background:rgba(15, 23, 42, 0.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.1);overflow-y:auto;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);z-index:9999;padding:1.5rem">
     <ul class="mobile-nav-links">
-      <li><a href="../index.html" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../index.html#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
       <li><a href="../services/index.html" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
       <li><a href="../tools/index.html" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
       <li><a href="../resources/index.html" class="mobile-nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
@@ -1392,7 +1395,6 @@ body.dark-mode .mode-card-btn:hover {
       <li><a href="../about/index.html" class="mobile-nav-link" data-en="About" data-bn="আমাদের">About</a></li>
     </ul>
   </div>
-</nav>
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var btn = document.getElementById('mobileMenuToggle');
@@ -1572,11 +1574,11 @@ body.dark-mode .mode-card-btn:hover {
     .pro-table-sheet {
       font-family: 'SolaimanLipi', Arial, sans-serif !important;
   }
-  
+
   .cal-today-btn, .cal-main-box {
       font-family: "SolaimanLipi", sans-serif !important;
   }
-  
+
   .fc-main-box,.fc-input,.fc-select,.fc-a4-paper,.fc-btn-action {
       font-family: "SolaimanLipi", sans-serif !important;
   }
@@ -1608,7 +1610,7 @@ body.dark-mode .mode-card-btn:hover {
     border: 1px solid #e0e0e0;
     transition: transform 0.3s ease-in-out; /* নতুন: হোভার এফেক্টের জন্য ট্রানজিশন */
   }
-  
+
   .ad-image-wrapper:hover { /* নতুন: হোভার স্টেট */
     transform: scale(1.00); /* ছবিকে 2% বড় করবে */
   }
@@ -1635,8 +1637,8 @@ body.dark-mode .mode-card-btn:hover {
     width: 20%;
     animation: lightSweep1 2.5s infinite ease-in-out;
   }
-      
-      
+
+
       /* Light sweep for Image 1 */
   .ad-image-wrapper.effect-1::before {
     width: 20%;
@@ -1648,13 +1650,13 @@ body.dark-mode .mode-card-btn:hover {
     width: 20%;
     animation: lightSweep2 4s infinite ease-in-out;
   }
-   
+
    /* Light sweep for Image 3 */
   .ad-image-wrapper.effect-3::before {
     width: 20%;
     animation: lightSweep2 3s infinite ease-in-out;
   }
-      
+
   /* Light sweep for Image 4 */
   .ad-image-wrapper.effect-4::before {
     width: 20%;
@@ -1755,7 +1757,7 @@ body.dark-mode .mode-card-btn:hover {
     position: relative;
     padding: 15px 0;
   }
-  
+
   /* Left Right Shadow Fades for Premium look */
   .pms-slider-outer::before,
   .pms-slider-outer::after {
@@ -1767,7 +1769,7 @@ body.dark-mode .mode-card-btn:hover {
     z-index: 5;
     pointer-events: none;
   }
-  
+
 
   /* Infinite Scroll Track */
   .pms-track {
@@ -1846,7 +1848,7 @@ body.dark-mode .mode-card-btn:hover {
     .pms-desc {
       margin-bottom: 0px;
     }
-  
+
   .pms-desc {
   font-size: clamp(14px, 3vw, 14px);
   color: var(--bg-card);
@@ -7633,15 +7635,15 @@ body.dark-mode .mode-card-btn:hover {
 <div style="margin-top: 20px; padding: 12px; background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 12px; font-family: " solaimanlipi",="" sans-serif;"="">
 <p style="font-size: 14px; color: #92400e; font-weight: 700; margin: 0 0 8px 0; line-height: 1.6;">
 <i class="fa-solid fa-circle-info"></i>
-<b>Special Notice:</b> 
-    The airlines’ official website checking links may change at any time. If any link here does not work, please let us know by sending a message through our 
+<b>Special Notice:</b>
+    The airlines’ official website checking links may change at any time. If any link here does not work, please let us know by sending a message through our
     <a href="#contact" style="color: #ea580c; text-decoration: underline;">Contact</a> page, so that we can update it promptly.
   </p>
 <div class="mode-separator"></div>
 <p style="font-size: 14px; color: #92400e; font-weight: 700; margin: 0; line-height: 1.6;">
 <i class="fa-solid fa-circle-info"></i>
-<b>বিশেষ দ্রষ্টব্য:</b> 
-    এয়ারলাইন্সগুলোর অফিসিয়াল ওয়েবসাইটের চেকিং লিংক যেকোনো সময় পরিবর্তন হতে পারে। যদি এখানকার কোনো লিংক কাজ না করে, তবে অনুগ্রহ করে আমাদের 
+<b>বিশেষ দ্রষ্টব্য:</b>
+    এয়ারলাইন্সগুলোর অফিসিয়াল ওয়েবসাইটের চেকিং লিংক যেকোনো সময় পরিবর্তন হতে পারে। যদি এখানকার কোনো লিংক কাজ না করে, তবে অনুগ্রহ করে আমাদের
     <a href="#contact" style="color: #ea580c; text-decoration: underline;">Contact</a> পেজের মাধ্যমে মেসেজ করে জানাবেন, যাতে আমরা দ্রুত তা আপডেট করতে পারি।
   </p>
 </div>
@@ -7673,15 +7675,15 @@ body.dark-mode .mode-card-btn:hover {
 <div style="margin-top: 20px; padding: 12px; background: #fffbeb; border: 1px dashed #f59e0b; border-radius: 12px; font-family: " solaimanlipi",="" sans-serif;"="">
 <p style="font-size: 14px; color: #007702; font-weight: 700; margin: 0 0 8px 0; line-height: 1.6;">
 <i class="fa-solid fa-circle-info"></i>
-<b>Special Notice:</b> 
-    The Online visa checking’ official website checking links may change at any time. If any link here does not work, please let us know by sending a message through our 
+<b>Special Notice:</b>
+    The Online visa checking’ official website checking links may change at any time. If any link here does not work, please let us know by sending a message through our
     <a href="#contact" style="color: #ea580c; text-decoration: underline;">Contact</a> page, so that we can update it promptly.
   </p>
 <div class="mode-separator"></div>
 <p style="font-size: 14px; color: #3c36fb; font-weight: 700; margin: 0; line-height: 1.6;">
 <i class="fa-solid fa-circle-info"></i>
-<b>বিশেষ দ্রষ্টব্য:</b> 
-অনলাইনে ভিসা চেকিং, অফিসিয়াল ওয়েবসাইটের চেকিং লিংক যেকোনো সময় পরিবর্তন হতে পারে। যদি এখানকার কোনো লিংক কাজ না করে, তবে অনুগ্রহ করে আমাদের 
+<b>বিশেষ দ্রষ্টব্য:</b>
+অনলাইনে ভিসা চেকিং, অফিসিয়াল ওয়েবসাইটের চেকিং লিংক যেকোনো সময় পরিবর্তন হতে পারে। যদি এখানকার কোনো লিংক কাজ না করে, তবে অনুগ্রহ করে আমাদের
     <a href="#contact" style="color: #ea580c; text-decoration: underline;">Contact</a> পেজের মাধ্যমে মেসেজ করে জানাবেন, যাতে আমরা দ্রুত তা আপডেট করতে পারি।
   </p>
 </div>
@@ -8332,7 +8334,7 @@ body.dark-mode .mode-card-btn:hover {
 <!--Progressive HLS Streaming Engine & Playlist Parser -->
 <script type="text/javascript">
   //<![CDATA[
-  
+
   let parsedChannels = [];
   let hlsInstance = null;
 
@@ -8354,7 +8356,7 @@ body.dark-mode .mode-card-btn:hover {
               // Hls.js ইঞ্জিন লোড করবে
               await loadIptvEngineScript('https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.4.12/hls.min.js');
           }
-          
+
           // টিভি সাউন্ড ভলিউম ৫০% ডিফল্ট সেট করার প্রফেশনাল লজিক (সাউন্ড সচল থাকবে) [1]
           const video = document.getElementById('iptvVideoPlayer');
           if (video) {
@@ -8382,10 +8384,10 @@ body.dark-mode .mode-card-btn:hover {
             </div>
           `;
       }
-      
+
       // সার্চ ইনপুট ক্লিয়ার করবে
       document.getElementById('dirSearchInput').value = '';
-      
+
       // নতুন প্লেলিস্ট ফেচ করবে
       await fetchAndParseM3uPlaylist(url);
   }
@@ -8427,7 +8429,7 @@ body.dark-mode .mode-card-btn:hover {
           const line = lines[i].trim();
           if (line.startsWith('#EXTINF:')) {
               currentChannel = {};
-              
+
               // লোগো এক্সট্রাক্ট
               const logoMatch = line.match(/tvg-logo="([^"]+)"/) || line.match(/logo="([^"]+)"/);
               currentChannel.logo = logoMatch ? logoMatch[1] : '';
@@ -8524,7 +8526,7 @@ body.dark-mode .mode-card-btn:hover {
   function playLiveChannel(streamUrl, channelName, btnElement) {
       const video = document.getElementById('iptvVideoPlayer');
       const titleEl = document.getElementById('currentChannelName');
-      
+
       if (!video) return;
 
       // ১. চ্যানেলের নাম পরিবর্তন করবে
@@ -8552,12 +8554,12 @@ body.dark-mode .mode-card-btn:hover {
           hlsInstance = new Hls(hlsConfig);
           hlsInstance.loadSource(streamUrl);
           hlsInstance.attachMedia(video);
-          
+
           hlsInstance.on(Hls.Events.MANIFEST_PARSED, function() {
               // ৫০% ভলিউম এবং সাউন্ড অন রেখে প্লে করার চেষ্টা করবে
               video.volume = 0.5;
               video.muted = false;
-              
+
               video.play().catch(e => {
                   console.log("Unmuted autoplay blocked by browser policy. Retrying muted...");
                   video.muted = true; // ক্র্যাশ এড়াতে সাময়িকভাবে মিউট করে প্লে করবে
@@ -8574,7 +8576,7 @@ body.dark-mode .mode-card-btn:hover {
                   }).catch(err => console.log("Muted autoplay also blocked", err));
               });
           });
-          
+
           hlsInstance.on(Hls.Events.ERROR, function(event, data) {
               if (data.fatal) {
                   switch (data.type) {
@@ -8597,7 +8599,7 @@ body.dark-mode .mode-card-btn:hover {
           video.src = streamUrl;
           video.volume = 0.5;
           video.muted = false;
-          
+
           video.addEventListener('loadedmetadata', function() {
               video.play().catch(e => {
                   console.log("Unmuted Safari autoplay blocked. Retrying muted...");
@@ -8624,8 +8626,8 @@ body.dark-mode .mode-card-btn:hover {
       if (parsedChannels.length === 0) return;
 
       // 'SOMOY TV' নাম বিশিষ্ট চ্যানেল খুঁজবে (কেস-সেন্সিティブ ছাড়া)
-      let initialChannelIdx = parsedChannels.findIndex(chan => 
-          chan.name.toLowerCase().includes("somoy tv") || 
+      let initialChannelIdx = parsedChannels.findIndex(chan =>
+          chan.name.toLowerCase().includes("somoy tv") ||
           chan.name.toLowerCase().includes("somoytv")
       );
 
@@ -8635,14 +8637,14 @@ body.dark-mode .mode-card-btn:hover {
       }
 
       const targetChannel = parsedChannels[initialChannelIdx];
-      
+
       // UI বাটনগুলোর মধ্য থেকে টার্গেট বাটনটির ইনডেক্স খুঁজে বের করবে
       const channelButtons = document.querySelectorAll('.channel-btn');
       const targetBtn = channelButtons[initialChannelIdx] || null;
 
       // লাইভ প্লে করবে
       playLiveChannel(targetChannel.url, targetChannel.name, targetBtn);
-      
+
       // বাটনটি স্ক্রিনের বাইরে থাকলে স্মুথলি স্ক্রোল করে চোখের সামনে নিয়ে আসবে (Scroll Into View)
       if (targetBtn && targetBtn.scrollIntoView) {
           targetBtn.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -8875,9 +8877,9 @@ body.dark-mode .mode-card-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
   }
-  .lks-action-button.lks-copied-state { 
-      background: linear-gradient(135deg, #10b981, #059669) !important; 
-      color: #fff !important; 
+  .lks-action-button.lks-copied-state {
+      background: linear-gradient(135deg, #10b981, #059669) !important;
+      color: #fff !important;
       box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3) !important;
   }
 
@@ -8932,7 +8934,7 @@ body.dark-mode .mode-card-btn:hover {
       var popupTrigger = document.getElementById("lks-trigger-id");
       var pageKey = "lks_link_saved_" + window.location.pathname;
       var isAlreadyCopied = localStorage.getItem(pageKey);
-      
+
       if (popupTrigger && isAlreadyCopied !== "true") {
           var currentLink = window.location.href;
           var urlInput = document.getElementById('lksUrlInputField');
@@ -8956,7 +8958,7 @@ body.dark-mode .mode-card-btn:hover {
       if(modal) {
           modal.classList.remove('lks-is-active');
       }
-      
+
       // শুধুমাত্র তখনই লোকাল স্টোরেজে সেভ হবে যখন লিংকটি অন্তত একবার কপি করা হয়েছে
       if (isLinkCopiedOnce) {
           var pageKey = "lks_link_saved_" + window.location.pathname;
@@ -8968,25 +8970,25 @@ body.dark-mode .mode-card-btn:hover {
   function lksCopyAction() {
       var url = window.location.href;
       var btn = document.getElementById('lksCopyBtnId');
-      
+
       if(navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(url).then(() => { 
-              showLksCopySuccess(btn); 
+          navigator.clipboard.writeText(url).then(() => {
+              showLksCopySuccess(btn);
               isLinkCopiedOnce = true; // ফ্ল্যাগ সেট করা হলো
           });
       } else {
           // Fallback mechanism
           var textArea = document.createElement("textarea");
           textArea.value = url;
-          textArea.style.position = "fixed"; 
+          textArea.style.position = "fixed";
           textArea.style.left = "-9999px";
-          document.body.appendChild(textArea); 
-          textArea.focus(); 
+          document.body.appendChild(textArea);
+          textArea.focus();
           textArea.select();
-          try { 
-              document.execCommand('copy'); 
-              showLksCopySuccess(btn); 
-              isLinkCopiedOnce = true; 
+          try {
+              document.execCommand('copy');
+              showLksCopySuccess(btn);
+              isLinkCopiedOnce = true;
           } catch (err) {
               console.error('Unable to copy', err);
           }
@@ -8999,7 +9001,7 @@ body.dark-mode .mode-card-btn:hover {
       var originalHTML = '<i class="fa-regular fa-copy"></i> লিংকটি কপি করুন';
       btn.innerHTML = '<i class="fa-solid fa-check"></i> লিংকটি কপি হয়েছে!';
       btn.classList.add("lks-copied-state");
-      
+
       // ২ সেকেন্ড পর বাটন আগের অবস্থায় ফিরে আসবে
       setTimeout(function() {
           btn.innerHTML = originalHTML;
@@ -9018,25 +9020,25 @@ body.dark-mode .mode-card-btn:hover {
 
   // ২. ১০০ জন কাস্টমারের নাম (বাংলা এবং ইংরেজিতে)
   const buyerNames = [
-    "👉 শামীম আহমেদ", "👉 শাকিল হোসেন", "👉 আরিফুল ইসলাম", "👉 কামরুল হাসান", "👉 মেহেদী হাসান", 
-    "👉 তানভীর আহমেদ", "👉 জাহিদুল ইসলাম", "👉 নিলয় রহমান", "👉 সাইফুল ইসলাম", "👉 ফয়সাল আহমেদ", 
-    "👉 আরাফাত রহমান", "👉 রিপন মিয়া", "👉 সুমন আলী", "👉 রাজু আহমেদ", "👉 ইকবাল হোসেন", 
-    "👉 নাহিদ হাসান", "👉 রাসেল মাহমুদ", "👉 সজীব হোসেন", "👉 আশিকুর রহমান", "👉 মিজানুর রহমান", 
-    "👉 তারেক আজিজ", "👉 জুয়েল রানা", "👉 মনির হোসেন", "👉 ইলিয়াছ আহমেদ", "👉 রাশেদ খান", 
-    "👉 সোহেল রানা", "👉 মোস্তফা কামাল", "👉 সাব্বির আহমেদ", "👉 আবু সায়েম", "👉 হাসিবুর রহমান", 
-    "👉 মাসুম বিল্লাহ", "👉 লিটন শেখ", "👉 আসাদুল ইসলাম", "👉 বিপ্লব হোসেন", "👉 শাহীন আলম", 
-    "👉 জাহিদ হাসান", "👉 আল-আমিন হোসেন", "👉 কবির আহমেদ", "👉 মইনুল ইসলাম", "👉 ইমরান হোসেন", 
-    "👉 মামুনুর রশিদ", "👉 শরিফুল ইসলাম", "👉 আতিকুর রহমান", "👉 সানি আহমেদ", "👉 রনি হোসেন", 
-    "👉 আসিফ মাহমুদ", "👉 রাব্বি ইসলাম", "👉 পলাশ আহমেদ", "👉 নয়ন মিয়া", "👉 জসিম উদ্দিন", 
-    "👉 রফিকুল ইসলাম", "👉 সালাম চৌধুরী", "👉 কালাম হোসেন", "👉 রুবেল আহমেদ", "👉 রানা মাহমুদ", 
-    "👉 আলামিন ইসলাম", "👉 হিমেল হাসান", "👉 শাওন রহমান", "👉 সিফাত আহমেদ", "👉 তুহিন শেখ", 
-    "👉 মুরাদ হোসেন", "👉 পনির আহমেদ", "👉 আকাশ মাহমুদ", "👉 সাগর হোসেন", "👉 শান্ত ইসলাম", 
-    "👉 বিজয় কুমার", "👉 জয় আহমেদ", "👉 অনিমেষ দাস", "👉 সুজন মিয়া", "👉 রুহুল আমিন", 
-    "👉 জিয়াউল ইসলাম", "👉 শরীফ আহমেদ", "👉 তৌহিদ হাসান", "👉 জুবায়ের রহমান", "👉 ইসমাইল হোসেন", 
-    "👉 হানিফ মিয়া", "👉 আনোয়ার হোসেন", "👉 জাহাঙ্গীর আলম", "👉 ওসমান গনি", "👉 মোক্তার হোসেন", 
-    "👉 ফারুক আহমেদ", "👉 বাপ্পি রহমান", "👉 শুভ ইসলাম", "👉 অনিক হাসান", "👉 তপু চৌধুরী", 
-    "👉 সায়মন আহমেদ", "👉 ফাহিম মাহমুদ", "👉 হাসিবুর রহমান", "👉 আজিজুল হক", "👉 মাহিন আহমেদ", 
-    "👉 মিরাজ হোসেন", "👉 নাজমুল হুদা", "👉 আক্তারুজ্জামান", "👉 পারভেজ আহমেদ", "👉 সাদ্দাম হোসেন", 
+    "👉 শামীম আহমেদ", "👉 শাকিল হোসেন", "👉 আরিফুল ইসলাম", "👉 কামরুল হাসান", "👉 মেহেদী হাসান",
+    "👉 তানভীর আহমেদ", "👉 জাহিদুল ইসলাম", "👉 নিলয় রহমান", "👉 সাইফুল ইসলাম", "👉 ফয়সাল আহমেদ",
+    "👉 আরাফাত রহমান", "👉 রিপন মিয়া", "👉 সুমন আলী", "👉 রাজু আহমেদ", "👉 ইকবাল হোসেন",
+    "👉 নাহিদ হাসান", "👉 রাসেল মাহমুদ", "👉 সজীব হোসেন", "👉 আশিকুর রহমান", "👉 মিজানুর রহমান",
+    "👉 তারেক আজিজ", "👉 জুয়েল রানা", "👉 মনির হোসেন", "👉 ইলিয়াছ আহমেদ", "👉 রাশেদ খান",
+    "👉 সোহেল রানা", "👉 মোস্তফা কামাল", "👉 সাব্বির আহমেদ", "👉 আবু সায়েম", "👉 হাসিবুর রহমান",
+    "👉 মাসুম বিল্লাহ", "👉 লিটন শেখ", "👉 আসাদুল ইসলাম", "👉 বিপ্লব হোসেন", "👉 শাহীন আলম",
+    "👉 জাহিদ হাসান", "👉 আল-আমিন হোসেন", "👉 কবির আহমেদ", "👉 মইনুল ইসলাম", "👉 ইমরান হোসেন",
+    "👉 মামুনুর রশিদ", "👉 শরিফুল ইসলাম", "👉 আতিকুর রহমান", "👉 সানি আহমেদ", "👉 রনি হোসেন",
+    "👉 আসিফ মাহমুদ", "👉 রাব্বি ইসলাম", "👉 পলাশ আহমেদ", "👉 নয়ন মিয়া", "👉 জসিম উদ্দিন",
+    "👉 রফিকুল ইসলাম", "👉 সালাম চৌধুরী", "👉 কালাম হোসেন", "👉 রুবেল আহমেদ", "👉 রানা মাহমুদ",
+    "👉 আলামিন ইসলাম", "👉 হিমেল হাসান", "👉 শাওন রহমান", "👉 সিফাত আহমেদ", "👉 তুহিন শেখ",
+    "👉 মুরাদ হোসেন", "👉 পনির আহমেদ", "👉 আকাশ মাহমুদ", "👉 সাগর হোসেন", "👉 শান্ত ইসলাম",
+    "👉 বিজয় কুমার", "👉 জয় আহমেদ", "👉 অনিমেষ দাস", "👉 সুজন মিয়া", "👉 রুহুল আমিন",
+    "👉 জিয়াউল ইসলাম", "👉 শরীফ আহমেদ", "👉 তৌহিদ হাসান", "👉 জুবায়ের রহমান", "👉 ইসমাইল হোসেন",
+    "👉 হানিফ মিয়া", "👉 আনোয়ার হোসেন", "👉 জাহাঙ্গীর আলম", "👉 ওসমান গনি", "👉 মোক্তার হোসেন",
+    "👉 ফারুক আহমেদ", "👉 বাপ্পি রহমান", "👉 শুভ ইসলাম", "👉 অনিক হাসান", "👉 তপু চৌধুরী",
+    "👉 সায়মন আহমেদ", "👉 ফাহিম মাহমুদ", "👉 হাসিবুর রহমান", "👉 আজিজুল হক", "👉 মাহিন আহমেদ",
+    "👉 মিরাজ হোসেন", "👉 নাজমুল হুদা", "👉 আক্তারুজ্জামান", "👉 পারভেজ আহমেদ", "👉 সাদ্দাম হোসেন",
     "👉 মোবারক আলী", "👉 উজ্জ্বল হোসেন", "👉 মুন্না মিয়া", "👉 শওকত আলী", "👉 মানিক রহমান",
     // নতুন ১০০টি ইংলিশ বাংলাদেশী নাম
     "👉 Anisul Islam", "👉 Badrul Hasan", "👉 Faysal Chowdhury", "👉 Golam Kibria", "👉 Harun Rashid",
@@ -9095,7 +9097,7 @@ body.dark-mode .mode-card-btn:hover {
 
           {title: " ১০০০+ প্রিমিয়াম টিভি চ্যানেল", img: "https://i.imgur.com/JisTAZT.jpeg"},
         {title: " প্রফেশনাল গ্রাফিক ডিজাইন মাস্টার কোর্স", img: "https://i.imgur.com/2lqmqds.jpeg"}
-      
+
   ];
 
   // ৪. প্রোডাক্ট সংগ্রহের লজিক (আপডেট করা হয়েছে: এখন সরাসরি ম্যানুয়াল লিস্ট ব্যবহার করবে)
@@ -9103,13 +9105,13 @@ body.dark-mode .mode-card-btn:hover {
 
   // ৫. সেলস নোটিফিকেশন ট্রিগার
   const notifyEl = document.getElementById('salesNotify');
-  
+
   function triggerNotification() {
-    if (!notifyEl) return; 
+    if (!notifyEl) return;
 
     const randomName = buyerNames[Math.floor(Math.random() * buyerNames.length)];
     const randomProduct = products[Math.floor(Math.random() * products.length)];
-    
+
     const notifyImg = document.getElementById('notifyImg');
     const notifyName = document.getElementById('notifyName');
     const notifyProduct = document.getElementById('notifyProduct');
@@ -9147,7 +9149,7 @@ body.dark-mode .mode-card-btn:hover {
       customerCount += 1;
       localStorage.setItem('total_cust', customerCount);
       statCustEl.innerText = toBangaliNumber(customerCount);
-      
+
       setTimeout(() => {
           orderCount += 1;
           localStorage.setItem('total_ord', orderCount);
@@ -9157,7 +9159,7 @@ body.dark-mode .mode-card-btn:hover {
       let nextTick = Math.floor(Math.random() * (180000 - 120000 + 1)) + 120000;
       setTimeout(updateTrustStats, nextTick);
   }
-  
+
   if (statCustEl) {
       setTimeout(updateTrustStats, 10000);
   }
@@ -9189,7 +9191,7 @@ body.dark-mode .mode-card-btn:hover {
   .fo-preview-side { background: #475569; border-radius: 15px; padding: 20px; border: 4px solid #f1f5f9; display: flex; flex-direction: column; align-items: center; overflow: hidden; }
   .fo-a4-paper { background: white; width: 210mm; height: 295mm; padding: 20mm; box-sizing: border-box; color: #000; box-shadow: 0 10px 30px rgba(0,0,0,0.4); font-family: "SolaimanLipi", sans-serif !important; flex-shrink: 0; position: relative; transform-origin: top center; display: flex; flex-direction: column; transform: scale(0.7); margin-bottom: -88.5mm; margin-left: -31.5mm; margin-right: -31.5mm; }
   .fo-btn-action { background: #0ea5e9; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; font-weight: 800; font-size: 16px; width: 100%; font-family: "SolaimanLipi", sans-serif !important; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  
+
   @media (max-width: 1024px) { .fo-grid-layout { grid-template-columns: 1fr; } .fo-a4-paper { transform: scale(0.6); margin-bottom: -118mm; margin-left: -42mm; margin-right: -42mm; } }
   @media (max-width: 768px) { .fo-field-grid { grid-template-columns: 1fr; } .fo-a4-paper { transform: scale(0.45); margin-bottom: -162.25mm; margin-left: -57.75mm; margin-right: -57.75mm; } }
 
@@ -9209,14 +9211,14 @@ body.dark-mode .mode-card-btn:hover {
 
   /* ২য় পেজ রোধ করার জন্য এখানে পরিবর্তন করা হয়েছে */
   #fo-print-wrapper { position: absolute; left: -9999px; top: 0; }
-  .fo-print-only { 
-    background: white; 
-    width: 210mm; 
+  .fo-print-only {
+    background: white;
+    width: 210mm;
     height: 296mm; /* ১ মিমি কমানো হয়েছে */
-    padding: 20mm; 
-    box-sizing: border-box; 
-    display: block !important; 
-    position: relative; 
+    padding: 20mm;
+    box-sizing: border-box;
+    display: block !important;
+    position: relative;
     overflow: hidden; /* অতিরিক্ত কন্টেন্ট পরের পেজে যাওয়া বন্ধ করবে */
   }
 </style>
@@ -9321,7 +9323,7 @@ body.dark-mode .mode-card-btn:hover {
           <div style="margin-top: 20px; font-size: 15px; border-top: 1px solid #ddd; padding-top: 10px; font-family: 'SolaimanLipi', sans-serif;">
               <b>সংযুক্তিসমূহ:</b><br/><br/>১. সদ্য তোলা ছবি<br/><br/>২. এনআইডি বা ট্রেড লাইসেন্স কপি<br/><br/>৩. প্রতিষ্ঠানের প্রয়োজনীয় কাগজপত্র
           </div>
-          
+
           <div style="border: 0.5px solid #000; padding: 15px; position: absolute; bottom: 20mm; left: 20mm; width: calc(100% - 40mm); box-sizing: border-box; font-size: 15px; font-family: 'SolaimanLipi', sans-serif;">
               <div style="text-align: center; margin-bottom: 25px;">
                   <span style="font-weight: bold; border-bottom: 1px solid #000; padding-bottom: 5px; display: inline-block;">গণ্যমান্য ও ওয়ার্ড প্রতিনিধির অনুমতি</span>
@@ -9329,7 +9331,7 @@ body.dark-mode .mode-card-btn:hover {
               অনুমোদিত জ্বালানির পরিমাণ: .........................<br/><br/>
               সুপারিশকারী কর্মকর্তার (স্বাক্ষর ও সীল): ...........................................
           </div>`;
-      
+
       document.getElementById('fo-pdf-container').innerHTML = htmlContent;
       document.getElementById('fo-actual-print-content').innerHTML = htmlContent;
   }
@@ -9337,7 +9339,7 @@ body.dark-mode .mode-card-btn:hover {
   function downloadFuelOilPDF() {
       const btn = document.getElementById('fo-download-btn');
       const element = document.getElementById('fo-actual-print-content');
-      
+
       btn.innerHTML = "অপেক্ষা করুন...";
       btn.disabled = true;
 
@@ -9345,9 +9347,9 @@ body.dark-mode .mode-card-btn:hover {
           margin: 0,
           filename: 'Fuel_Oil_Application.pdf',
           image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { 
-              scale: 2, 
-              useCORS: true, 
+          html2canvas: {
+              scale: 2,
+              useCORS: true,
               letterRendering: true,
               scrollX: 0,
               scrollY: 0
@@ -9457,35 +9459,35 @@ body.dark-mode .mode-card-btn:hover {
     font-family: "SolaimanLipi", sans-serif;
 }
 /* আপনার অন্যান্য CSS কোড */
-  .dob-modal-content { 
+  .dob-modal-content {
       max-width: 900px !important; /* Adjust as needed */
-      width: 98% !important; 
-      display: flex; 
-      flex-direction: column; 
+      width: 98% !important;
+      display: flex;
+      flex-direction: column;
       font-family: 'SolaimanLipi', sans-serif !important;
   }
-  .dob-main-box { 
-      border: 1px solid #7c3aed; 
-      border-radius: 20px; 
-      padding: 20px; 
-      background: #fff; 
-      display: flex; 
-      flex-direction: column; 
-      flex: 1; 
-      font-family: 'SolaimanLipi', sans-serif !important; 
+  .dob-main-box {
+      border: 1px solid #7c3aed;
+      border-radius: 20px;
+      padding: 20px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      font-family: 'SolaimanLipi', sans-serif !important;
   }
-  .dob-grid-layout { 
-      display: grid; 
+  .dob-grid-layout {
+      display: grid;
       grid-template-columns: 1fr; /* Default to single column for forms */
-      gap: 20px; 
-      flex: 1; 
+      gap: 20px;
+      flex: 1;
   }
-  .dob-input-side { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 15px; 
+  .dob-input-side {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
       padding-right: 0; /* No padding on right for single column */
-      padding-bottom: 20px; 
+      padding-bottom: 20px;
   }
 
   /* Tab Styles */
@@ -9596,7 +9598,7 @@ body.dark-mode .mode-card-btn:hover {
   .input-group button:hover {
       background: #218838;
   }
-  
+
   .input-button {
       text-align: center;
       margin-top: 20px;
@@ -10151,9 +10153,9 @@ body.dark-mode .mode-card-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 12px 25px rgba(59, 130, 246, 0.4);
   }
-  .lks-action-button.lks-copied-state { 
-      background: linear-gradient(135deg, #10b981, #059669) !important; 
-      color: #fff !important; 
+  .lks-action-button.lks-copied-state {
+      background: linear-gradient(135deg, #10b981, #059669) !important;
+      color: #fff !important;
       box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3) !important;
   }
 
@@ -10207,7 +10209,7 @@ body.dark-mode .mode-card-btn:hover {
       var popupTrigger = document.getElementById("lks-trigger-id");
       var pageKey = "lks_link_saved_" + window.location.pathname;
       var isAlreadyCopied = localStorage.getItem(pageKey);
-      
+
       if (popupTrigger && isAlreadyCopied !== "true") {
           var currentLink = window.location.href;
           var urlInput = document.getElementById('lksUrlInputField');
@@ -10231,7 +10233,7 @@ body.dark-mode .mode-card-btn:hover {
       if(modal) {
           modal.classList.remove('lks-is-active');
       }
-      
+
       // Saves state only if the link has been copied
       if (isLinkCopiedOnce) {
           var pageKey = "lks_link_saved_" + window.location.pathname;
@@ -10243,25 +10245,25 @@ body.dark-mode .mode-card-btn:hover {
   function lksCopyAction() {
       var url = window.location.href;
       var btn = document.getElementById('lksCopyBtnId');
-      
+
       if(navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(url).then(() => { 
-              showLksCopySuccess(btn); 
-              isLinkCopiedOnce = true; 
+          navigator.clipboard.writeText(url).then(() => {
+              showLksCopySuccess(btn);
+              isLinkCopiedOnce = true;
           });
       } else {
           // Fallback mechanism
           var textArea = document.createElement("textarea");
           textArea.value = url;
-          textArea.style.position = "fixed"; 
+          textArea.style.position = "fixed";
           textArea.style.left = "-9999px";
-          document.body.appendChild(textArea); 
-          textArea.focus(); 
+          document.body.appendChild(textArea);
+          textArea.focus();
           textArea.select();
-          try { 
-              document.execCommand('copy'); 
-              showLksCopySuccess(btn); 
-              isLinkCopiedOnce = true; 
+          try {
+              document.execCommand('copy');
+              showLksCopySuccess(btn);
+              isLinkCopiedOnce = true;
           } catch (err) {
               console.error('Unable to copy', err);
           }
@@ -10274,7 +10276,7 @@ body.dark-mode .mode-card-btn:hover {
       var originalHTML = '<i class="fa-regular fa-copy"></i> লিংকটি কপি করুন';
       btn.innerHTML = '<i class="fa-solid fa-check"></i> লিংকটি কপি হয়েছে!';
       btn.classList.add("lks-copied-state");
-      
+
       // Restores state after 2 seconds
       setTimeout(function() {
           btn.innerHTML = originalHTML;
@@ -10304,16 +10306,16 @@ body.dark-mode .mode-card-btn:hover {
   transition: 0.3s;
   margin: 10px 0;
 }
-.pg-open-btn:hover { 
-  transform: scale(1.05); 
-  background: #e68a00; 
+.pg-open-btn:hover {
+  transform: scale(1.05);
+  background: #e68a00;
 }
 
 .pg-modal-overlay {
   position: fixed;
-  top: 0; 
-  left: 0; 
-  width: 100%; 
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
@@ -10333,9 +10335,9 @@ body.dark-mode .mode-card-btn:hover {
   animation: pgPop 0.3s ease-out;
   box-shadow: 0 0 30px rgba(0,0,0,0.5);
 }
-@keyframes pgPop { 
-  from { transform: scale(0.8); opacity: 0; } 
-  to { transform: scale(1); opacity: 1; } 
+@keyframes pgPop {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
 .pg-close {
@@ -10358,25 +10360,25 @@ body.dark-mode .mode-card-btn:hover {
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
   transition: 0.2s;
 }
-.pg-close:hover { 
-  transform: scale(1.1); 
-  background: #cc0000; 
+.pg-close:hover {
+  transform: scale(1.1);
+  background: #cc0000;
 }
 
-.pg-video-wrap { 
-  position: relative; 
+.pg-video-wrap {
+  position: relative;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-  height: 0; 
+  height: 0;
   border-radius: 12px;
   overflow: hidden;
 }
-.pg-video-wrap iframe { 
-  position: absolute; 
-  top: 0; 
-  left: 0; 
-  width: 100%; 
-  height: 100%; 
-  border: none; 
+.pg-video-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 @media (max-width: 768px) {
@@ -10412,7 +10414,7 @@ body.dark-mode .mode-card-btn:hover {
 </div>
 <script type="text/javascript">
   //<![CDATA[
-  var youtubeVideoID = "oNHZyUSwCSo"; 
+  var youtubeVideoID = "oNHZyUSwCSo";
   var autoCloseTimer; // টাইমার ট্র্যাকিং ভেরিয়েবল
 
   function injectPaymentBtn() {
@@ -10425,23 +10427,23 @@ body.dark-mode .mode-card-btn:hover {
   function openPgModal() {
     document.getElementById('pg-iframe').src = "https://www.youtube.com/embed/" + youtubeVideoID + "?autoplay=1&rel=0";
     document.getElementById('pg-modal').style.display = 'flex';
-    
+
     // ব্যাকগ্রাউন্ড স্ক্রল লক করা
     document.body.style.overflow = "hidden";
 
     // ৫৮ সেকেন্ড (৫৮,০০০ মিলিসেকেন্ড) পর অটোমেটিক ক্লোজ হবে
     autoCloseTimer = setTimeout(function() {
       closePgModal();
-    }, 57000); 
+    }, 57000);
   }
 
   function closePgModal() {
-    document.getElementById('pg-iframe').src = ""; 
+    document.getElementById('pg-iframe').src = "";
     document.getElementById('pg-modal').style.display = 'none';
-    
+
     // ব্যাকগ্রাউন্ড স্ক্রল রিলিজ বা আনলক করা
     document.body.style.overflow = "auto";
-    
+
     // ম্যানুয়ালি ক্লোজ করলে টাইমার বন্ধ করা
     clearTimeout(autoCloseTimer);
   }
@@ -10506,13 +10508,13 @@ body.dark-mode .mode-card-btn:hover {
       try {
           const dateObj = new Date(rawDateStr);
           if (isNaN(dateObj.getTime())) return '-';
-          
+
           const day = dateObj.getDate();
           const parts = dateObj.toISOString().split('T')[0].split('-');
           const monthNames = ["জানুয়ারি", "ফেব্রুয়ারি", "মার্চ", "এপ্রিল", "মে", "জুন", "জুলাই", "আগস্ট", "সেপ্টেম্বর", "অক্টোবর", "নভেম্বর", "ডিসেম্বর"];
           const month = monthNames[parseInt(parts[1], 10) - 1];
           const year = parts[0];
-          
+
           return convertToBanglaNumber(day) + " " + month + " " + convertToBanglaNumber(year);
       } catch (e) {
           return '-';
@@ -10537,7 +10539,7 @@ body.dark-mode .mode-card-btn:hover {
 
       try {
           await initNidMakerLibraries();
-          
+
           // ফর্মের সব তথ্য সংগ্রহ করবে
           const curSpouse = document.getElementById('curSpouse').value.trim() || '-';
           const curFather = document.getElementById('curFather').value.trim() || '-';
@@ -10588,7 +10590,7 @@ body.dark-mode .mode-card-btn:hover {
 
           // html2canvas দিয়ে সম্পূর্ণ টেমপ্লেটকে হাই-রেজোলিউশনে স্ন্যাপশট নেবে (সোলেমান লিপি ফন্ট অক্ষুণ্ণ থাকবে)
           const template = document.getElementById('nidPdfTemplate');
-          
+
           html2canvas(template, {
               scale: 2, // ডবল স্কেল টেক্সটের স্পষ্টতা (Sharpness) বজায় রাখবে
               useCORS: true,
@@ -10596,11 +10598,11 @@ body.dark-mode .mode-card-btn:hover {
           }).then(function(canvas) {
               const imgData = canvas.toDataURL('image/jpeg', 1.0);
               const { jsPDF } = window.jspdf;
-              
+
               // এ৪ সাইজের পিডিএফ ডক
               const pdf = new jsPDF('p', 'mm', 'a4');
               pdf.addImage(imgData, 'JPEG', 0, 0, 210, 297);
-              
+
               const fileName = `nid_correction_${(curNameEn || 'user').replace(' ', '_')}.pdf`;
               pdf.save(fileName);
 
@@ -10612,9 +10614,9 @@ body.dark-mode .mode-card-btn:hover {
                                 `*আবেদনকারীর নাম:* ${curNameEn || curName}\n` +
                                 `*জেলা:* ${qDistrict}\n\n` +
                                 `আমি আমার ডাউনলোড করা পিডিএফ নিচে সংযুক্ত করছি। অনুগ্রহ করে আমার আবেদনটি প্রসেস করুন।`;
-                                
+
               const waUrl = `https://api.whatsapp.com/send?phone=${clientPhone}&text=${encodeURIComponent(waMessage)}`;
-              
+
               document.getElementById('nidWaSubmitBtn').href = waUrl;
               document.getElementById('nidSuccessOverlay').classList.add('active'); // পপ-আপ দেখাবে
 
@@ -10785,11 +10787,11 @@ if ('serviceWorker' in navigator) {
 window.filterTools = function() {
     const input = document.getElementById('toolSearchInput');
     if (!input) return;
-    
+
     const filter = input.value.toLowerCase().trim();
     const cards = document.querySelectorAll('.mode-card-btn');
     let hasResults = false;
-    
+
     cards.forEach(card => {
         const text = (card.textContent || '').toLowerCase();
         const dataEn = (card.getAttribute('data-en') || '').toLowerCase();
@@ -10797,14 +10799,14 @@ window.filterTools = function() {
         const dataTags = (card.getAttribute('data-tags') || '').toLowerCase();
         const titleEl = card.querySelector('h3, span, div');
         const titleText = titleEl ? (titleEl.textContent || '').toLowerCase() : '';
-        
-        const isMatch = filter === '' || 
-                        text.includes(filter) || 
-                        dataEn.includes(filter) || 
-                        dataBn.includes(filter) || 
-                        dataTags.includes(filter) || 
+
+        const isMatch = filter === '' ||
+                        text.includes(filter) ||
+                        dataEn.includes(filter) ||
+                        dataBn.includes(filter) ||
+                        dataTags.includes(filter) ||
                         titleText.includes(filter);
-        
+
         if (isMatch) {
             card.style.display = '';
             hasResults = true;
@@ -10812,7 +10814,7 @@ window.filterTools = function() {
             card.style.display = 'none';
         }
     });
-    
+
     // Hide empty category headers when filtering
     const headers = document.querySelectorAll('.tool-category-header, .mode-separator');
     headers.forEach(header => {
@@ -10838,7 +10840,7 @@ window.filterTools = function() {
             header.style.display = hasVisibleCardInGroup ? '' : 'none';
         }
     });
-    
+
     const searchMsg = document.getElementById('searchMessage');
     if (searchMsg) {
         searchMsg.style.display = (hasResults || filter === '') ? 'none' : 'block';
@@ -10877,7 +10879,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close button (.close-crop-modal) delegate
         const closeBtn = e.target.closest('.close-crop-modal');
         if (closeBtn) {
-            const overlay = closeBtn.closest('.crop-modal-overlay') || 
+            const overlay = closeBtn.closest('.crop-modal-overlay') ||
                            closeBtn.closest('[style*="display: flex"]') ||
                            closeBtn.closest('[style*="display:flex"]');
             if (overlay) closeModal(overlay);
@@ -10898,7 +10900,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 })();
-    
+
 </script>
 
 <script id="theme-sync-bridge-js">
@@ -10933,7 +10935,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-    
+
     window.addEventListener('languageChanged', updateToolsLanguage);
     document.addEventListener('DOMContentLoaded', updateToolsLanguage);
 })();

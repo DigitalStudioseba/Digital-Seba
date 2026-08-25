@@ -1,0 +1,13 @@
+!*/out/
+*/src/
+*/node_modules/
+*/.next/
+*.json
+*.ts
+*.mjs
+*.txt
+*.js.map
+*.css.map
+!*/out/_next/
+!*/dist/assets/
+update_vite.py

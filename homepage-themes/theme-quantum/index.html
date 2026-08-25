@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources</title>
+  <meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Digital Seba">
+  <meta name="theme-color" content="#030308">
+  <meta name="color-scheme" content="dark">
+  <link rel="canonical" href="https://digiseba.shop/">
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="apple-touch-icon" href="/assets/images/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Digital Seba">
+  <meta property="og:url" content="https://digiseba.shop/">
+  <meta property="og:title" content="Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources">
+  <meta property="og:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta property="og:image" content="https://digiseba.shop/assets/images/logo.png">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="bn_BD">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Digital Seba — ডিজিটাল সেবা">
+  <meta name="twitter:description" content="Useful digital services, tools, resources, Live TV and focus utilities — in one place.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@graph":[
+    {"@type":"WebSite","@id":"https://digiseba.shop/#website","name":"Digital Seba","alternateName":"ডিজিটাল সেবা","url":"https://digiseba.shop/","inLanguage":["en","bn"],"description":"Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform."},
+    {"@type":"Organization","@id":"https://digiseba.shop/#organization","name":"Digital Seba","alternateName":"ডিজিটাল সেবা","url":"https://digiseba.shop/","logo":"https://digiseba.shop/assets/images/logo.png"}
+  ]}
+  </script>
+  <script>
+    (function () {
+      try {
+        var l = localStorage.getItem("ds-lang");
+        if (l === "bn" || l === "en") {
+          document.documentElement.setAttribute("data-lang", l);
+          document.documentElement.lang = l === "bn" ? "bn" : "en";
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      --bg: #030308;
+      --text: #f3f3f7;
+      --mute: #8e8e9c;
+      --line: rgba(255,255,255,.12);
+      --vio: #7c6bff;
+      --cyan: #3ce7ff;
+      --font: "Outfit", "Noto Sans Bengali", system-ui, sans-serif;
+      --display: "Syne", "Noto Sans Bengali", sans-serif;
+      --nav: 76px;
+    }
+    html[data-lang="bn"] {
+      --font: "Noto Sans Bengali", "Outfit", system-ui, sans-serif;
+      --display: "Noto Sans Bengali", "Syne", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: var(--bg); color: var(--text); overflow-x: clip; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font); line-height: 1.55; min-height: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; color: inherit; }
+    button { cursor: pointer; border: 0; background: none; }
+    img { max-width: 100%; display: block; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+    .skip { position: absolute; left: 12px; top: -48px; z-index: 90; background: var(--vio); padding: 8px 12px; border-radius: 6px; }
+    .skip:focus { top: 12px; }
+    html[data-lang="en"] .t-bn, html[data-lang="bn"] .t-en { display: none !important; }
+
+    #space {
+      position: fixed; inset: 0; z-index: 0; width: 100%; height: 100%;
+      pointer-events: none; display: block;
+    }
+    .space-fallback {
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background:
+        radial-gradient(800px 400px at 70% 10%, rgba(124,107,255,.18), transparent 55%),
+        radial-gradient(600px 360px at 10% 80%, rgba(60,231,255,.1), transparent 50%),
+        #030308;
+    }
+    html.has-webgl .space-fallback { opacity: .35; }
+    .veil {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(120% 90% at 50% 30%, transparent 20%, rgba(3,3,8,.72) 100%);
+    }
+
+    .shell { position: relative; z-index: 2; }
+    .pad { width: min(1280px, calc(100% - 48px)); margin: 0 auto; }
+
+    .nav {
+      position: sticky; top: 0; z-index: 40; height: var(--nav);
+      display: flex; align-items: center;
+      background: linear-gradient(180deg, rgba(3,3,8,.88), rgba(3,3,8,.35) 80%, transparent);
+    }
+    .nav-in { display: flex; align-items: center; gap: 18px; width: min(1280px, calc(100% - 32px)); margin: 0 auto; }
+    .brand { display: flex; align-items: baseline; gap: 10px; letter-spacing: .12em; }
+    .brand b { font-family: var(--display); font-size: 13px; }
+    .brand i { font-style: normal; font-size: 11px; color: var(--mute); letter-spacing: 0; }
+    .links { display: flex; gap: 18px; margin-left: auto; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--mute); }
+    .links a:hover { color: #fff; }
+    .clock { text-align: right; line-height: 1.15; min-width: 88px; }
+    .clock .d { display: block; font-size: 10px; color: var(--mute); letter-spacing: .08em; }
+    .clock .t { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .lang { display: flex; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
+    .lang button { padding: 5px 10px; border-radius: 999px; font-size: 11px; letter-spacing: .08em; color: var(--mute); }
+    html[data-lang="en"] .lang [data-set-lang="en"],
+    html[data-lang="bn"] .lang [data-set-lang="bn"] { background: #fff; color: #111; }
+    .nav-go {
+      font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,.3); padding: 8px 14px; border-radius: 999px;
+    }
+    .nav-go:hover { background: #fff; color: #111; }
+    .burger { display: none; width: 42px; height: 42px; border: 1px solid var(--line); }
+    .burger span, .burger span:before, .burger span:after {
+      display: block; width: 16px; height: 1px; background: #fff; margin: 0 auto; position: relative;
+    }
+    .burger span:before, .burger span:after { content: ""; position: absolute; left: 0; }
+    .burger span:before { top: -6px; } .burger span:after { top: 6px; }
+    body.menu-open .burger span { background: transparent; }
+    body.menu-open .burger span:before { top: 0; transform: rotate(45deg); }
+    body.menu-open .burger span:after { top: 0; transform: rotate(-45deg); }
+    .drawer { display: none; position: fixed; inset: var(--nav) 0 0 0; z-index: 35; background: rgba(3,3,8,.96); padding: 24px; }
+    body.menu-open .drawer { display: block; }
+    body.menu-open { overflow: hidden; }
+    .drawer a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); letter-spacing: .12em; text-transform: uppercase; }
+
+    .hero { min-height: 100vh; display: grid; align-content: end; padding: 0 0 72px; }
+    .kicker { display: flex; align-items: center; gap: 16px; color: var(--cyan); letter-spacing: .28em; text-transform: uppercase; font-size: 11px; }
+    .kicker:before { content: ""; width: 42px; height: 1px; background: var(--cyan); }
+    h1, h2, h3 { font-family: var(--display); margin: 0; letter-spacing: -.045em; }
+    .hero h1 {
+      font-size: clamp(3.4rem, 13vw, 9.4rem);
+      line-height: .82; font-weight: 800; margin: 22px 0 28px; max-width: 14ch;
+    }
+    .hero h1 em { font-style: normal; color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.85); }
+    .hero-row { display: grid; grid-template-columns: 1.1fr .9fr; gap: 40px; align-items: end; }
+    .lead { color: var(--mute); font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 36ch; }
+    .acts { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px; border-radius: 999px; font-weight: 600; letter-spacing: .04em;
+      transition: transform .25s, background .25s, color .25s;
+    }
+    .btn-fill { background: #fff; color: #0b0b10; }
+    .btn-fill:hover { transform: translateY(-2px); }
+    .btn-line { border: 1px solid rgba(255,255,255,.28); }
+    .btn-line:hover { background: rgba(255,255,255,.08); }
+    .scroll-hint { margin-top: 56px; font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--mute); }
+
+    .marquee {
+      overflow: hidden; border-block: 1px solid var(--line); padding: 18px 0; white-space: nowrap;
+    }
+    .marquee b {
+      display: inline-block; padding-left: 100%;
+      animation: mq 32s linear infinite;
+      letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.55); font-weight: 500; font-size: 13px;
+    }
+    @keyframes mq { to { transform: translateX(-50%); } }
+
+    .block { padding: 120px 0; position: relative; }
+    .idx { font-size: 11px; letter-spacing: .28em; text-transform: uppercase; color: var(--cyan); }
+    .display {
+      font-size: clamp(2.4rem, 7vw, 6.2rem); line-height: .9; margin: 12px 0 20px;
+    }
+    .copy { color: var(--mute); max-width: 42ch; font-size: 1.05rem; }
+    .split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
+    .split.reverse { grid-template-columns: 1.15fr .85fr; }
+    .hair { height: 1px; background: linear-gradient(90deg, var(--cyan), transparent 70%); margin: 40px 0; border: 0; }
+
+    .orbit {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line);
+      border: 1px solid var(--line);
+      transform: perspective(1200px) rotateX(8deg);
+      transform-origin: top;
+    }
+    .orbit a {
+      background: rgba(8,8,16,.82); min-height: 180px; padding: 28px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: background .3s, transform .3s;
+    }
+    .orbit a:hover { background: rgba(20,18,40,.95); transform: translateZ(24px); }
+    .orbit .n { font-size: 12px; letter-spacing: .2em; color: var(--cyan); }
+    .orbit h3 { font-size: clamp(1.6rem, 3vw, 2.4rem); }
+    .orbit p { color: var(--mute); margin: 8px 0 0; font-size: 14px; max-width: 36ch; }
+    .orbit .wide { grid-column: 1 / -1; min-height: 220px; background:
+      linear-gradient(120deg, rgba(124,107,255,.16), rgba(8,8,16,.9) 40%, rgba(60,231,255,.1)); }
+
+    .rail-wrap { overflow: hidden; margin-top: 48px; perspective: 1400px; }
+    .rail {
+      display: flex; gap: 18px; padding: 24px 0 40px;
+      transform-style: preserve-3d;
+    }
+    .mod {
+      flex: 0 0 220px; height: 280px; padding: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.02));
+      transform: rotateY(-18deg) rotateX(8deg);
+      display: flex; flex-direction: column; justify-content: space-between;
+      transition: transform .35s;
+    }
+    .mod:nth-child(even) { transform: rotateY(12deg) rotateX(6deg) translateY(18px); }
+    .mod:hover { transform: rotateY(0) translateZ(40px) scale(1.03); z-index: 2; }
+    .mod span { letter-spacing: .2em; font-size: 11px; color: var(--cyan); }
+    .mod strong { font-family: var(--display); font-size: 28px; line-height: 1; }
+
+    .feature { display: grid; grid-template-columns: 1.3fr .7fr; min-height: 420px; border-top: 1px solid var(--line); }
+    .feature + .feature { grid-template-columns: .7fr 1.3fr; }
+    .feature .media, .feature .txt { padding: 48px 8px; }
+    .feature .txt { display: flex; flex-direction: column; justify-content: center; }
+    .feature h3 { font-size: clamp(2rem, 5vw, 4rem); }
+    .slab {
+      height: 100%; min-height: 320px; border: 1px solid var(--line);
+      background: radial-gradient(400px 180px at 50% 100%, rgba(124,107,255,.25), transparent), rgba(8,8,14,.6);
+      display: grid; place-items: center; transform: perspective(900px) rotateY(-12deg);
+    }
+    .slab.tv { transform: perspective(900px) rotateY(10deg); }
+    .play { width: 72px; height: 72px; border-radius: 50%; border: 1px solid rgba(255,255,255,.3); display: grid; place-items: center; }
+    .timer-ring { width: 180px; height: 180px; }
+
+    .discover {
+      border: 1px solid var(--line); padding: 36px;
+      background: rgba(255,255,255,.03);
+    }
+    .discover label { display: block; letter-spacing: .2em; text-transform: uppercase; font-size: 11px; color: var(--mute); margin-bottom: 12px; }
+    .discover input {
+      width: 100%; background: transparent; border: 0; border-bottom: 1px solid rgba(255,255,255,.28);
+      font-family: var(--display); font-size: clamp(1.6rem, 4vw, 3rem); padding: 8px 0 16px; outline: none;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .chips a, .chips button {
+      border: 1px solid var(--line); padding: 8px 12px; font-size: 12px; letter-spacing: .08em;
+      background: rgba(0,0,0,.25);
+    }
+    .chips a:hover, .chips button:hover, .chips a.is-on { border-color: #fff; }
+
+    .trust { padding: 140px 0; }
+    .trust h2 { font-size: clamp(2.2rem, 6vw, 5rem); max-width: 16ch; }
+
+    .finale {
+      padding: 120px 0 140px; text-align: left;
+      border-top: 1px solid var(--line);
+    }
+    .finale h2 { font-size: clamp(2.6rem, 8vw, 6.4rem); max-width: 12ch; margin-bottom: 24px; }
+
+    footer { border-top: 1px solid var(--line); padding: 40px 0 28px; color: var(--mute); position: relative; z-index: 2; }
+    .foot { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24px; }
+    .foot a { display: block; padding: 4px 0; }
+    .foot a:hover { color: #fff; }
+    .copy { margin-top: 28px; font-size: 12px; letter-spacing: .08em; }
+
+    .reveal { opacity: 0; transform: translateY(24px); }
+    .reveal.in { animation: up .8s cubic-bezier(.22,1,.36,1) forwards; }
+    @keyframes up { to { opacity: 1; transform: none; } }
+
+    @media (max-width: 980px) {
+      .hero-row, .split, .split.reverse, .feature, .feature + .feature, .foot { grid-template-columns: 1fr; }
+      .orbit { transform: none; }
+      .feature .media { min-height: 240px; }
+      .slab { transform: none; }
+    }
+    @media (max-width: 820px) {
+      .links, .nav-go { display: none; }
+      .burger { display: grid; place-items: center; margin-left: 8px; }
+      .clock { margin-left: auto; }
+      .hero h1 { font-size: clamp(2.8rem, 16vw, 4.4rem); }
+      .block { padding: 80px 0; }
+      .mod { flex-basis: 170px; height: 230px; }
+    }
+    @media (max-width: 420px) {
+      .brand i, .clock .d { display: none; }
+      .pad { width: min(100% - 28px, 1280px); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+      .reveal { opacity: 1; transform: none; }
+      .orbit, .mod, .slab { transform: none; }
+    }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="space-fallback" aria-hidden="true"></div>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="veil" aria-hidden="true"></div>
+
+  <div class="shell">
+    <header class="nav">
+      <div class="nav-in">
+        <a class="brand" href="/" aria-label="Digital Seba home"><b>DIGITAL SEBA</b><i>ডিজিটাল সেবা</i></a>
+        <nav class="links" aria-label="Primary">
+          <a href="#ecosystem"><span class="t-en">Universe</span><span class="t-bn">ইউনিভার্স</span></a>
+          <a href="#resources"><span class="t-en">Resources</span><span class="t-bn">রিসোর্স</span></a>
+          <a href="#featured"><span class="t-en">Featured</span><span class="t-bn">ফিচার্ড</span></a>
+          <a href="#discover"><span class="t-en">Discover</span><span class="t-bn">খুঁজুন</span></a>
+          <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+        </nav>
+        <div class="clock"><span class="d" id="dateLine"></span><span class="t" id="timeLine"></span></div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="bn">বাংলা</button>
+        </div>
+        <a class="nav-go" href="/resources/"><span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></a>
+        <button class="burger" id="menuBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><span></span></button>
+      </div>
+    </header>
+    <div class="drawer" id="drawer" hidden>
+      <nav aria-label="Mobile">
+        <a href="#ecosystem"><span class="t-en">Universe</span><span class="t-bn">ইউনিভার্স</span></a>
+        <a href="#resources"><span class="t-en">Resources</span><span class="t-bn">রিসোর্স</span></a>
+        <a href="#featured"><span class="t-en">Featured</span><span class="t-bn">ফিচার্ড</span></a>
+        <a href="#discover"><span class="t-en">Discover</span><span class="t-bn">খুঁজুন</span></a>
+        <a href="/services/"><span class="t-en">Services</span><span class="t-bn">সেবা</span></a>
+        <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+        <a href="/live-tv/"><span class="t-en">Live TV</span><span class="t-bn">লাইভ টিভি</span></a>
+        <a href="/focus-mode/">Focus Mode</a>
+        <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+      </nav>
+    </div>
+
+    <main id="main">
+      <section class="hero pad">
+        <div class="kicker"><span class="t-en">Digital resource universe</span><span class="t-bn">ডিজিটাল রিসোর্স ইউনিভার্স</span></div>
+        <div class="hero-row">
+          <h1>
+            <span class="t-en">Everything<br>Digital.<br><em>One Place.</em></span>
+            <span class="t-bn">সবকিছু<br>ডিজিটাল।<br><em>এক জায়গায়।</em></span>
+          </h1>
+          <div>
+            <p class="lead">
+              <span class="t-en">Software, documents, tools, Live TV and a quiet focus workspace — one Bangladesh-friendly platform, not a storefront.</span>
+              <span class="t-bn">প্রয়োজনীয় ডিজিটাল সেবা, টুলস, রিসোর্স, লাইভ টিভি ও আরও অনেক কিছু এক প্ল্যাটফর্মে।</span>
+            </p>
+            <div class="acts">
+              <a class="btn btn-fill" href="#ecosystem"><span class="t-en">Enter the universe</span><span class="t-bn">ইউনিভার্সে যান</span> →</a>
+              <button class="btn btn-line" type="button" id="heroLang"><span class="t-en">বাংলায় দেখুন</span><span class="t-bn">View in English</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="scroll-hint"><span class="t-en">Scroll to travel through the library</span><span class="t-bn">স্ক্রল করে লাইব্রেরির ভেতর দিয়ে যান</span></div>
+      </section>
+
+      <div class="marquee" aria-hidden="true">
+        <b>Software — Apps — Drivers — Windows — Android — Books — PDF — Images — Videos — ISO — Fonts — Documents — Live TV — Focus Mode — Voteshondhan — Tools — Software — Apps — Drivers — Windows — Android — Books — PDF — Images — Videos — ISO — Fonts — Documents —</b>
+      </div>
+
+      <section class="block" id="ecosystem">
+        <div class="pad split">
+          <div class="reveal">
+            <div class="idx">01 — <span class="t-en">Platform</span><span class="t-bn">প্ল্যাটফর্ম</span></div>
+            <h2 class="display"><span class="t-en">One platform.<br>Many orbits.</span><span class="t-bn">এক প্ল্যাটফর্ম।<br>অনেক কক্ষপথ।</span></h2>
+            <p class="copy"><span class="t-en">Services, tools, the resource library, Live TV and Focus Mode share one space — so everyday digital work does not scatter.</span><span class="t-bn">সেবা, টুলস, রিসোর্স, লাইভ টিভি ও ফোকাস মোড একই মহাবিশ্বে। প্রতিদিনের কাজ ছড়িয়ে পড়ে না।</span></p>
+          </div>
+          <div class="orbit">
+            <a href="/services/"><span class="n">01</span><div><h3><span class="t-en">Services</span><span class="t-bn">সেবা</span></h3><p><span class="t-en">Digital utilities such as Voteshondhan — independent helpers, not a government office.</span><span class="t-bn">ভোট সন্ধানসহ ডিজিটাল ইউটিলিটি — সরকারি অফিস নয়।</span></p></div></a>
+            <a href="/tools/"><span class="n">02</span><div><h3><span class="t-en">Tools</span><span class="t-bn">টুলস</span></h3><p><span class="t-en">Age calculator, scanner, CV, business card, QR, text utilities.</span><span class="t-bn">বয়স ক্যালকুলেটর, স্ক্যানার, সিভি, বিজনেস কার্ড, কিউআর।</span></p></div></a>
+            <a class="wide" href="/resources/"><span class="n">03</span><div><h3><span class="t-en">Resource library</span><span class="t-bn">রিসোর্স লাইব্রেরি</span></h3><p><span class="t-en">A digital library for software, PDF, fonts, ISO and more — not a shopping cart.</span><span class="t-bn">সফটওয়্যার, PDF, ফন্ট, ISO — একটি লাইব্রেরি, দোকান নয়।</span></p></div></a>
+            <a href="/live-tv/"><span class="n">04</span><div><h3>Live TV</h3><p><span class="t-en">Channel catalog and player, built for phones as much as desktops.</span><span class="t-bn">চ্যানেল ক্যাটালগ ও প্লেয়ার — মোবাইল থেকে ডেস্কটপ।</span></p></div></a>
+            <a href="/focus-mode/"><span class="n">05</span><div><h3>Focus Mode</h3><p><span class="t-en">Stay focused. Get more done.</span><span class="t-bn">মনোযোগ ধরে রাখুন। বেশি কাজ শেষ করুন।</span></p></div></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="resources">
+        <div class="pad">
+          <div class="idx">02 — <span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></div>
+          <h2 class="display reveal"><span class="t-en">Categories that live in space.</span><span class="t-bn">ক্যাটাগরিগুলো মহাকাশে ভাসে।</span></h2>
+          <p class="copy"><span class="t-en">Drag the rail. Each module is a door into the same library.</span><span class="t-bn">রেল সরাবেন — প্রতিটি মডিউল একই লাইব্রেরির দরজা।</span></p>
+        </div>
+        <div class="rail-wrap">
+          <div class="rail" id="rail">
+            <a class="mod" href="/resources/" data-key="software"><span>01</span><strong>Software</strong></a>
+            <a class="mod" href="/resources/" data-key="apps"><span>02</span><strong>Apps</strong></a>
+            <a class="mod" href="/resources/" data-key="drivers"><span>03</span><strong>Drivers</strong></a>
+            <a class="mod" href="/resources/" data-key="windows"><span>04</span><strong>Windows</strong></a>
+            <a class="mod" href="/resources/" data-key="android"><span>05</span><strong>Android</strong></a>
+            <a class="mod" href="/resources/" data-key="books"><span>06</span><strong>Books</strong></a>
+            <a class="mod" href="/resources/" data-key="pdf"><span>07</span><strong>PDF</strong></a>
+            <a class="mod" href="/resources/" data-key="images"><span>08</span><strong>Images</strong></a>
+            <a class="mod" href="/resources/" data-key="videos"><span>09</span><strong>Videos</strong></a>
+            <a class="mod" href="/resources/" data-key="iso"><span>10</span><strong>ISO</strong></a>
+            <a class="mod" href="/resources/" data-key="fonts"><span>11</span><strong>Fonts</strong></a>
+            <a class="mod" href="/resources/" data-key="documents"><span>12</span><strong>Documents</strong></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="block" id="featured" style="padding-top:40px">
+        <div class="pad">
+          <div class="idx">03 — <span class="t-en">Featured</span><span class="t-bn">ফিচার্ড</span></div>
+          <h2 class="display"><span class="t-en">Open a room,<br>not a thumbnail.</span><span class="t-bn">থাম্বনেইল নয়,<br>একটি ঘর খুলুন।</span></h2>
+        </div>
+        <div class="pad">
+          <article class="feature">
+            <div class="txt">
+              <div class="idx">Voteshondhan · ভোট সন্ধান</div>
+              <h3><span class="t-en">Search voter information from PDF documents.</span><span class="t-bn">PDF থেকে ভোটার তথ্য খুঁজুন।</span></h3>
+              <p class="copy"><span class="t-en">A browser-based digital utility. Independent — not a government office.</span><span class="t-bn">ব্রাউজারভিত্তিক ডিজিটাল ইউটিলিটি। স্বাধীন — সরকারি অফিস নয়।</span></p>
+              <div class="acts"><a class="btn btn-fill" href="/services/Voteshondhan/"><span class="t-en">Open Voteshondhan</span><span class="t-bn">ভোট সন্ধান খুলুন</span> →</a></div>
+            </div>
+            <div class="media"><div class="slab" aria-hidden="true"><div style="letter-spacing:.3em;font-size:12px;color:#3ce7ff">PDF  ·  SEARCH</div></div></div>
+          </article>
+          <article class="feature">
+            <div class="media"><div class="slab tv" aria-hidden="true"><div class="play">▶</div></div></div>
+            <div class="txt">
+              <div class="idx">Live TV</div>
+              <h3><span class="t-en">Entertainment, without the clutter.</span><span class="t-bn">লাইভ টিভি এক জায়গায়।</span></h3>
+              <p class="copy"><span class="t-en">A cinematic catalog with categories and a responsive player. Visual preview only on this page.</span><span class="t-bn">ক্যাটাগরি ও রেসপনসিভ প্লেয়ার। এই পেজে শুধু প্রিভিউ।</span></p>
+              <div class="acts"><a class="btn btn-fill" href="/live-tv/"><span class="t-en">Watch Live TV</span><span class="t-bn">লাইভ টিভি দেখুন</span> →</a></div>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="txt">
+              <div class="idx">Focus Mode</div>
+              <h3><span class="t-en">Less distraction.<br>More focus.</span><span class="t-bn">কম বিভ্রান্তি।<br>বেশি মনোযোগ।</span></h3>
+              <p class="copy"><span class="t-en">A calm Pomodoro workspace. Stay focused. Get more done.</span><span class="t-bn">শান্ত পোমোডোরো ওয়ার্কস্পেস।</span></p>
+              <div class="acts"><a class="btn btn-fill" href="/focus-mode/"><span class="t-en">Enter Focus Mode</span><span class="t-bn">ফোকাস মোডে যান</span> →</a></div>
+            </div>
+            <div class="media">
+              <div class="slab" aria-hidden="true">
+                <svg class="timer-ring" viewBox="0 0 120 120">
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="6"/>
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#7c6bff" stroke-width="6" stroke-linecap="round" stroke-dasharray="327" stroke-dashoffset="90" transform="rotate(-90 60 60)"/>
+                  <text x="60" y="64" text-anchor="middle" fill="#fff" font-size="16" font-family="Outfit,sans-serif">25:00</text>
+                </svg>
+              </div>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="media"><div class="slab" aria-hidden="true" style="letter-spacing:.24em;font-size:12px;color:#3ce7ff">AGE · SCAN · CV · QR · TEXT</div></div>
+            <div class="txt">
+              <div class="idx"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></div>
+              <h3><span class="t-en">Useful tools for everyday digital work.</span><span class="t-bn">দৈনন্দিন ডিজিটাল কাজের টুলস।</span></h3>
+              <p class="copy"><span class="t-en">Age calculator, business card, scanner, CV builder, Link Auditor, text utilities, QR generator, image crop.</span><span class="t-bn">বয়স ক্যালকুলেটর, বিজনেস কার্ড, স্ক্যানার, সিভি, লিংক অডিটর, টেক্সট ইউটিলিটি।</span></p>
+              <div class="acts">
+                <a class="btn btn-fill" href="/tools/"><span class="t-en">Explore tools</span><span class="t-bn">টুলস দেখুন</span> →</a>
+                <a class="btn btn-line" href="/link-auditor/">Link Auditor</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="block" id="discover">
+        <div class="pad">
+          <div class="idx">04 — <span class="t-en">Discovery</span><span class="t-bn">ডিসকভারি</span></div>
+          <h2 class="display"><span class="t-en">Find a door.</span><span class="t-bn">একটি দরজা খুঁজুন।</span></h2>
+          <form class="discover" action="/resources/" method="get" role="search">
+            <label for="q"><span class="t-en">Search the library</span><span class="t-bn">লাইব্রেরি খুঁজুন</span></label>
+            <input id="q" name="q" type="search" autocomplete="off" placeholder="Software, PDF, fonts, Windows…">
+            <div class="chips" id="chips">
+              <a href="/resources/" data-filter="software">Software</a>
+              <a href="/resources/" data-filter="apps">Apps</a>
+              <a href="/resources/" data-filter="windows">Windows</a>
+              <a href="/resources/" data-filter="android">Android</a>
+              <a href="/resources/" data-filter="pdf">PDF</a>
+              <a href="/resources/" data-filter="iso">ISO</a>
+              <a href="/resources/" data-filter="fonts">Fonts</a>
+              <a href="/resources/" data-filter="books">Books</a>
+              <a href="/services/Voteshondhan/">Voteshondhan</a>
+              <a href="/live-tv/">Live TV</a>
+              <a href="/focus-mode/">Focus</a>
+              <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="trust pad">
+        <div class="idx">05 — Digital Seba</div>
+        <h2 class="reveal"><span class="t-en">One digital destination. Built for everyday use.</span><span class="t-bn">প্রতিদিনের ডিজিটাল কাজের একটি সহজ ঠিকানা।</span></h2>
+        <p class="copy" style="margin-top:20px"><span class="t-en">No inflated counts. No fake awards. English and বাংলা. Fast on a phone.</span><span class="t-bn">কোনো বানানো সংখ্যা নয়। বাংলা + English। মোবাইলে দ্রুত।</span></p>
+      </section>
+
+      <section class="finale pad">
+        <div class="idx">06 — <span class="t-en">Continue</span><span class="t-bn">এগিয়ে যান</span></div>
+        <h2><span class="t-en">Everything you need, one click away.</span><span class="t-bn">আপনার প্রয়োজনীয় ডিজিটাল জিনিসগুলো এখন এক জায়গায়।</span></h2>
+        <div class="acts">
+          <a class="btn btn-fill" href="/resources/"><span class="t-en">Open the library</span><span class="t-bn">লাইব্রেরি খুলুন</span> →</a>
+          <a class="btn btn-line" href="/services/"><span class="t-en">Browse services</span><span class="t-bn">সেবাসমূহ দেখুন</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="pad foot">
+        <div>
+          <a class="brand" href="/"><b>DIGITAL SEBA</b><i>ডিজিটাল সেবা</i></a>
+          <p style="max-width:34ch;margin-top:12px"><span class="t-en">One place for everyday digital services, tools, resources and online utilities.</span><span class="t-bn">প্রতিদিনের ডিজিটাল সেবা, টুলস, রিসোর্স ও অনলাইন ইউটিলিটির এক ঠিকানা।</span></p>
+        </div>
+        <div>
+          <a href="/services/"><span class="t-en">Services</span><span class="t-bn">সেবা</span></a>
+          <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+          <a href="/resources/"><span class="t-en">Resources</span><span class="t-bn">রিসোর্স</span></a>
+          <a href="/live-tv/">Live TV</a>
+        </div>
+        <div>
+          <a href="/focus-mode/">Focus Mode</a>
+          <a href="/about/"><span class="t-en">About Digital Seba</span><span class="t-bn">ডিজিটাল সেবা সম্পর্কে</span></a>
+          <a href="/link-auditor/">Link Auditor</a>
+        </div>
+      </div>
+      <div class="pad copy">© Digital Seba</div>
+    </footer>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var narrow = window.matchMedia("(max-width: 820px)").matches;
+      var saveData = navigator.connection && navigator.connection.saveData;
+      var lite = reduced || saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4);
+
+      function lang() { return root.getAttribute("data-lang") === "bn" ? "bn" : "en"; }
+      function setLang(n) {
+        root.setAttribute("data-lang", n);
+        root.lang = n === "bn" ? "bn" : "en";
+        try { localStorage.setItem("ds-lang", n); } catch (e) {}
+        tick();
+      }
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        b.addEventListener("click", function () { setLang(b.getAttribute("data-set-lang")); });
+      });
+      var hl = document.getElementById("heroLang");
+      if (hl) hl.addEventListener("click", function () { setLang(lang() === "bn" ? "en" : "bn"); });
+
+      var bnM = ["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+      var enM = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+      var enD = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+      var bnN = "০১২৩৪৫৬৭৮৯";
+      function toBn(n) { return String(n).replace(/\d/g, function (d) { return bnN[d]; }); }
+      function pad(n) { return n < 10 ? "0" + n : "" + n; }
+      function tick() {
+        var now = new Date(), d = document.getElementById("dateLine"), t = document.getElementById("timeLine");
+        if (!d || !t) return;
+        if (lang() === "bn") {
+          d.textContent = toBn(now.getDate()) + " " + bnM[now.getMonth()];
+          var h = now.getHours();
+          var p = h < 4 ? "রাত" : h < 6 ? "ভোর" : h < 12 ? "সকাল" : h < 16 ? "দুপুর" : h < 18 ? "বিকাল" : h < 20 ? "সন্ধ্যা" : "রাত";
+          t.textContent = p + " " + toBn(h % 12 || 12) + ":" + toBn(pad(now.getMinutes()));
+        } else {
+          d.textContent = enD[now.getDay()] + ", " + now.getDate() + " " + enM[now.getMonth()];
+          var h = now.getHours();
+          t.textContent = pad(h % 12 || 12) + ":" + pad(now.getMinutes()) + " " + (h >= 12 ? "PM" : "AM");
+        }
+      }
+      tick(); setInterval(tick, 1000);
+
+      var btn = document.getElementById("menuBtn"), drawer = document.getElementById("drawer");
+      function close() { document.body.classList.remove("menu-open"); btn.setAttribute("aria-expanded", "false"); drawer.hidden = true; }
+      function open() { document.body.classList.add("menu-open"); btn.setAttribute("aria-expanded", "true"); drawer.hidden = false; }
+      btn.addEventListener("click", function (e) { e.stopPropagation(); document.body.classList.contains("menu-open") ? close() : open(); });
+      drawer.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
+      document.addEventListener("click", function (e) {
+        if (document.body.classList.contains("menu-open") && !drawer.contains(e.target) && !btn.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+
+      var rail = document.getElementById("rail");
+      if (rail) {
+        var x = 0, down = false, start = 0, sl = 0;
+        rail.style.cursor = "grab";
+        rail.addEventListener("pointerdown", function (e) { down = true; start = e.clientX; sl = rail.parentElement.scrollLeft; rail.style.cursor = "grabbing"; });
+        window.addEventListener("pointerup", function () { down = false; rail.style.cursor = "grab"; });
+        window.addEventListener("pointermove", function (e) {
+          if (!down) return;
+          rail.parentElement.scrollLeft = sl - (e.clientX - start);
+        });
+      }
+
+      var q = document.getElementById("q");
+      var mods = document.querySelectorAll(".mod");
+      if (q) {
+        q.addEventListener("input", function () {
+          var v = q.value.trim().toLowerCase();
+          mods.forEach(function (m) {
+            var ok = !v || (m.getAttribute("data-key") || m.textContent).toLowerCase().indexOf(v) !== -1;
+            m.style.opacity = ok ? "1" : ".28";
+          });
+          document.querySelectorAll("#chips [data-filter]").forEach(function (c) {
+            c.classList.toggle("is-on", v && c.getAttribute("data-filter").indexOf(v) !== -1);
+          });
+        });
+      }
+
+      if (!reduced && "IntersectionObserver" in window) {
+        var io = new IntersectionObserver(function (ents) {
+          ents.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        document.querySelectorAll(".reveal, .orbit a, .feature").forEach(function (el) {
+          el.classList.add("reveal"); io.observe(el);
+        });
+      } else {
+        document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+      }
+
+      if (reduced) return;
+
+      var script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js";
+      script.defer = true;
+      script.onload = function () { try { bootSpace(lite || narrow); } catch (e) {} };
+      document.head.appendChild(script);
+
+      function bootSpace(liteMode) {
+        if (!window.THREE) return;
+        var canvas = document.getElementById("space");
+        var renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: false, alpha: true, powerPreference: "high-performance" });
+        renderer.setClearColor(0x000000, 0);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, liteMode ? 1 : 1.5));
+        renderer.setSize(window.innerWidth, window.innerHeight, false);
+        var scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030308, 0.045);
+        var camera = new THREE.PerspectiveCamera(56, window.innerWidth / window.innerHeight, 0.1, 80);
+        camera.position.set(0, 0, 11);
+
+        var count = liteMode ? 800 : 2600;
+        var pos = new Float32Array(count * 3);
+        for (var i = 0; i < count; i++) {
+          var r = 16 * Math.cbrt(Math.random());
+          var th = Math.random() * Math.PI * 2;
+          var ph = Math.acos(2 * Math.random() - 1);
+          pos[i * 3] = r * Math.sin(ph) * Math.cos(th);
+          pos[i * 3 + 1] = r * Math.sin(ph) * Math.sin(th);
+          pos[i * 3 + 2] = r * Math.cos(ph) - 2;
+        }
+        var stars = new THREE.Points(
+          new THREE.BufferGeometry().setAttribute("position", new THREE.BufferAttribute(pos, 3)),
+          new THREE.PointsMaterial({ color: 0xffffff, size: liteMode ? 0.03 : 0.02, sizeAttenuation: true, transparent: true, opacity: 0.85, depthWrite: false })
+        );
+        scene.add(stars);
+
+        var group = new THREE.Group();
+        var colors = [0x7c6bff, 0x3ce7ff, 0xa78bfa, 0x67e8f9];
+        var n = liteMode ? 6 : 10;
+        for (var j = 0; j < n; j++) {
+          var mesh = new THREE.Mesh(
+            new THREE.IcosahedronGeometry(0.28 + (j % 3) * 0.07, 0),
+            new THREE.MeshBasicMaterial({ color: colors[j % 4], wireframe: true, transparent: true, opacity: 0.72 })
+          );
+          var a = (j / n) * Math.PI * 2;
+          mesh.position.set(Math.cos(a) * 3.4, Math.sin(a * 1.4) * 1.5, -1 - j * 0.35);
+          mesh.userData.s = 0.25 + j * 0.04;
+          group.add(mesh);
+        }
+        scene.add(group);
+
+        var mx = 0, my = 0, running = true;
+        window.addEventListener("pointermove", function (e) {
+          mx = (e.clientX / window.innerWidth) * 2 - 1;
+          my = (e.clientY / window.innerHeight) * 2 - 1;
+        }, { passive: true });
+        document.addEventListener("visibilitychange", function () {
+          running = !document.hidden;
+          if (running) loop();
+        });
+        function loop() {
+          if (!running) return;
+          requestAnimationFrame(loop);
+          var max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+          var sc = window.scrollY / max;
+          camera.position.z = 11 - sc * 7;
+          camera.position.x += (mx * 0.7 - camera.position.x) * 0.045;
+          camera.position.y += (-my * 0.45 - camera.position.y) * 0.045;
+          camera.lookAt(0, 0, -4);
+          stars.rotation.y += 0.00032;
+          stars.rotation.x += 0.00012;
+          group.children.forEach(function (m) {
+            m.rotation.y += 0.0035 * m.userData.s;
+            m.rotation.x += 0.002;
+          });
+          renderer.render(scene, camera);
+        }
+        loop();
+        window.addEventListener("resize", function () {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight, false);
+        });
+        root.classList.add("has-webgl");
+      }
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

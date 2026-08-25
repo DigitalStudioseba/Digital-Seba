@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050607" />
+  <title>Digital Seba â€” The Digital Ecosystem of Bangladesh</title>
+  <meta name="description" content="Digital Seba is Bangladesh's complete digital ecosystem â€” government and daily services, resources, productivity tools, Live TV, and Focus Mode. One platform. Bangla + English. Every device." />
+  <meta name="keywords" content="Digital Seba, à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾, Bangladesh digital services, live TV Bangladesh, focus mode, online tools, government services, NID, bill pay" />
+  <meta name="author" content="Digital Seba" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://digitalseba.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Digital Seba â€” The Digital Ecosystem of Bangladesh" />
+  <meta property="og:description" content="Services, tools, resources, Live TV and deep focus â€” composed as one living platform." />
+  <meta property="og:image" content="https://images.pexels.com/photos/15535141/pexels-photo-15535141.jpeg?auto=compress&cs=tinysrgb&w=1600" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="bn_BD" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Digital Seba â€” The Digital Ecosystem of Bangladesh" />
+  <meta name="twitter:description" content="Your entire digital life. One living ecosystem." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.pexels.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Digital Seba",
+    "alternateName": "à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾",
+    "url": "https://digitalseba.app/",
+    "inLanguage": ["en", "bn"],
+    "description": "Bangladesh's complete digital ecosystem for services, tools, resources, Live TV and Focus Mode.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Digital Seba",
+      "slogan": "Your entire digital life. One living ecosystem."
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --ink: #050607;
+      --ink-2: #0b0d10;
+      --ink-3: #12161c;
+      --line: rgba(243, 239, 230, 0.1);
+      --paper: #f3efe6;
+      --mute: #9aa396;
+      --jade: #3ee08f;
+      --gold: #d4b483;
+      --safe-t: env(safe-area-inset-top);
+      --safe-b: env(safe-area-inset-bottom);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { background: var(--ink); color: var(--paper); }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: "Sora", "Noto Sans Bengali", system-ui, sans-serif;
+      overflow-x: hidden;
+      cursor: none;
+    }
+    .font-display { font-family: "Instrument Serif", "Noto Serif Bengali", Georgia, serif; }
+    .font-bn { font-family: "Noto Serif Bengali", "Instrument Serif", serif; }
+    .font-bn-ui { font-family: "Noto Sans Bengali", "Sora", sans-serif; }
+
+    ::selection { background: rgba(62, 224, 143, 0.28); color: #fff; }
+
+    a, button, [role="button"], input, select, textarea, .magnetic { cursor: none; }
+    img { max-width: 100%; display: block; }
+    button { font-family: inherit; }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    .grain {
+      position: fixed; inset: 0; pointer-events: none; z-index: 80;
+      opacity: 0.055;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .cursor {
+      position: fixed; top: 0; left: 0; width: 10px; height: 10px;
+      border-radius: 50%; background: var(--jade);
+      pointer-events: none; z-index: 200; mix-blend-mode: difference;
+      transform: translate(-50%, -50%);
+      transition: width .25s, height .25s, background .25s, opacity .25s;
+    }
+    .cursor-ring {
+      position: fixed; top: 0; left: 0; width: 36px; height: 36px;
+      border: 1px solid rgba(62, 224, 143, 0.55);
+      border-radius: 50%; pointer-events: none; z-index: 199;
+      transform: translate(-50%, -50%);
+      transition: width .35s, height .35s, border-color .35s, opacity .35s;
+    }
+    .cursor.grow, .cursor-ring.grow { width: 64px; height: 64px; }
+    .cursor.grow { background: transparent; }
+
+    .skip {
+      position: absolute; left: 1rem; top: -4rem; z-index: 300;
+      background: var(--jade); color: #04140c; padding: .7rem 1rem; font-weight: 600;
+    }
+    .skip:focus { top: 1rem; }
+
+    .loader {
+      position: fixed; inset: 0; z-index: 250;
+      background: #050607;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: opacity .8s ease, visibility .8s ease;
+    }
+    .loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
+    .loader-mark {
+      width: 72px; height: 72px; margin-bottom: 1.5rem;
+      animation: pulseLogo 1.6s ease-in-out infinite;
+    }
+    .loader-bar {
+      width: min(240px, 60vw); height: 1px; background: rgba(243,239,230,.12); overflow: hidden;
+    }
+    .loader-bar span {
+      display: block; height: 100%; width: 0; background: linear-gradient(90deg, #3ee08f, #d4b483);
+      animation: load 1.6s cubic-bezier(.22,1,.36,1) forwards;
+    }
+
+    @keyframes load { to { width: 100%; } }
+    @keyframes pulseLogo {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(62,224,143,0)); }
+      50% { transform: scale(1.04); filter: drop-shadow(0 0 18px rgba(62,224,143,.45)); }
+    }
+    @keyframes floatY {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    @keyframes spinSlow { to { transform: rotate(360deg); } }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: .45; }
+      50% { opacity: 1; }
+    }
+    @keyframes livePulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 68, 68, .55); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0); }
+    }
+    @keyframes ringSpin {
+      from { transform: rotateX(68deg) rotateZ(0deg); }
+      to { transform: rotateX(68deg) rotateZ(360deg); }
+    }
+    @keyframes orbit {
+      from { transform: rotate(0deg) translateX(var(--orbit)) rotate(0deg); }
+      to { transform: rotate(360deg) translateX(var(--orbit)) rotate(-360deg); }
+    }
+    @keyframes shine {
+      from { transform: translateX(-120%) skewX(-18deg); }
+      to { transform: translateX(220%) skewX(-18deg); }
+    }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity .9s ease, transform .9s cubic-bezier(.22,1,.36,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    .delay-1 { transition-delay: .1s; }
+    .delay-2 { transition-delay: .2s; }
+    .delay-3 { transition-delay: .3s; }
+    .delay-4 { transition-delay: .4s; }
+
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+      padding-top: var(--safe-t);
+      transition: background .4s, border-color .4s, backdrop-filter .4s;
+    }
+    .nav.scrolled {
+      background: rgba(5,6,7,.72);
+      backdrop-filter: blur(22px) saturate(140%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .btn {
+      position: relative; isolation: isolate; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: .6rem;
+      border-radius: 999px; font-weight: 600; letter-spacing: -.01em;
+      transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, color .3s, border-color .3s;
+    }
+    .btn-primary {
+      background: var(--jade); color: #04140c;
+      box-shadow: 0 0 0 1px rgba(62,224,143,.2), 0 10px 40px rgba(62,224,143,.18);
+    }
+    .btn-primary:hover { transform: translateY(-2px); background: #62f0a6; }
+    .btn-ghost {
+      border: 1px solid rgba(243,239,230,.16);
+      background: rgba(243,239,230,.03); color: var(--paper);
+    }
+    .btn-ghost:hover { border-color: rgba(62,224,143,.5); background: rgba(62,224,143,.08); }
+    .btn .shine {
+      position: absolute; inset: 0; width: 40%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent);
+      transform: translateX(-120%) skewX(-18deg);
+    }
+    .btn:hover .shine { animation: shine .8s ease; }
+
+    .mesh {
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        radial-gradient(60% 50% at 70% 20%, rgba(62,224,143,.16), transparent 60%),
+        radial-gradient(40% 40% at 15% 80%, rgba(212,180,131,.08), transparent 60%),
+        radial-gradient(30% 30% at 80% 80%, rgba(80,140,255,.08), transparent 60%);
+    }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(243,239,230,.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+      backdrop-filter: blur(18px);
+    }
+
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform .2s ease, box-shadow .3s ease, border-color .3s ease;
+    }
+    .card-3d:hover {
+      border-color: rgba(62,224,143,.35);
+      box-shadow: 0 24px 70px rgba(0,0,0,.45), 0 0 0 1px rgba(62,224,143,.12);
+    }
+
+    #hero-canvas {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      display: block; pointer-events: none;
+    }
+
+    .eco-stage {
+      perspective: 1400px;
+      min-height: 560px;
+    }
+    .eco-world {
+      position: relative; width: 100%; height: 560px;
+      transform-style: preserve-3d;
+      transition: transform .15s linear;
+    }
+    .eco-core {
+      position: absolute; left: 50%; top: 50%;
+      width: 180px; height: 180px; margin: -90px 0 0 -90px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #9cffd0, #1f8a55 42%, #062016 72%);
+      box-shadow:
+        0 0 40px rgba(62,224,143,.45),
+        0 0 120px rgba(62,224,143,.18),
+        inset 0 0 40px rgba(255,255,255,.15);
+      transform: translateZ(40px);
+    }
+    .eco-core::after {
+      content: ""; position: absolute; inset: -28px; border-radius: 50%;
+      border: 1px dashed rgba(62,224,143,.28);
+      animation: spinSlow 28s linear infinite;
+    }
+    .eco-ring {
+      position: absolute; left: 50%; top: 50%;
+      width: 420px; height: 420px; margin: -210px 0 0 -210px;
+      border: 1px solid rgba(212,180,131,.18);
+      border-radius: 50%;
+      transform: rotateX(68deg);
+      animation: ringSpin 24s linear infinite;
+    }
+    .eco-ring.two {
+      width: 300px; height: 300px; margin: -150px 0 0 -150px;
+      border-color: rgba(62,224,143,.2);
+      animation-duration: 16s; animation-direction: reverse;
+    }
+    .eco-node {
+      --orbit: 210px;
+      position: absolute; left: 50%; top: 50%;
+      width: 168px; margin: -34px 0 0 -84px;
+      animation: orbit 22s linear infinite;
+      transform-style: preserve-3d;
+    }
+    .eco-node:nth-child(1) { animation-delay: 0s; }
+    .eco-node:nth-child(2) { animation-delay: -3.6s; }
+    .eco-node:nth-child(3) { animation-delay: -7.2s; }
+    .eco-node:nth-child(4) { animation-delay: -10.8s; }
+    .eco-node:nth-child(5) { animation-delay: -14.4s; }
+    .eco-node:nth-child(6) { animation-delay: -18s; }
+    .eco-node .chip {
+      pointer-events: auto;
+      transform: translateZ(60px);
+    }
+
+    .marquee-track {
+      display: flex; width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    .bento:hover img { transform: scale(1.06); }
+    .bento img { transition: transform 1.1s cubic-bezier(.22,1,.36,1); }
+
+    .channel {
+      transition: transform .35s cubic-bezier(.22,1,.36,1), background .3s, border-color .3s;
+    }
+    .channel:hover { transform: translateY(-4px); border-color: rgba(62,224,143,.4); }
+
+    .timer-ring { transform: rotate(-90deg); }
+    .timer-ring circle { transition: stroke-dashoffset 1s linear; }
+
+    .mobile-sheet {
+      transform: translateY(110%);
+      transition: transform .45s cubic-bezier(.22,1,.36,1);
+    }
+    .mobile-sheet.open { transform: translateY(0); }
+    .menu-veil {
+      position: fixed; inset: 0; z-index: 110;
+      background: rgba(5,6,7,.55); backdrop-filter: blur(6px);
+      opacity: 0; pointer-events: none; transition: opacity .35s ease;
+    }
+    .menu-veil.open { opacity: 1; pointer-events: auto; }
+
+    .lang-btn[aria-pressed="true"] {
+      background: var(--paper); color: #050607;
+    }
+
+    .stat-num { font-variant-numeric: tabular-nums; }
+
+    @media (hover: none), (pointer: coarse) {
+      body, a, button, [role="button"], input { cursor: auto; }
+      .cursor, .cursor-ring { display: none !important; }
+    }
+    @media (max-width: 900px) {
+      .eco-stage, .eco-world { min-height: auto; height: auto; }
+      .eco-world {
+        transform: none !important;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        height: auto;
+      }
+      .eco-core {
+        position: relative; left: auto; top: auto; margin: 0 auto 0.25rem;
+        transform: none; grid-column: 1 / -1;
+      }
+      .eco-ring { display: none; }
+      .eco-node {
+        position: static; margin: 0; width: 100%;
+        animation: none !important; transform: none !important;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body class="antialiased">
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" role="status" aria-live="polite">
+    <svg class="loader-mark" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+      <path d="M36 6L62 21V51L36 66L10 51V21L36 6Z" stroke="#3EE08F" stroke-width="1.6"/>
+      <path d="M36 18L52 27.5V46.5L36 56L20 46.5V27.5L36 18Z" stroke="#D4B483" stroke-width="1.2"/>
+      <circle cx="36" cy="36" r="6" fill="#3EE08F"/>
+    </svg>
+    <p class="font-display text-2xl tracking-wide mb-5">Digital Seba</p>
+    <div class="loader-bar"><span></span></div>
+    <p class="mt-4 text-[11px] uppercase tracking-[0.28em] text-[#9aa396]">Composing the ecosystem</p>
+  </div>
+
+  <header class="nav" id="nav">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 md:px-6">
+      <a href="#top" class="magnetic flex items-center gap-2.5" aria-label="Digital Seba home">
+        <svg width="34" height="34" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+          <path d="M36 6L62 21V51L36 66L10 51V21L36 6Z" stroke="#3EE08F" stroke-width="2"/>
+          <circle cx="36" cy="36" r="6" fill="#3EE08F"/>
+        </svg>
+        <span class="leading-none">
+          <span class="block text-[15px] font-semibold tracking-tight">Digital Seba</span>
+          <span class="block font-bn-ui text-[10px] text-[#9aa396]">à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</span>
+        </span>
+      </a>
+
+      <nav class="hidden items-center gap-7 text-[13px] text-[#c9cfc4] lg:flex" aria-label="Primary">
+        <a class="magnetic hover:text-white" href="#ecosystem" data-i18n="nav.eco">Ecosystem</a>
+        <a class="magnetic hover:text-white" href="#services" data-i18n="nav.services">Services</a>
+        <a class="magnetic hover:text-white" href="#resources" data-i18n="nav.resources">Resources</a>
+        <a class="magnetic hover:text-white" href="#tools" data-i18n="nav.tools">Tools</a>
+        <a class="magnetic hover:text-white" href="#livetv" data-i18n="nav.tv">Live TV</a>
+        <a class="magnetic hover:text-white" href="#focus" data-i18n="nav.focus">Focus</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <div class="glass flex rounded-full p-1 text-[11px] font-semibold" role="group" aria-label="Language">
+          <button class="lang-btn magnetic rounded-full px-2.5 py-1" data-lang="en" aria-pressed="true">EN</button>
+          <button class="lang-btn magnetic rounded-full px-2.5 py-1 text-[#c9cfc4]" data-lang="bn" aria-pressed="false">à¦¬à¦¾à¦‚</button>
+        </div>
+        <a href="#cta" class="btn btn-primary magnetic hidden h-10 px-4 text-[13px] sm:inline-flex">
+          <span class="shine"></span>
+          <span data-i18n="nav.enter">Enter</span>
+        </a>
+        <button id="menuBtn" class="magnetic glass grid h-10 w-10 place-items-center rounded-full lg:hidden" aria-label="Open menu" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div id="menuVeil" class="menu-veil lg:hidden" aria-hidden="true"></div>
+  <div id="mobileMenu" class="mobile-sheet fixed inset-x-0 bottom-0 z-[120] rounded-t-3xl border-t border-white/10 bg-[#0b0d10] px-5 pb-10 pt-4 lg:hidden" style="padding-bottom: calc(1.5rem + env(safe-area-inset-bottom));">
+    <div class="mx-auto mb-4 h-1 w-10 rounded-full bg-white/20"></div>
+    <nav class="grid gap-1 text-lg" aria-label="Mobile">
+      <a href="#ecosystem" class="rounded-xl px-3 py-3" data-i18n="nav.eco">Ecosystem</a>
+      <a href="#services" class="rounded-xl px-3 py-3" data-i18n="nav.services">Services</a>
+      <a href="#resources" class="rounded-xl px-3 py-3" data-i18n="nav.resources">Resources</a>
+      <a href="#tools" class="rounded-xl px-3 py-3" data-i18n="nav.tools">Tools</a>
+      <a href="#livetv" class="rounded-xl px-3 py-3" data-i18n="nav.tv">Live TV</a>
+      <a href="#focus" class="rounded-xl px-3 py-3" data-i18n="nav.focus">Focus</a>
+      <a href="#why" class="rounded-xl px-3 py-3" data-i18n="nav.why">Why Digital Seba</a>
+      <a href="#cta" class="btn btn-primary mt-2 h-12" data-i18n="nav.enter">Enter</a>
+    </nav>
+  </div>
+
+  <main id="main">
+    <section id="top" class="relative min-h-[100svh] overflow-hidden pt-24">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="mesh"></div>
+      <div class="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#050607]/20 via-transparent to-[#050607]"></div>
+
+      <div class="relative z-10 mx-auto grid min-h-[calc(100svh-6rem)] max-w-7xl items-center gap-10 px-4 pb-16 md:px-6 lg:grid-cols-12">
+        <div class="lg:col-span-7">
+          <div class="reveal inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] uppercase tracking-[0.22em] text-[#d4b483]">
+            <span class="h-1.5 w-1.5 rounded-full bg-[#3ee08f]" style="animation: glowPulse 2s infinite"></span>
+            <span data-i18n="hero.kicker">The digital OS for Bangladesh</span>
+          </div>
+          <h1 class="reveal delay-1 mt-6 max-w-4xl font-display text-[2.7rem] leading-[0.95] tracking-[-0.03em] sm:text-6xl lg:text-7xl">
+            <span class="block font-bn text-[1.15em] text-[#3ee08f]" data-i18n="hero.bn">à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦°à§‹ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦œà§€à¦¬à¦¨à¥¤</span>
+            <span class="mt-2 block italic text-[#f3efe6]" data-i18n="hero.h1">One living ecosystem.</span>
+          </h1>
+          <p class="reveal delay-2 mt-6 max-w-xl text-[15px] leading-relaxed text-[#b7beb2] sm:text-base" data-i18n="hero.sub">
+            Services, tools, knowledge, live television and deep focus â€” composed as a single platform. Designed in Bangla. Ready on every phone.
+          </p>
+          <div class="reveal delay-3 mt-8 flex flex-wrap items-center gap-3">
+            <a href="#cta" class="btn btn-primary magnetic h-12 px-6 text-sm">
+              <span class="shine"></span>
+              <span data-i18n="hero.cta1">Enter Digital Seba</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="#ecosystem" class="btn btn-ghost magnetic h-12 px-6 text-sm" data-i18n="hero.cta2">Tour the six pillars</a>
+          </div>
+          <div class="reveal delay-4 mt-10 flex flex-wrap gap-8 text-xs uppercase tracking-[0.18em] text-[#8d9588]">
+            <div><span class="block font-display text-2xl normal-case tracking-normal text-white">6</span><span data-i18n="hero.s1">Pillars</span></div>
+            <div><span class="block font-display text-2xl normal-case tracking-normal text-white">BN + EN</span><span data-i18n="hero.s2">Native bilingual</span></div>
+            <div><span class="block font-display text-2xl normal-case tracking-normal text-white">24/7</span><span data-i18n="hero.s3">Always on</span></div>
+          </div>
+        </div>
+
+        <div class="reveal delay-2 relative lg:col-span-5">
+          <div class="relative mx-auto w-full max-w-md" style="animation: floatY 7s ease-in-out infinite">
+            <div class="glass card-3d tilt relative overflow-hidden rounded-[28px] p-3">
+              <img src="https://images.pexels.com/photos/15535141/pexels-photo-15535141.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Dhaka city lights at night" class="h-64 w-full rounded-2xl object-cover sm:h-72" width="1200" height="800" />
+              <div class="absolute left-6 top-6 rounded-full bg-black/50 px-3 py-1 text-[10px] uppercase tracking-[0.2em] backdrop-blur">Dhaka Â· Live</div>
+              <div class="mt-3 grid grid-cols-3 gap-2">
+                <div class="rounded-2xl bg-white/5 p-3">
+                  <p class="text-[10px] uppercase tracking-widest text-[#9aa396]" data-i18n="hero.c1">Services</p>
+                  <p class="font-display text-xl">48+</p>
+                </div>
+                <div class="rounded-2xl bg-white/5 p-3">
+                  <p class="text-[10px] uppercase tracking-widest text-[#9aa396]" data-i18n="hero.c2">Tools</p>
+                  <p class="font-display text-xl">32</p>
+                </div>
+                <div class="rounded-2xl bg-[#3ee08f]/15 p-3">
+                  <p class="text-[10px] uppercase tracking-widest text-[#3ee08f]" data-i18n="hero.c3">On air</p>
+                  <p class="font-display text-xl">80+</p>
+                </div>
+              </div>
+            </div>
+            <div class="glass absolute -left-4 bottom-20 hidden rounded-2xl px-3 py-2 text-xs sm:block" style="animation: floatY 5s ease-in-out infinite">
+              <span class="text-[#3ee08f]">â—</span> <span data-i18n="hero.livechip">Somoy TV Â· Live</span>
+            </div>
+            <div class="glass absolute -right-3 top-16 hidden rounded-2xl px-3 py-2 text-xs sm:block" style="animation: floatY 6s .4s ease-in-out infinite">
+              <span data-i18n="hero.focuschip">Focus Â· 25:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee relative border-y border-white/10 bg-[#080a0c] py-4 overflow-hidden">
+      <div class="marquee-track gap-10 text-[12px] uppercase tracking-[0.28em] text-[#c9cfc4]">
+        <span>NID &amp; e-Gov</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Bill Pay</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Education</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Health</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Career Tools</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Live TV</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Focus Mode</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>PDF Lab</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Knowledge Vault</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>NID &amp; e-Gov</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Bill Pay</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Education</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Health</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Career Tools</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>Live TV</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Focus Mode</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>PDF Lab</span><span class="text-[#d4b483]">âœ¦</span>
+        <span>Knowledge Vault</span><span class="text-[#3ee08f]">âœ¦</span>
+        <span>à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾</span><span class="text-[#d4b483]">âœ¦</span>
+      </div>
+    </div>
+
+    <section id="ecosystem" class="relative overflow-hidden py-24 md:py-32">
+      <div class="mesh opacity-70"></div>
+      <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div class="mb-14 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">01 â€” Ecosystem</p>
+            <h2 class="mt-3 max-w-2xl font-display text-4xl leading-tight sm:text-5xl" data-i18n="eco.h">Six pillars. One gravity.</h2>
+            <p class="mt-4 max-w-xl text-[#b7beb2]" data-i18n="eco.p">Digital Seba is not a directory. It is a living system â€” every service, tool and channel orbiting a single identity, in Bangla and English.</p>
+          </div>
+          <p class="max-w-xs text-sm text-[#8d9588]" data-i18n="eco.hint">Move across the stage. On desktop the constellation follows you.</p>
+        </div>
+
+        <div class="eco-stage" id="ecoStage">
+          <div class="eco-world" id="ecoWorld">
+            <div class="eco-ring"></div>
+            <div class="eco-ring two"></div>
+            <div class="eco-core grid place-items-center text-center">
+              <div>
+                <p class="text-[10px] uppercase tracking-[0.25em] text-[#04140c]/70">Core</p>
+                <p class="font-display text-2xl text-[#04140c]">DS</p>
+              </div>
+            </div>
+            <div class="eco-node"><a href="#services" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">01</p><p class="text-sm font-medium" data-i18n="eco.n1">Services</p></a></div>
+            <div class="eco-node"><a href="#resources" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">02</p><p class="text-sm font-medium" data-i18n="eco.n2">Resources</p></a></div>
+            <div class="eco-node"><a href="#tools" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">03</p><p class="text-sm font-medium" data-i18n="eco.n3">Tools</p></a></div>
+            <div class="eco-node"><a href="#livetv" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">04</p><p class="text-sm font-medium" data-i18n="eco.n4">Live TV</p></a></div>
+            <div class="eco-node"><a href="#focus" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">05</p><p class="text-sm font-medium" data-i18n="eco.n5">Focus Mode</p></a></div>
+            <div class="eco-node"><a href="#why" class="chip glass magnetic block rounded-2xl px-4 py-3 text-center"><p class="text-[10px] uppercase tracking-widest text-[#d4b483]">06</p><p class="text-sm font-medium" data-i18n="eco.n6">Identity</p></a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="relative py-24 md:py-32">
+      <div class="mx-auto max-w-7xl px-4 md:px-6">
+        <div class="mb-12 max-w-2xl">
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">02 â€” Services</p>
+          <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="svc.h">Daily Bangladesh, finally digital.</h2>
+          <p class="mt-4 text-[#b7beb2]" data-i18n="svc.p">From papers to payments, classrooms to clinics â€” the services people actually wait in line for, redesigned as calm, mobile-first rooms.</p>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-6 md:grid-rows-2">
+          <a href="#cta" class="bento glass card-3d tilt reveal group relative overflow-hidden rounded-3xl md:col-span-3 md:row-span-2">
+            <img src="https://images.pexels.com/photos/8154345/pexels-photo-8154345.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Professionals completing digital services" class="absolute inset-0 h-full w-full object-cover opacity-50" width="1400" height="900" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+            <div class="relative flex min-h-[340px] flex-col justify-end p-6 md:min-h-[520px]">
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#3ee08f]" data-i18n="svc.a.k">Citizen desk</p>
+              <h3 class="mt-2 font-display text-3xl" data-i18n="svc.a.t">NID, forms &amp; e-Gov</h3>
+              <p class="mt-2 max-w-sm text-sm text-[#d5d8d0]" data-i18n="svc.a.d">Birth certificates, NID corrections, utility applications â€” guided in Bangla, saved to your Digital Seba locker.</p>
+            </div>
+          </a>
+
+          <a href="#cta" class="bento glass card-3d tilt reveal delay-1 relative overflow-hidden rounded-3xl md:col-span-3">
+            <img src="https://images.pexels.com/photos/35184839/pexels-photo-35184839.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Paying bills on a laptop" class="h-44 w-full object-cover opacity-70 md:h-40" width="1200" height="800" loading="lazy" />
+            <div class="p-5">
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#d4b483]" data-i18n="svc.b.k">Pay desk</p>
+              <h3 class="font-display text-2xl" data-i18n="svc.b.t">Electricity, gas, water, mobile</h3>
+              <p class="mt-1 text-sm text-[#b7beb2]" data-i18n="svc.b.d">One ledger for every bill. Reminders before due dates. Receipts that never vanish.</p>
+            </div>
+          </a>
+
+          <a href="#cta" class="bento glass card-3d tilt reveal delay-2 relative overflow-hidden rounded-3xl md:col-span-3">
+            <img src="https://images.pexels.com/photos/8128185/pexels-photo-8128185.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Learning and career work" class="h-44 w-full object-cover opacity-70 md:h-40" width="1200" height="800" loading="lazy" />
+            <div class="p-5">
+              <p class="text-[11px] uppercase tracking-[0.22em] text-[#d4b483]" data-i18n="svc.c.k">Life desk</p>
+              <h3 class="font-display text-2xl" data-i18n="svc.c.t">Education, health, career</h3>
+              <p class="mt-1 text-sm text-[#b7beb2]" data-i18n="svc.c.d">Admission paths, tele-health queues, CV rooms and freelance starter kits â€” without the maze.</p>
+            </div>
+          </a>
+        </div>
+
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <article class="glass card-3d tilt reveal rounded-3xl p-5">
+            <div class="mb-6 grid h-10 w-10 place-items-center rounded-xl bg-[#3ee08f]/15 text-[#3ee08f]">01</div>
+            <h3 class="font-display text-xl" data-i18n="svc.d.t">Business desk</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="svc.d.d">Trade license checklists, TIN helpers, invoice templates for shops from Chattogram to Rajshahi.</p>
+          </article>
+          <article class="glass card-3d tilt reveal delay-1 rounded-3xl p-5">
+            <div class="mb-6 grid h-10 w-10 place-items-center rounded-xl bg-[#d4b483]/15 text-[#d4b483]">02</div>
+            <h3 class="font-display text-xl" data-i18n="svc.e.t">Travel &amp; tickets</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="svc.e.d">Train, launch and bus intelligence â€” routes, seats, and a calmer way to move the country.</p>
+          </article>
+          <article class="glass card-3d tilt reveal delay-2 rounded-3xl p-5">
+            <div class="mb-6 grid h-10 w-10 place-items-center rounded-xl bg-[#3ee08f]/15 text-[#3ee08f]">03</div>
+            <h3 class="font-display text-xl" data-i18n="svc.f.t">Family locker</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="svc.f.d">Keep certificates, prescriptions and school papers encrypted and one tap away.</p>
+          </article>
+          <article class="glass card-3d tilt reveal delay-3 rounded-3xl p-5">
+            <div class="mb-6 grid h-10 w-10 place-items-center rounded-xl bg-[#d4b483]/15 text-[#d4b483]">04</div>
+            <h3 class="font-display text-xl" data-i18n="svc.g.t">Local help</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="svc.g.d">Ward offices, thana contacts, emergency numbers â€” mapped to where you actually live.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="resources" class="relative overflow-hidden py-24 md:py-32">
+      <div class="absolute inset-0 opacity-30">
+        <img src="https://images.pexels.com/photos/11576092/pexels-photo-11576092.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="" class="h-full w-full object-cover" width="1800" height="1100" loading="lazy" />
+        <div class="absolute inset-0 bg-[#050607]/80"></div>
+      </div>
+      <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div class="grid items-end gap-10 lg:grid-cols-12">
+          <div class="lg:col-span-5">
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">03 â€” Resources</p>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="res.h">A library that behaves like a studio.</h2>
+            <p class="mt-4 text-[#b7beb2]" data-i18n="res.p">Guides, templates, explainers and news â€” edited for Bangladesh, not translated as an afterthought. Read in Bangla. Export in seconds.</p>
+            <a href="#cta" class="btn btn-ghost magnetic mt-8 h-11 px-5 text-sm" data-i18n="res.cta">Open the vault</a>
+          </div>
+          <div class="grid gap-4 sm:grid-cols-2 lg:col-span-7">
+            <article class="glass reveal rounded-3xl p-5">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-[#3ee08f]" data-i18n="res.1.k">Playbook</p>
+              <h3 class="mt-2 font-display text-2xl" data-i18n="res.1.t">How to correct NID without the queue</h3>
+              <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="res.1.d">A 7-step field guide with documents, photos and common rejection reasons.</p>
+            </article>
+            <article class="glass reveal delay-1 rounded-3xl p-5">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-[#d4b483]" data-i18n="res.2.k">Template</p>
+              <h3 class="mt-2 font-display text-2xl" data-i18n="res.2.t">University application kit</h3>
+              <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="res.2.d">SOP frames, recommendation notes and a checklist that works for public universities.</p>
+            </article>
+            <article class="glass reveal delay-2 rounded-3xl p-5">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-[#3ee08f]" data-i18n="res.3.k">Briefing</p>
+              <h3 class="mt-2 font-display text-2xl" data-i18n="res.3.t">Weekly policy digest</h3>
+              <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="res.3.d">What changed in tax, education and digital public services â€” in one page.</p>
+            </article>
+            <article class="glass reveal delay-3 rounded-3xl p-5">
+              <p class="text-[11px] uppercase tracking-[0.2em] text-[#d4b483]" data-i18n="res.4.k">Studio</p>
+              <h3 class="mt-2 font-display text-2xl" data-i18n="res.4.t">Bangla brand kit</h3>
+              <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="res.4.d">Type pairings, color systems and social frames for founders building locally.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="relative py-24 md:py-32">
+      <div class="mx-auto max-w-7xl px-4 md:px-6">
+        <div class="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">04 â€” Tools</p>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="tools.h">A workshop in your pocket.</h2>
+          </div>
+          <p class="max-w-md text-[#b7beb2]" data-i18n="tools.p">No sign-up walls for the essentials. PDF, image, text, numbers and QR â€” tuned for low bandwidth and large Bangla type.</p>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="#cta" class="glass card-3d tilt reveal group rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between">
+              <span class="text-[#3ee08f]">PDF</span>
+              <span class="text-xs text-[#8d9588]" data-i18n="tools.free">Free</span>
+            </div>
+            <h3 class="font-display text-2xl" data-i18n="tools.1.t">Merge, split, compress</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.1.d">University forms and office files, processed on-device when possible.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-1 rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between">
+              <span class="text-[#d4b483]">IMG</span>
+              <span class="text-xs text-[#8d9588]" data-i18n="tools.free">Free</span>
+            </div>
+            <h3 class="font-display text-2xl" data-i18n="tools.2.t">Resize &amp; passport photo</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.2.d">Exact government sizes. Soft background. Instant download.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-2 rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between">
+              <span class="text-[#3ee08f]">TXT</span>
+              <span class="text-xs text-[#8d9588]" data-i18n="tools.free">Free</span>
+            </div>
+            <h3 class="font-display text-2xl" data-i18n="tools.3.t">Bangla writer room</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.3.d">Bijoy-friendly notes, word count, and clean copy for applications.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-3 rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between">
+              <span class="text-[#d4b483]">QR</span>
+              <span class="text-xs text-[#8d9588]" data-i18n="tools.free">Free</span>
+            </div>
+            <h3 class="font-display text-2xl" data-i18n="tools.4.t">QR &amp; bKash cards</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.4.d">Generate shop codes, Wi-Fi cards and event tickets in one tap.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between"><span class="text-[#3ee08f]">à§³</span></div>
+            <h3 class="font-display text-2xl" data-i18n="tools.5.t">VAT &amp; salary calc</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.5.d">Local tax logic. No American defaults pretending to be universal.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-1 rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between"><span class="text-[#d4b483]">ID</span></div>
+            <h3 class="font-display text-2xl" data-i18n="tools.6.t">Color &amp; contrast</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.6.d">Pick palettes that stay readable on cheap Android screens in sunlight.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-2 rounded-3xl p-5">
+            <div class="mb-10 flex items-center justify-between"><span class="text-[#3ee08f]">â±</span></div>
+            <h3 class="font-display text-2xl" data-i18n="tools.7.t">Exam timer</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.7.d">Board-exam pacing, SSC to university admission, with gentle bells.</p>
+          </a>
+          <a href="#cta" class="glass card-3d tilt reveal delay-3 flex flex-col justify-between rounded-3xl bg-[linear-gradient(160deg,rgba(62,224,143,.16),rgba(5,6,7,.2))] p-5">
+            <p class="text-[11px] uppercase tracking-[0.2em] text-[#3ee08f]" data-i18n="tools.more.k">Workshop</p>
+            <div>
+              <h3 class="font-display text-2xl" data-i18n="tools.more.t">32 tools, one drawer</h3>
+              <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="tools.more.d">Open the full lab â€” converters, hash, unit, age, and more.</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="livetv" class="relative overflow-hidden py-24 md:py-32">
+      <div class="absolute inset-0">
+        <img src="https://images.pexels.com/photos/33925166/pexels-photo-33925166.jpeg?auto=compress&cs=tinysrgb&w=1800" alt="Broadcast control room" class="h-full w-full object-cover opacity-25" width="1800" height="1200" loading="lazy" />
+        <div class="absolute inset-0 bg-gradient-to-b from-[#050607] via-[#050607]/70 to-[#050607]"></div>
+      </div>
+      <div class="relative mx-auto max-w-7xl px-4 md:px-6">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-red-500/30 bg-red-500/10 px-3 py-1 text-[11px] uppercase tracking-[0.22em]">
+              <span class="h-2 w-2 rounded-full bg-red-500" style="animation: livePulse 1.6s infinite"></span>
+              On Air
+            </div>
+            <p class="mt-5 text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">05 â€” Live TV</p>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="tv.h">The living room, without the dish.</h2>
+            <p class="mt-4 text-[#b7beb2]" data-i18n="tv.p">News at dawn, cricket at noon, cinema after iftar. Eighty-plus Bangladeshi and international channels, tuned for mobile data and a quiet UI.</p>
+            <div class="mt-8 flex flex-wrap gap-2">
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">Somoy</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">ATN News</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">Ekattor</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">BTV</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">Gaan Bangla</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">T Sports</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">Al Jazeera</span>
+              <span class="channel glass rounded-full px-3 py-1.5 text-xs">+70</span>
+            </div>
+            <a href="#cta" class="btn btn-primary magnetic mt-8 h-12 px-6 text-sm">
+              <span class="shine"></span>
+              <span data-i18n="tv.cta">Watch Live TV</span>
+            </a>
+          </div>
+
+          <div class="glass reveal tilt card-3d overflow-hidden rounded-[28px] p-3">
+            <div class="relative overflow-hidden rounded-2xl">
+              <img src="https://images.pexels.com/photos/7865064/pexels-photo-7865064.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Television studio set" class="h-64 w-full object-cover sm:h-80" width="1400" height="900" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent"></div>
+              <div class="absolute left-4 top-4 flex items-center gap-2 rounded-full bg-black/55 px-3 py-1 text-[11px] uppercase tracking-widest backdrop-blur">
+                <span class="h-2 w-2 rounded-full bg-red-500"></span> Live Â· 1080p
+              </div>
+              <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <p class="text-[11px] uppercase tracking-widest text-[#d4b483]" data-i18n="tv.now">Now playing</p>
+                  <p class="font-display text-2xl" data-i18n="tv.show">Evening bulletin</p>
+                </div>
+                <button class="magnetic grid h-12 w-12 place-items-center rounded-full bg-[#3ee08f] text-[#04140c]" aria-label="Play preview">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </button>
+              </div>
+            </div>
+            <div class="mt-3 grid grid-cols-3 gap-2">
+              <div class="rounded-xl bg-white/5 p-3 text-center text-xs" data-i18n="tv.f1">News</div>
+              <div class="rounded-xl bg-white/5 p-3 text-center text-xs" data-i18n="tv.f2">Sports</div>
+              <div class="rounded-xl bg-white/5 p-3 text-center text-xs" data-i18n="tv.f3">Cinema</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="focus" class="relative py-24 md:py-32">
+      <div class="mx-auto max-w-7xl px-4 md:px-6">
+        <div class="grid items-center gap-12 lg:grid-cols-2">
+          <div class="order-2 lg:order-1">
+            <div class="glass relative overflow-hidden rounded-[32px] p-8 sm:p-12">
+              <img src="https://images.pexels.com/photos/5473889/pexels-photo-5473889.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Night desk in deep focus" class="absolute inset-0 h-full w-full object-cover opacity-25" width="1400" height="900" loading="lazy" />
+              <div class="relative grid place-items-center">
+                <svg class="timer-ring" width="240" height="240" viewBox="0 0 240 240" aria-hidden="true">
+                  <circle cx="120" cy="120" r="104" fill="none" stroke="rgba(243,239,230,.08)" stroke-width="8"/>
+                  <circle id="timerArc" cx="120" cy="120" r="104" fill="none" stroke="#3ee08f" stroke-width="8" stroke-linecap="round" stroke-dasharray="653" stroke-dashoffset="80"/>
+                </svg>
+                <div class="absolute text-center">
+                  <p class="text-[11px] uppercase tracking-[0.25em] text-[#d4b483]" data-i18n="focus.session">Deep session</p>
+                  <p id="timerReadout" class="font-display text-6xl leading-none">25:00</p>
+                  <button id="timerBtn" class="btn btn-ghost magnetic mt-4 h-10 px-5 text-xs" data-i18n="focus.start">Begin focus</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">06 â€” Focus Mode</p>
+            <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="focus.h">Silence the city. Keep the work.</h2>
+            <p class="mt-4 text-[#b7beb2]" data-i18n="focus.p">A dedicated room for HSC nights, freelancers, and anyone whose phone is too loud. Ambient rain, blocked feeds, a timer that respects prayer times and exam bells.</p>
+            <ul class="mt-8 space-y-4 text-sm text-[#d5d8d0]">
+              <li class="flex gap-3"><span class="text-[#3ee08f]">â–¹</span><span data-i18n="focus.l1">Pomodoro, 50/10, and custom rituals</span></li>
+              <li class="flex gap-3"><span class="text-[#3ee08f]">â–¹</span><span data-i18n="focus.l2">Rain, fan, river and lo-fi beds â€” offline after first play</span></li>
+              <li class="flex gap-3"><span class="text-[#3ee08f]">â–¹</span><span data-i18n="focus.l3">Hide Live TV and social drawers while you work</span></li>
+              <li class="flex gap-3"><span class="text-[#3ee08f]">â–¹</span><span data-i18n="focus.l4">Streaks that feel human, not addictive</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="relative py-24 md:py-32">
+      <div class="mx-auto max-w-7xl px-4 md:px-6">
+        <div class="mb-14 max-w-2xl">
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">07 â€” Why Digital Seba</p>
+          <h2 class="mt-3 font-display text-4xl sm:text-5xl" data-i18n="why.h">Built for how this country actually lives.</h2>
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          <article class="glass reveal rounded-3xl p-6">
+            <p class="font-display text-4xl text-[#3ee08f]">01</p>
+            <h3 class="mt-6 font-display text-2xl" data-i18n="why.1.t">Bangla first</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="why.1.d">Not a toggle buried in settings. Type, voice and layout that treat Bangla as the default luxury.</p>
+          </article>
+          <article class="glass reveal delay-1 rounded-3xl p-6">
+            <p class="font-display text-4xl text-[#d4b483]">02</p>
+            <h3 class="mt-6 font-display text-2xl" data-i18n="why.2.t">Phone-native</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="why.2.d">Designed on Android first. Large tap targets. Kind to 4G. Beautiful on a mid-range screen.</p>
+          </article>
+          <article class="glass reveal delay-2 rounded-3xl p-6">
+            <p class="font-display text-4xl text-[#3ee08f]">03</p>
+            <h3 class="mt-6 font-display text-2xl" data-i18n="why.3.t">One identity</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="why.3.d">Your locker, your bills, your channels, your focus streak â€” a single gravity well.</p>
+          </article>
+          <article class="glass reveal delay-3 rounded-3xl p-6">
+            <p class="font-display text-4xl text-[#d4b483]">04</p>
+            <h3 class="mt-6 font-display text-2xl" data-i18n="why.4.t">Quiet craft</h3>
+            <p class="mt-2 text-sm text-[#b7beb2]" data-i18n="why.4.d">No carnival of ads. Premium motion. Respect for time, prayer, and low battery.</p>
+          </article>
+        </div>
+
+        <div class="mt-6 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+            <p class="stat-num font-display text-5xl" data-count="48">0</p>
+            <p class="mt-2 text-sm text-[#9aa396]" data-i18n="why.s1">Guided services</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+            <p class="stat-num font-display text-5xl" data-count="80">0</p>
+            <p class="mt-2 text-sm text-[#9aa396]" data-i18n="why.s2">Live channels</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+            <p class="stat-num font-display text-5xl" data-count="32">0</p>
+            <p class="mt-2 text-sm text-[#9aa396]" data-i18n="why.s3">Workshop tools</p>
+          </div>
+        </div>
+
+        <div class="mt-16 grid gap-6 lg:grid-cols-3">
+          <figure class="glass reveal rounded-3xl p-6">
+            <div class="flex items-center gap-3">
+              <img src="https://images.pexels.com/photos/36803099/pexels-photo-36803099.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Portrait of Tanvir Rahman" class="h-12 w-12 rounded-full object-cover" width="200" height="200" loading="lazy" />
+              <figcaption>
+                <p class="font-medium">Tanvir Rahman</p>
+                <p class="text-xs text-[#9aa396]" data-i18n="t1.r">Student, University of Dhaka</p>
+              </figcaption>
+            </div>
+            <blockquote class="mt-5 text-[#d5d8d0]" data-i18n="t1.q">â€œFocus Mode is the only timer that feels like it was made for hall life. I hide Live TV, keep rain on, and actually finish the chapter.â€</blockquote>
+          </figure>
+          <figure class="glass reveal delay-1 rounded-3xl p-6">
+            <div class="flex items-center gap-3">
+              <img src="https://images.pexels.com/photos/27902428/pexels-photo-27902428.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Portrait of Fariha Ahmed" class="h-12 w-12 rounded-full object-cover" width="200" height="200" loading="lazy" />
+              <figcaption>
+                <p class="font-medium">Fariha Ahmed</p>
+                <p class="text-xs text-[#9aa396]" data-i18n="t2.r">Freelance designer, Chattogram</p>
+              </figcaption>
+            </div>
+            <blockquote class="mt-5 text-[#d5d8d0]" data-i18n="t2.q">â€œThe tools drawer replaced five random websites. Passport photos and PDFs that understand Bangla filenames â€” finally.â€</blockquote>
+          </figure>
+          <figure class="glass reveal delay-2 rounded-3xl p-6">
+            <div class="flex items-center gap-3">
+              <img src="https://images.pexels.com/photos/11732718/pexels-photo-11732718.jpeg?auto=compress&cs=tinysrgb&w=200" alt="Portrait of Rafiul Islam" class="h-12 w-12 rounded-full object-cover" width="200" height="200" loading="lazy" />
+              <figcaption>
+                <p class="font-medium">Rafiul Islam</p>
+                <p class="text-xs text-[#9aa396]" data-i18n="t3.r">Shop owner, Sylhet</p>
+              </figcaption>
+            </div>
+            <blockquote class="mt-5 text-[#d5d8d0]" data-i18n="t3.q">â€œI pay electricity, keep my trade papers, and watch cricket in the same app. My father uses the Bangla mode without calling me.â€</blockquote>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="cta" class="relative overflow-hidden py-28">
+      <img src="https://images.pexels.com/photos/35087935/pexels-photo-35087935.jpeg?auto=compress&cs=tinysrgb&w=2000" alt="Aerial night highway in Dhaka" class="absolute inset-0 h-full w-full object-cover" width="2000" height="1300" loading="lazy" />
+      <div class="absolute inset-0 bg-[#050607]/75"></div>
+      <div class="mesh"></div>
+      <div class="relative mx-auto max-w-3xl px-4 text-center">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#d4b483]">08 â€” Enter</p>
+        <h2 class="mt-4 font-display text-4xl leading-tight sm:text-6xl" data-i18n="cta.h">Step into the ecosystem.</h2>
+        <p class="mx-auto mt-5 max-w-xl text-[#d5d8d0]" data-i18n="cta.p">Create a free Digital Seba identity. Your services, locker, channels and focus room will be waiting â€” in the language you think in.</p>
+        <form id="joinForm" class="mx-auto mt-10 flex max-w-lg flex-col gap-3 sm:flex-row" autocomplete="on">
+          <label class="sr-only" for="email" data-i18n="cta.email">Email or phone</label>
+          <input id="email" name="email" type="text" required placeholder="Email or +880â€¦" class="h-12 w-full rounded-full border border-white/15 bg-black/40 px-5 text-sm outline-none ring-[#3ee08f] placeholder:text-[#8d9588] focus:ring-2" />
+          <button class="btn btn-primary magnetic h-12 shrink-0 px-7 text-sm" type="submit">
+            <span class="shine"></span>
+            <span data-i18n="cta.go">Create identity</span>
+          </button>
+        </form>
+        <p id="formNote" class="mt-4 min-h-6 text-sm text-[#3ee08f]"></p>
+        <p class="mt-2 text-[11px] uppercase tracking-[0.2em] text-[#8d9588]" data-i18n="cta.fine">No spam. Bangla or English. Leave anytime.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/10 pb-10 pt-14" style="padding-bottom: calc(2.5rem + env(safe-area-inset-bottom));">
+    <div class="mx-auto grid max-w-7xl gap-10 px-4 md:grid-cols-4 md:px-6">
+      <div class="md:col-span-2">
+        <a href="#top" class="magnetic inline-flex items-center gap-2">
+          <svg width="28" height="28" viewBox="0 0 72 72" fill="none" aria-hidden="true">
+            <path d="M36 6L62 21V51L36 66L10 51V21L36 6Z" stroke="#3EE08F" stroke-width="2"/>
+            <circle cx="36" cy="36" r="5" fill="#3EE08F"/>
+          </svg>
+          <span class="font-semibold">Digital Seba</span>
+        </a>
+        <p class="mt-4 max-w-sm text-sm text-[#9aa396]" data-i18n="ft.p">A premium digital ecosystem for Bangladesh â€” services, resources, tools, Live TV and Focus Mode in one composed experience.</p>
+      </div>
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#d4b483]" data-i18n="ft.plat">Platform</p>
+        <div class="mt-4 grid gap-2 text-sm text-[#c9cfc4]">
+          <a href="#services" data-i18n="nav.services">Services</a>
+          <a href="#resources" data-i18n="nav.resources">Resources</a>
+          <a href="#tools" data-i18n="nav.tools">Tools</a>
+          <a href="#livetv" data-i18n="nav.tv">Live TV</a>
+          <a href="#focus" data-i18n="nav.focus">Focus Mode</a>
+        </div>
+      </div>
+      <div>
+        <p class="text-[11px] uppercase tracking-[0.22em] text-[#d4b483]" data-i18n="ft.house">House</p>
+        <div class="mt-4 grid gap-2 text-sm text-[#c9cfc4]">
+          <a href="#why" data-i18n="nav.why">About</a>
+          <a href="#cta" data-i18n="ft.privacy">Privacy</a>
+          <a href="#cta" data-i18n="ft.terms">Terms</a>
+          <a href="mailto:hello@digitalseba.app">hello@digitalseba.app</a>
+        </div>
+      </div>
+    </div>
+    <div class="mx-auto mt-12 flex max-w-7xl flex-col justify-between gap-3 border-t border-white/10 px-4 pt-6 text-xs text-[#8d9588] sm:flex-row md:px-6">
+      <p>Â© <span id="year"></span> Digital Seba. <span data-i18n="ft.rights">All rights reserved.</span></p>
+      <p data-i18n="ft.made">Composed in Dhaka. For every zila.</p>
+    </div>
+  </footer>
+
+  <script>
+    const I18N = {
+      en: {
+        "nav.eco": "Ecosystem", "nav.services": "Services", "nav.resources": "Resources", "nav.tools": "Tools",
+        "nav.tv": "Live TV", "nav.focus": "Focus", "nav.why": "Why Digital Seba", "nav.enter": "Enter",
+        "hero.kicker": "The digital OS for Bangladesh",
+        "hero.bn": "à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦°à§‹ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦œà§€à¦¬à¦¨à¥¤",
+        "hero.h1": "One living ecosystem.",
+        "hero.sub": "Services, tools, knowledge, live television and deep focus â€” composed as a single platform. Designed in Bangla. Ready on every phone.",
+        "hero.cta1": "Enter Digital Seba", "hero.cta2": "Tour the six pillars",
+        "hero.s1": "Pillars", "hero.s2": "Native bilingual", "hero.s3": "Always on",
+        "hero.c1": "Services", "hero.c2": "Tools", "hero.c3": "On air",
+        "hero.livechip": "Somoy TV Â· Live", "hero.focuschip": "Focus Â· 25:00",
+        "eco.h": "Six pillars. One gravity.",
+        "eco.p": "Digital Seba is not a directory. It is a living system â€” every service, tool and channel orbiting a single identity, in Bangla and English.",
+        "eco.hint": "Move across the stage. On desktop the constellation follows you.",
+        "eco.n1": "Services", "eco.n2": "Resources", "eco.n3": "Tools", "eco.n4": "Live TV", "eco.n5": "Focus Mode", "eco.n6": "Identity",
+        "svc.h": "Daily Bangladesh, finally digital.",
+        "svc.p": "From papers to payments, classrooms to clinics â€” the services people actually wait in line for, redesigned as calm, mobile-first rooms.",
+        "svc.a.k": "Citizen desk", "svc.a.t": "NID, forms & e-Gov", "svc.a.d": "Birth certificates, NID corrections, utility applications â€” guided in Bangla, saved to your Digital Seba locker.",
+        "svc.b.k": "Pay desk", "svc.b.t": "Electricity, gas, water, mobile", "svc.b.d": "One ledger for every bill. Reminders before due dates. Receipts that never vanish.",
+        "svc.c.k": "Life desk", "svc.c.t": "Education, health, career", "svc.c.d": "Admission paths, tele-health queues, CV rooms and freelance starter kits â€” without the maze.",
+        "svc.d.t": "Business desk", "svc.d.d": "Trade license checklists, TIN helpers, invoice templates for shops from Chattogram to Rajshahi.",
+        "svc.e.t": "Travel & tickets", "svc.e.d": "Train, launch and bus intelligence â€” routes, seats, and a calmer way to move the country.",
+        "svc.f.t": "Family locker", "svc.f.d": "Keep certificates, prescriptions and school papers encrypted and one tap away.",
+        "svc.g.t": "Local help", "svc.g.d": "Ward offices, thana contacts, emergency numbers â€” mapped to where you actually live.",
+        "res.h": "A library that behaves like a studio.",
+        "res.p": "Guides, templates, explainers and news â€” edited for Bangladesh, not translated as an afterthought. Read in Bangla. Export in seconds.",
+        "res.cta": "Open the vault",
+        "res.1.k": "Playbook", "res.1.t": "How to correct NID without the queue", "res.1.d": "A 7-step field guide with documents, photos and common rejection reasons.",
+        "res.2.k": "Template", "res.2.t": "University application kit", "res.2.d": "SOP frames, recommendation notes and a checklist that works for public universities.",
+        "res.3.k": "Briefing", "res.3.t": "Weekly policy digest", "res.3.d": "What changed in tax, education and digital public services â€” in one page.",
+        "res.4.k": "Studio", "res.4.t": "Bangla brand kit", "res.4.d": "Type pairings, color systems and social frames for founders building locally.",
+        "tools.h": "A workshop in your pocket.",
+        "tools.p": "No sign-up walls for the essentials. PDF, image, text, numbers and QR â€” tuned for low bandwidth and large Bangla type.",
+        "tools.free": "Free",
+        "tools.1.t": "Merge, split, compress", "tools.1.d": "University forms and office files, processed on-device when possible.",
+        "tools.2.t": "Resize & passport photo", "tools.2.d": "Exact government sizes. Soft background. Instant download.",
+        "tools.3.t": "Bangla writer room", "tools.3.d": "Bijoy-friendly notes, word count, and clean copy for applications.",
+        "tools.4.t": "QR & bKash cards", "tools.4.d": "Generate shop codes, Wi-Fi cards and event tickets in one tap.",
+        "tools.5.t": "VAT & salary calc", "tools.5.d": "Local tax logic. No American defaults pretending to be universal.",
+        "tools.6.t": "Color & contrast", "tools.6.d": "Pick palettes that stay readable on cheap Android screens in sunlight.",
+        "tools.7.t": "Exam timer", "tools.7.d": "Board-exam pacing, SSC to university admission, with gentle bells.",
+        "tools.more.k": "Workshop", "tools.more.t": "32 tools, one drawer", "tools.more.d": "Open the full lab â€” converters, hash, unit, age, and more.",
+        "tv.h": "The living room, without the dish.",
+        "tv.p": "News at dawn, cricket at noon, cinema after iftar. Eighty-plus Bangladeshi and international channels, tuned for mobile data and a quiet UI.",
+        "tv.cta": "Watch Live TV", "tv.now": "Now playing", "tv.show": "Evening bulletin",
+        "tv.f1": "News", "tv.f2": "Sports", "tv.f3": "Cinema",
+        "focus.h": "Silence the city. Keep the work.",
+        "focus.p": "A dedicated room for HSC nights, freelancers, and anyone whose phone is too loud. Ambient rain, blocked feeds, a timer that respects prayer times and exam bells.",
+        "focus.session": "Deep session", "focus.start": "Begin focus", "focus.pause": "Pause",
+        "focus.l1": "Pomodoro, 50/10, and custom rituals",
+        "focus.l2": "Rain, fan, river and lo-fi beds â€” offline after first play",
+        "focus.l3": "Hide Live TV and social drawers while you work",
+        "focus.l4": "Streaks that feel human, not addictive",
+        "why.h": "Built for how this country actually lives.",
+        "why.1.t": "Bangla first", "why.1.d": "Not a toggle buried in settings. Type, voice and layout that treat Bangla as the default luxury.",
+        "why.2.t": "Phone-native", "why.2.d": "Designed on Android first. Large tap targets. Kind to 4G. Beautiful on a mid-range screen.",
+        "why.3.t": "One identity", "why.3.d": "Your locker, your bills, your channels, your focus streak â€” a single gravity well.",
+        "why.4.t": "Quiet craft", "why.4.d": "No carnival of ads. Premium motion. Respect for time, prayer, and low battery.",
+        "why.s1": "Guided services", "why.s2": "Live channels", "why.s3": "Workshop tools",
+        "t1.r": "Student, University of Dhaka",
+        "t1.q": "â€œFocus Mode is the only timer that feels like it was made for hall life. I hide Live TV, keep rain on, and actually finish the chapter.â€",
+        "t2.r": "Freelance designer, Chattogram",
+        "t2.q": "â€œThe tools drawer replaced five random websites. Passport photos and PDFs that understand Bangla filenames â€” finally.â€",
+        "t3.r": "Shop owner, Sylhet",
+        "t3.q": "â€œI pay electricity, keep my trade papers, and watch cricket in the same app. My father uses the Bangla mode without calling me.â€",
+        "cta.h": "Step into the ecosystem.",
+        "cta.p": "Create a free Digital Seba identity. Your services, locker, channels and focus room will be waiting â€” in the language you think in.",
+        "cta.email": "Email or phone", "cta.go": "Create identity",
+        "cta.fine": "No spam. Bangla or English. Leave anytime.",
+        "cta.ok": "Welcome. Your Digital Seba identity is reserved.",
+        "ft.p": "A premium digital ecosystem for Bangladesh â€” services, resources, tools, Live TV and Focus Mode in one composed experience.",
+        "ft.plat": "Platform", "ft.house": "House", "ft.privacy": "Privacy", "ft.terms": "Terms",
+        "ft.rights": "All rights reserved.", "ft.made": "Composed in Dhaka. For every zila."
+      },
+      bn: {
+        "nav.eco": "à¦‡à¦•à§‹à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®", "nav.services": "à¦¸à§‡à¦¬à¦¾", "nav.resources": "à¦°à¦¿à¦¸à§‹à¦°à§à¦¸", "nav.tools": "à¦Ÿà§à¦²à¦¸",
+        "nav.tv": "à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿", "nav.focus": "à¦«à§‹à¦•à¦¾à¦¸", "nav.why": "à¦•à§‡à¦¨ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾", "nav.enter": "à¦ªà§à¦°à¦¬à§‡à¦¶",
+        "hero.kicker": "à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦…à¦ªà¦¾à¦°à§‡à¦Ÿà¦¿à¦‚ à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®",
+        "hero.bn": "à¦†à¦ªà¦¨à¦¾à¦° à¦ªà§à¦°à§‹ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦œà§€à¦¬à¦¨à¥¤",
+        "hero.h1": "à¦à¦•à¦Ÿà¦¿ à¦œà§€à¦¬à¦¨à§à¦¤ à¦‡à¦•à§‹à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®à¥¤",
+        "hero.sub": "à¦¸à§‡à¦¬à¦¾, à¦Ÿà§à¦²à¦¸, à¦œà§à¦žà¦¾à¦¨, à¦²à¦¾à¦‡à¦­ à¦Ÿà§‡à¦²à¦¿à¦­à¦¿à¦¶à¦¨ à¦“ à¦—à¦­à§€à¦° à¦«à§‹à¦•à¦¾à¦¸ â€” à¦à¦•à¦Ÿà¦¿ à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡ à¦—à¦¾à¦à¦¥à¦¾à¥¤ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨à¥¤ à¦¸à¦¬ à¦«à§‹à¦¨à§‡ à¦ªà§à¦°à¦¸à§à¦¤à§à¦¤à¥¤",
+        "hero.cta1": "à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾à¦¯à¦¼ à¦ªà§à¦°à¦¬à§‡à¦¶", "hero.cta2": "à¦›à¦¯à¦¼à¦Ÿà¦¿ à¦ªà¦¿à¦²à¦¾à¦° à¦¦à§‡à¦–à§à¦¨",
+        "hero.s1": "à¦ªà¦¿à¦²à¦¾à¦°", "hero.s2": "à¦¦à§‡à¦¶à§€à¦¯à¦¼ à¦¦à§à¦¬à¦¿à¦­à¦¾à¦·à¦¿à¦•", "hero.s3": "à¦¸à¦¬à¦¸à¦®à¦¯à¦¼ à¦šà¦¾à¦²à§",
+        "hero.c1": "à¦¸à§‡à¦¬à¦¾", "hero.c2": "à¦Ÿà§à¦²à¦¸", "hero.c3": "à¦…à¦¨ à¦à¦¯à¦¼à¦¾à¦°",
+        "hero.livechip": "à¦¸à¦®à¦¯à¦¼ à¦Ÿà¦¿à¦­à¦¿ Â· à¦²à¦¾à¦‡à¦­", "hero.focuschip": "à¦«à§‹à¦•à¦¾à¦¸ Â· à§¨à§«:à§¦à§¦",
+        "eco.h": "à¦›à¦¯à¦¼à¦Ÿà¦¿ à¦ªà¦¿à¦²à¦¾à¦°à¥¤ à¦à¦• à¦®à¦¾à¦§à§à¦¯à¦¾à¦•à¦°à§à¦·à¦£à¥¤",
+        "eco.p": "à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦•à§‹à¦¨à§‹ à¦¡à¦¿à¦°à§‡à¦•à§à¦Ÿà¦°à¦¿ à¦¨à¦¯à¦¼à¥¤ à¦à¦Ÿà¦¿ à¦à¦•à¦Ÿà¦¿ à¦œà§€à¦¬à¦¨à§à¦¤ à¦¬à§à¦¯à¦¬à¦¸à§à¦¥à¦¾ â€” à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¿ à¦¸à§‡à¦¬à¦¾, à¦Ÿà§à¦² à¦“ à¦šà§à¦¯à¦¾à¦¨à§‡à¦² à¦à¦• à¦ªà¦°à¦¿à¦šà¦¯à¦¼à¦•à§‡ à¦•à§‡à¦¨à§à¦¦à§à¦° à¦•à¦°à§‡ à¦˜à§‹à¦°à§‡, à¦¬à¦¾à¦‚à¦²à¦¾ à¦“ à¦‡à¦‚à¦°à§‡à¦œà¦¿à¦¤à§‡à¥¤",
+        "eco.hint": "à¦¸à§à¦Ÿà§‡à¦œ à¦œà§à¦¡à¦¼à§‡ à¦¸à¦°à§à¦¨à¥¤ à¦¡à§‡à¦¸à§à¦•à¦Ÿà¦ªà§‡ à¦¨à¦•à§à¦·à¦¤à§à¦°à¦®à¦£à§à¦¡à¦² à¦†à¦ªà¦¨à¦¾à¦•à§‡ à¦…à¦¨à§à¦¸à¦°à¦£ à¦•à¦°à§‡à¥¤",
+        "eco.n1": "à¦¸à§‡à¦¬à¦¾", "eco.n2": "à¦°à¦¿à¦¸à§‹à¦°à§à¦¸", "eco.n3": "à¦Ÿà§à¦²à¦¸", "eco.n4": "à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿", "eco.n5": "à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡", "eco.n6": "à¦ªà¦°à¦¿à¦šà¦¯à¦¼",
+        "svc.h": "à¦¦à§ˆà¦¨à¦¨à§à¦¦à¦¿à¦¨ à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶, à¦…à¦¬à¦¶à§‡à¦·à§‡ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦²à¥¤",
+        "svc.p": "à¦•à¦¾à¦—à¦œ à¦¥à§‡à¦•à§‡ à¦ªà§‡à¦®à§‡à¦¨à§à¦Ÿ, à¦•à§à¦²à¦¾à¦¸à¦°à§à¦® à¦¥à§‡à¦•à§‡ à¦•à§à¦²à¦¿à¦¨à¦¿à¦• â€” à¦¯à§‡ à¦¸à§‡à¦¬à¦¾à¦° à¦œà¦¨à§à¦¯ à¦®à¦¾à¦¨à§à¦· à¦²à¦¾à¦‡à¦¨à§‡ à¦¦à¦¾à¦à¦¡à¦¼à¦¾à¦¯à¦¼, à¦¸à§‡à¦—à§à¦²à§‹ à¦à¦–à¦¨ à¦¶à¦¾à¦¨à§à¦¤, à¦®à§‹à¦¬à¦¾à¦‡à¦²-à¦«à¦¾à¦°à§à¦¸à§à¦Ÿ à¦•à¦•à§à¦·à¥¤",
+        "svc.a.k": "à¦¨à¦¾à¦—à¦°à¦¿à¦• à¦¡à§‡à¦¸à§à¦•", "svc.a.t": "à¦à¦¨à¦†à¦‡à¦¡à¦¿, à¦«à¦°à§à¦® à¦“ à¦‡-à¦—à¦­", "svc.a.d": "à¦œà¦¨à§à¦® à¦¨à¦¿à¦¬à¦¨à§à¦§à¦¨, à¦à¦¨à¦†à¦‡à¦¡à¦¿ à¦¸à¦‚à¦¶à§‹à¦§à¦¨, à¦‡à¦‰à¦Ÿà¦¿à¦²à¦¿à¦Ÿà¦¿ à¦†à¦¬à§‡à¦¦à¦¨ â€” à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦—à¦¾à¦‡à¦¡, à¦†à¦ªà¦¨à¦¾à¦° à¦²à¦•à¦¾à¦°à§‡ à¦¸à¦‚à¦°à¦•à§à¦·à¦¿à¦¤à¥¤",
+        "svc.b.k": "à¦ªà§‡ à¦¡à§‡à¦¸à§à¦•", "svc.b.t": "à¦¬à¦¿à¦¦à§à¦¯à§à§Ž, à¦—à§à¦¯à¦¾à¦¸, à¦ªà¦¾à¦¨à¦¿, à¦®à§‹à¦¬à¦¾à¦‡à¦²", "svc.b.d": "à¦¸à¦¬ à¦¬à¦¿à¦²à§‡à¦° à¦à¦• à¦–à¦¾à¦¤à¦¾à¥¤ à¦¨à¦¿à¦°à§à¦§à¦¾à¦°à¦¿à¦¤ à¦¤à¦¾à¦°à¦¿à¦–à§‡à¦° à¦†à¦—à§‡ à¦°à¦¿à¦®à¦¾à¦‡à¦¨à§à¦¡à¦¾à¦°à¥¤ à¦°à¦¸à¦¿à¦¦ à¦¹à¦¾à¦°à¦¾à¦¯à¦¼ à¦¨à¦¾à¥¤",
+        "svc.c.k": "à¦²à¦¾à¦‡à¦« à¦¡à§‡à¦¸à§à¦•", "svc.c.t": "à¦¶à¦¿à¦•à§à¦·à¦¾, à¦¸à§à¦¬à¦¾à¦¸à§à¦¥à§à¦¯, à¦•à§à¦¯à¦¾à¦°à¦¿à¦¯à¦¼à¦¾à¦°", "svc.c.d": "à¦­à¦°à§à¦¤à¦¿ à¦ªà¦¥, à¦Ÿà§‡à¦²à¦¿-à¦¹à§‡à¦²à¦¥, à¦¸à¦¿à¦­à¦¿ à¦°à§à¦® à¦“ à¦«à§à¦°à¦¿à¦²à§à¦¯à¦¾à¦¨à§à¦¸ à¦•à¦¿à¦Ÿ â€” à¦œà¦Ÿà¦¿à¦²à¦¤à¦¾ à¦›à¦¾à¦¡à¦¼à¦¾à¥¤",
+        "svc.d.t": "à¦¬à¦¿à¦œà¦¨à§‡à¦¸ à¦¡à§‡à¦¸à§à¦•", "svc.d.d": "à¦Ÿà§à¦°à§‡à¦¡ à¦²à¦¾à¦‡à¦¸à§‡à¦¨à§à¦¸ à¦šà§‡à¦•à¦²à¦¿à¦¸à§à¦Ÿ, à¦Ÿà¦¿à¦†à¦‡à¦à¦¨ à¦¸à¦¹à¦¾à¦¯à¦¼à¦•, à¦šà¦Ÿà§à¦Ÿà¦—à§à¦°à¦¾à¦® à¦¥à§‡à¦•à§‡ à¦°à¦¾à¦œà¦¶à¦¾à¦¹à§€ à¦ªà¦°à§à¦¯à¦¨à§à¦¤ à¦¦à§‹à¦•à¦¾à¦¨à§‡à¦° à¦‡à¦¨à¦­à¦¯à¦¼à§‡à¦¸à¥¤",
+        "svc.e.t": "à¦­à§à¦°à¦®à¦£ à¦“ à¦Ÿà¦¿à¦•à¦¿à¦Ÿ", "svc.e.d": "à¦Ÿà§à¦°à§‡à¦¨, à¦²à¦žà§à¦š à¦“ à¦¬à¦¾à¦¸ â€” à¦°à§à¦Ÿ, à¦¸à¦¿à¦Ÿ, à¦à¦¬à¦‚ à¦¦à§‡à¦¶ à¦˜à§‹à¦°à¦¾à¦° à¦¶à¦¾à¦¨à§à¦¤ à¦‰à¦ªà¦¾à¦¯à¦¼à¥¤",
+        "svc.f.t": "à¦ªà¦¾à¦°à¦¿à¦¬à¦¾à¦°à¦¿à¦• à¦²à¦•à¦¾à¦°", "svc.f.d": "à¦¸à¦¨à¦¦, à¦ªà§à¦°à§‡à¦¸à¦•à§à¦°à¦¿à¦ªà¦¶à¦¨ à¦“ à¦¸à§à¦•à§à¦²à§‡à¦° à¦•à¦¾à¦—à¦œ à¦à¦¨à¦•à§à¦°à¦¿à¦ªà§à¦Ÿà§‡à¦¡, à¦à¦• à¦Ÿà§à¦¯à¦¾à¦ªà§‡à¥¤",
+        "svc.g.t": "à¦¸à§à¦¥à¦¾à¦¨à§€à¦¯à¦¼ à¦¸à¦¹à¦¾à¦¯à¦¼à¦¤à¦¾", "svc.g.d": "à¦“à¦¯à¦¼à¦¾à¦°à§à¦¡ à¦…à¦«à¦¿à¦¸, à¦¥à¦¾à¦¨à¦¾, à¦œà¦°à§à¦°à¦¿ à¦¨à¦®à§à¦¬à¦° â€” à¦†à¦ªà¦¨à¦¾à¦° à¦ à¦¿à¦•à¦¾à¦¨à¦¾à¦¯à¦¼ à¦®à§à¦¯à¦¾à¦ª à¦•à¦°à¦¾à¥¤",
+        "res.h": "à¦à¦•à¦Ÿà¦¿ à¦²à¦¾à¦‡à¦¬à§à¦°à§‡à¦°à¦¿, à¦¯à§‡à¦¨ à¦à¦•à¦Ÿà¦¿ à¦¸à§à¦Ÿà§à¦¡à¦¿à¦“à¥¤",
+        "res.p": "à¦—à¦¾à¦‡à¦¡, à¦Ÿà§‡à¦®à¦ªà§à¦²à§‡à¦Ÿ, à¦¬à§à¦¯à¦¾à¦–à§à¦¯à¦¾ à¦“ à¦¸à¦‚à¦¬à¦¾à¦¦ â€” à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦œà¦¨à§à¦¯ à¦¸à¦®à§à¦ªà¦¾à¦¦à¦¿à¦¤, à¦…à¦¨à§à¦¬à¦¾à¦¦à§‡à¦° à¦ªà¦°à§‡à¦° à¦­à¦¾à¦¬à¦¾ à¦¨à¦¯à¦¼à¥¤ à¦¬à¦¾à¦‚à¦²à¦¾à¦¯à¦¼ à¦ªà¦¡à¦¼à§à¦¨à¥¤ à¦¸à§‡à¦•à§‡à¦¨à§à¦¡à§‡ à¦à¦•à§à¦¸à¦ªà§‹à¦°à§à¦Ÿà¥¤",
+        "res.cta": "à¦­à¦²à§à¦Ÿ à¦–à§à¦²à§à¦¨",
+        "res.1.k": "à¦ªà§à¦²à§‡à¦¬à§à¦•", "res.1.t": "à¦²à¦¾à¦‡à¦¨à§‡ à¦¨à¦¾ à¦¦à¦¾à¦à¦¡à¦¼à¦¿à¦¯à¦¼à§‡ à¦à¦¨à¦†à¦‡à¦¡à¦¿ à¦¸à¦‚à¦¶à§‹à¦§à¦¨", "res.1.d": "à§­ à¦§à¦¾à¦ªà§‡à¦° à¦®à¦¾à¦ -à¦—à¦¾à¦‡à¦¡ â€” à¦•à¦¾à¦—à¦œ, à¦›à¦¬à¦¿ à¦“ à¦¸à¦¾à¦§à¦¾à¦°à¦£ à¦ªà§à¦°à¦¤à§à¦¯à¦¾à¦–à§à¦¯à¦¾à¦¨à§‡à¦° à¦•à¦¾à¦°à¦£à¥¤",
+        "res.2.k": "à¦Ÿà§‡à¦®à¦ªà§à¦²à§‡à¦Ÿ", "res.2.t": "à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à¦¯à¦¼ à¦†à¦¬à§‡à¦¦à¦¨ à¦•à¦¿à¦Ÿ", "res.2.d": "à¦à¦¸à¦“à¦ªà¦¿ à¦•à¦¾à¦ à¦¾à¦®à§‹, à¦¸à§à¦ªà¦¾à¦°à¦¿à¦¶ à¦¨à§‹à¦Ÿ à¦“ à¦ªà¦¾à¦¬à¦²à¦¿à¦• à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à¦¯à¦¼à§‡à¦° à¦šà§‡à¦•à¦²à¦¿à¦¸à§à¦Ÿà¥¤",
+        "res.3.k": "à¦¬à§à¦°à¦¿à¦«à¦¿à¦‚", "res.3.t": "à¦¸à¦¾à¦ªà§à¦¤à¦¾à¦¹à¦¿à¦• à¦¨à§€à¦¤à¦¿ à¦¸à¦¾à¦°", "res.3.d": "à¦•à¦°, à¦¶à¦¿à¦•à§à¦·à¦¾ à¦“ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾à¦¯à¦¼ à¦•à§€ à¦¬à¦¦à¦²à§‡à¦›à§‡ â€” à¦à¦• à¦ªà¦¾à¦¤à¦¾à¦¯à¦¼à¥¤",
+        "res.4.k": "à¦¸à§à¦Ÿà§à¦¡à¦¿à¦“", "res.4.t": "à¦¬à¦¾à¦‚à¦²à¦¾ à¦¬à§à¦°à§à¦¯à¦¾à¦¨à§à¦¡ à¦•à¦¿à¦Ÿ", "res.4.d": "à¦Ÿà¦¾à¦‡à¦ª à¦œà§‹à¦¡à¦¼à¦¾, à¦°à¦™à§‡à¦° à¦¬à§à¦¯à¦¬à¦¸à§à¦¥à¦¾ à¦“ à¦¸à§à¦¥à¦¾à¦¨à§€à¦¯à¦¼ à¦‰à¦¦à§à¦¯à§‹à¦•à§à¦¤à¦¾à¦¦à§‡à¦° à¦¸à§‹à¦¶à§à¦¯à¦¾à¦² à¦«à§à¦°à§‡à¦®à¥¤",
+        "tools.h": "à¦ªà¦•à§‡à¦Ÿà§‡ à¦à¦•à¦Ÿà¦¿ à¦•à¦°à§à¦®à¦¶à¦¾à¦²à¦¾à¥¤",
+        "tools.p": "à¦ªà§à¦°à¦¯à¦¼à§‹à¦œà¦¨à§€à¦¯à¦¼ à¦Ÿà§à¦²à§‡ à¦¸à¦¾à¦‡à¦¨-à¦†à¦ªà§‡à¦° à¦¦à§‡à¦¯à¦¼à¦¾à¦² à¦¨à§‡à¦‡à¥¤ à¦ªà¦¿à¦¡à¦¿à¦à¦«, à¦›à¦¬à¦¿, à¦²à§‡à¦–à¦¾, à¦¹à¦¿à¦¸à¦¾à¦¬ à¦“ à¦•à¦¿à¦‰à¦†à¦° â€” à¦•à¦® à¦¡à§‡à¦Ÿà¦¾ à¦“ à¦¬à¦¡à¦¼ à¦¬à¦¾à¦‚à¦²à¦¾ à¦Ÿà¦¾à¦‡à¦ªà§‡à¦° à¦œà¦¨à§à¦¯à¥¤",
+        "tools.free": "à¦«à§à¦°à¦¿",
+        "tools.1.t": "à¦®à¦¾à¦°à§à¦œ, à¦¸à§à¦ªà§à¦²à¦¿à¦Ÿ, à¦•à¦®à¦ªà§à¦°à§‡à¦¸", "tools.1.d": "à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à¦¯à¦¼ à¦«à¦°à§à¦® à¦“ à¦…à¦«à¦¿à¦¸ à¦«à¦¾à¦‡à¦² â€” à¦¸à¦®à§à¦­à¦¬ à¦¹à¦²à§‡ à¦¡à¦¿à¦­à¦¾à¦‡à¦¸à§‡à¦‡ à¦ªà§à¦°à¦•à§à¦°à¦¿à¦¯à¦¼à¦¾à¥¤",
+        "tools.2.t": "à¦°à¦¿à¦¸à¦¾à¦‡à¦œ à¦“ à¦ªà¦¾à¦¸à¦ªà§‹à¦°à§à¦Ÿ à¦›à¦¬à¦¿", "tools.2.d": "à¦¸à¦°à¦•à¦¾à¦°à¦¿ à¦®à¦¾à¦ª à¦ à¦¿à¦•à¦ à¦¾à¦•à¥¤ à¦¨à¦°à¦® à¦¬à§à¦¯à¦¾à¦•à¦—à§à¦°à¦¾à¦‰à¦¨à§à¦¡à¥¤ à¦¤à¦¾à§Žà¦•à§à¦·à¦£à¦¿à¦• à¦¡à¦¾à¦‰à¦¨à¦²à§‹à¦¡à¥¤",
+        "tools.3.t": "à¦¬à¦¾à¦‚à¦²à¦¾ à¦²à§‡à¦–à¦¾à¦° à¦˜à¦°", "tools.3.d": "à¦¬à¦¿à¦œà¦¯à¦¼-à¦¬à¦¾à¦¨à§à¦§à¦¬ à¦¨à§‹à¦Ÿ, à¦¶à¦¬à§à¦¦ à¦—à¦£à¦¨à¦¾, à¦†à¦¬à§‡à¦¦à¦¨à§‡à¦° à¦ªà¦°à¦¿à¦šà§à¦›à¦¨à§à¦¨ à¦•à¦ªà¦¿à¥¤",
+        "tools.4.t": "à¦•à¦¿à¦‰à¦†à¦° à¦“ à¦¬à¦¿à¦•à¦¾à¦¶ à¦•à¦¾à¦°à§à¦¡", "tools.4.d": "à¦¦à§‹à¦•à¦¾à¦¨à§‡à¦° à¦•à§‹à¦¡, à¦“à¦¯à¦¼à¦¾à¦‡-à¦«à¦¾à¦‡ à¦•à¦¾à¦°à§à¦¡ à¦“ à¦‡à¦­à§‡à¦¨à§à¦Ÿ à¦Ÿà¦¿à¦•à¦¿à¦Ÿ à¦à¦• à¦Ÿà§à¦¯à¦¾à¦ªà§‡à¥¤",
+        "tools.5.t": "à¦­à§à¦¯à¦¾à¦Ÿ à¦“ à¦¬à§‡à¦¤à¦¨ à¦•à§à¦¯à¦¾à¦²à¦•", "tools.5.d": "à¦¸à§à¦¥à¦¾à¦¨à§€à¦¯à¦¼ à¦•à¦°à§‡à¦° à¦¯à§à¦•à§à¦¤à¦¿à¥¤ à¦†à¦®à§‡à¦°à¦¿à¦•à¦¾à¦¨ à¦¡à¦¿à¦«à¦²à§à¦Ÿ à¦¨à¦¯à¦¼à¥¤",
+        "tools.6.t": "à¦°à¦™ à¦“ à¦•à¦¨à¦Ÿà§à¦°à¦¾à¦¸à§à¦Ÿ", "tools.6.d": "à¦°à§Œà¦¦à§à¦°à§‡ à¦¸à¦¸à§à¦¤à¦¾ à¦…à§à¦¯à¦¾à¦¨à§à¦¡à§à¦°à¦¯à¦¼à§‡à¦¡ à¦¸à§à¦•à§à¦°à¦¿à¦¨à§‡à¦“ à¦ªà¦¾à¦ à¦¯à§‹à¦—à§à¦¯ à¦ªà§à¦¯à¦¾à¦²à§‡à¦Ÿà¥¤",
+        "tools.7.t": "à¦ªà¦°à§€à¦•à§à¦·à¦¾à¦° à¦Ÿà¦¾à¦‡à¦®à¦¾à¦°", "tools.7.d": "à¦à¦¸à¦à¦¸à¦¸à¦¿ à¦¥à§‡à¦•à§‡ à¦­à¦°à§à¦¤à¦¿ à¦ªà¦°à§€à¦•à§à¦·à¦¾ â€” à¦¨à¦°à¦® à¦˜à¦£à§à¦Ÿà¦¾à¦¯à¦¼ à¦—à¦¤à¦¿à¥¤",
+        "tools.more.k": "à¦•à¦°à§à¦®à¦¶à¦¾à¦²à¦¾", "tools.more.t": "à§©à§¨à¦Ÿà¦¿ à¦Ÿà§à¦², à¦à¦• à¦¡à§à¦°à¦¯à¦¼à¦¾à¦°", "tools.more.d": "à¦ªà§à¦°à§‹ à¦²à§à¦¯à¦¾à¦¬ à¦–à§à¦²à§à¦¨ â€” à¦•à¦¨à¦­à¦¾à¦°à§à¦Ÿà¦¾à¦°, à¦¹à§à¦¯à¦¾à¦¶, à¦à¦•à¦•, à¦¬à¦¯à¦¼à¦¸à¥¤",
+        "tv.h": "à¦¡à¦¿à¦¶ à¦›à¦¾à¦¡à¦¼à¦¾à¦‡ à¦¬à§ˆà¦ à¦•à¦–à¦¾à¦¨à¦¾à¥¤",
+        "tv.p": "à¦­à§‹à¦°à§‡ à¦¸à¦‚à¦¬à¦¾à¦¦, à¦¦à§à¦ªà§à¦°à§‡ à¦•à§à¦°à¦¿à¦•à§‡à¦Ÿ, à¦‡à¦«à¦¤à¦¾à¦°à§‡à¦° à¦ªà¦° à¦¸à¦¿à¦¨à§‡à¦®à¦¾à¥¤ à¦†à¦¶à¦¿à¦Ÿà¦¿à¦°à¦“ à¦¬à§‡à¦¶à¦¿ à¦¦à§‡à¦¶à§€à¦¯à¦¼ à¦“ à¦†à¦¨à§à¦¤à¦°à§à¦œà¦¾à¦¤à¦¿à¦• à¦šà§à¦¯à¦¾à¦¨à§‡à¦² â€” à¦®à§‹à¦¬à¦¾à¦‡à¦² à¦¡à§‡à¦Ÿà¦¾à¦° à¦œà¦¨à§à¦¯ à¦¸à¦¾à¦œà¦¾à¦¨à§‹à¥¤",
+        "tv.cta": "à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦¦à§‡à¦–à§à¦¨", "tv.now": "à¦à¦–à¦¨ à¦šà¦²à¦›à§‡", "tv.show": "à¦¸à¦¾à¦¨à§à¦§à§à¦¯ à¦¬à§à¦²à§‡à¦Ÿà¦¿à¦¨",
+        "tv.f1": "à¦¸à¦‚à¦¬à¦¾à¦¦", "tv.f2": "à¦–à§‡à¦²à¦¾", "tv.f3": "à¦¸à¦¿à¦¨à§‡à¦®à¦¾",
+        "focus.h": "à¦¶à¦¹à¦°à¦•à§‡ à¦šà§à¦ª à¦•à¦°à§à¦¨à¥¤ à¦•à¦¾à¦œ à¦°à¦¾à¦–à§à¦¨à¥¤",
+        "focus.p": "à¦à¦‡à¦šà¦à¦¸à¦¸à¦¿ à¦°à¦¾à¦¤, à¦«à§à¦°à¦¿à¦²à§à¦¯à¦¾à¦¨à§à¦¸à¦¾à¦°, à¦à¦¬à¦‚ à¦¯à¦¾à¦¦à§‡à¦° à¦«à§‹à¦¨ à¦–à§à¦¬ à¦œà§‹à¦°à§‡ â€” à¦¤à¦¾à¦¦à§‡à¦° à¦œà¦¨à§à¦¯ à¦†à¦²à¦¾à¦¦à¦¾ à¦˜à¦°à¥¤ à¦¬à§ƒà¦·à§à¦Ÿà¦¿à¦° à¦¶à¦¬à§à¦¦, à¦¬à¦¨à§à¦§ à¦«à¦¿à¦¡, à¦¨à¦¾à¦®à¦¾à¦œ à¦“ à¦ªà¦°à§€à¦•à§à¦·à¦¾à¦° à¦˜à¦£à§à¦Ÿà¦¾ à¦®à¦¾à¦¨à§‡ à¦à¦®à¦¨ à¦Ÿà¦¾à¦‡à¦®à¦¾à¦°à¥¤",
+        "focus.session": "à¦—à¦­à§€à¦° à¦¸à§‡à¦¶à¦¨", "focus.start": "à¦«à§‹à¦•à¦¾à¦¸ à¦¶à§à¦°à§", "focus.pause": "à¦¬à¦¿à¦°à¦¤à¦¿",
+        "focus.l1": "à¦ªà§‹à¦®à§‹à¦¡à§‹à¦°à§‹, à§«à§¦/à§§à§¦, à¦à¦¬à¦‚ à¦¨à¦¿à¦œà¦¸à§à¦¬ à¦°à§€à¦¤à¦¿",
+        "focus.l2": "à¦¬à§ƒà¦·à§à¦Ÿà¦¿, à¦ªà¦¾à¦–à¦¾, à¦¨à¦¦à§€ à¦“ à¦²à§‹-à¦«à¦¾à¦‡ â€” à¦ªà§à¦°à¦¥à¦® à¦ªà§à¦²à§‡à¦° à¦ªà¦° à¦…à¦«à¦²à¦¾à¦‡à¦¨",
+        "focus.l3": "à¦•à¦¾à¦œà§‡à¦° à¦¸à¦®à¦¯à¦¼ à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦“ à¦¸à§‹à¦¶à§à¦¯à¦¾à¦² à¦¡à§à¦°à¦¯à¦¼à¦¾à¦° à¦²à§à¦•à¦¾à¦¨",
+        "focus.l4": "à¦¸à§à¦Ÿà§à¦°à¦¿à¦• à¦¯à§‡à¦¨ à¦®à¦¾à¦¨à§à¦·à§‡à¦° à¦®à¦¤à§‹, à¦†à¦¸à¦•à§à¦¤à¦¿à¦° à¦®à¦¤à§‹ à¦¨à¦¯à¦¼",
+        "why.h": "à¦à¦‡ à¦¦à§‡à¦¶ à¦¯à§‡à¦­à¦¾à¦¬à§‡ à¦¬à¦¾à¦à¦šà§‡, à¦¸à§‡à¦­à¦¾à¦¬à§‡ à¦¤à§ˆà¦°à¦¿à¥¤",
+        "why.1.t": "à¦ªà§à¦°à¦¥à¦®à§‡ à¦¬à¦¾à¦‚à¦²à¦¾", "why.1.d": "à¦¸à§‡à¦Ÿà¦¿à¦‚à¦¸à§‡ à¦²à§à¦•à§‹à¦¨à§‹ à¦Ÿà¦—à¦² à¦¨à¦¯à¦¼à¥¤ à¦Ÿà¦¾à¦‡à¦ª, à¦­à¦¯à¦¼à§‡à¦¸ à¦“ à¦²à§‡à¦†à¦‰à¦Ÿ à¦¬à¦¾à¦‚à¦²à¦¾à¦•à§‡ à¦®à§‚à¦² à¦¬à¦¿à¦²à¦¾à¦¸à¦¿à¦¤à¦¾ à¦®à¦¨à§‡ à¦•à¦°à§‡à¥¤",
+        "why.2.t": "à¦«à§‹à¦¨-à¦¨à§‡à¦Ÿà¦¿à¦­", "why.2.d": "à¦ªà§à¦°à¦¥à¦®à§‡ à¦…à§à¦¯à¦¾à¦¨à§à¦¡à§à¦°à¦¯à¦¼à§‡à¦¡à§‡ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨à¥¤ à¦¬à¦¡à¦¼ à¦Ÿà§à¦¯à¦¾à¦ªà¥¤ à¦«à§‹à¦°à¦œà¦¿à¦¤à§‡ à¦¦à¦¯à¦¼à¦¾à¦²à§à¥¤ à¦®à¦¿à¦¡-à¦°à§‡à¦žà§à¦œ à¦¸à§à¦•à§à¦°à¦¿à¦¨à§‡ à¦¸à§à¦¨à§à¦¦à¦°à¥¤",
+        "why.3.t": "à¦à¦• à¦ªà¦°à¦¿à¦šà¦¯à¦¼", "why.3.d": "à¦²à¦•à¦¾à¦°, à¦¬à¦¿à¦², à¦šà§à¦¯à¦¾à¦¨à§‡à¦², à¦«à§‹à¦•à¦¾à¦¸ à¦¸à§à¦Ÿà§à¦°à¦¿à¦• â€” à¦à¦•à¦Ÿà¦¿ à¦®à¦¾à¦§à§à¦¯à¦¾à¦•à¦°à§à¦·à¦£ à¦•à§‚à¦ªà¥¤",
+        "why.4.t": "à¦¶à¦¾à¦¨à§à¦¤ à¦•à¦¾à¦°à§à¦•à¦¾à¦œ", "why.4.d": "à¦¬à¦¿à¦œà§à¦žà¦¾à¦ªà¦¨à§‡à¦° à¦®à§‡à¦²à¦¾ à¦¨à¦¯à¦¼à¥¤ à¦ªà§à¦°à¦¿à¦®à¦¿à¦¯à¦¼à¦¾à¦® à¦—à¦¤à¦¿à¥¤ à¦¸à¦®à¦¯à¦¼, à¦¨à¦¾à¦®à¦¾à¦œ à¦“ à¦•à¦® à¦¬à§à¦¯à¦¾à¦Ÿà¦¾à¦°à¦¿à¦° à¦ªà§à¦°à¦¤à¦¿ à¦¶à§à¦°à¦¦à§à¦§à¦¾à¥¤",
+        "why.s1": "à¦—à¦¾à¦‡à¦¡à§‡à¦¡ à¦¸à§‡à¦¬à¦¾", "why.s2": "à¦²à¦¾à¦‡à¦­ à¦šà§à¦¯à¦¾à¦¨à§‡à¦²", "why.s3": "à¦•à¦°à§à¦®à¦¶à¦¾à¦²à¦¾à¦° à¦Ÿà§à¦²",
+        "t1.r": "à¦¶à¦¿à¦•à§à¦·à¦¾à¦°à§à¦¥à§€, à¦¢à¦¾à¦•à¦¾ à¦¬à¦¿à¦¶à§à¦¬à¦¬à¦¿à¦¦à§à¦¯à¦¾à¦²à¦¯à¦¼",
+        "t1.q": "â€œà¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡ à¦à¦•à¦®à¦¾à¦¤à§à¦° à¦Ÿà¦¾à¦‡à¦®à¦¾à¦° à¦¯à¦¾ à¦¹à¦² à¦²à¦¾à¦‡à¦«à§‡à¦° à¦œà¦¨à§à¦¯ à¦¤à§ˆà¦°à¦¿ à¦®à¦¨à§‡ à¦¹à¦¯à¦¼à¥¤ à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦²à§à¦•à¦¾à¦‡, à¦¬à§ƒà¦·à§à¦Ÿà¦¿ à¦°à¦¾à¦–à¦¿, à¦†à¦° à¦…à¦§à§à¦¯à¦¾à¦¯à¦¼ à¦¶à§‡à¦· à¦¹à¦¯à¦¼à¥¤â€",
+        "t2.r": "à¦«à§à¦°à¦¿à¦²à§à¦¯à¦¾à¦¨à§à¦¸ à¦¡à¦¿à¦œà¦¾à¦‡à¦¨à¦¾à¦°, à¦šà¦Ÿà§à¦Ÿà¦—à§à¦°à¦¾à¦®",
+        "t2.q": "â€œà¦Ÿà§à¦²à¦¸ à¦¡à§à¦°à¦¯à¦¼à¦¾à¦° à¦ªà¦¾à¦à¦šà¦Ÿà¦¾ à¦à¦²à§‹à¦®à§‡à¦²à§‹ à¦¸à¦¾à¦‡à¦Ÿ à¦¸à¦°à¦¿à¦¯à¦¼à§‡ à¦¦à¦¿à¦²à¥¤ à¦ªà¦¾à¦¸à¦ªà§‹à¦°à§à¦Ÿ à¦›à¦¬à¦¿ à¦“ à¦ªà¦¿à¦¡à¦¿à¦à¦« à¦¬à¦¾à¦‚à¦²à¦¾ à¦«à¦¾à¦‡à¦²à¦¨à§‡à¦® à¦¬à§‹à¦à§‡ â€” à¦…à¦¬à¦¶à§‡à¦·à§‡à¥¤â€",
+        "t3.r": "à¦¦à§‹à¦•à¦¾à¦¨à¦¦à¦¾à¦°, à¦¸à¦¿à¦²à§‡à¦Ÿ",
+        "t3.q": "â€œà¦¬à¦¿à¦¦à§à¦¯à§à§Ž à¦¬à¦¿à¦² à¦¦à¦¿à¦‡, à¦Ÿà§à¦°à§‡à¦¡ à¦•à¦¾à¦—à¦œ à¦°à¦¾à¦–à¦¿, à¦†à¦° à¦à¦• à¦…à§à¦¯à¦¾à¦ªà§‡à¦‡ à¦•à§à¦°à¦¿à¦•à§‡à¦Ÿ à¦¦à§‡à¦–à¦¿à¥¤ à¦¬à¦¾à¦¬à¦¾ à¦¬à¦¾à¦‚à¦²à¦¾ à¦®à§‹à¦¡ à¦¬à§à¦¯à¦¬à¦¹à¦¾à¦° à¦•à¦°à§‡à¦¨, à¦†à¦®à¦¾à¦•à§‡ à¦¨à¦¾ à¦¡à§‡à¦•à§‡à¥¤â€",
+        "cta.h": "à¦‡à¦•à§‹à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦®à§‡ à¦ªà¦¾ à¦°à¦¾à¦–à§à¦¨à¥¤",
+        "cta.p": "à¦«à§à¦°à¦¿ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦ªà¦°à¦¿à¦šà¦¯à¦¼ à¦¤à§ˆà¦°à¦¿ à¦•à¦°à§à¦¨à¥¤ à¦†à¦ªà¦¨à¦¾à¦° à¦¸à§‡à¦¬à¦¾, à¦²à¦•à¦¾à¦°, à¦šà§à¦¯à¦¾à¦¨à§‡à¦² à¦“ à¦«à§‹à¦•à¦¾à¦¸ à¦°à§à¦® à¦…à¦ªà§‡à¦•à§à¦·à¦¾ à¦•à¦°à¦¬à§‡ â€” à¦¯à§‡ à¦­à¦¾à¦·à¦¾à¦¯à¦¼ à¦†à¦ªà¦¨à¦¿ à¦­à¦¾à¦¬à§‡à¦¨à¥¤",
+        "cta.email": "à¦‡à¦®à§‡à¦‡à¦² à¦¬à¦¾ à¦«à§‹à¦¨", "cta.go": "à¦ªà¦°à¦¿à¦šà¦¯à¦¼ à¦¤à§ˆà¦°à¦¿",
+        "cta.fine": "à¦¸à§à¦ªà§à¦¯à¦¾à¦® à¦¨à¦¯à¦¼à¥¤ à¦¬à¦¾à¦‚à¦²à¦¾ à¦¬à¦¾ à¦‡à¦‚à¦°à§‡à¦œà¦¿à¥¤ à¦¯à§‡à¦•à§‹à¦¨à§‹ à¦¸à¦®à¦¯à¦¼ à¦›à¦¾à¦¡à¦¼à§à¦¨à¥¤",
+        "cta.ok": "à¦¸à§à¦¬à¦¾à¦—à¦¤à¦®à¥¤ à¦†à¦ªà¦¨à¦¾à¦° à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦ªà¦°à¦¿à¦šà¦¯à¦¼ à¦¸à¦‚à¦°à¦•à§à¦·à¦¿à¦¤à¥¤",
+        "ft.p": "à¦¬à¦¾à¦‚à¦²à¦¾à¦¦à§‡à¦¶à§‡à¦° à¦œà¦¨à§à¦¯ à¦à¦•à¦Ÿà¦¿ à¦ªà§à¦°à¦¿à¦®à¦¿à¦¯à¦¼à¦¾à¦® à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦‡à¦•à§‹à¦¸à¦¿à¦¸à§à¦Ÿà§‡à¦® â€” à¦¸à§‡à¦¬à¦¾, à¦°à¦¿à¦¸à§‹à¦°à§à¦¸, à¦Ÿà§à¦²à¦¸, à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ à¦“ à¦«à§‹à¦•à¦¾à¦¸ à¦®à§‹à¦¡ à¦à¦• à¦…à¦­à¦¿à¦œà§à¦žà¦¤à¦¾à¦¯à¦¼à¥¤",
+        "ft.plat": "à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®", "ft.house": "à¦¹à¦¾à¦‰à¦¸", "ft.privacy": "à¦—à§‹à¦ªà¦¨à§€à¦¯à¦¼à¦¤à¦¾", "ft.terms": "à¦¶à¦°à§à¦¤à¦¾à¦¬à¦²à¦¿",
+        "ft.rights": "à¦¸à¦°à§à¦¬à¦¸à§à¦¬à¦¤à§à¦¬ à¦¸à¦‚à¦°à¦•à§à¦·à¦¿à¦¤à¥¤", "ft.made": "à¦¢à¦¾à¦•à¦¾à¦¯à¦¼ à¦°à¦šà¦¿à¦¤à¥¤ à¦ªà§à¦°à¦¤à¦¿à¦Ÿà¦¿ à¦œà§‡à¦²à¦¾à¦° à¦œà¦¨à§à¦¯à¥¤"
+      }
+    };
+
+    let lang = localStorage.getItem("ds-lang") || "en";
+
+    function applyLang(next) {
+      lang = next;
+      localStorage.setItem("ds-lang", lang);
+      document.documentElement.lang = lang === "bn" ? "bn" : "en";
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (I18N[lang][key]) el.textContent = I18N[lang][key];
+      });
+      document.querySelectorAll(".lang-btn").forEach((btn) => {
+        const on = btn.dataset.lang === lang;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.classList.toggle("text-[#c9cfc4]", !on);
+      });
+      const email = document.getElementById("email");
+      if (email) email.placeholder = lang === "bn" ? "à¦‡à¦®à§‡à¦‡à¦² à¦¬à¦¾ +à§®à§®à§¦â€¦" : "Email or +880â€¦";
+    }
+
+    document.querySelectorAll(".lang-btn").forEach((btn) => {
+      btn.addEventListener("click", () => applyLang(btn.dataset.lang));
+    });
+    applyLang(lang);
+
+    window.addEventListener("load", () => {
+      setTimeout(() => document.getElementById("loader").classList.add("hide"), 700);
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const nav = document.getElementById("nav");
+    window.addEventListener("scroll", () => {
+      nav.classList.toggle("scrolled", window.scrollY > 12);
+    }, { passive: true });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+    const menuVeil = document.getElementById("menuVeil");
+    let menuOpen = false;
+    function setMenu(open) {
+      menuOpen = open;
+      mobileMenu.classList.toggle("open", open);
+      menuVeil.classList.toggle("open", open);
+      menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      document.body.style.overflow = open ? "hidden" : "";
+    }
+    menuBtn.addEventListener("click", () => setMenu(!menuOpen));
+    menuVeil.addEventListener("click", () => setMenu(false));
+    mobileMenu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+
+    const cursor = document.getElementById("cursor");
+    const ring = document.getElementById("cursorRing");
+    let mx = 0, my = 0, rx = 0, ry = 0;
+    const fine = window.matchMedia("(pointer:fine)").matches;
+    if (fine) {
+      window.addEventListener("pointermove", (e) => {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = mx + "px";
+        cursor.style.top = my + "px";
+      }, { passive: true });
+      function follow() {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        ring.style.left = rx + "px";
+        ring.style.top = ry + "px";
+        requestAnimationFrame(follow);
+      }
+      follow();
+      document.querySelectorAll("a, button, .magnetic, input").forEach((el) => {
+        el.addEventListener("pointerenter", () => { cursor.classList.add("grow"); ring.classList.add("grow"); });
+        el.addEventListener("pointerleave", () => { cursor.classList.remove("grow"); ring.classList.remove("grow"); });
+      });
+    }
+
+    document.querySelectorAll(".tilt").forEach((card) => {
+      card.addEventListener("pointermove", (e) => {
+        if (!fine) return;
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = `rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+      });
+      card.addEventListener("pointerleave", () => { card.style.transform = ""; });
+    });
+
+    const ecoWorld = document.getElementById("ecoWorld");
+    const ecoStage = document.getElementById("ecoStage");
+    if (ecoStage && window.matchMedia("(min-width: 901px)").matches) {
+      ecoStage.addEventListener("pointermove", (e) => {
+        const r = ecoStage.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        ecoWorld.style.transform = `rotateY(${x * 16}deg) rotateX(${-y * 10}deg)`;
+      });
+      ecoStage.addEventListener("pointerleave", () => { ecoWorld.style.transform = ""; });
+    }
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) en.target.classList.add("in"); });
+    }, { threshold: 0.16 });
+    document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+
+    const counters = document.querySelectorAll("[data-count]");
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (!en.isIntersecting) return;
+        const el = en.target;
+        const end = Number(el.dataset.count);
+        const start = performance.now();
+        const dur = 1400;
+        const tick = (now) => {
+          const t = Math.min(1, (now - start) / dur);
+          const eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(end * eased);
+          if (t < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        cio.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counters.forEach((el) => cio.observe(el));
+
+    let focusLeft = 25 * 60;
+    let focusTimer = null;
+    const readout = document.getElementById("timerReadout");
+    const timerBtn = document.getElementById("timerBtn");
+    const arc = document.getElementById("timerArc");
+    const TOTAL = 25 * 60;
+    function paintTimer() {
+      const m = String(Math.floor(focusLeft / 60)).padStart(2, "0");
+      const s = String(focusLeft % 60).padStart(2, "0");
+      readout.textContent = m + ":" + s;
+      arc.style.strokeDashoffset = String(653 * (1 - focusLeft / TOTAL));
+    }
+    timerBtn.addEventListener("click", () => {
+      if (focusTimer) {
+        clearInterval(focusTimer);
+        focusTimer = null;
+        timerBtn.textContent = I18N[lang]["focus.start"];
+        return;
+      }
+      timerBtn.textContent = I18N[lang]["focus.pause"];
+      focusTimer = setInterval(() => {
+        focusLeft = Math.max(0, focusLeft - 1);
+        paintTimer();
+        if (focusLeft === 0) {
+          clearInterval(focusTimer);
+          focusTimer = null;
+          timerBtn.textContent = I18N[lang]["focus.start"];
+          focusLeft = TOTAL;
+        }
+      }, 1000);
+    });
+
+    document.getElementById("joinForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+      document.getElementById("formNote").textContent = I18N[lang]["cta.ok"];
+      e.target.reset();
+    });
+
+    (function initHero() {
+      const canvas = document.getElementById("hero-canvas");
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!canvas || reduced) return;
+
+      if (window.THREE) {
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+        camera.position.z = 6.2;
+        const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+        const count = window.innerWidth < 700 ? 700 : 1600;
+        const pos = new Float32Array(count * 3);
+        for (let i = 0; i < count; i++) {
+          const r = 1.7 + Math.random() * 1.1;
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(2 * Math.random() - 1);
+          pos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+          pos[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+          pos[i * 3 + 2] = r * Math.cos(phi);
+        }
+        const geo = new THREE.BufferGeometry();
+        geo.setAttribute("position", new THREE.BufferAttribute(pos, 3));
+        const points = new THREE.Points(geo, new THREE.PointsMaterial({
+          color: 0x3ee08f, size: 0.018, transparent: true, opacity: 0.85, depthWrite: false
+        }));
+        scene.add(points);
+
+        const wire = new THREE.Mesh(
+          new THREE.IcosahedronGeometry(1.35, 1),
+          new THREE.MeshBasicMaterial({ color: 0xd4b483, wireframe: true, transparent: true, opacity: 0.35 })
+        );
+        scene.add(wire);
+
+        const core = new THREE.Mesh(
+          new THREE.SphereGeometry(0.42, 32, 32),
+          new THREE.MeshBasicMaterial({ color: 0x3ee08f, transparent: true, opacity: 0.85 })
+        );
+        scene.add(core);
+
+        const nodes = [];
+        for (let i = 0; i < 6; i++) {
+          const m = new THREE.Mesh(
+            new THREE.SphereGeometry(0.07, 16, 16),
+            new THREE.MeshBasicMaterial({ color: i % 2 ? 0xd4b483 : 0x3ee08f })
+          );
+          nodes.push({ mesh: m, a: (i / 6) * Math.PI * 2, s: 2.15 });
+          scene.add(m);
+        }
+
+        scene.add(new THREE.AmbientLight(0xffffff, 0.6));
+
+        let px = 0, py = 0, tx = 0, ty = 0;
+        window.addEventListener("pointermove", (e) => {
+          tx = (e.clientX / window.innerWidth - 0.5) * 0.6;
+          ty = (e.clientY / window.innerHeight - 0.5) * 0.4;
+        }, { passive: true });
+
+        function resize() {
+          const w = canvas.clientWidth || window.innerWidth;
+          const h = canvas.clientHeight || window.innerHeight;
+          renderer.setSize(w, h, false);
+          camera.aspect = w / h;
+          camera.updateProjectionMatrix();
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        let visible = true;
+        const vio = new IntersectionObserver((ents) => { visible = ents[0].isIntersecting; }, { threshold: 0.05 });
+        vio.observe(canvas);
+
+        const clock = new THREE.Clock();
+        function frame() {
+          requestAnimationFrame(frame);
+          if (!visible) return;
+          const t = clock.getElapsedTime();
+          px += (tx - px) * 0.04;
+          py += (ty - py) * 0.04;
+          points.rotation.y = t * 0.05 + px;
+          points.rotation.x = 0.18 + py;
+          wire.rotation.y = t * 0.12;
+          wire.rotation.z = t * 0.04;
+          core.scale.setScalar(1 + Math.sin(t * 2) * 0.04);
+          nodes.forEach((n, i) => {
+            const a = n.a + t * 0.25;
+            n.mesh.position.set(Math.cos(a) * n.s, Math.sin(a * 1.2) * 0.55, Math.sin(a) * n.s);
+          });
+          camera.position.x = px * 0.8;
+          camera.position.y = -py * 0.5;
+          camera.lookAt(0, 0, 0);
+          renderer.render(scene, camera);
+        }
+        frame();
+        return;
+      }
+
+      const ctx = canvas.getContext("2d");
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      let w, h, parts = [];
+      function resize() {
+        w = canvas.clientWidth; h = canvas.clientHeight;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        parts = Array.from({ length: w < 700 ? 50 : 90 }, () => ({
+          x: Math.random() * w, y: Math.random() * h,
+          vx: (Math.random() - 0.5) * 0.35, vy: (Math.random() - 0.5) * 0.35, r: Math.random() * 1.6 + 0.4
+        }));
+      }
+      resize();
+      window.addEventListener("resize", resize);
+      function loop() {
+        ctx.clearRect(0, 0, w, h);
+        parts.forEach((p, i) => {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > w) p.vx *= -1;
+          if (p.y < 0 || p.y > h) p.vy *= -1;
+          ctx.beginPath();
+          ctx.fillStyle = "rgba(62,224,143,.7)";
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+          for (let j = i + 1; j < parts.length; j++) {
+            const q = parts[j];
+            const dx = p.x - q.x, dy = p.y - q.y, d = Math.hypot(dx, dy);
+            if (d < 120) {
+              ctx.strokeStyle = `rgba(212,180,131,${(1 - d / 120) * 0.18})`;
+              ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+            }
+          }
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

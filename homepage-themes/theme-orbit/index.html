@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en" data-lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources</title>
+  <meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#030308">
+  <link rel="canonical" href="https://digiseba.shop/">
+  <link rel="icon" href="/assets/images/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://digiseba.shop/">
+  <meta property="og:title" content="Digital Seba — ডিজিটাল সেবা">
+  <meta property="og:description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform.">
+  <meta property="og:image" content="https://digiseba.shop/assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Sans+Bengali:wght@400;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebSite","name":"Digital Seba","alternateName":"ডিজিটাল সেবা","url":"https://digiseba.shop/","inLanguage":["en","bn"]}
+  </script>
+  <script>
+    (function(){try{var l=localStorage.getItem("ds-lang");if(l==="bn"||l==="en"){document.documentElement.setAttribute("data-lang",l);document.documentElement.lang=l==="bn"?"bn":"en";}}catch(e){}})();
+  </script>
+  <script type="importmap">
+  {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}
+  </script>
+  <style>
+    :root{--ink:#030308;--bone:#f2eee6;--dim:#948e84;--chart:#e8ff4a;--ice:#8ec4ff;--serif:"Instrument Serif","Noto Sans Bengali",Georgia,serif;--sans:"Space Grotesk","Noto Sans Bengali",system-ui,sans-serif}
+    html[data-lang="bn"]{--serif:"Noto Sans Bengali","Instrument Serif",serif;--sans:"Noto Sans Bengali","Space Grotesk",sans-serif}
+    *{box-sizing:border-box}html,body{margin:0;background:#030308;color:var(--bone)}
+    html:not(.flat) body{height:700vh}
+    body{font-family:var(--sans);line-height:1.5;overflow-x:clip}
+    a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit;border:0;background:0}
+    button{cursor:pointer}:focus-visible{outline:2px solid var(--chart);outline-offset:3px}
+    .skip{position:absolute;left:12px;top:-40px;z-index:90;background:var(--chart);color:#111;padding:8px 12px}
+    .skip:focus{top:12px}
+    html[data-lang="en"] .t-bn,html[data-lang="bn"] .t-en{display:none!important}
+    #space{position:fixed;inset:0;width:100%;height:100%;z-index:0;display:block}
+    #boot{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:#030308;letter-spacing:.34em;transition:opacity .7s}
+    #boot b{display:block;font-size:12px}#boot i{font-style:normal;color:var(--dim);font-size:10px}
+    #boot.out{opacity:0;pointer-events:none}
+    .bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--chart);z-index:70;pointer-events:none}
+    .hud{position:fixed;inset:0;z-index:40;pointer-events:none}
+    .hud .hit{pointer-events:auto}
+    .top{display:flex;justify-content:space-between;padding:20px 24px}
+    .brand b{display:block;font-size:11px;letter-spacing:.3em}.brand span{font-size:11px;color:var(--dim)}
+    .meta{display:flex;gap:16px;align-items:center}
+    .coord{font-size:11px;letter-spacing:.12em;text-align:right;font-variant-numeric:tabular-nums}
+    .coord i{display:block;font-style:normal;color:var(--dim);font-size:10px}
+    .lang{display:flex;gap:8px;font-size:11px;letter-spacing:.14em}
+    .lang button{color:var(--dim)}
+    html[data-lang="en"] .lang [data-set-lang="en"],html[data-lang="bn"] .lang [data-set-lang="bn"]{color:var(--chart)}
+    .x{width:34px;height:34px;position:relative}
+    .x i{position:absolute;left:16px;top:8px;width:1px;height:18px;background:var(--bone)}
+    .x i:after{content:"";position:absolute;left:-9px;top:9px;width:18px;height:1px;background:var(--bone)}
+    body.open .x i{transform:rotate(45deg)}body.open .x i:after{transform:rotate(45deg)}
+    .side{position:absolute;left:18px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+    .side a{font-size:10px;letter-spacing:.2em;color:var(--dim)}.side a.on,.side a:hover{color:var(--chart)}
+    .hint{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:var(--dim)}
+    .plus{position:fixed;z-index:60;width:16px;height:16px;pointer-events:none;mix-blend-mode:difference;display:none}
+    .plus:before,.plus:after{content:"";position:absolute;background:#fff}
+    .plus:before{left:7px;top:0;width:1px;height:16px}.plus:after{left:0;top:7px;width:16px;height:1px}
+    @media (hover:hover) and (pointer:fine){.plus{display:block}}
+    .drawer{display:none;position:fixed;inset:0;z-index:50;background:rgba(3,3,8,.96);padding:96px 36px}
+    body.open .drawer{display:block}body.open{overflow:hidden}
+    .drawer a{display:block;font-family:var(--serif);font-size:clamp(2rem,7vw,4rem);line-height:1.05;padding:8px 0;border-bottom:1px solid rgba(242,238,230,.12)}
+    .ov{position:fixed;inset:0;z-index:20;display:grid;align-items:center;padding:12vh 16vw;pointer-events:none;opacity:0;transform:translateY(16px);transition:opacity .4s ease,transform .4s ease}
+    .ov.on{opacity:1;transform:none}
+    .ov.on a,.ov.on button,.ov.on input,.ov.on label{pointer-events:auto}
+    .k{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--chart)}
+    h1,h2{font-family:var(--serif);font-weight:400;margin:0;letter-spacing:-.03em}
+    h1{font-size:clamp(2.9rem,9vw,7.2rem);line-height:.88;max-width:12ch;margin:16px 0 18px}
+    h1 em{font-style:italic;color:var(--chart)}
+    h2{font-size:clamp(2rem,5.4vw,4.2rem);line-height:.94;margin:8px 0 14px}
+    .lede{max-width:36ch;color:var(--dim)}
+    .acts{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .btn{display:inline-flex;padding:12px 16px;border:1px solid var(--bone);letter-spacing:.14em;text-transform:uppercase;font-size:11px}
+    .btn.fill{background:var(--chart);color:#111;border-color:var(--chart)}
+    .btn:hover{background:var(--bone);color:#111}
+    .list{margin-top:24px;max-width:820px}
+    .list a{display:grid;grid-template-columns:48px 1fr 1.3fr;gap:14px;padding:14px 0;border-top:1px solid rgba(242,238,230,.14)}
+    .list a:last-child{border-bottom:1px solid rgba(242,238,230,.14)}
+    .list em{font-style:normal;letter-spacing:.18em;font-size:11px;color:var(--dim)}
+    .list b{font-family:var(--serif);font-size:clamp(1.35rem,2.4vw,2rem);font-weight:400}
+    .list span{color:var(--dim);font-size:14px}
+    .list a:hover b{color:var(--chart)}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;max-width:740px}
+    .chips a{border:1px solid rgba(242,238,230,.2);padding:8px 10px;font-size:12px}
+    .chips a:hover{border-color:var(--chart);color:var(--chart)}
+    .console{margin-top:22px;max-width:720px}
+    .console input{width:100%;border-bottom:1px solid rgba(242,238,230,.35);font-family:var(--serif);font-size:clamp(1.5rem,4vw,2.7rem);padding:8px 0 12px;outline:0}
+    .lab{position:fixed;z-index:16;transform:translate(-50%,-140%);font-size:9px;letter-spacing:.16em;color:var(--bone);text-shadow:0 4px 16px #000;pointer-events:auto;white-space:nowrap;opacity:0}
+    .lab.show{opacity:.92}.lab:hover{color:var(--chart)}
+    html.flat body{height:auto}
+    html.flat .ov{position:relative;opacity:1;transform:none;pointer-events:auto;min-height:100vh;inset:auto}
+    html.flat #space,html.flat #boot,html.flat .hint,html.flat .lab{display:none}
+    @media (max-width:860px){.side,.hint{display:none}.ov{padding:14vh 22px}.list a{grid-template-columns:36px 1fr}.list span{grid-column:2}}
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#hero">Skip to content</a>
+  <div id="boot"><div><b>DIGITAL SEBA</b><i class="t-en">CALIBRATING UNIVERSE</i><i class="t-bn">ইউনিভার্স প্রস্তুত</i></div></div>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <div class="bar" id="bar"></div>
+  <div class="plus" id="plus" hidden></div>
+  <div id="labs"></div>
+
+  <div class="hud">
+    <div class="top">
+      <a class="brand hit" href="/" aria-label="Digital Seba home"><b>DIGITAL SEBA</b><span>ডিজিটাল সেবা</span></a>
+      <div class="meta hit">
+        <div class="coord"><i id="dateLine"></i><span id="timeLine"></span></div>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-set-lang="en">EN</button>
+          <button type="button" data-set-lang="bn">বাংলা</button>
+        </div>
+        <button class="x" id="menuBtn" aria-expanded="false" aria-controls="drawer" aria-label="Open menu"><i></i></button>
+      </div>
+    </div>
+    <nav class="side hit" aria-label="Waypoints">
+      <a data-to="0">01</a><a data-to="0.17">02</a><a data-to="0.34">03</a>
+      <a data-to="0.52">04</a><a data-to="0.7">05</a><a data-to="0.88">06</a>
+    </nav>
+    <div class="hint"><span class="t-en">Scroll to steer</span><span class="t-bn">স্ক্রল করে চালান</span></div>
+  </div>
+
+  <div class="drawer" id="drawer" hidden>
+    <nav aria-label="Menu">
+      <a href="/services/"><span class="t-en">Services</span><span class="t-bn">সেবা</span></a>
+      <a href="/tools/"><span class="t-en">Tools</span><span class="t-bn">টুলস</span></a>
+      <a href="/resources/"><span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></a>
+      <a href="/live-tv/">Live TV</a>
+      <a href="/focus-mode/">Focus Mode</a>
+      <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+    </nav>
+  </div>
+
+  <section class="ov on" id="hero" data-a="0" data-b="0.15">
+    <div>
+      <div class="k"><span class="t-en">Digital resource universe · 2026</span><span class="t-bn">ডিজিটাল রিসোর্স ইউনিভার্স · ২০২৬</span></div>
+      <h1><span class="t-en">Steer through the <em>archive</em>.</span><span class="t-bn">আর্কাইভের <em>ভেতর দিয়ে</em> চালান।</span></h1>
+      <p class="lede"><span class="t-en">Digital Seba is a place to discover software, documents, tools, live television and quiet focus. One universe — not a shop.</span><span class="t-bn">ডিজিটাল সেবা — সফটওয়্যার, ডকুমেন্ট, টুলস, লাইভ টিভি ও ফোকাস এক ইউনিভার্সে।</span></p>
+      <div class="acts">
+        <button class="btn fill" type="button" data-to="0.17"><span class="t-en">Begin descent</span><span class="t-bn">নামা শুরু</span></button>
+        <button class="btn" type="button" id="heroLang"><span class="t-en">বাংলায় দেখুন</span><span class="t-bn">View in English</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section class="ov" data-a="0.15" data-b="0.32">
+    <div>
+      <div class="k">02 — <span class="t-en">Five rooms</span><span class="t-bn">পাঁচটি কক্ষ</span></div>
+      <h2><span class="t-en">Same coordinate.<br>Different work.</span><span class="t-bn">এক স্থানাঙ্ক।<br>আলাদা কাজ।</span></h2>
+      <nav class="list">
+        <a href="/services/"><em>01</em><b><span class="t-en">Services</span><span class="t-bn">সেবা</span></b><span><span class="t-en">Voteshondhan and digital utilities. Not a government office.</span><span class="t-bn">ভোট সন্ধান। সরকারি অফিস নয়।</span></span></a>
+        <a href="/tools/"><em>02</em><b><span class="t-en">Tools</span><span class="t-bn">টুলস</span></b><span><span class="t-en">Age calculator, scanner, CV, QR, text.</span><span class="t-bn">বয়স ক্যালকুলেটর, স্ক্যানার, সিভি।</span></span></a>
+        <a href="/resources/"><em>03</em><b><span class="t-en">Library</span><span class="t-bn">লাইব্রেরি</span></b><span><span class="t-en">Software, PDF, fonts, ISO, documents.</span><span class="t-bn">সফটওয়্যার, PDF, ফন্ট, ISO।</span></span></a>
+        <a href="/live-tv/"><em>04</em><b>Live TV</b><span><span class="t-en">Channels in one player.</span><span class="t-bn">চ্যানেল এক প্লেয়ারে।</span></span></a>
+        <a href="/focus-mode/"><em>05</em><b>Focus Mode</b><span><span class="t-en">Stay focused. Get more done.</span><span class="t-bn">মনোযোগ ধরে রাখুন।</span></span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="ov" data-a="0.32" data-b="0.5">
+    <div>
+      <div class="k">03 — <span class="t-en">Constellation</span><span class="t-bn">নক্ষত্রমণ্ডল</span></div>
+      <h2><span class="t-en">Resources as planets.</span><span class="t-bn">রিসোর্স এখন গ্রহ।</span></h2>
+      <p class="lede"><span class="t-en">Hover a glass node. Click to enter the library.</span><span class="t-bn">কাচের নোডে হোভার করুন। ক্লিক করে লাইব্রেরি খুলুন।</span></p>
+      <div class="chips">
+        <a href="/resources/">Software</a><a href="/resources/">Apps</a><a href="/resources/">Drivers</a>
+        <a href="/resources/">Windows</a><a href="/resources/">Android</a><a href="/resources/">Books</a>
+        <a href="/resources/">PDF</a><a href="/resources/">Images</a><a href="/resources/">Videos</a>
+        <a href="/resources/">ISO</a><a href="/resources/">Fonts</a><a href="/resources/">Documents</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="ov" data-a="0.5" data-b="0.68">
+    <div>
+      <div class="k">04 — <span class="t-en">Selected objects</span><span class="t-bn">নির্বাচিত বস্তু</span></div>
+      <h2><span class="t-en">Four chambers in the dark.</span><span class="t-bn">অন্ধকারে চারটি কক্ষ।</span></h2>
+      <nav class="list">
+        <a href="/services/Voteshondhan/"><em>01</em><b>Voteshondhan</b><span><span class="t-en">PDF voter lookup. Digital utility — not a government office.</span><span class="t-bn">PDF ভোটার খোঁজ। সরকারি অফিস নয়।</span></span></a>
+        <a href="/live-tv/"><em>02</em><b>Live TV</b><span><span class="t-en">Entertainment without the clutter.</span><span class="t-bn">লাইভ টিভি এক জায়গায়।</span></span></a>
+        <a href="/focus-mode/"><em>03</em><b>Focus Mode</b><span><span class="t-en">Less distraction. More focus.</span><span class="t-bn">কম বিভ্রান্তি। বেশি মনোযোগ।</span></span></a>
+        <a href="/tools/"><em>04</em><b><span class="t-en">Tools</span><span class="t-bn">টুলস</span></b><span><span class="t-en">Age, scanner, CV, Link Auditor, QR.</span><span class="t-bn">বয়স, স্ক্যানার, সিভি, লিংক অডিটর।</span></span></a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="ov" data-a="0.68" data-b="0.84">
+    <div>
+      <div class="k">05 — <span class="t-en">Locate</span><span class="t-bn">খুঁজুন</span></div>
+      <h2><span class="t-en">Name the object.</span><span class="t-bn">বস্তুর নাম বলুন।</span></h2>
+      <p class="lede"><span class="t-en">Find the digital resource you need.</span><span class="t-bn">প্রয়োজনীয় ডিজিটাল রিসোর্স খুঁজুন।</span></p>
+      <form class="console" action="/resources/" method="get" role="search">
+        <label class="k" for="q" style="display:block;margin-bottom:8px"><span class="t-en">Find a digital resource</span><span class="t-bn">ডিজিটাল রিসোর্স খুঁজুন</span></label>
+        <input id="q" name="q" type="search" autocomplete="off" placeholder="Software, PDF, fonts, Windows…">
+      </form>
+    </div>
+  </section>
+
+  <section class="ov" data-a="0.84" data-b="1.05">
+    <div>
+      <div class="k">06 — Digital Seba</div>
+      <h2><span class="t-en">Step into the library.</span><span class="t-bn">লাইব্রেরিতে পা রাখুন।</span></h2>
+      <p class="lede"><span class="t-en">One destination for everyday digital work. English and বাংলা. No invented counts.</span><span class="t-bn">প্রতিদিনের ডিজিটাল কাজের ঠিকানা। বাংলা + English।</span></p>
+      <div class="acts">
+        <a class="btn fill" href="/resources/"><span class="t-en">Open the library</span><span class="t-bn">লাইব্রেরি খুলুন</span></a>
+        <a class="btn" href="/services/"><span class="t-en">Browse services</span><span class="t-bn">সেবাসমূহ দেখুন</span></a>
+        <a class="btn" href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function(){
+      var root=document.documentElement;
+      var reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      var fine=window.matchMedia("(pointer: fine)").matches;
+      var narrow=window.matchMedia("(max-width: 860px)").matches;
+      if(reduced) root.classList.add("flat");
+      function lang(){return root.getAttribute("data-lang")==="bn"?"bn":"en"}
+      function setLang(n){root.setAttribute("data-lang",n);root.lang=n==="bn"?"bn":"en";try{localStorage.setItem("ds-lang",n)}catch(e){}tick()}
+      document.querySelectorAll("[data-set-lang]").forEach(function(b){b.addEventListener("click",function(){setLang(b.getAttribute("data-set-lang"))})});
+      var hl=document.getElementById("heroLang");if(hl) hl.addEventListener("click",function(){setLang(lang()==="bn"?"en":"bn")});
+      var bnM=["জানুয়ারি","ফেব্রুয়ারি","মার্চ","এপ্রিল","মে","জুন","জুলাই","আগস্ট","সেপ্টেম্বর","অক্টোবর","নভেম্বর","ডিসেম্বর"];
+      var enM=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+      var bnN="০১২৩৪৫৬৭৮৯";
+      function toBn(n){return String(n).replace(/\d/g,function(d){return bnN[d]})}
+      function pad(n){return n<10?"0"+n:""+n}
+      function tick(){
+        var now=new Date(),d=document.getElementById("dateLine"),t=document.getElementById("timeLine");if(!d||!t)return;
+        if(lang()==="bn"){d.textContent=toBn(now.getDate())+" "+bnM[now.getMonth()];var h=now.getHours();var p=h<5?"রাত":h<12?"সকাল":h<16?"দুপুর":h<19?"বিকাল":"রাত";t.textContent=p+" "+toBn(h%12||12)+":"+toBn(pad(now.getMinutes()))}
+        else{d.textContent=pad(now.getDate())+" "+enM[now.getMonth()]+" "+now.getFullYear();t.textContent=pad(now.getHours())+":"+pad(now.getMinutes())+" LOC"}
+      }
+      tick();setInterval(tick,1000);
+      var btn=document.getElementById("menuBtn"),drawer=document.getElementById("drawer");
+      function close(){document.body.classList.remove("open");btn.setAttribute("aria-expanded","false");drawer.hidden=true}
+      function open(){document.body.classList.add("open");btn.setAttribute("aria-expanded","true");drawer.hidden=false}
+      btn.addEventListener("click",function(e){e.stopPropagation();document.body.classList.contains("open")?close():open()});
+      drawer.addEventListener("click",function(e){if(e.target.closest("a"))close()});
+      document.addEventListener("keydown",function(e){if(e.key==="Escape")close()});
+      function maxS(){return Math.max(1,document.documentElement.scrollHeight-innerHeight)}
+      function sc(){return scrollY/maxS()}
+      function go(t){scrollTo({top:t*maxS(),behavior:reduced?"auto":"smooth"})}
+      document.querySelectorAll("[data-to]").forEach(function(el){el.addEventListener("click",function(e){e.preventDefault();go(parseFloat(el.getAttribute("data-to")))})});
+      var bar=document.getElementById("bar"),ovs=[].slice.call(document.querySelectorAll(".ov")),sides=[].slice.call(document.querySelectorAll(".side a"));
+      function sync(){
+        var s=sc();bar.style.width=(s*100)+"%";window.__ds=s;
+        ovs.forEach(function(ov){var a=+ov.getAttribute("data-a"),b=+ov.getAttribute("data-b");ov.classList.toggle("on",s>=a&&s<b)});
+        var marks=[0,.17,.34,.52,.7,.88],idx=0;marks.forEach(function(m,i){if(s>=m-0.02)idx=i});
+        sides.forEach(function(a,i){a.classList.toggle("on",i===idx)});
+      }
+      addEventListener("scroll",sync,{passive:true});sync();
+      var plus=document.getElementById("plus");
+      if(plus&&fine&&!narrow){plus.hidden=false;addEventListener("pointermove",function(e){plus.style.transform="translate("+(e.clientX-8)+"px,"+(e.clientY-8)+"px)"},{passive:true})}
+      if(reduced){var b=document.getElementById("boot");if(b)b.classList.add("out")}
+    })();
+  </script>
+  <script type="module">
+    const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const narrow = matchMedia("(max-width: 860px)").matches;
+    const saveData = navigator.connection && navigator.connection.saveData;
+    const lite = reduced || saveData || (navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4) || narrow;
+    if (reduced) throw 0;
+
+    import * as THREE from "three";
+    import { EffectComposer } from "three/addons/postprocessing/EffectComposer.js";
+    import { RenderPass } from "three/addons/postprocessing/RenderPass.js";
+    import { UnrealBloomPass } from "three/addons/postprocessing/UnrealBloomPass.js";
+    import { ShaderPass } from "three/addons/postprocessing/ShaderPass.js";
+
+    const canvas = document.getElementById("space");
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: "high-performance" });
+    renderer.setClearColor(0x030308, 1);
+    renderer.setPixelRatio(Math.min(devicePixelRatio || 1, lite ? 1 : 1.5));
+    renderer.setSize(innerWidth, innerHeight, false);
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.08;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x030308, 0.038);
+    const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 160);
+    camera.position.set(0, 1.6, 18);
+
+    scene.add(new THREE.HemisphereLight(0x8ec4ff, 0x120c04, 0.45));
+    const L1 = new THREE.SpotLight(0xe8ff4a, 40, 50, Math.PI / 7, 0.6, 1);
+    L1.position.set(0, 12, 8);
+    L1.target.position.set(0, 0, 0);
+    scene.add(L1, L1.target);
+    const L2 = new THREE.PointLight(0x8ec4ff, 16, 40);
+    L2.position.set(-6, 2, -12);
+    scene.add(L2);
+    const L3 = new THREE.PointLight(0xe8ff4a, 12, 28);
+    L3.position.set(4, 1, -40);
+    scene.add(L3);
+
+    const nebula = {
+      uniforms: {
+        uTime: { value: 0 },
+        uMouse: { value: new THREE.Vector2(0, 0) },
+        uA: { value: new THREE.Color(0x0a1020) },
+        uB: { value: new THREE.Color(0x1a2208) }
+      },
+      vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=vec4(position,1.0); }`,
+      fragmentShader: `
+        varying vec2 vUv; uniform float uTime; uniform vec2 uMouse; uniform vec3 uA; uniform vec3 uB;
+        float h(vec2 p){ return fract(sin(dot(p,vec2(127.1,311.7))) * 43758.5453); }
+        float n(vec2 p){ vec2 i=floor(p),f=fract(p); float a=h(i),b=h(i+vec2(1,0)),c=h(i+vec2(0,1)),d=h(i+vec2(1,1)); vec2 u=f*f*(3.-2.*f); return mix(a,b,u.x)+(c-a)*u.y*(1.-u.x)+(d-b)*u.x*u.y; }
+        float fbm(vec2 p){ float v=0.,a=.5; for(int i=0;i<5;i++){ v+=a*n(p); p*=2.02; a*=.5; } return v; }
+        void main(){
+          vec2 uv = vUv*2.-1.; uv.x *= 1.6;
+          uv += uMouse * .12;
+          float t = uTime * .04;
+          float f = fbm(uv*1.4 + t);
+          float g = fbm(uv*2.2 - t);
+          vec3 col = mix(uA, uB, f);
+          col += vec3(0.55,0.85,0.12) * pow(g, 6.0) * .35;
+          col += vec3(0.25,0.45,1.0) * pow(f, 8.0) * .25;
+          float vig = smoothstep(1.6, .2, length(uv));
+          gl_FragColor = vec4(col*vig, 1.0);
+        }`
+    };
+    const bg = new THREE.Mesh(new THREE.PlaneGeometry(2, 2), new THREE.ShaderMaterial({ ...nebula, depthWrite: false }));
+    bg.frustumCulled = false;
+    bg.renderOrder = -10;
+    scene.add(bg);
+
+    const pCount = lite ? 220 : 700;
+    const pGeo = new THREE.SphereGeometry(0.025, 6, 6);
+    const pMat = new THREE.MeshBasicMaterial({ color: 0xf2eee6, transparent: true, opacity: 0.55 });
+    const dust = new THREE.InstancedMesh(pGeo, pMat, pCount);
+    const dummy = new THREE.Object3D();
+    const pSeed = [];
+    for (let i = 0; i < pCount; i++) {
+      pSeed.push({
+        x: (Math.random() - 0.5) * 40,
+        y: (Math.random() - 0.5) * 18,
+        z: -Math.random() * 80,
+        s: 0.4 + Math.random()
+      });
+      dummy.position.set(pSeed[i].x, pSeed[i].y, pSeed[i].z);
+      dummy.scale.setScalar(pSeed[i].s);
+      dummy.updateMatrix();
+      dust.setMatrixAt(i, dummy.matrix);
+    }
+    scene.add(dust);
+
+    const gold = new THREE.MeshStandardMaterial({ color: 0xe8ff4a, emissive: 0x6c7a12, emissiveIntensity: 1.4, metalness: 0.35, roughness: 0.22 });
+    const ice = new THREE.MeshStandardMaterial({ color: 0x8ec4ff, emissive: 0x17345c, emissiveIntensity: 1.0, metalness: 0.5, roughness: 0.28 });
+    const glass = new THREE.MeshPhysicalMaterial({
+      color: 0x101218, metalness: 0.05, roughness: 0.18, transmission: lite ? 0.0 : 0.72,
+      thickness: 1.1, ior: 1.4, transparent: true, opacity: 0.9, envMapIntensity: 1.2
+    });
+
+    const nexus = new THREE.Group();
+    const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(0.85, 0.22, lite ? 70 : 140, 14), glass);
+    const wire = new THREE.Mesh(new THREE.IcosahedronGeometry(1.35, 1), new THREE.MeshBasicMaterial({ color: 0xe8ff4a, wireframe: true, transparent: true, opacity: 0.45 }));
+    const halo = new THREE.Mesh(new THREE.TorusGeometry(2.55, 0.03, 10, lite ? 64 : 140), gold);
+    halo.rotation.x = Math.PI / 2.15;
+    nexus.add(knot, wire, halo);
+    scene.add(nexus);
+
+    const names = ["SOFTWARE","APPS","DRIVERS","WINDOWS","ANDROID","BOOKS","PDF","IMAGES","VIDEOS","ISO","FONTS","DOCS"];
+    const cluster = new THREE.Group();
+    cluster.position.z = -16;
+    const nodes = [];
+    const n = lite ? 8 : 12;
+    for (let j = 0; j < n; j++) {
+      const m = new THREE.Mesh(new THREE.IcosahedronGeometry(0.42, 0), glass);
+      const glow = new THREE.Mesh(new THREE.IcosahedronGeometry(0.22, 0), j % 2 ? gold : ice);
+      m.add(glow);
+      const a = (j / n) * Math.PI * 2;
+      m.position.set(Math.cos(a) * 4.6, Math.sin(a * 2) * 0.55, Math.sin(a) * 4.6);
+      m.userData = { name: names[j], href: "/resources/", scale: 1 };
+      cluster.add(m);
+      nodes.push(m);
+    }
+    scene.add(cluster);
+
+    const gallery = new THREE.Group();
+    gallery.position.z = -34;
+    for (let k = 0; k < 4; k++) {
+      const pane = new THREE.Mesh(new THREE.BoxGeometry(2.6, 3.4, 0.1), glass);
+      pane.position.set((k - 1.5) * 3.3, 0.35, Math.sin(k * 1.1) * 1.4);
+      pane.rotation.y = (k - 1.5) * -0.16;
+      const edge = new THREE.Mesh(new THREE.BoxGeometry(2.62, 3.42, 0.02), k % 2 ? gold : ice);
+      pane.add(edge);
+      gallery.add(pane);
+    }
+    scene.add(gallery);
+
+    const core = new THREE.Mesh(new THREE.OctahedronGeometry(1.15, 0), gold);
+    core.position.set(0, 0.3, -50);
+    const coreHalo = new THREE.Mesh(new THREE.TorusGeometry(2.2, 0.035, 8, 80), ice);
+    coreHalo.position.copy(core.position);
+    coreHalo.rotation.x = Math.PI / 2;
+    scene.add(core, coreHalo);
+
+    const gate = new THREE.Mesh(new THREE.TorusGeometry(3.6, 0.045, 8, 110), gold);
+    gate.position.set(0, 0.7, -66);
+    gate.rotation.x = Math.PI / 2.25;
+    scene.add(gate);
+
+    const curve = new THREE.CatmullRomCurve3([
+      new THREE.Vector3(0, 1.7, 18),
+      new THREE.Vector3(1.6, 0.9, 7),
+      new THREE.Vector3(0.2, 1.4, -6),
+      new THREE.Vector3(-1.4, 1.0, -16),
+      new THREE.Vector3(0.6, 0.8, -28),
+      new THREE.Vector3(-0.4, 0.5, -42),
+      new THREE.Vector3(0, 1.8, -56),
+      new THREE.Vector3(0, 2.4, -68)
+    ], false, "catmullrom", 0.35);
+    const looks = [
+      new THREE.Vector3(0, 0.2, 0),
+      new THREE.Vector3(0, 0.1, -4),
+      new THREE.Vector3(0, 0.2, -16),
+      new THREE.Vector3(0, 0.3, -34),
+      new THREE.Vector3(0, 0.3, -50),
+      new THREE.Vector3(0, 0.5, -66)
+    ];
+
+    const labsBox = document.getElementById("labs");
+    const labs = nodes.map((m) => {
+      const el = document.createElement("a");
+      el.className = "lab";
+      el.textContent = m.userData.name;
+      el.href = "/resources/";
+      labsBox.appendChild(el);
+      return el;
+    });
+
+    const composer = new EffectComposer(renderer);
+    composer.addPass(new RenderPass(scene, camera));
+    if (!lite) {
+      composer.addPass(new UnrealBloomPass(new THREE.Vector2(innerWidth, innerHeight), 0.62, 0.75, 0.82));
+      composer.addPass(new ShaderPass({
+        uniforms: { tDiffuse: { value: null }, uStr: { value: 0.0018 } },
+        vertexShader: `varying vec2 vUv; void main(){ vUv=uv; gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.0); }`,
+        fragmentShader: `
+          uniform sampler2D tDiffuse; uniform float uStr; varying vec2 vUv;
+          void main(){
+            vec2 c=vUv-0.5;
+            float v=smoothstep(0.85,0.15,length(c));
+            vec4 col=texture2D(tDiffuse,vUv);
+            col.r=texture2D(tDiffuse,vUv+c*uStr).r;
+            col.b=texture2D(tDiffuse,vUv-c*uStr).b;
+            gl_FragColor=vec4(col.rgb*v,1.0);
+          }`
+      }));
+    }
+
+    const ray = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let mx = 0, my = 0, run = true, hovered = null;
+    addEventListener("pointermove", (e) => {
+      mx = (e.clientX / innerWidth) * 2 - 1;
+      my = (e.clientY / innerHeight) * 2 - 1;
+      mouse.set(mx, -my);
+      nebula.uniforms.uMouse.value.set(mx, my);
+    }, { passive: true });
+    document.addEventListener("visibilitychange", () => { run = !document.hidden; if (run) loop(); });
+
+    const look = new THREE.Vector3();
+    const v3 = new THREE.Vector3();
+    const boot = document.getElementById("boot");
+    const clock = new THREE.Clock();
+
+    function loop() {
+      if (!run) return;
+      requestAnimationFrame(loop);
+      const t = clock.getElapsedTime();
+      const s = window.__ds || 0;
+      nebula.uniforms.uTime.value = t;
+
+      const p = curve.getPointAt(Math.min(0.999, Math.max(0, s)));
+      p.x += mx * 0.55;
+      p.y += -my * 0.28;
+      camera.position.lerp(p, 0.075);
+      const li = Math.min(looks.length - 1.001, s * (looks.length - 1));
+      const i = Math.floor(li), f = li - i;
+      look.lerp(looks[i].clone().lerp(looks[i + 1], f * f * (3 - 2 * f)), 0.08);
+      camera.lookAt(look);
+
+      knot.rotation.y += 0.004;
+      knot.rotation.x += 0.002;
+      wire.rotation.y -= 0.003;
+      halo.rotation.z += 0.002;
+      cluster.rotation.y += 0.0014;
+      core.rotation.y += 0.012;
+      coreHalo.rotation.z += 0.005;
+      gallery.children.forEach((pane, idx) => {
+        pane.position.y = 0.35 + Math.sin(t * 0.7 + idx) * 0.12;
+      });
+
+      for (let i = 0; i < pCount; i++) {
+        const d = pSeed[i];
+        dummy.position.set(d.x + Math.sin(t * d.s + i) * 0.15 + mx * 0.4, d.y + Math.cos(t * 0.4 + i) * 0.1 - my * 0.2, d.z);
+        dummy.scale.setScalar(d.s);
+        dummy.updateMatrix();
+        dust.setMatrixAt(i, dummy.matrix);
+      }
+      dust.instanceMatrix.needsUpdate = true;
+
+      ray.setFromCamera(mouse, camera);
+      const hits = ray.intersectObjects(nodes, false);
+      const next = hits[0] && hits[0].object;
+      nodes.forEach((m) => { m.userData.scale += ((m === next ? 1.28 : 1) - m.userData.scale) * 0.12; m.scale.setScalar(m.userData.scale); });
+      hovered = next;
+
+      nodes.forEach((m, i) => {
+        v3.copy(m.getWorldPosition(v3)).project(camera);
+        labs[i].style.left = (v3.x * 0.5 + 0.5) * innerWidth + "px";
+        labs[i].style.top = (-v3.y * 0.5 + 0.5) * innerHeight + "px";
+        labs[i].classList.toggle("show", v3.z < 1 && s > 0.28 && s < 0.52);
+      });
+
+      composer.render();
+      if (boot && !boot.classList.contains("out")) boot.classList.add("out");
+    }
+    loop();
+
+    canvas.addEventListener("click", () => { if (hovered) location.href = hovered.userData.href; });
+    addEventListener("resize", () => {
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(innerWidth, innerHeight, false);
+      composer.setSize(innerWidth, innerHeight);
+    });
+  </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Digital Seba - Your Premium Digital Ecosystem. Access powerful services, tools, resources, and live TV in one unified platform.">
+    <meta name="keywords" content="Digital Seba, digital services, productivity tools, live TV, focus mode, resources">
+    <title>Digital Seba - Premium Digital Ecosystem</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Noto Sans Bengali', sans-serif;
+            overflow-x: hidden;
+            background: #0a0a0f;
+            color: #fff;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6366f1, #8b5cf6);
+            border-radius: 5px;
+        }
+
+        /* 3D Animation Keyframes */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateX(0deg); }
+            50% { transform: translateY(-20px) rotateX(5deg); }
+        }
+
+        @keyframes rotate3d {
+            0% { transform: rotateY(0deg) rotateX(0deg); }
+            100% { transform: rotateY(360deg) rotateX(360deg); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Gradient Background */
+        .gradient-bg {
+            background: linear-gradient(-45deg, #0a0a0f, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        }
+
+        .card-3d::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .card-3d:hover::before {
+            opacity: 1;
+        }
+
+        /* Floating Animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.5),
+                        0 0 40px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* 3D Rotating Cube */
+        .cube-container {
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate3d 20s linear infinite;
+        }
+
+        .cube-face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .cube-face.front  { transform: translateZ(100px); }
+        .cube-face.back   { transform: rotateY(180deg) translateZ(100px); }
+        .cube-face.right  { transform: rotateY(90deg) translateZ(100px); }
+        .cube-face.left   { transform: rotateY(-90deg) translateZ(100px); }
+        .cube-face.top    { transform: rotateX(90deg) translateZ(100px); }
+        .cube-face.bottom { transform: rotateX(-90deg) translateZ(100px); }
+
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        nav.scrolled {
+            background: rgba(10, 10, 15, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero-bg {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            animation: float 10s ease-in-out infinite;
+        }
+
+        /* Stats Counter */
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Feature Icons */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-icon:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+
+        /* Ecosystem Grid */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        /* Responsive Typography */
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            h1 {
+                font-size: 2.5rem !important;
+            }
+
+            h2 {
+                font-size: 2rem !important;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body class="gradient-bg">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-xl">
+                        DS
+                    </div>
+                    <span class="text-xl font-bold">Digital Seba</span>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="hover:text-indigo-400 transition">Services</a>
+                    <a href="#resources" class="hover:text-indigo-400 transition">Resources</a>
+                    <a href="#tools" class="hover:text-indigo-400 transition">Tools</a>
+                    <a href="#livetv" class="hover:text-indigo-400 transition">Live TV</a>
+                    <a href="#focus" class="hover:text-indigo-400 transition">Focus Mode</a>
+                    <a href="#about" class="hover:text-indigo-400 transition">About</a>
+                    <button class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-2 rounded-lg hover:shadow-lg transition">
+                        Get Started
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 w-64 h-full bg-gray-900 z-50 p-6 md:hidden">
+        <button id="close-menu" class="absolute top-4 right-4 text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <div class="flex flex-col space-y-6 mt-12">
+            <a href="#services" class="text-lg hover:text-indigo-400 transition">Services</a>
+            <a href="#resources" class="text-lg hover:text-indigo-400 transition">Resources</a>
+            <a href="#tools" class="text-lg hover:text-indigo-400 transition">Tools</a>
+            <a href="#livetv" class="text-lg hover:text-indigo-400 transition">Live TV</a>
+            <a href="#focus" class="text-lg hover:text-indigo-400 transition">Focus Mode</a>
+            <a href="#about" class="text-lg hover:text-indigo-400 transition">About</a>
+            <button class="bg-gradient-to-r from-indigo-500 to-purple-600 px-6 py-3 rounded-lg w-full mt-4">
+                Get Started
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center justify-center pt-20 px-6">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+                        Your Premium <br>
+                        <span class="text-gradient">Digital Ecosystem</span>
+                    </h1>
+                    <p class="text-xl text-gray-300 mb-8 leading-relaxed">
+                        Access powerful services, productivity tools, live streaming, and resources - all in one unified platform designed for excellence.
+                    </p>
+                    <p class="text-lg text-gray-400 mb-8">
+                        à¦†à¦ªà¦¨à¦¾à¦° à¦¸à¦®à§à¦ªà§‚à¦°à§à¦£ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à¦®à¦¾à¦§à¦¾à¦¨ à¦à¦•à¦Ÿà¦¿ à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="btn-primary">
+                            Explore Platform
+                        </button>
+                        <button class="glass px-8 py-4 rounded-lg hover:bg-white/10 transition">
+                            Watch Demo
+                        </button>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-6 mt-12">
+                        <div>
+                            <div class="stat-number" data-target="50">0</div>
+                            <div class="text-gray-400">Services</div>
+                        </div>
+                        <div>
+                            <div class="stat-number" data-target="1000">0</div>
+                            <div class="text-gray-400">Resources</div>
+                        </div>
+                        <div>
+                            <div class="stat-number" data-target="24">0</div>
+                            <div class="text-gray-400">Live Channels</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Cube Animation -->
+                <div class="cube-container flex justify-center reveal">
+                    <div class="cube">
+                        <div class="cube-face front">ðŸš€</div>
+                        <div class="cube-face back">ðŸ’¼</div>
+                        <div class="cube-face right">ðŸŽ¯</div>
+                        <div class="cube-face left">ðŸ“±</div>
+                        <div class="cube-face top">âš¡</div>
+                        <div class="cube-face bottom">ðŸŒŸ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Seba Ecosystem -->
+    <section id="ecosystem" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Complete <span class="text-gradient">Digital Ecosystem</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Everything you need in one powerful platform
+                </p>
+            </div>
+
+            <div class="ecosystem-grid">
+                <!-- Services Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸŽ¯
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Premium Services</h3>
+                    <p class="text-gray-400 mb-6">
+                        Professional digital services including web development, design, marketing, and consulting
+                    </p>
+                    <a href="#services" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        Explore Services â†’
+                    </a>
+                </div>
+
+                <!-- Tools Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸ› ï¸
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Productivity Tools</h3>
+                    <p class="text-gray-400 mb-6">
+                        Advanced tools for productivity, automation, and workflow optimization
+                    </p>
+                    <a href="#tools" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        View Tools â†’
+                    </a>
+                </div>
+
+                <!-- Resources Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸ“š
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Digital Resources</h3>
+                    <p class="text-gray-400 mb-6">
+                        Curated collection of templates, guides, tutorials, and learning materials
+                    </p>
+                    <a href="#resources" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        Browse Resources â†’
+                    </a>
+                </div>
+
+                <!-- Live TV Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸ“º
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Live TV Streaming</h3>
+                    <p class="text-gray-400 mb-6">
+                        Watch your favorite channels and content in HD quality anytime, anywhere
+                    </p>
+                    <a href="#livetv" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        Watch Now â†’
+                    </a>
+                </div>
+
+                <!-- Focus Mode Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸŽ§
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Focus Mode</h3>
+                    <p class="text-gray-400 mb-6">
+                        Distraction-free environment with ambient sounds for maximum productivity
+                    </p>
+                    <a href="#focus" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        Enter Focus â†’
+                    </a>
+                </div>
+
+                <!-- Community Card -->
+                <div class="card-3d glass rounded-2xl p-8 hover:shadow-2xl">
+                    <div class="feature-icon">
+                        ðŸ‘¥
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Community</h3>
+                    <p class="text-gray-400 mb-6">
+                        Join our growing community of creators, developers, and digital enthusiasts
+                    </p>
+                    <a href="#about" class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                        Join Community â†’
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 px-6 bg-gradient-to-b from-transparent to-indigo-900/10">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Professional <span class="text-gradient">Services</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Expert solutions for your digital needs
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">ðŸ’»</div>
+                    <h3 class="text-2xl font-bold mb-3">Web Development</h3>
+                    <p class="text-gray-400">Modern, responsive websites and web applications built with cutting-edge technologies</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">ðŸŽ¨</div>
+                    <h3 class="text-2xl font-bold mb-3">UI/UX Design</h3>
+                    <p class="text-gray-400">Beautiful, intuitive designs that users love and that drive conversions</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">ðŸ“±</div>
+                    <h3 class="text-2xl font-bold mb-3">Mobile Apps</h3>
+                    <p class="text-gray-400">Native and cross-platform mobile applications for iOS and Android</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">ðŸš€</div>
+                    <h3 class="text-2xl font-bold mb-3">Digital Marketing</h3>
+                    <p class="text-gray-400">Strategic campaigns that grow your brand and reach your target audience</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">âš™ï¸</div>
+                    <h3 class="text-2xl font-bold mb-3">Automation</h3>
+                    <p class="text-gray-400">Streamline workflows and boost efficiency with intelligent automation</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 text-center hover:scale-105 transition duration-300">
+                    <div class="text-6xl mb-4">ðŸ’¡</div>
+                    <h3 class="text-2xl font-bold mb-3">Consulting</h3>
+                    <p class="text-gray-400">Expert guidance to help you navigate digital transformation</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Digital <span class="text-gradient">Resources</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Everything you need to succeed
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6">
+                <div class="reveal card-3d glass rounded-xl p-6">
+                    <div class="text-4xl mb-3">ðŸ“„</div>
+                    <h4 class="text-xl font-bold mb-2">Templates</h4>
+                    <p class="text-gray-400 text-sm">Professional templates for every project</p>
+                    <div class="mt-4 text-indigo-400 font-semibold">500+</div>
+                </div>
+
+                <div class="reveal card-3d glass rounded-xl p-6">
+                    <div class="text-4xl mb-3">ðŸ“–</div>
+                    <h4 class="text-xl font-bold mb-2">Guides</h4>
+                    <p class="text-gray-400 text-sm">Step-by-step tutorials and documentation</p>
+                    <div class="mt-4 text-indigo-400 font-semibold">200+</div>
+                </div>
+
+                <div class="reveal card-3d glass rounded-xl p-6">
+                    <div class="text-4xl mb-3">ðŸŽ“</div>
+                    <h4 class="text-xl font-bold mb-2">Courses</h4>
+                    <p class="text-gray-400 text-sm">Learn new skills with expert courses</p>
+                    <div class="mt-4 text-indigo-400 font-semibold">50+</div>
+                </div>
+
+                <div class="reveal card-3d glass rounded-xl p-6">
+                    <div class="text-4xl mb-3">ðŸŽ¥</div>
+                    <h4 class="text-xl font-bold mb-2">Videos</h4>
+                    <p class="text-gray-400 text-sm">Video tutorials and demonstrations</p>
+                    <div class="mt-4 text-indigo-400 font-semibold">250+</div>
+                </div>
+            </div>
+
+            <!-- Featured Resources -->
+            <div class="mt-16 grid md:grid-cols-2 gap-8">
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-5xl">ðŸ”¥</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Featured Collection</h3>
+                            <p class="text-gray-400 mb-4">Handpicked premium resources updated weekly</p>
+                            <button class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                                Browse Collection â†’
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="flex items-start space-x-4">
+                        <div class="text-5xl">â­</div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-2">Free Resources</h3>
+                            <p class="text-gray-400 mb-4">Access hundreds of free tools and templates</p>
+                            <button class="text-indigo-400 hover:text-indigo-300 font-semibold">
+                                Get Free Access â†’
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="py-20 px-6 bg-gradient-to-b from-transparent to-purple-900/10">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Productivity <span class="text-gradient">Tools</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Powerful tools to boost your workflow
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">âœ‚ï¸</div>
+                    <h4 class="font-bold mb-2">Image Tools</h4>
+                    <p class="text-sm text-gray-400">Crop, resize, compress</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ“</div>
+                    <h4 class="font-bold mb-2">Text Editor</h4>
+                    <p class="text-sm text-gray-400">Advanced editing features</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸŽ¨</div>
+                    <h4 class="font-bold mb-2">Color Picker</h4>
+                    <p class="text-sm text-gray-400">Find perfect colors</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ“Š</div>
+                    <h4 class="font-bold mb-2">Analytics</h4>
+                    <p class="text-sm text-gray-400">Track performance</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ”—</div>
+                    <h4 class="font-bold mb-2">URL Shortener</h4>
+                    <p class="text-sm text-gray-400">Create short links</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ“…</div>
+                    <h4 class="font-bold mb-2">Scheduler</h4>
+                    <p class="text-sm text-gray-400">Plan your time</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ’¬</div>
+                    <h4 class="font-bold mb-2">Chat Tools</h4>
+                    <p class="text-sm text-gray-400">Team communication</p>
+                </div>
+
+                <div class="reveal glass rounded-xl p-6 card-3d text-center">
+                    <div class="text-4xl mb-3">ðŸ”</div>
+                    <h4 class="font-bold mb-2">Password Gen</h4>
+                    <p class="text-sm text-gray-400">Secure passwords</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-12 reveal">
+                <button class="btn-primary">
+                    View All Tools
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live TV Section -->
+    <section id="livetv" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Live <span class="text-gradient">TV Streaming</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Watch HD channels anytime, anywhere
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="reveal">
+                    <div class="glass rounded-2xl p-8 card-3d">
+                        <div class="aspect-video bg-gradient-to-br from-indigo-600 to-purple-600 rounded-xl flex items-center justify-center mb-6 relative overflow-hidden">
+                            <div class="absolute inset-0 bg-black/20"></div>
+                            <div class="text-6xl z-10">ðŸ“º</div>
+                            <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between z-10">
+                                <div class="flex items-center space-x-2">
+                                    <div class="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                                    <span class="text-sm font-semibold">LIVE</span>
+                                </div>
+                                <div class="text-sm">HD Quality</div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <div class="glass rounded-lg p-2 text-center text-xs hover:bg-white/10 cursor-pointer">ðŸ“º CH1</div>
+                            <div class="glass rounded-lg p-2 text-center text-xs hover:bg-white/10 cursor-pointer">ðŸŽ¬ CH2</div>
+                            <div class="glass rounded-lg p-2 text-center text-xs hover:bg-white/10 cursor-pointer">âš½ CH3</div>
+                            <div class="glass rounded-lg p-2 text-center text-xs hover:bg-white/10 cursor-pointer">ðŸŽµ CH4</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="reveal">
+                    <h3 class="text-3xl font-bold mb-6">Watch Your Favorites</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start space-x-3">
+                            <div class="text-2xl">âœ…</div>
+                            <div>
+                                <h4 class="font-bold mb-1">24/7 Live Streaming</h4>
+                                <p class="text-gray-400">Never miss your favorite shows and live events</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="text-2xl">âœ…</div>
+                            <div>
+                                <h4 class="font-bold mb-1">HD Quality</h4>
+                                <p class="text-gray-400">Crystal clear picture on all devices</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="text-2xl">âœ…</div>
+                            <div>
+                                <h4 class="font-bold mb-1">Multiple Channels</h4>
+                                <p class="text-gray-400">News, sports, entertainment, and more</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start space-x-3">
+                            <div class="text-2xl">âœ…</div>
+                            <div>
+                                <h4 class="font-bold mb-1">Multi-Device Support</h4>
+                                <p class="text-gray-400">Watch on mobile, tablet, or desktop</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <button class="btn-primary mt-8">
+                        Start Watching
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Focus Mode Section -->
+    <section id="focus" class="py-20 px-6 bg-gradient-to-b from-transparent to-indigo-900/10">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="text-gradient">Focus Mode</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    Eliminate distractions, maximize productivity
+                </p>
+            </div>
+
+            <div class="max-w-4xl mx-auto">
+                <div class="reveal glass rounded-3xl p-12 card-3d">
+                    <div class="text-center mb-8">
+                        <div class="inline-block p-6 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6">
+                            <div class="text-6xl">ðŸŽ§</div>
+                        </div>
+                        <h3 class="text-3xl font-bold mb-4">Enter Your Zone</h3>
+                        <p class="text-gray-400 text-lg">Ambient sounds and distraction-free environment designed for deep work</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-6 mb-8">
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">ðŸŒ§ï¸</div>
+                            <div class="font-semibold">Rain Sounds</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">ðŸ”¥</div>
+                            <div class="font-semibold">Fireplace</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">ðŸŒŠ</div>
+                            <div class="font-semibold">Ocean Waves</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">â˜•</div>
+                            <div class="font-semibold">Coffee Shop</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">ðŸŒ²</div>
+                            <div class="font-semibold">Forest</div>
+                        </div>
+                        <div class="glass rounded-xl p-6 text-center hover:scale-105 transition">
+                            <div class="text-3xl mb-2">âš¡</div>
+                            <div class="font-semibold">Thunder</div>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn-primary">
+                            Activate Focus Mode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Digital Seba Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="container mx-auto">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    Why Choose <span class="text-gradient">Digital Seba</span>
+                </h2>
+                <p class="text-xl text-gray-400">
+                    The complete digital solution you've been waiting for
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">ðŸš€</div>
+                    <h3 class="text-2xl font-bold mb-3">All-in-One Platform</h3>
+                    <p class="text-gray-400">Everything you need in one place - services, tools, resources, and entertainment</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">âš¡</div>
+                    <h3 class="text-2xl font-bold mb-3">Lightning Fast</h3>
+                    <p class="text-gray-400">Optimized for speed and performance on all devices and connections</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">ðŸ”’</div>
+                    <h3 class="text-2xl font-bold mb-3">Secure & Private</h3>
+                    <p class="text-gray-400">Your data is protected with enterprise-grade security measures</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">ðŸŒ</div>
+                    <h3 class="text-2xl font-bold mb-3">Global Reach</h3>
+                    <p class="text-gray-400">Access from anywhere in the world, anytime you need</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">ðŸ’ª</div>
+                    <h3 class="text-2xl font-bold mb-3">Always Updated</h3>
+                    <p class="text-gray-400">Regular updates with new features, tools, and improvements</p>
+                </div>
+
+                <div class="reveal glass rounded-2xl p-8 card-3d">
+                    <div class="text-5xl mb-4">ðŸŽ¯</div>
+                    <h3 class="text-2xl font-bold mb-3">User-Focused</h3>
+                    <p class="text-gray-400">Designed with your needs in mind for the best user experience</p>
+                </div>
+            </div>
+
+            <!-- Testimonials -->
+            <div class="mt-20 reveal">
+                <h3 class="text-3xl font-bold text-center mb-12">What Our Users Say</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-bold">Sarah Johnson</div>
+                                <div class="text-sm text-gray-400">Designer</div>
+                            </div>
+                        </div>
+                        <div class="text-yellow-400 mb-2">â­â­â­â­â­</div>
+                        <p class="text-gray-400">"Digital Seba has transformed how I work. Everything I need is right here!"</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-bold">à¦°à¦¹à¦¿à¦® à¦†à¦¹à¦®à§‡à¦¦</div>
+                                <div class="text-sm text-gray-400">Developer</div>
+                            </div>
+                        </div>
+                        <div class="text-yellow-400 mb-2">â­â­â­â­â­</div>
+                        <p class="text-gray-400">"à¦…à¦¸à¦¾à¦§à¦¾à¦°à¦£ à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®! à¦¸à¦¬ à¦•à¦¿à¦›à§ à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼ à¦ªà¦¾à¦“à¦¯à¦¼à¦¾ à¦¯à¦¾à¦¯à¦¼à¥¤"</p>
+                    </div>
+
+                    <div class="glass rounded-xl p-6">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 bg-gradient-to-br from-pink-500 to-red-600 rounded-full mr-3"></div>
+                            <div>
+                                <div class="font-bold">Mike Chen</div>
+                                <div class="text-sm text-gray-400">Entrepreneur</div>
+                            </div>
+                        </div>
+                        <div class="text-yellow-400 mb-2">â­â­â­â­â­</div>
+                        <p class="text-gray-400">"The best all-in-one platform I've ever used. Highly recommend!"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="py-32 px-6 bg-gradient-to-b from-transparent to-indigo-900/20">
+        <div class="container mx-auto">
+            <div class="max-w-4xl mx-auto text-center reveal">
+                <div class="inline-block p-4 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full mb-6 float">
+                    <div class="text-6xl">ðŸŒŸ</div>
+                </div>
+                <h2 class="text-4xl md:text-6xl font-bold mb-6">
+                    Ready to Transform Your <br>
+                    <span class="text-gradient">Digital Experience?</span>
+                </h2>
+                <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                    Join thousands of users who are already enjoying the complete Digital Seba ecosystem.
+                    Start your journey today and discover what's possible.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4 mb-12">
+                    <button class="btn-primary text-lg">
+                        Get Started Free
+                    </button>
+                    <button class="glass px-10 py-4 rounded-lg hover:bg-white/10 transition text-lg">
+                        Schedule Demo
+                    </button>
+                </div>
+                <div class="flex flex-wrap justify-center items-center gap-8 text-sm text-gray-400">
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Free to start</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>No credit card required</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <svg class="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>Cancel anytime</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-white/10">
+        <div class="container mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center font-bold text-xl">
+                            DS
+                        </div>
+                        <span class="text-xl font-bold">Digital Seba</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Your complete digital ecosystem for services, tools, resources, and entertainment.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Platform</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#services" class="hover:text-indigo-400 transition">Services</a></li>
+                        <li><a href="#tools" class="hover:text-indigo-400 transition">Tools</a></li>
+                        <li><a href="#resources" class="hover:text-indigo-400 transition">Resources</a></li>
+                        <li><a href="#livetv" class="hover:text-indigo-400 transition">Live TV</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Company</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#about" class="hover:text-indigo-400 transition">About Us</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Blog</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Careers</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-indigo-400 transition">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Terms of Service</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">Cookie Policy</a></li>
+                        <li><a href="#" class="hover:text-indigo-400 transition">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <div class="text-sm text-gray-400 mb-4 md:mb-0">
+                    Â© 2024 Digital Seba. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-indigo-400 transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenu = document.getElementById('close-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+        });
+
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Reveal Animation on Scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Counter Animation
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + '+';
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(current);
+                }
+            }, 20);
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.target);
+                    animateCounter(entry.target, target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-number').forEach(counter => {
+            counterObserver.observe(counter);
+        });
+
+        // 3D Card Tilt Effect
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+
+        // Parallax Effect on Hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-bg');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            setTimeout(() => {
+                document.body.style.transition = 'opacity 0.5s';
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+    </script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

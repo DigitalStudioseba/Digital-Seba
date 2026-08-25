@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#02030a">
+  <meta name="description" content="Fly through Digital Seba’s immersive WebGL universe of software, apps, drivers, Windows, Android, books, PDFs, images, videos, ISO files, fonts, and documents.">
+  <title>Digital Seba — Resource Nexus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.185.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.185.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Digital Seba",
+    "url": "https://digiseba.shop",
+    "description": "Digital resources including software, apps, drivers, Windows, Android, books, PDF, images, videos, ISO, fonts and documents.",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://digiseba.shop/?s={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+</head>
+<body>
+  <noscript><div class="noscript">Digital Seba Resource Nexus requires JavaScript and WebGL.</div></noscript>
+
+  <div id="webgl-root" aria-hidden="true"></div>
+
+  <div class="hud-shell pointer-events-none" id="hud-shell">
+    <header class="hud-topbar">
+      <button type="button" class="hud-brand pointer-events-auto" data-flight="nexus" aria-label="Return to the Nexus">
+        <b>DS</b><span>DIGITAL SEBA<br><small>RESOURCE UNIVERSE</small></span>
+      </button>
+      <div class="hud-system">
+        <span><i class="online"></i> NEXUS ONLINE</span>
+        <span id="render-quality">RENDER / HIGH</span>
+        <span id="index-total">INDEX / 029</span>
+      </div>
+      <div class="hud-actions">
+        <button type="button" id="audio-toggle" class="hud-pill pointer-events-auto">AUDIO OFF</button>
+        <button type="button" id="nav-toggle" class="hud-pill pointer-events-auto" aria-expanded="false" aria-controls="hud-menu">NAV / 06</button>
+      </div>
+    </header>
+
+    <aside class="hud-chapters" aria-label="Flight coordinates">
+      <button type="button" data-flight="nexus" class="pointer-events-auto" aria-label="Fly to The Nexus"><i class="active"></i><span class="active">01</span></button>
+      <button type="button" data-flight="transit" class="pointer-events-auto" aria-label="Fly to Data Transit"><i></i><span>02</span></button>
+      <button type="button" data-flight="orbit" class="pointer-events-auto" aria-label="Fly to Resource Orbit"><i></i><span>03</span></button>
+      <button type="button" data-flight="stream" class="pointer-events-auto" aria-label="Fly to Featured Stream"><i></i><span>04</span></button>
+      <button type="button" data-flight="discovery" class="pointer-events-auto" aria-label="Fly to Deep Discovery"><i></i><span>05</span></button>
+      <button type="button" data-flight="gateway" class="pointer-events-auto" aria-label="Fly to Open Universe"><i></i><span>06</span></button>
+    </aside>
+
+    <div class="hud-bottom">
+      <div class="hud-coordinate" id="hud-coordinate">X 0.000 / Y 1.000 / Z 0.0</div>
+      <div class="hud-progress"><i id="hud-progress-fill"></i></div>
+      <span id="hud-chapter-label">01 / THE NEXUS</span>
+    </div>
+    <div class="hud-lock" id="hud-lock" hidden></div>
+
+    <div class="hud-menu" id="hud-menu" aria-hidden="true">
+      <div class="hud-menu-noise"></div>
+      <div class="hud-menu-inner">
+        <p>FLIGHT COORDINATES</p>
+        <nav>
+          <button type="button" data-flight="nexus" tabindex="-1"><span>01</span><strong>The Nexus</strong><i>01</i></button>
+          <button type="button" data-flight="transit" tabindex="-1"><span>02</span><strong>Data Transit</strong><i>02</i></button>
+          <button type="button" data-flight="orbit" tabindex="-1"><span>03</span><strong>Resource Orbit</strong><i>03</i></button>
+          <button type="button" data-flight="stream" tabindex="-1"><span>04</span><strong>Featured Stream</strong><i>04</i></button>
+          <button type="button" data-flight="discovery" tabindex="-1"><span>05</span><strong>Deep Discovery</strong><i>05</i></button>
+          <button type="button" data-flight="gateway" tabindex="-1"><span>06</span><strong>Open Universe</strong><i>06</i></button>
+        </nav>
+        <small>SCROLL / POINTER / TOUCH ENABLED</small>
+      </div>
+    </div>
+  </div>
+
+  <div id="spatial-ui" class="spatial-ui" aria-live="polite">
+    <section class="spatial-panel spatial-hero" id="panel-nexus">
+      <p class="hud-kicker">DIGITAL SEBA / RESOURCE NEXUS</p>
+      <h1>THE UNIVERSE<br><span>IS INDEXED.</span></h1>
+      <p class="hud-body">Software. Systems. Apps. Knowledge. Media.<br>Not displayed — suspended in a navigable data field.</p>
+      <div class="hud-scroll"><i></i> SCROLL TO INITIATE FLIGHT</div>
+    </section>
+
+    <section class="spatial-panel spatial-transit" id="panel-transit">
+      <p class="hud-kicker">02 / DATA TRANSIT</p>
+      <h2>FLY THROUGH<br><span>THE SIGNAL.</span></h2>
+      <p class="hud-body">The scroll wheel becomes your flight control. Every format streams toward one connected resource ecosystem.</p>
+    </section>
+
+    <section class="spatial-panel spatial-orbit" id="panel-orbit">
+      <p class="hud-kicker">03 / ORBITAL RESOURCE ECOSYSTEM</p>
+      <h2>CHOOSE A<br><span>DATA WORLD.</span></h2>
+      <p class="hud-body">Hover to magnetize. Select to let the camera lock onto a resource satellite.</p>
+    </section>
+
+    <section class="spatial-panel spatial-stream" id="panel-stream">
+      <p class="hud-kicker">04 / FEATURED DATA STREAM</p>
+      <h2>FILES BECOME<br><span>FLUID SIGNAL.</span></h2>
+      <p class="hud-body">Real resources from the Digital Seba index, rendered as living shader membranes.</p>
+    </section>
+
+    <section class="spatial-panel search-hologram" id="panel-discovery">
+      <p class="hud-kicker">05 / DEEP DISCOVERY</p>
+      <h2>QUERY THE CORE.</h2>
+      <div class="core-search pointer-events-auto">
+        <label for="core-query" class="sr-only">Search Digital Seba resources</label>
+        <div class="core-input"><span>QUERY /</span><input id="core-query" placeholder="TYPE RESOURCE SIGNAL" autocomplete="off"><b id="search-status">5 MATCH</b></div>
+        <div class="core-prompts">
+          <button type="button">ISO</button><button type="button">DRIVER</button><button type="button">ANDROID</button><button type="button">FONT</button><button type="button">PDF</button>
+        </div>
+        <div class="core-results" id="core-results"></div>
+      </div>
+    </section>
+
+    <section class="spatial-panel portal-hud" id="panel-gateway">
+      <p class="hud-kicker">06 / GATEWAY ONLINE / <span id="gateway-total">29</span> RESOURCES</p>
+      <h2>ENTER THE<br><span>FULL LIBRARY.</span></h2>
+      <p>The universe continues beyond this threshold.</p>
+      <a href="https://digiseba.shop" target="_blank" rel="noreferrer">OPEN DIGITAL SEBA ↗</a>
+    </section>
+
+    <div class="focus-hud" id="focus-hud" hidden>
+      <p id="focus-meta">01 / CATEGORY LOCKED</p><h3 id="focus-title">Software</h3><span id="focus-note"></span><button type="button" id="focus-release">RELEASE CAMERA</button>
+    </div>
+  </div>
+
+  <main id="journey" aria-label="Digital Seba spatial journey">
+    <section id="chapter-nexus" class="journey-chapter chapter-nexus" aria-label="01: The Nexus"><h2 class="sr-only">The Nexus</h2></section>
+    <section id="chapter-transit" class="journey-chapter chapter-transit" aria-label="02: Data Transit"><h2 class="sr-only">Data Transit</h2></section>
+    <section id="chapter-orbit" class="journey-chapter chapter-orbit" aria-label="03: Resource Orbit"><h2 class="sr-only">Resource Orbit</h2></section>
+    <section id="chapter-stream" class="journey-chapter chapter-stream" aria-label="04: Featured Stream"><h2 class="sr-only">Featured Stream</h2></section>
+    <section id="chapter-discovery" class="journey-chapter chapter-discovery" aria-label="05: Deep Discovery"><h2 class="sr-only">Deep Discovery</h2></section>
+    <section id="chapter-gateway" class="journey-chapter chapter-gateway" aria-label="06: Open Universe"><h2 class="sr-only">Open Universe</h2></section>
+  </main>
+
+  <div class="boot-screen" id="boot-screen" aria-live="polite">
+    <div class="boot-grid"></div>
+    <div class="boot-brand">DIGITAL SEBA <span>/ SYSTEM 01</span></div>
+    <div class="boot-core" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="boot-status"><span id="boot-label">ASSEMBLING RESOURCE UNIVERSE</span><div><i></i></div><small>THREE.JS / GLSL / SPATIAL INDEX</small></div>
+  </div>
+
+  <script type="module" src="main.js"></script>
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

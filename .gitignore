@@ -1,4 +1,4 @@
-﻿# Dependencies
+# Dependencies
 node_modules/
 **/node_modules/
 
@@ -6,7 +6,6 @@ node_modules/
 .next/
 **/.next/
 out/
-**/out/
 
 # Next.js generated files
 _next/
@@ -45,9 +44,8 @@ nav.html
 *.zip
 
 # Generated theme/build directories
-portal/
-theme-selector/
-homepage-themes/
+# portal/
+# theme-selector/
 
 # Logs
 *.log
@@ -61,3 +59,17 @@ Thumbs.db
 
 # Next.js generated TypeScript files
 **/next-env.d.ts
+
+# Generated theme/build directories
+
+# Generated theme/build output
+
+
+
+# Generated theme/build directories
+/homepage-themes/**/out/
+/homepage-themes/**/dist/
+
+/homepage-themes/theme-lumina/out/
+
+/homepage-themes/theme-lumina/out/**

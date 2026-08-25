@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Digital Seba Theme Portal</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: #000;
+    }
+    #theme-frame {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transition: opacity 0.3s;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="theme-frame" allowfullscreen></iframe>
+  <script>
+    (function() {
+      const themeMap = {
+        "theme-alpha": "index.html",
+        "theme-nexus": "index.html",
+        "theme-horizon": "index.html",
+        "theme-quantum": "index.html",
+        "theme-vertex": "index.html",
+        "theme-pulse": "index.html",
+        "theme-orbit": "index.html",
+        "theme-spark": "index.html",
+        "theme-lumina": "out/index.html",
+        "theme-zenith": "dist/index.html",
+        "theme-aero": "dist/index.html",
+        "theme-nova": "dist/index.html",
+        "theme-prism": "index.html",
+        "theme-echo": "index.html",
+        "theme-flux": "index.html",
+        "theme-neon": "index.html",
+        "theme-core": "index.html",
+        "theme-apex": "index.html",
+        "theme-ignite": "index.html",
+        "theme-infinity": "index.html",
+        "theme-genesis": "index.html"
+      };
+
+      const frame = document.getElementById('theme-frame');
+
+      function loadTheme(themeId) {
+        if (!themeMap[themeId]) themeId = 'theme-alpha';
+        const targetUrl = themeId === 'theme-alpha' ? '../index.html' : '../homepage-themes/' + themeId + '/' + themeMap[themeId];
+        frame.style.opacity = '0';
+        setTimeout(() => {
+          frame.src = targetUrl;
+          frame.onload = () => {
+            frame.style.opacity = '1';
+            localStorage.setItem('activeTheme', themeId);
+          };
+        }, 50);
+      }
+
+      window.addEventListener('message', function(e) {
+        if (e.origin !== window.location.origin) return;
+        if (e.data && e.data.type === 'CHANGE_THEME') {
+          loadTheme(e.data.themeId);
+        }
+      });
+
+      try {
+        const activeTheme = localStorage.getItem('activeTheme') || 'theme-alpha';
+        loadTheme(activeTheme);
+      } catch (e) {
+        window.location.replace('/theme-selector/');
+      }
+    })();
+  </script>
+</body>
+</html>

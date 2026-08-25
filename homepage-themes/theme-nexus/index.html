@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+<title>Digital Seba — ডিজিটাল সেবা | Digital Services, Tools & Resources</title>
+<meta name="description" content="Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://digiseba.shop/" />
+<meta name="theme-color" content="#050507" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Digital Seba — ডিজিটাল সেবা" />
+<meta property="og:description" content="Everything digital, one place. Services, tools, resources, Live TV and Focus Mode — together in one platform." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://digiseba.shop/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:locale:alternate" content="bn_BD" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Digital Seba — ডিজিটাল সেবা" />
+<meta name="twitter:description" content="Everything digital, one place. Services, tools, resources, Live TV and Focus Mode." />
+
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- Fonts: Latin display/body + Bengali (Hind Siliguri reads cleanly at UI sizes) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Digital Seba",
+  "alternateName": "ডিজিটাল সেবা",
+  "url": "https://digiseba.shop/",
+  "description": "Digital Seba brings useful digital services, online tools, resources, Live TV and productivity utilities together in one platform."
+}
+</script>
+
+<style>
+/* ============================================================
+   DIGITAL SEBA — Landing Page
+   Self-contained. No external JS framework, no 3D library.
+   CSS 3D transforms + vanilla JS only, per project constraints.
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* ---- Digital Seba color system (own identity, not copied) ---- */
+  --bg: #050507;
+  --surface: #0b0b10;
+  --surface-soft: #11111a;
+  --surface-card: #14141f;
+  --line: rgba(255,255,255,0.08);
+  --line-strong: rgba(255,255,255,0.14);
+  --text: #ffffff;
+  --text-dim: rgba(255,255,255,0.6);
+  --text-faint: rgba(255,255,255,0.36);
+  --accent: #7c5cff;
+  --accent-2: #27d9ff;
+  --accent-soft: rgba(124,92,255,0.14);
+  --accent2-soft: rgba(39,217,255,0.12);
+  --live-red: #ff4d67;
+
+  --font-en-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-en-body: 'Inter', system-ui, sans-serif;
+  --font-bn: 'Hind Siliguri', 'Noto Sans Bengali', system-ui, sans-serif;
+
+  --ease: cubic-bezier(0.19, 1, 0.22, 1);
+  --radius-lg: 24px;
+  --radius-md: 16px;
+  --radius-sm: 10px;
+  --shell: 1180px;
+}
+
+html { scroll-behavior: smooth; }
+html[lang="bn"] body { font-family: var(--font-bn); }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-en-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+img, svg { display: block; }
+
+/* Language visibility toggle */
+[lang="bn"], .bn { display: none; }
+html[lang="bn"] [lang="bn"] { display: initial; }
+html[lang="bn"] [lang="en"] { display: none; }
+html[lang="bn"] .bn { display: initial; }
+html[lang="bn"] .en { display: none; }
+html[lang="bn"] .hero-title,
+html[lang="bn"] h1, html[lang="bn"] h2, html[lang="bn"] h3 { font-family: var(--font-bn); letter-spacing: 0; }
+
+.shell { max-width: var(--shell); margin: 0 auto; padding-inline: 1.5rem; }
+section { padding-block: 6.5rem; position: relative; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
+:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 3px; }
+
+.skip-link {
+  position: fixed; top: -100px; left: 1rem; z-index: 200;
+  background: var(--accent); color: #fff; padding: 0.7rem 1.2rem;
+  border-radius: var(--radius-sm); font-weight: 600; font-size: 0.85rem;
+  transition: top 0.2s var(--ease);
+}
+.skip-link:focus { top: 1rem; }
+
+/* ---------- Ambient background glow (cheap, GPU-only) ---------- */
+.ambient {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+.ambient span {
+  position: absolute; border-radius: 50%; filter: blur(90px);
+  opacity: 0.22; will-change: transform;
+}
+.ambient span:nth-child(1) {
+  width: 60vmax; height: 60vmax; top: -20vmax; left: -15vmax;
+  background: radial-gradient(circle, var(--accent), transparent 65%);
+  animation: drift1 30s ease-in-out infinite;
+}
+.ambient span:nth-child(2) {
+  width: 55vmax; height: 55vmax; bottom: -25vmax; right: -15vmax;
+  background: radial-gradient(circle, var(--accent-2), transparent 65%);
+  animation: drift2 36s ease-in-out infinite;
+}
+@keyframes drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(6vmax,8vmax); } }
+@keyframes drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-6vmax,-6vmax); } }
+
+.page { position: relative; z-index: 1; }
+
+/* ---------- NAV ---------- */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 72px; display: flex; align-items: center; justify-content: space-between;
+  padding-inline: 1.5rem; border-bottom: 1px solid transparent;
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+nav.scrolled {
+  background: rgba(5,5,7,0.85); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border-color: var(--line);
+}
+
+.brand { display: flex; align-items: center; gap: 0.6rem; }
+.brand-mark {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: grid; place-items: center; font-weight: 800; font-size: 0.95rem;
+  color: #050507; flex-shrink: 0;
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.15; }
+.brand-text .en { font-family: var(--font-en-display); font-weight: 700; font-size: 1.02rem; }
+.brand-text .bn { font-family: var(--font-bn); font-size: 0.72rem; color: var(--text-dim); }
+
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  font-size: 0.86rem; color: var(--text-dim); transition: color 0.2s; position: relative;
+}
+.nav-links a:hover { color: var(--text); }
+
+.nav-right { display: flex; align-items: center; gap: 0.9rem; }
+
+.clock-chip {
+  display: none; align-items: center; gap: 0.4rem;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.85rem;
+  font-size: 0.72rem; color: var(--text-dim); font-variant-numeric: tabular-nums;
+  background: rgba(255,255,255,0.02);
+}
+
+.lang-switch {
+  display: flex; align-items: center; gap: 0.15rem;
+  border: 1px solid var(--line); border-radius: 999px; padding: 0.2rem;
+  font-size: 0.72rem;
+}
+.lang-switch button {
+  padding: 0.32rem 0.65rem; border-radius: 999px; color: var(--text-faint); font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+}
+.lang-switch button.active { background: var(--accent); color: #fff; }
+
+.nav-cta {
+  padding: 0.55rem 1.2rem; border-radius: 999px;
+  background: var(--text); color: var(--bg) !important; font-weight: 700; font-size: 0.82rem;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s;
+}
+.nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(124,92,255,0.3); }
+
+.nav-toggle { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+.nav-toggle span { width: 20px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-panel {
+  position: fixed; inset: 72px 0 0 0; z-index: 90;
+  background: rgba(5,5,7,0.98); backdrop-filter: blur(20px);
+  display: flex; flex-direction: column; padding: 2rem 1.5rem; gap: 0.4rem;
+  transform: translateY(-8px); opacity: 0; pointer-events: none;
+  transition: transform 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.mobile-panel.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+.mobile-panel a {
+  font-family: var(--font-en-display); font-size: 1.5rem; font-weight: 600;
+  padding: 0.85rem 0.25rem; border-bottom: 1px solid var(--line); color: var(--text-dim);
+}
+.mobile-panel a:hover { color: var(--text); }
+.mobile-panel .lang-switch { align-self: flex-start; margin-top: 1.5rem; font-size: 0.85rem; }
+
+/* ---------- HERO ---------- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding-top: 6rem; padding-bottom: 3rem;
+}
+.hero-grid {
+  display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 3.5rem; align-items: center; width: 100%;
+}
+
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  border: 1px solid var(--line-strong); border-radius: 999px; padding: 0.4rem 1rem;
+  font-size: 0.76rem; font-weight: 500; color: var(--text-dim);
+  background: rgba(124,92,255,0.06); margin-bottom: 1.75rem;
+}
+.eyebrow::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2);
+  box-shadow: 0 0 8px var(--accent-2); flex-shrink: 0;
+}
+
+.hero-title {
+  font-family: var(--font-en-display); font-weight: 800;
+  font-size: clamp(2.6rem, 5.4vw, 4.3rem); line-height: 1.03; letter-spacing: -0.03em;
+  margin-bottom: 1.4rem;
+}
+.hero-title .grad {
+  background: linear-gradient(100deg, var(--accent) 10%, var(--accent-2) 90%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.05rem; color: var(--text-dim); max-width: 480px; margin-bottom: 2.2rem; line-height: 1.75;
+}
+html[lang="bn"] .hero-sub { font-size: 1.02rem; }
+
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.9rem 1.9rem; border-radius: 999px;
+  background: linear-gradient(100deg, var(--accent), var(--accent-2));
+  color: #050507; font-weight: 700; font-size: 0.9rem;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s;
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(124,92,255,0.35); }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  padding: 0.9rem 1.9rem; border-radius: 999px; border: 1px solid var(--line-strong);
+  color: var(--text-dim); font-weight: 600; font-size: 0.9rem;
+  transition: border-color 0.2s, color 0.2s, transform 0.2s;
+}
+.btn-outline:hover { border-color: rgba(255,255,255,0.3); color: var(--text); transform: translateY(-2px); }
+
+/* ---- Hero 3D object (CSS 3D transforms only) ---- */
+.hero-3d-stage {
+  perspective: 1400px; height: 460px; position: relative;
+}
+.hero-3d-core {
+  position: absolute; inset: 0; transform-style: preserve-3d;
+  transition: transform 0.15s ease-out;
+  animation: coreFloat 8s ease-in-out infinite;
+}
+@keyframes coreFloat {
+  0%, 100% { transform: rotateX(8deg) rotateY(-12deg) translateY(0); }
+  50%      { transform: rotateX(4deg) rotateY(-8deg) translateY(-14px); }
+}
+
+.core-panel {
+  position: absolute; left: 50%; top: 50%;
+  width: 260px; border-radius: var(--radius-md);
+  background: linear-gradient(155deg, rgba(124,92,255,0.16), rgba(255,255,255,0.03));
+  border: 1px solid var(--line-strong);
+  backdrop-filter: blur(6px);
+  padding: 1.1rem 1.2rem;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+  transform: translate(-50%, -50%) translateZ(0);
+}
+.core-panel .core-eyebrow {
+  font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent-2); margin-bottom: 0.4rem; font-weight: 600;
+}
+.core-panel .core-title { font-family: var(--font-en-display); font-weight: 700; font-size: 1.15rem; }
+
+.float-card {
+  position: absolute; width: 168px; border-radius: var(--radius-sm);
+  background: var(--surface-card); border: 1px solid var(--line);
+  padding: 0.85rem 1rem; box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+  animation: cardFloat 6s ease-in-out infinite;
+}
+.float-card .fc-label {
+  font-size: 0.64rem; text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--text-faint); margin-bottom: 0.3rem; font-weight: 600;
+}
+.float-card .fc-value { font-family: var(--font-en-display); font-weight: 700; font-size: 0.95rem; }
+.float-card .fc-dot {
+  width: 6px; height: 6px; border-radius: 50%; display: inline-block; margin-right: 0.35rem;
+}
+
+.fc-1 { top: 4%; left: 0%; transform: translateZ(70px); animation-delay: 0s; }
+.fc-2 { top: 10%; right: -2%; transform: translateZ(50px); animation-delay: 1.2s; }
+.fc-3 { bottom: 14%; left: -4%; transform: translateZ(60px); animation-delay: 2.4s; }
+.fc-4 { bottom: 6%; right: 2%; transform: translateZ(40px); animation-delay: 0.6s; }
+.fc-5 { top: 42%; left: 50%; margin-left: -84px; transform: translateZ(95px) translateY(-130px); animation-delay: 1.8s; }
+
+@keyframes cardFloat {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -10px; }
+}
+
+.hero-glow-ring {
+  position: absolute; inset: 12% 18%; border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+  filter: blur(30px); z-index: -1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-3d-core, .float-card, .ambient span { animation: none !important; }
+}
+
+/* ---------- STATUS STRIP ---------- */
+.status-strip {
+  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  background: rgba(255,255,255,0.015);
+}
+.status-strip .shell {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 0.75rem; padding-block: 1rem; font-size: 0.78rem; color: var(--text-faint);
+}
+.status-strip .live-dot {
+  width: 6px; height: 6px; border-radius: 50%; background: var(--live-red); display: inline-block;
+  margin-right: 0.4rem; box-shadow: 0 0 6px var(--live-red); animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ---------- SECTION HEADER SHARED ---------- */
+.sec-head { max-width: 640px; margin-bottom: 3.5rem; }
+.sec-head.center { margin-inline: auto; text-align: center; }
+.sec-eyebrow {
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-2); margin-bottom: 0.9rem;
+}
+.sec-title {
+  font-family: var(--font-en-display); font-weight: 800;
+  font-size: clamp(1.9rem, 3.6vw, 2.7rem); letter-spacing: -0.03em; line-height: 1.1;
+}
+.sec-desc { margin-top: 0.9rem; color: var(--text-dim); font-size: 1rem; line-height: 1.75; }
+
+/* ---------- CONSTELLATION (One Platform) ---------- */
+#ecosystem { background: var(--surface); }
+
+.constellation {
+  position: relative; max-width: 620px; margin: 4rem auto 0; aspect-ratio: 1/1;
+}
+.const-center {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 128px; height: 128px; border-radius: 50%;
+  background: linear-gradient(155deg, var(--accent), var(--accent-2));
+  display: grid; place-items: center; text-align: center; padding: 0.5rem;
+  box-shadow: 0 0 70px rgba(124,92,255,0.35);
+  z-index: 3;
+}
+.const-center span {
+  font-family: var(--font-en-display); font-weight: 800; font-size: 0.92rem; color: #050507; line-height: 1.15;
+}
+
+.const-node {
+  position: absolute; width: 108px; text-align: center;
+  transform: translate(-50%, -50%);
+}
+.const-node .node-dot {
+  width: 46px; height: 46px; border-radius: 50%; margin: 0 auto 0.55rem;
+  background: var(--surface-card); border: 1px solid var(--line-strong);
+  display: grid; place-items: center; font-size: 1.2rem;
+  transition: transform 0.3s var(--ease), border-color 0.3s;
+}
+.const-node:hover .node-dot { transform: scale(1.12); border-color: var(--accent-2); }
+.const-node .node-label {
+  font-size: 0.78rem; font-weight: 600; color: var(--text-dim);
+}
+
+.n-services { top: 4%;  left: 50%; }
+.n-tools    { top: 34%; left: 3%; }
+.n-resources{ top: 34%; left: 97%; }
+.n-livetv   { top: 76%; left: 18%; }
+.n-focus    { top: 76%; left: 82%; }
+
+.const-lines { position: absolute; inset: 0; z-index: 1; }
+.const-lines line {
+  stroke: url(#lineGrad); stroke-width: 1.4; opacity: 0.5;
+  stroke-dasharray: 4 5; animation: dashMove 22s linear infinite;
+}
+@keyframes dashMove { to { stroke-dashoffset: -200; } }
+
+@media (max-width: 720px) {
+  .constellation { max-width: 380px; }
+  .const-node { width: 86px; }
+  .const-node .node-dot { width: 38px; height: 38px; font-size: 1rem; }
+  .const-node .node-label { font-size: 0.68rem; }
+  .const-center { width: 100px; height: 100px; }
+  .const-center span { font-size: 0.76rem; }
+}
+
+/* ---------- CATEGORY GRID ---------- */
+#categories { background: var(--bg); }
+
+.cat-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem;
+}
+.cat-card {
+  position: relative; border-radius: var(--radius-lg); border: 1px solid var(--line);
+  background: var(--surface-card); padding: 1.9rem; overflow: hidden;
+  transition: transform 0.4s var(--ease), border-color 0.3s;
+  opacity: 0; transform: translateY(24px);
+}
+.cat-card.visible { opacity: 1; transform: none; }
+.cat-card:hover { transform: translateY(-6px); border-color: var(--line-strong); }
+.cat-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0; transition: opacity 0.4s;
+  background: radial-gradient(circle at 30% 0%, var(--accent-soft), transparent 60%);
+}
+.cat-card:hover::before { opacity: 1; }
+
+.cat-icon {
+  width: 48px; height: 48px; border-radius: 13px; display: grid; place-items: center;
+  font-size: 1.3rem; margin-bottom: 1.3rem; position: relative;
+  background: linear-gradient(155deg, rgba(124,92,255,0.22), rgba(39,217,255,0.1));
+  border: 1px solid var(--line-strong);
+}
+.cat-title { font-family: var(--font-en-display); font-weight: 700; font-size: 1.2rem; margin-bottom: 0.15rem; position: relative; }
+.cat-title-bn { font-family: var(--font-bn); font-size: 0.86rem; color: var(--text-faint); margin-bottom: 0.85rem; position: relative; }
+.cat-desc { font-size: 0.88rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 1.4rem; position: relative; min-height: 3.4rem; }
+html[lang="bn"] .cat-desc { font-family: var(--font-bn); }
+
+.cat-link {
+  display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.86rem; font-weight: 600;
+  color: var(--accent-2); position: relative;
+}
+.cat-link svg { transition: transform 0.25s var(--ease); }
+.cat-card:hover .cat-link svg { transform: translate(3px, -2px); }
+
+.cat-mini-visual {
+  position: relative; margin-bottom: 1.2rem; height: 70px; display: flex; align-items: center;
+}
+/* Voteshondhan mini doc visual */
+.mv-doc {
+  width: 46px; height: 58px; background: var(--surface-soft); border: 1px solid var(--line-strong);
+  border-radius: 6px; position: relative; margin-right: 0.9rem; flex-shrink: 0;
+}
+.mv-doc::before, .mv-doc::after {
+  content: ''; position: absolute; left: 8px; right: 8px; height: 3px; border-radius: 2px;
+  background: var(--line-strong);
+}
+.mv-doc::before { top: 14px; }
+.mv-doc::after { top: 22px; width: 60%; }
+.mv-search {
+  flex: 1; height: 30px; border-radius: 8px; background: var(--surface-soft);
+  border: 1px solid var(--line-strong); display: flex; align-items: center; padding: 0 0.6rem; gap: 0.4rem;
+}
+.mv-search .mv-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-2); }
+.mv-search span { font-size: 0.66rem; color: var(--text-faint); }
+
+/* Tools mini grid */
+.mv-tools { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; width: 100%; }
+.mv-tool-chip {
+  height: 20px; border-radius: 6px; background: var(--surface-soft); border: 1px solid var(--line);
+}
+
+/* Resources mini stack */
+.mv-stack { position: relative; width: 100%; height: 60px; }
+.mv-file {
+  position: absolute; width: 50px; height: 40px; border-radius: 6px;
+  background: var(--surface-soft); border: 1px solid var(--line-strong);
+}
+.mv-file:nth-child(1) { left: 0; top: 12px; transform: rotate(-6deg); }
+.mv-file:nth-child(2) { left: 22px; top: 4px; transform: rotate(2deg); z-index: 1; }
+.mv-file:nth-child(3) { left: 44px; top: 14px; transform: rotate(8deg); }
+
+/* Live TV mini player */
+.mv-tv {
+  width: 100%; height: 60px; border-radius: 8px; background: var(--surface-soft);
+  border: 1px solid var(--line-strong); position: relative; display: grid; place-items: center;
+}
+.mv-tv .mv-play {
+  width: 28px; height: 28px; border-radius: 50%; background: rgba(124,92,255,0.25);
+  border: 1px solid var(--accent); display: grid; place-items: center; font-size: 0.7rem;
+}
+.mv-tv .mv-live-badge {
+  position: absolute; top: 6px; left: 6px; font-size: 0.58rem; font-weight: 700;
+  color: #fff; background: var(--live-red); padding: 0.1rem 0.35rem; border-radius: 4px;
+  display: flex; align-items: center; gap: 0.25rem;
+}
+
+/* Focus mode mini ring */
+.mv-ring-wrap { display: flex; align-items: center; gap: 0.9rem; }
+.mv-ring {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: conic-gradient(var(--accent-2) 0deg 250deg, var(--surface-soft) 250deg 360deg);
+  display: grid; place-items: center; flex-shrink: 0;
+}
+.mv-ring-inner {
+  width: 40px; height: 40px; border-radius: 50%; background: var(--surface-card);
+  display: grid; place-items: center; font-size: 0.66rem; font-weight: 700; font-variant-numeric: tabular-nums;
+}
+
+/* About mini */
+.mv-about { display: flex; align-items: center; gap: 0.7rem; }
+.mv-about-mark {
+  width: 44px; height: 44px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(155deg, var(--accent), var(--accent-2)); opacity: 0.85;
+}
+.mv-about-lines { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+.mv-about-lines span { height: 6px; border-radius: 3px; background: var(--surface-soft); }
+.mv-about-lines span:nth-child(1) { width: 90%; }
+.mv-about-lines span:nth-child(2) { width: 65%; }
+
+/* ---------- WHY DIGITAL SEBA ---------- */
+#why { background: var(--surface); }
+
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.1rem; }
+.why-card {
+  border-radius: var(--radius-md); border: 1px solid var(--line); background: var(--surface-card);
+  padding: 1.6rem; text-align: center;
+  opacity: 0; transform: translateY(20px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.why-card.visible { opacity: 1; transform: none; }
+.why-icon {
+  width: 44px; height: 44px; border-radius: 12px; margin: 0 auto 1rem; display: grid; place-items: center;
+  background: linear-gradient(155deg, rgba(124,92,255,0.2), rgba(39,217,255,0.12));
+  border: 1px solid var(--line-strong); font-size: 1.15rem;
+}
+.why-title { font-family: var(--font-en-display); font-weight: 700; font-size: 1.02rem; margin-bottom: 0.3rem; }
+.why-title-bn { font-family: var(--font-bn); font-size: 0.82rem; color: var(--text-faint); }
+
+/* ---------- DEVICES ---------- */
+#devices { background: var(--bg); }
+
+.device-stage {
+  perspective: 1600px; height: 260px; display: flex; align-items: center; justify-content: center;
+  margin-top: 3.5rem;
+}
+.device-row { display: flex; align-items: flex-end; gap: 1.3rem; transform-style: preserve-3d; transform: rotateX(6deg); }
+.device {
+  background: var(--surface-card); border: 1px solid var(--line-strong); border-radius: 14px;
+  position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+}
+.device::after {
+  content: ''; position: absolute; inset: 6px; border-radius: 8px;
+  background: linear-gradient(155deg, rgba(124,92,255,0.14), rgba(39,217,255,0.06));
+}
+.d-phone   { width: 60px;  height: 128px; border-radius: 16px; }
+.d-tablet  { width: 100px; height: 138px; }
+.d-laptop  { width: 210px; height: 132px; border-radius: 10px 10px 3px 3px; }
+.d-desktop { width: 170px; height: 118px; }
+
+.device-labels {
+  display: flex; justify-content: center; gap: 3.4rem; margin-top: 1.2rem;
+  font-size: 0.76rem; color: var(--text-faint); flex-wrap: wrap;
+}
+
+/* ---------- FINAL CTA ---------- */
+#final-cta { background: var(--surface); text-align: center; }
+.final-cta-inner { max-width: 620px; margin: 0 auto; }
+.final-cta-inner .sec-title { margin-bottom: 1.1rem; }
+.final-cta-inner .sec-desc { margin-bottom: 2.2rem; }
+.final-cta-actions { display: flex; gap: 0.85rem; justify-content: center; flex-wrap: wrap; }
+
+/* ---------- FOOTER ---------- */
+footer { background: var(--bg); border-top: 1px solid var(--line); padding-block: 3rem 2rem; }
+.foot-top {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2.5rem; margin-bottom: 2.2rem;
+}
+.foot-brand-desc { margin-top: 0.8rem; max-width: 280px; font-size: 0.85rem; color: var(--text-faint); line-height: 1.7; }
+.foot-links { display: flex; gap: 3.2rem; flex-wrap: wrap; }
+.foot-col-title {
+  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-faint);
+  margin-bottom: 0.9rem; font-weight: 600;
+}
+.foot-col a { display: block; font-size: 0.86rem; color: var(--text-dim); padding-block: 0.35rem; transition: color 0.2s; }
+.foot-col a:hover { color: var(--text); }
+.foot-bottom {
+  border-top: 1px solid var(--line); padding-top: 1.6rem; display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; color: var(--text-faint);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1024px) {
+  .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-3d-stage { height: 380px; margin-top: 1rem; }
+}
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+  .nav-toggle { display: flex; }
+  .clock-chip { display: none !important; }
+}
+
+@media (min-width: 861px) {
+  .clock-chip { display: flex; }
+}
+
+@media (max-width: 640px) {
+  section { padding-block: 4.2rem; }
+  .hero { min-height: auto; padding-top: 5.5rem; }
+  .hero-actions .btn-primary, .hero-actions .btn-outline { flex: 1; justify-content: center; }
+  .cat-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .foot-links { gap: 1.8rem; }
+  .foot-bottom { flex-direction: column; text-align: center; }
+  .float-card { width: 130px; padding: 0.6rem 0.75rem; }
+  .fc-5 { display: none; }
+  .device-labels { gap: 1.4rem; }
+  .d-laptop { width: 150px; }
+  .d-desktop { width: 120px; }
+}
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<div class="ambient" aria-hidden="true"><span></span><span></span></div>
+
+<div class="page">
+
+  <!-- ===================== NAV ===================== -->
+  <nav id="nav" aria-label="Main navigation">
+    <a href="#top" class="brand" aria-label="Digital Seba home">
+      <span class="brand-mark" aria-hidden="true">DS</span>
+      <span class="brand-text">
+        <span class="en">Digital Seba</span>
+        <span class="bn">ডিজিটাল সেবা</span>
+      </span>
+    </a>
+
+    <ul class="nav-links" role="list">
+      <li><a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a></li>
+      <li><a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a></li>
+      <li><a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a></li>
+      <li><a href="/live-tv/"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></a></li>
+      <li><a href="/focus-mode/"><span class="en">Focus Mode</span><span class="bn">ফোকাস মোড</span></a></li>
+      <li><a href="/about/"><span class="en">About</span><span class="bn">সম্পর্কে</span></a></li>
+    </ul>
+
+    <div class="nav-right">
+      <div class="clock-chip" id="clock-chip" aria-live="off"></div>
+      <div class="lang-switch" role="group" aria-label="Language switch">
+        <button type="button" id="lang-en" class="active" aria-pressed="true">EN</button>
+        <button type="button" id="lang-bn" aria-pressed="false">বাংলা</button>
+      </div>
+      <a href="/services/" class="nav-cta"><span class="en">Explore</span><span class="bn">দেখুন</span></a>
+      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-panel">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="mobile-panel" id="mobile-panel">
+    <a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a>
+    <a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a>
+    <a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a>
+    <a href="/live-tv/"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></a>
+    <a href="/focus-mode/"><span class="en">Focus Mode</span><span class="bn">ফোকাস মোড</span></a>
+    <a href="/about/"><span class="en">About</span><span class="bn">সম্পর্কে</span></a>
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <button type="button" id="lang-en-m" class="active" aria-pressed="true">English</button>
+      <button type="button" id="lang-bn-m" aria-pressed="false">বাংলা</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <div id="top"></div>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" aria-labelledby="hero-h">
+      <div class="shell hero-grid">
+        <div>
+          <p class="eyebrow">
+            <span class="en">DIGITAL SEBA — ONE PLATFORM</span>
+            <span class="bn">ডিজিটাল সেবা — এক প্ল্যাটফর্ম</span>
+          </p>
+
+          <h1 class="hero-title" id="hero-h">
+            <span class="en">Everything Digital.<br><span class="grad">One Place.</span></span>
+            <span class="bn">সব ডিজিটাল সেবা,<br><span class="grad">এক জায়গায়।</span></span>
+          </h1>
+
+          <p class="hero-sub">
+            <span class="en">Services, tools, resources, Live TV, and Focus Mode — the everyday digital things you need, brought together in one platform.</span>
+            <span class="bn">প্রয়োজনীয় ডিজিটাল সেবা, টুলস, রিসোর্স, লাইভ টিভি ও আরও অনেক কিছু এক প্ল্যাটফর্মে।</span>
+          </p>
+
+          <div class="hero-actions">
+            <a href="/services/" class="btn-primary">
+              <span class="en">Explore Digital Seba</span><span class="bn">ডিজিটাল সেবা দেখুন</span>
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a href="/about/" class="btn-outline">
+              <span class="en">About Digital Seba</span><span class="bn">বাংলায় দেখুন</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-3d-stage" id="hero-3d-stage">
+          <div class="hero-glow-ring" aria-hidden="true"></div>
+          <div class="hero-3d-core" id="hero-3d-core" aria-hidden="true">
+            <div class="core-panel">
+              <p class="core-eyebrow">DIGITAL SEBA</p>
+              <p class="core-title">ডিজিটাল সেবা</p>
+            </div>
+
+            <div class="float-card fc-1">
+              <p class="fc-label">Service</p>
+              <p class="fc-value">Voteshondhan</p>
+            </div>
+            <div class="float-card fc-2">
+              <p class="fc-label">Tools</p>
+              <p class="fc-value">Utilities</p>
+            </div>
+            <div class="float-card fc-3">
+              <p class="fc-label">Resources</p>
+              <p class="fc-value">Digital Library</p>
+            </div>
+            <div class="float-card fc-4">
+              <p class="fc-label">Live TV</p>
+              <p class="fc-value"><span class="fc-dot" style="background:var(--live-red)"></span>Watch Live</p>
+            </div>
+            <div class="float-card fc-5">
+              <p class="fc-label">Focus</p>
+              <p class="fc-value">25:00 Session</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== STATUS STRIP ===================== -->
+    <div class="status-strip">
+      <div class="shell">
+        <span><span class="live-dot"></span><span class="en">Live TV available now</span><span class="bn">লাইভ টিভি এখন উপলব্ধ</span></span>
+        <span id="date-time-strip"></span>
+      </div>
+    </div>
+
+    <!-- ===================== ONE PLATFORM (constellation) ===================== -->
+    <section id="ecosystem" aria-labelledby="eco-h">
+      <div class="shell">
+        <div class="sec-head center">
+          <p class="sec-eyebrow"><span class="en">The Ecosystem</span><span class="bn">ইকোসিস্টেম</span></p>
+          <h2 class="sec-title" id="eco-h">
+            <span class="en">One Platform.<br>Many Possibilities.</span>
+            <span class="bn">এক প্ল্যাটফর্মে<br>প্রয়োজনীয় সবকিছু।</span>
+          </h2>
+        </div>
+
+        <div class="constellation" role="img" aria-label="Digital Seba ecosystem: Services, Tools, Resources, Live TV and Focus Mode, connected around one platform">
+          <svg class="const-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#7c5cff"/>
+                <stop offset="100%" stop-color="#27d9ff"/>
+              </linearGradient>
+            </defs>
+            <line x1="50" y1="50" x2="50" y2="10"/>
+            <line x1="50" y1="50" x2="9" y2="38"/>
+            <line x1="50" y1="50" x2="91" y2="38"/>
+            <line x1="50" y1="50" x2="24" y2="78"/>
+            <line x1="50" y1="50" x2="76" y2="78"/>
+          </svg>
+
+          <div class="const-center"><span><span class="en">Digital Seba</span><span class="bn">ডিজিটাল সেবা</span></span></div>
+
+          <a href="/services/" class="const-node n-services">
+            <span class="node-dot" aria-hidden="true">🗂️</span>
+            <span class="node-label"><span class="en">Services</span><span class="bn">সেবা</span></span>
+          </a>
+          <a href="/tools/" class="const-node n-tools">
+            <span class="node-dot" aria-hidden="true">🛠️</span>
+            <span class="node-label"><span class="en">Tools</span><span class="bn">টুলস</span></span>
+          </a>
+          <a href="/resources/" class="const-node n-resources">
+            <span class="node-dot" aria-hidden="true">📚</span>
+            <span class="node-label"><span class="en">Resources</span><span class="bn">রিসোর্স</span></span>
+          </a>
+          <a href="/live-tv/" class="const-node n-livetv">
+            <span class="node-dot" aria-hidden="true">📺</span>
+            <span class="node-label"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></span>
+          </a>
+          <a href="/focus-mode/" class="const-node n-focus">
+            <span class="node-dot" aria-hidden="true">⏱️</span>
+            <span class="node-label"><span class="en">Focus Mode</span><span class="bn">ফোকাস মোড</span></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CATEGORY CARDS ===================== -->
+    <section id="categories" aria-labelledby="cat-h">
+      <div class="shell">
+        <div class="sec-head">
+          <p class="sec-eyebrow"><span class="en">Explore</span><span class="bn">এক্সপ্লোর করুন</span></p>
+          <h2 class="sec-title" id="cat-h"><span class="en">Everything in one place</span><span class="bn">সবকিছু এক জায়গায়</span></h2>
+        </div>
+
+        <div class="cat-grid">
+
+          <!-- SERVICES -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-doc"></div>
+              <div class="mv-search"><span class="mv-dot"></span><span>Voteshondhan</span></div>
+            </div>
+            <h3 class="cat-title"><span class="en">Digital Services</span></h3>
+            <p class="cat-title-bn">ডিজিটাল সেবা</p>
+            <p class="cat-desc">
+              <span class="en">Practical digital and public-facing utilities — including Voteshondhan, a PDF-based voter information search tool.</span>
+              <span class="bn">প্রয়োজনীয় ডিজিটাল ও পাবলিক সার্ভিস সহজে ব্যবহার করুন।</span>
+            </p>
+            <a href="/services/" class="cat-link">
+              <span class="en">Explore Services</span><span class="bn">সেবা দেখুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+          <!-- TOOLS -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-tools">
+                <div class="mv-tool-chip"></div><div class="mv-tool-chip"></div><div class="mv-tool-chip"></div>
+                <div class="mv-tool-chip"></div><div class="mv-tool-chip"></div><div class="mv-tool-chip"></div>
+              </div>
+            </div>
+            <h3 class="cat-title"><span class="en">Smart Tools</span></h3>
+            <p class="cat-title-bn">স্মার্ট টুলস</p>
+            <p class="cat-desc">
+              <span class="en">Everyday utilities for digital work — from quick calculators to scanners and link auditing.</span>
+              <span class="bn">দৈনন্দিন ডিজিটাল কাজকে আরও দ্রুত ও সহজ করুন।</span>
+            </p>
+            <a href="/tools/" class="cat-link">
+              <span class="en">Explore Tools</span><span class="bn">টুলস দেখুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+          <!-- RESOURCES -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-stack">
+                <div class="mv-file"></div><div class="mv-file"></div><div class="mv-file"></div>
+              </div>
+            </div>
+            <h3 class="cat-title"><span class="en">Digital Resources</span></h3>
+            <p class="cat-title-bn">ডিজিটাল রিসোর্স</p>
+            <p class="cat-desc">
+              <span class="en">Apps, software, drivers, documents, fonts, and more — organized in one library.</span>
+              <span class="bn">সফটওয়্যার, ডকুমেন্ট, PDF, ফন্ট ও প্রয়োজনীয় ফাইল এক জায়গায়।</span>
+            </p>
+            <a href="/resources/" class="cat-link">
+              <span class="en">Browse Resources</span><span class="bn">রিসোর্স দেখুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+          <!-- LIVE TV -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-tv">
+                <span class="mv-live-badge"><span style="width:5px;height:5px;border-radius:50%;background:#fff;display:inline-block;"></span>LIVE</span>
+                <span class="mv-play">▶</span>
+              </div>
+            </div>
+            <h3 class="cat-title"><span class="en">Live TV</span></h3>
+            <p class="cat-title-bn">লাইভ টিভি</p>
+            <p class="cat-desc">
+              <span class="en">A wide catalog of channels, organized by category, playable right in your browser.</span>
+              <span class="bn">বিভিন্ন চ্যানেল এক জায়গায় দেখুন।</span>
+            </p>
+            <a href="/live-tv/" class="cat-link">
+              <span class="en">Watch Live TV</span><span class="bn">লাইভ টিভি দেখুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+          <!-- FOCUS MODE -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-ring-wrap">
+                <div class="mv-ring"><div class="mv-ring-inner">25:00</div></div>
+              </div>
+            </div>
+            <h3 class="cat-title"><span class="en">Focus Mode</span></h3>
+            <p class="cat-title-bn">ফোকাস মোড</p>
+            <p class="cat-desc">
+              <span class="en">A calm, Pomodoro-style workspace to help you stay on task and get more done.</span>
+              <span class="bn">সময়কে কাজে লাগান। মনোযোগ ধরে রাখুন।</span>
+            </p>
+            <a href="/focus-mode/" class="cat-link">
+              <span class="en">Start Focusing</span><span class="bn">ফোকাস শুরু করুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+          <!-- ABOUT -->
+          <article class="cat-card">
+            <div class="cat-mini-visual">
+              <div class="mv-about">
+                <div class="mv-about-mark"></div>
+                <div class="mv-about-lines"><span></span><span></span></div>
+              </div>
+            </div>
+            <h3 class="cat-title"><span class="en">About Digital Seba</span></h3>
+            <p class="cat-title-bn">সম্পর্কে</p>
+            <p class="cat-desc">
+              <span class="en">Learn more about the platform, what it's built for, and who it's built by.</span>
+              <span class="bn">প্ল্যাটফর্ম সম্পর্কে আরও জানুন।</span>
+            </p>
+            <a href="/about/" class="cat-link">
+              <span class="en">About Us</span><span class="bn">সম্পর্কে জানুন</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== WHY DIGITAL SEBA ===================== -->
+    <section id="why" aria-labelledby="why-h">
+      <div class="shell">
+        <div class="sec-head center">
+          <p class="sec-eyebrow"><span class="en">Why Digital Seba</span><span class="bn">কেন ডিজিটাল সেবা</span></p>
+          <h2 class="sec-title" id="why-h"><span class="en">Built to be useful</span><span class="bn">ব্যবহারযোগ্য করে তৈরি</span></h2>
+        </div>
+
+        <div class="why-grid">
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">✦</div>
+            <p class="why-title">Simple</p>
+            <p class="why-title-bn">সহজ ব্যবহার</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">⚡</div>
+            <p class="why-title">Fast</p>
+            <p class="why-title-bn">দ্রুত অভিজ্ঞতা</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🧩</div>
+            <p class="why-title">Useful</p>
+            <p class="why-title-bn">প্রয়োজনীয় টুলস ও রিসোর্স</p>
+          </div>
+          <div class="why-card">
+            <div class="why-icon" aria-hidden="true">🌐</div>
+            <p class="why-title">Bilingual</p>
+            <p class="why-title-bn">বাংলা + English</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DEVICES ===================== -->
+    <section id="devices" aria-labelledby="dev-h">
+      <div class="shell">
+        <div class="sec-head center">
+          <p class="sec-eyebrow"><span class="en">Everywhere You Are</span><span class="bn">সবখানে</span></p>
+          <h2 class="sec-title" id="dev-h">
+            <span class="en">Made for every screen.</span>
+            <span class="bn">সব ডিভাইসের জন্য তৈরি।</span>
+          </h2>
+        </div>
+
+        <div class="device-stage" aria-hidden="true">
+          <div class="device-row">
+            <div class="device d-phone"></div>
+            <div class="device d-tablet"></div>
+            <div class="device d-laptop"></div>
+            <div class="device d-desktop"></div>
+          </div>
+        </div>
+        <div class="device-labels">
+          <span>Phone</span><span>Tablet</span><span>Laptop</span><span>Desktop</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== TRUST STATEMENT ===================== -->
+    <section id="trust" aria-labelledby="trust-h" style="padding-block: 3rem 5rem; text-align:center;">
+      <div class="shell">
+        <h2 class="sec-title" id="trust-h" style="font-size: clamp(1.5rem, 2.6vw, 2rem);">
+          <span class="en">One digital destination. Built for everyday use.</span>
+          <span class="bn">প্রতিদিনের ডিজিটাল কাজের একটি সহজ ঠিকানা।</span>
+        </h2>
+      </div>
+    </section>
+
+    <!-- ===================== FINAL CTA ===================== -->
+    <section id="final-cta" aria-labelledby="final-h">
+      <div class="shell final-cta-inner">
+        <p class="sec-eyebrow" style="justify-content:center; display:flex;">
+          <span class="en">Get Started</span><span class="bn">শুরু করুন</span>
+        </p>
+        <h2 class="sec-title" id="final-h">
+          <span class="en">Everything you need, just one click away.</span>
+          <span class="bn">আপনার প্রয়োজনীয় ডিজিটাল জিনিসগুলো এখন এক জায়গায়।</span>
+        </h2>
+        <div class="final-cta-actions">
+          <a href="/services/" class="btn-primary">
+            <span class="en">Explore Digital Seba</span><span class="bn">ডিজিটাল সেবা দেখুন</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a href="/services/" class="btn-outline"><span class="en">Browse Services</span><span class="bn">সেবা দেখুন</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer>
+    <div class="shell">
+      <div class="foot-top">
+        <div>
+          <div class="brand">
+            <span class="brand-mark" aria-hidden="true">DS</span>
+            <span class="brand-text">
+              <span class="en">Digital Seba</span>
+              <span class="bn">ডিজিটাল সেবা</span>
+            </span>
+          </div>
+          <p class="foot-brand-desc">
+            <span class="en">A digital platform bringing useful services, tools, and resources together in one place.</span>
+            <span class="bn">প্রয়োজনীয় ডিজিটাল সেবা, টুলস ও রিসোর্স এক প্ল্যাটফর্মে।</span>
+          </p>
+        </div>
+
+        <div class="foot-links">
+          <div class="foot-col">
+            <p class="foot-col-title">Platform</p>
+            <a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a>
+            <a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a>
+            <a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a>
+          </div>
+          <div class="foot-col">
+            <p class="foot-col-title">More</p>
+            <a href="/live-tv/"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></a>
+            <a href="/focus-mode/"><span class="en">Focus Mode</span><span class="bn">ফোকাস মোড</span></a>
+            <a href="/about/"><span class="en">About</span><span class="bn">সম্পর্কে</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <span>&copy; <span id="foot-year"></span> Digital Seba</span>
+        <span class="bn">&copy; <span id="foot-year-bn"></span> ডিজিটাল সেবা</span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page -->
+
+<script>
+'use strict';
+
+/* ---------- Footer year ---------- */
+var y = new Date().getFullYear();
+document.getElementById('foot-year').textContent = y;
+document.getElementById('foot-year-bn').textContent = y;
+
+/* ---------- Nav scroll state ---------- */
+var nav = document.getElementById('nav');
+function onScroll() { nav.classList.toggle('scrolled', window.scrollY > 24); }
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
+
+/* ---------- Mobile menu ---------- */
+var toggle = document.getElementById('nav-toggle');
+var panel = document.getElementById('mobile-panel');
+
+function closeMenu() {
+  panel.classList.remove('open');
+  toggle.setAttribute('aria-expanded', 'false');
+}
+function openMenu() {
+  panel.classList.add('open');
+  toggle.setAttribute('aria-expanded', 'true');
+}
+toggle.addEventListener('click', function () {
+  var isOpen = panel.classList.contains('open');
+  if (isOpen) closeMenu(); else openMenu();
+});
+panel.querySelectorAll('a').forEach(function (a) {
+  a.addEventListener('click', closeMenu);
+});
+document.addEventListener('click', function (e) {
+  if (panel.classList.contains('open') && !panel.contains(e.target) && !toggle.contains(e.target)) {
+    closeMenu();
+  }
+});
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape' && panel.classList.contains('open')) closeMenu();
+});
+
+/* ---------- Language switch (persisted) ---------- */
+var htmlRoot = document.getElementById('html-root');
+var LANG_KEY = 'digitalseba_lang';
+
+function applyLang(lang) {
+  htmlRoot.setAttribute('lang', lang);
+  var isBn = lang === 'bn';
+  [
+    ['lang-en', 'lang-bn'],
+    ['lang-en-m', 'lang-bn-m']
+  ].forEach(function (pair) {
+    var enBtn = document.getElementById(pair[0]);
+    var bnBtn = document.getElementById(pair[1]);
+    if (!enBtn || !bnBtn) return;
+    enBtn.classList.toggle('active', !isBn);
+    bnBtn.classList.toggle('active', isBn);
+    enBtn.setAttribute('aria-pressed', String(!isBn));
+    bnBtn.setAttribute('aria-pressed', String(isBn));
+  });
+  try { localStorage.setItem(LANG_KEY, lang); } catch (err) { /* storage unavailable, non-fatal */ }
+}
+
+['lang-en', 'lang-en-m'].forEach(function (id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('click', function () { applyLang('en'); });
+});
+['lang-bn', 'lang-bn-m'].forEach(function (id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('click', function () { applyLang('bn'); });
+});
+
+(function initLang() {
+  var saved = null;
+  try { saved = localStorage.getItem(LANG_KEY); } catch (err) { /* ignore */ }
+  applyLang(saved === 'bn' ? 'bn' : 'en');
+})();
+
+/* ---------- Live clock (nav chip + status strip) ---------- */
+var monthsEn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+var monthsBn = ['জানুয়ারি','ফেব্রুয়ারি','মার্চ','এপ্রিল','মে','জুন','জুলাই','আগস্ট','সেপ্টেম্বর','অক্টোবর','নভেম্বর','ডিসেম্বর'];
+var bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+
+function toBnNum(n) {
+  return String(n).split('').map(function (d) { return bnDigits[+d] || d; }).join('');
+}
+
+function updateClock() {
+  var now = new Date();
+  var h24 = now.getHours();
+  var m = now.getMinutes();
+  var isBn = htmlRoot.getAttribute('lang') === 'bn';
+  var chip = document.getElementById('clock-chip');
+  var strip = document.getElementById('date-time-strip');
+
+  if (isBn) {
+    var h12bn = h24 % 12 || 12;
+    var period = h24 < 12 ? 'সকাল' : (h24 < 17 ? 'দুপুর' : (h24 < 20 ? 'সন্ধ্যা' : 'রাত'));
+    var timeStr = period + ' ' + toBnNum(h12bn) + ':' + toBnNum(m < 10 ? '0' + m : m);
+    var dateStr = toBnNum(now.getDate()) + ' ' + monthsBn[now.getMonth()];
+    if (chip) chip.textContent = dateStr + ' • ' + timeStr;
+    if (strip) strip.textContent = dateStr + ' • ' + timeStr;
+  } else {
+    var h12 = h24 % 12 || 12;
+    var meridiem = h24 < 12 ? 'AM' : 'PM';
+    var mm = m < 10 ? '0' + m : m;
+    var timeStrEn = h12 + ':' + mm + ' ' + meridiem;
+    var dateStrEn = now.getDate() + ' ' + monthsEn[now.getMonth()].slice(0, 3) + ', ' + now.getFullYear();
+    if (chip) chip.textContent = dateStrEn + ' • ' + timeStrEn;
+    if (strip) strip.textContent = dateStrEn + ' • ' + timeStrEn;
+  }
+}
+updateClock();
+setInterval(updateClock, 1000 * 30);
+/* also refresh immediately when language changes */
+document.addEventListener('click', function (e) {
+  if (e.target && e.target.id && e.target.id.indexOf('lang-') === 0) {
+    setTimeout(updateClock, 0);
+  }
+});
+
+/* ---------- Hero 3D parallax (desktop only, respects reduced motion) ---------- */
+var stage = document.getElementById('hero-3d-stage');
+var core = document.getElementById('hero-3d-core');
+var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+var isTouch = window.matchMedia('(pointer: coarse)').matches;
+
+if (stage && core && !reduceMotion && !isTouch) {
+  stage.addEventListener('mousemove', function (e) {
+    var rect = stage.getBoundingClientRect();
+    var px = (e.clientX - rect.left) / rect.width - 0.5;
+    var py = (e.clientY - rect.top) / rect.height - 0.5;
+    var rotY = -12 + px * 16;
+    var rotX = 8 - py * 12;
+    core.style.transform = 'rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg)';
+    core.style.animation = 'none';
+  });
+  stage.addEventListener('mouseleave', function () {
+    core.style.transform = '';
+    core.style.animation = '';
+  });
+}
+
+/* ---------- Scroll reveal (IntersectionObserver) ---------- */
+var revealEls = document.querySelectorAll('.cat-card, .why-card');
+if ('IntersectionObserver' in window) {
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        var delay = entry.target.dataset.delay || 0;
+        setTimeout(function () { entry.target.classList.add('visible'); }, delay);
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  revealEls.forEach(function (el, i) {
+    el.dataset.delay = (i % 6) * 70;
+    io.observe(el);
+  });
+} else {
+  revealEls.forEach(function (el) { el.classList.add('visible'); });
+}
+</script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

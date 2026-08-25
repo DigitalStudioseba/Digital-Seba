@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Digital Seba â€” à¦¸à¦¬à¦•à¦¿à¦›à§ à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼ | Services, Tools, Resources, Live TV & Focus Mode</title>
+<meta name="description" content="Digital Seba is a premium all-in-one digital platform â€” government & digital services, smart tools, curated resources, Live TV and Focus Mode. Bengali + English friendly, fast and mobile-first.">
+<meta name="theme-color" content="#05070f">
+<meta property="og:title" content="Digital Seba â€” All your digital life, one platform">
+<meta property="og:description" content="Services, Tools, Resources, Live TV and Focus Mode â€” beautifully unified.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Digital Seba","description":"All-in-one digital services, tools, resources, live TV and focus mode platform.","inLanguage":["en","bn"]}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#05070f; --bg2:#080b18;
+  --ink:#eef1ff; --muted:#9aa3c7;
+  --a:#6d5efc; --b:#19d3c5; --c:#ff5f9e; --d:#ffb703;
+  --line:rgba(255,255,255,.09);
+  --glass:rgba(255,255,255,.045);
+  --r:22px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Sora','Hind Siliguri',system-ui,sans-serif;overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+.bn{font-family:'Hind Siliguri','Sora',sans-serif}
+img{max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,92vw);margin:0 auto}
+section{position:relative;padding:clamp(70px,9vw,130px) 0}
+
+/* ambient */
+.aura{position:fixed;inset:0;pointer-events:none;z-index:0}
+.aura i{position:absolute;border-radius:50%;filter:blur(90px);opacity:.42;display:block}
+.aura i:nth-child(1){width:46vw;height:46vw;background:var(--a);top:-14vw;left:-10vw;animation:fl 18s ease-in-out infinite}
+.aura i:nth-child(2){width:38vw;height:38vw;background:var(--b);top:40vh;right:-12vw;animation:fl 22s ease-in-out infinite reverse}
+.aura i:nth-child(3){width:32vw;height:32vw;background:var(--c);bottom:-10vw;left:25vw;opacity:.28;animation:fl 26s ease-in-out infinite}
+@keyframes fl{50%{transform:translate3d(4vw,-5vh,0) scale(1.15)}}
+.grid-bg{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 75%)}
+main,header,footer{position:relative;z-index:2}
+
+/* nav */
+header{position:sticky;top:0;z-index:60;backdrop-filter:blur(18px);background:rgba(5,7,15,.62);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:18px;height:70px}
+.logo{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.02em;font-size:1.05rem}
+.mark{width:36px;height:36px;border-radius:11px;background:conic-gradient(from 210deg,var(--a),var(--b),var(--d),var(--c),var(--a));box-shadow:0 8px 26px rgba(109,94,252,.45);position:relative;animation:spinm 12s linear infinite}
+.mark::after{content:"";position:absolute;inset:6px;border-radius:7px;background:var(--bg)}
+@keyframes spinm{to{transform:rotate(360deg)}}
+nav.links{margin-left:auto;display:flex;gap:26px;font-size:.9rem;color:var(--muted)}
+nav.links a:hover{color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:12px 22px;border-radius:999px;font-weight:600;font-size:.9rem;border:1px solid var(--line);transition:.28s;cursor:pointer;background:none;color:var(--ink);font-family:inherit}
+.btn.p{background:linear-gradient(120deg,var(--a),#8b7bff 45%,var(--b));border:none;color:#fff;box-shadow:0 12px 34px rgba(109,94,252,.4)}
+.btn.p:hover{transform:translateY(-3px);box-shadow:0 20px 46px rgba(109,94,252,.55)}
+.btn:hover{border-color:rgba(255,255,255,.3);transform:translateY(-2px)}
+.burger{display:none;margin-left:auto;width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--glass);align-items:center;justify-content:center;flex-direction:column;gap:4px}
+.burger span{width:18px;height:2px;background:#fff;border-radius:2px}
+@media(max-width:900px){nav.links,.nav .btn{display:none}.burger{display:flex}}
+#mob{display:none;padding:14px 0 22px;border-top:1px solid var(--line)}
+#mob.open{display:block}
+#mob a{display:block;padding:11px 4px;color:var(--muted);border-bottom:1px solid rgba(255,255,255,.05)}
+
+/* hero */
+.hero{padding-top:clamp(50px,7vw,90px);text-align:center}
+.pill{display:inline-flex;align-items:center;gap:9px;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:var(--glass);font-size:.78rem;color:var(--muted);letter-spacing:.04em}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--b);box-shadow:0 0 12px var(--b);animation:pulse 1.8s infinite}
+@keyframes pulse{50%{opacity:.3}}
+h1{font-size:clamp(2.4rem,7.2vw,5rem);line-height:1.02;letter-spacing:-.04em;font-weight:800;margin:22px 0 0}
+.grad{background:linear-gradient(100deg,#a99bff,var(--b) 50%,var(--d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:660px;margin:20px auto 0;color:var(--muted);font-size:clamp(1rem,2.2vw,1.16rem)}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px}
+.stats{display:flex;gap:clamp(20px,5vw,58px);justify-content:center;flex-wrap:wrap;margin-top:46px}
+.stats b{display:block;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:800;letter-spacing:-.03em}
+.stats span{font-size:.78rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+
+/* 3D ecosystem */
+.scene{height:clamp(330px,52vw,520px);display:grid;place-items:center;perspective:1200px;margin-top:20px}
+.orbit{position:relative;width:clamp(260px,42vw,430px);height:clamp(260px,42vw,430px);transform-style:preserve-3d;transform:rotateX(64deg) rotateZ(0deg);animation:orb 34s linear infinite}
+@keyframes orb{to{transform:rotateX(64deg) rotateZ(360deg)}}
+.ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.14)}
+.ring:nth-child(2){inset:14%;border-color:rgba(25,211,197,.25)}
+.ring:nth-child(3){inset:28%;border-color:rgba(255,95,158,.22)}
+.node{position:absolute;top:50%;left:50%;width:64px;height:64px;margin:-32px;border-radius:18px;display:grid;place-items:center;font-size:1.5rem;
+background:rgba(12,16,32,.92);border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.6);transform-style:preserve-3d;animation:up 34s linear infinite}
+@keyframes up{to{transform:var(--tr) rotateZ(-360deg) rotateX(-64deg)}}
+.core{position:absolute;width:clamp(120px,20vw,168px);height:clamp(120px,20vw,168px);border-radius:50%;
+background:radial-gradient(circle at 32% 28%,#fff,#a99bff 30%,var(--a) 60%,#241a6b);
+box-shadow:0 0 90px rgba(109,94,252,.65),inset -14px -18px 44px rgba(0,0,0,.5);animation:bob 6s ease-in-out infinite;display:grid;place-items:center;text-align:center;font-weight:800;font-size:.8rem;letter-spacing:.05em}
+@keyframes bob{50%{transform:translateY(-16px) scale(1.03)}}
+
+/* cards */
+.head{text-align:center;max-width:720px;margin:0 auto clamp(38px,6vw,64px)}
+.kicker{color:var(--b);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+h2{font-size:clamp(1.9rem,4.6vw,3.1rem);letter-spacing:-.035em;line-height:1.08;margin:12px 0 14px;font-weight:800}
+.head p{color:var(--muted);margin:0}
+.cards{display:grid;gap:20px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.card{position:relative;padding:28px;border-radius:var(--r);border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.015));backdrop-filter:blur(12px);transform-style:preserve-3d;transition:transform .18s ease,box-shadow .3s,border-color .3s;overflow:hidden}
+.card:hover{border-color:rgba(255,255,255,.24);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(400px circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.13),transparent 60%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover::after{opacity:1}
+.ic{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-size:1.45rem;background:linear-gradient(140deg,rgba(109,94,252,.35),rgba(25,211,197,.2));border:1px solid var(--line);margin-bottom:16px;transform:translateZ(30px)}
+.card h3{margin:0 0 8px;font-size:1.12rem;letter-spacing:-.02em;transform:translateZ(20px)}
+.card p{margin:0;color:var(--muted);font-size:.92rem}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.tag{font-size:.7rem;padding:5px 11px;border-radius:999px;border:1px solid var(--line);color:var(--muted);background:rgba(255,255,255,.03)}
+
+/* split */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,64px);align-items:center}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.visual{border-radius:26px;border:1px solid var(--line);background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.01));padding:22px;box-shadow:0 40px 80px rgba(0,0,0,.5);transform:perspective(1200px) rotateY(-9deg) rotateX(5deg);transition:.5s}
+.visual:hover{transform:perspective(1200px) rotateY(0) rotateX(0)}
+.tv{aspect-ratio:16/10;border-radius:16px;background:linear-gradient(135deg,#101528,#070a14);border:1px solid var(--line);position:relative;overflow:hidden;display:grid;place-items:center}
+.tv::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(255,255,255,.04) 0 2px,transparent 2px 4px)}
+.live{position:absolute;top:12px;left:12px;background:#ff2d55;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px;letter-spacing:.12em}
+.chlist{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:14px}
+.ch{aspect-ratio:1;border-radius:11px;background:rgba(255,255,255,.05);border:1px solid var(--line);display:grid;place-items:center;font-size:.66rem;color:var(--muted);transition:.25s}
+.ch:hover{background:rgba(109,94,252,.3);color:#fff;transform:translateY(-3px)}
+li{color:var(--muted);margin-bottom:10px}
+ul.check{list-style:none;padding:0;margin:22px 0 0}
+ul.check li{padding-left:30px;position:relative}
+ul.check li::before{content:"âœ¦";position:absolute;left:0;color:var(--b)}
+
+/* focus timer */
+.timer{display:grid;place-items:center;aspect-ratio:1;max-width:280px;margin:0 auto;border-radius:50%;border:1px solid var(--line);background:radial-gradient(circle at 50% 40%,rgba(109,94,252,.25),transparent 65%);position:relative}
+.timer::before{content:"";position:absolute;inset:-1px;border-radius:50%;border:2px solid transparent;border-top-color:var(--b);animation:spin 4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#clock{font-size:clamp(2.2rem,7vw,3.2rem);font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:18px 0;background:rgba(255,255,255,.02)}
+.mqi{display:flex;gap:52px;white-space:nowrap;animation:mq 26s linear infinite;color:var(--muted);font-size:.9rem;letter-spacing:.1em}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* cta */
+.final{text-align:center;border-radius:32px;padding:clamp(44px,7vw,84px) 26px;border:1px solid var(--line);background:radial-gradient(ellipse at 50% 0%,rgba(109,94,252,.35),rgba(255,255,255,.02) 70%);overflow:hidden;position:relative}
+footer{border-top:1px solid var(--line);padding:52px 0 34px;color:var(--muted);font-size:.87rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}
+@media(max-width:760px){.fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 14px}
+footer a{display:block;padding:5px 0}
+footer a:hover{color:#fff}
+.rev{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.7,.3,1),transform .8s cubic-bezier(.2,.7,.3,1)}
+.rev.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rev{opacity:1;transform:none}}
+
+    .ds-theme-list::-webkit-scrollbar { width: 6px; }
+    .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
+    .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
+    .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+  </style>
+</head>
+<body>
+<div class="aura"><i></i><i></i><i></i></div>
+<div class="grid-bg"></div>
+
+<header>
+ <div class="wrap">
+  <div class="nav">
+   <a href="#top" class="logo"><span class="mark"></span> Digital<span style="color:var(--b)">Seba</span></a>
+   <nav class="links">
+    <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
+    <a href="#livetv">Live TV</a><a href="#focus">Focus</a><a href="#why">Why Us</a>
+   </nav>
+   <a href="#start" class="btn p">à¦¶à§à¦°à§ à¦•à¦°à§à¦¨ â†’</a>
+   <button class="burger" id="bg" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+  <div id="mob">
+   <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
+   <a href="#livetv">Live TV</a><a href="#focus">Focus Mode</a><a href="#why">Why Digital Seba</a>
+   <a href="#start" style="color:var(--b);font-weight:600">Get Started â†’</a>
+  </div>
+ </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+ <div class="wrap">
+  <span class="pill rev in"><span class="dot"></span> One platform Â· à¦¸à¦¬ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾ à¦à¦• à¦ à¦¿à¦•à¦¾à¦¨à¦¾à¦¯à¦¼</span>
+  <h1>Your entire digital life,<br><span class="grad">beautifully unified.</span></h1>
+  <p class="lead bn">Digital Seba brings services, smart tools, curated resources, live television and a distraction-free focus mode into one lightning-fast, mobile-first experience â€” à¦¬à¦¾à¦‚à¦²à¦¾ à¦“ à¦‡à¦‚à¦°à§‡à¦œà¦¿, à¦¦à§à¦Ÿà§‹à¦¤à§‡à¦‡à¥¤</p>
+  <div class="cta">
+   <a href="#start" class="btn p">Explore the platform</a>
+   <a href="#ecosystem" class="btn">See the ecosystem â†—</a>
+  </div>
+  <div class="stats">
+   <div><b data-count="120">0</b>+<span>Services</span></div>
+   <div><b data-count="60">0</b>+<span>Smart Tools</span></div>
+   <div><b data-count="45">0</b>+<span>Live Channels</span></div>
+   <div><b data-count="99">0</b>%<span>Uptime</span></div>
+  </div>
+ </div>
+</section>
+
+<section id="ecosystem" style="padding-top:0">
+ <div class="wrap">
+  <div class="scene rev">
+   <div class="orbit" id="orbit">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+   </div>
+   <div class="core">DIGITAL<br>SEBA</div>
+  </div>
+  <div class="head rev" style="margin-bottom:0">
+   <span class="kicker">The Ecosystem</span>
+   <h2>Six pillars. One orbit.</h2>
+   <p>Every module of Digital Seba is built on a shared design system, shared auth and a shared speed budget â€” so switching between them feels instant.</p>
+  </div>
+ </div>
+</section>
+
+<div class="mq"><div class="mqi" id="mq"></div></div>
+
+<section id="services">
+ <div class="wrap">
+  <div class="head rev"><span class="kicker">Services</span><h2>à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾, à¦à¦¾à¦®à§‡à¦²à¦¾ à¦›à¦¾à¦¡à¦¼à¦¾à¦‡</h2><p>Guided, verified and always up-to-date service flows â€” from application to confirmation.</p></div>
+  <div class="cards" id="svc"></div>
+ </div>
+</section>
+
+<section id="resources">
+ <div class="wrap">
+  <div class="head rev"><span class="kicker">Resources</span><h2>Knowledge that actually helps</h2><p>Guides, templates, forms and explainers â€” written in plain Bangla and English.</p></div>
+  <div class="cards" id="res"></div>
+ </div>
+</section>
+
+<section id="tools">
+ <div class="wrap">
+  <div class="head rev"><span class="kicker">Tools</span><h2>Small tools. Massive time savings.</h2><p>Everything runs client-side where possible â€” fast, private, and works on any phone.</p></div>
+  <div class="cards" id="tls"></div>
+ </div>
+</section>
+
+<section id="livetv">
+ <div class="wrap split">
+  <div class="rev">
+   <span class="kicker">Live TV</span>
+   <h2>News & entertainment,<br>always one tap away.</h2>
+   <p style="color:var(--muted)">A clean, ad-light live television experience with a lightweight player tuned for mobile data. Pick a channel, cast it, or keep it floating while you browse.</p>
+   <ul class="check">
+    <li>Adaptive low-data streaming for 3G/4G networks</li>
+    <li>Picture-in-picture on Android & iOS</li>
+    <li>Favourites, categories and instant channel search</li>
+    <li>Bangla, national and international channel groups</li>
+   </ul>
+   <a href="#start" class="btn p" style="margin-top:26px">Open Live TV</a>
+  </div>
+  <div class="visual rev">
+   <div class="tv"><span class="live">â— LIVE</span><span style="font-size:2.6rem;opacity:.5">â–¶</span></div>
+   <div class="chlist" id="ch"></div>
+  </div>
+ </div>
+</section>
+
+<section id="focus">
+ <div class="wrap split">
+  <div class="visual rev" style="transform:perspective(1200px) rotateY(9deg) rotateX(5deg)">
+   <div class="timer"><div style="text-align:center"><div id="clock">25:00</div><div style="font-size:.72rem;letter-spacing:.2em;color:var(--muted)">DEEP WORK</div></div></div>
+   <div style="display:flex;gap:10px;justify-content:center;margin-top:18px">
+    <button class="btn p" id="pl" style="padding:10px 20px">Start</button>
+    <button class="btn" id="rs" style="padding:10px 20px">Reset</button>
+   </div>
+  </div>
+  <div class="rev">
+   <span class="kicker">Focus Mode</span>
+   <h2>Do the deep work.<br><span class="grad">à¦®à¦¨à§‹à¦¯à§‹à¦— à¦«à¦¿à¦°à§‡ à¦ªà¦¾à¦¨à¥¤</span></h2>
+   <p style="color:var(--muted)">A calm, full-screen environment with pomodoro sessions, ambient soundscapes and a gentle progress ring. No notifications, no noise â€” just you and the task.</p>
+   <ul class="check">
+    <li>Pomodoro & custom session lengths</li>
+    <li>Ambient sound library and silent mode</li>
+    <li>Daily streaks and weekly focus analytics</li>
+    <li>Works offline once loaded</li>
+   </ul>
+  </div>
+ </div>
+</section>
+
+<section id="why">
+ <div class="wrap">
+  <div class="head rev"><span class="kicker">Why Digital Seba</span><h2>Built for real phones,<br>real networks, real people.</h2></div>
+  <div class="cards" id="why-c"></div>
+ </div>
+</section>
+
+<section id="start">
+ <div class="wrap">
+  <div class="final rev">
+   <span class="pill"><span class="dot"></span> Free to start Â· No card required</span>
+   <h2 style="margin-top:20px">Everything you need.<br><span class="grad">à¦à¦• à¦œà¦¾à¦¯à¦¼à¦—à¦¾à¦¯à¦¼, à¦à¦–à¦¨à¦‡à¥¤</span></h2>
+   <p style="color:var(--muted);max-width:540px;margin:0 auto">Join thousands who replaced a dozen bookmarks with a single home screen icon.</p>
+   <div class="cta">
+    <a href="#top" class="btn p">Get started free</a>
+    <a href="#services" class="btn">Browse services</a>
+   </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <div class="fgrid">
+   <div>
+    <a href="#top" class="logo" style="margin-bottom:14px"><span class="mark"></span> Digital<span style="color:var(--b)">Seba</span></a>
+    <p style="max-width:280px">à¦¸à¦¬ à¦¡à¦¿à¦œà¦¿à¦Ÿà¦¾à¦² à¦¸à§‡à¦¬à¦¾, à¦Ÿà§à¦²à¦¸, à¦°à¦¿à¦¸à§‹à¦°à§à¦¸ à¦“ à¦²à¦¾à¦‡à¦­ à¦Ÿà¦¿à¦­à¦¿ â€” à¦à¦•à¦Ÿà¦¿ à¦ªà§à¦²à§à¦¯à¦¾à¦Ÿà¦«à¦°à§à¦®à§‡à¥¤</p>
+   </div>
+   <div><h4>Platform</h4><a href="#services">Services</a><a href="#tools">Tools</a><a href="#resources">Resources</a><a href="#livetv">Live TV</a></div>
+   <div><h4>Company</h4><a href="#why">About</a><a href="#start">Contact</a><a href="#top">Careers</a><a href="#top">Blog</a></div>
+   <div><h4>Legal</h4><a href="#top">Privacy</a><a href="#top">Terms</a><a href="#top">Cookies</a></div>
+  </div>
+  <div style="border-top:1px solid var(--line);margin-top:34px;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+   <span>Â© <span id="yr"></span> Digital Seba. All rights reserved.</span><span>Made with â™¥ in Bangladesh</span>
+  </div>
+ </div>
+</footer>
+
+<script>
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+$('#yr').textContent=new Date().getFullYear();
+$('#bg').onclick=()=>$('#mob').classList.toggle('open');
+$$('#mob a').forEach(a=>a.onclick=()=>$('#mob').classList.remove('open'));
+
+/* orbit nodes */
+const nodes=[['ðŸ›ï¸','Services'],['ðŸ§°','Tools'],['ðŸ“š','Resources'],['ðŸ“º','Live TV'],['ðŸŽ¯','Focus'],['â„¹ï¸','About']];
+const orbit=$('#orbit'), R=[42,42,42,42,42,42];
+nodes.forEach((n,i)=>{
+  const a=i/nodes.length*Math.PI*2, r=R[i];
+  const d=document.createElement('div'); d.className='node';
+  d.style.setProperty('--tr',`translate3d(${Math.cos(a)*r}%,${Math.sin(a)*r}%,${30+i*6}px)`);
+  d.style.transform=`translate3d(${Math.cos(a)*r*4.2}px,${Math.sin(a)*r*4.2}px,0)`;
+  d.innerHTML=n[0]; d.title=n[1];
+  d.animate([{transform:d.style.transform+' rotateZ(0deg) rotateX(-64deg)'},{transform:d.style.transform+' rotateZ(-360deg) rotateX(-64deg)'}],{duration:34000,iterations:Infinity,easing:'linear'});
+  orbit.appendChild(d);
+});
+
+/* content */
+const data={
+svc:[['ðŸ›ï¸','Government Services','à¦œà¦¾à¦¤à§€à¦¯à¦¼ à¦ªà¦°à¦¿à¦šà¦¯à¦¼à¦ªà¦¤à§à¦°, à¦œà¦¨à§à¦®à¦¨à¦¿à¦¬à¦¨à§à¦§à¦¨, à¦ªà¦¾à¦¸à¦ªà§‹à¦°à§à¦Ÿ à¦“ à¦…à¦¨à§à¦¯à¦¾à¦¨à§à¦¯ à¦¸à§‡à¦¬à¦¾à¦° à¦§à¦¾à¦ªà§‡ à¦§à¦¾à¦ªà§‡ à¦—à¦¾à¦‡à¦¡à¥¤',['NID','Birth Reg','Passport']],
+['ðŸ’³','Bills & Payments','Utility, mobile and internet bill workflows with reminders and receipts.',['Electricity','Gas','Internet']],
+['ðŸŽ“','Education Seba','Admissions, results, scholarships and exam routines in one clean feed.',['Results','Admission']],
+['ðŸ¥','Health Seba','Hospital directories, ambulance lines and emergency contacts near you.',['Emergency','Doctors']],
+['ðŸ’¼','Job & Career','Circulars, CV templates and application trackers, updated daily.',['Circulars','CV']],
+['ðŸšŒ','Travel & Transport','Ticketing links, schedules and route planners for the whole country.',['Train','Bus']]],
+res:[['ðŸ“–','Step-by-step Guides','Plain-language walkthroughs with screenshots for every major service.',[]],
+['ðŸ“„','Forms & Templates','Downloadable, pre-filled and print-ready documents.',[]],
+['â“','FAQ Library','Thousands of real questions answered by the community and moderators.',[]],
+['ðŸ“Š','Data & Insights','Charts, deadlines and fee tables kept current by our editorial team.',[]]],
+tls:[['ðŸ§®','Smart Calculators','Age, EMI, tax, BMI and unit converters â€” instant, offline-capable.',[]],
+['ðŸ–¼ï¸','Image & PDF Kit','Compress, resize, convert and merge â€” all inside your browser.',[]],
+['ðŸ”¤','Bangla Typing','Phonetic keyboard, Unicode converter and text utilities.',[]],
+['ðŸ”—','QR & Link Tools','Generate QR codes, shorten links and scan instantly from mobile.',[]],
+['ðŸ“','Notes & Checklists','Lightweight notes that sync across your devices.',[]],
+['ðŸ”','Privacy Utilities','Password generator, hash tools and secure clipboard.',[]]],
+'why-c':[['âš¡','Blazing fast','Sub-second loads on 3G. Every asset is budgeted and lazy-loaded.',[]],
+['ðŸ“±','Mobile-first','Designed thumb-first for Android and iOS, then scaled up to desktop.',[]],
+['ðŸŒ','Bangla + English','Every screen, label and guide is fully bilingual by default.',[]],
+['ðŸ›¡ï¸','Private by design','No unnecessary tracking. Tools run locally whenever possible.',[]],
+['â™¿','Accessible','High contrast, keyboard friendly, reduced-motion aware.',[]],
+['ðŸ”„','Always current','Editorially maintained content with visible last-updated dates.',[]]]
+};
+for(const k in data){
+ $('#'+k).innerHTML=data[k].map(([i,t,d,tg])=>`<article class="card rev"><div class="ic">${i}</div><h3>${t}</h3><p class="bn">${d}</p>${tg&&tg.length?`<div class="tags">${tg.map(x=>`<span class="tag">${x}</span>`).join('')}</div>`:''}</article>`).join('');
+}
+$('#ch').innerHTML=['NEWS','SPORTS','DRAMA','MUSIC','KIDS','MOVIE','ISLAM','INTL'].map(c=>`<div class="ch">${c}</div>`).join('');
+$('#mq').innerHTML=(()=>{const w=['SERVICES','TOOLS','RESOURCES','LIVE TV','FOCUS MODE','BILINGUAL','FAST','SECURE'];return [...w,...w].map(x=>`<span>âœ¦ ${x}</span>`).join('')})();
+
+/* tilt + glow */
+$$('.card').forEach(c=>{
+ c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();const x=e.clientX-r.left,y=e.clientY-r.top;
+  c.style.setProperty('--mx',x+'px');c.style.setProperty('--my',y+'px');
+  c.style.transform=`perspective(900px) rotateY(${(x/r.width-.5)*9}deg) rotateX(${-(y/r.height-.5)*9}deg) translateY(-6px)`;});
+ c.addEventListener('pointerleave',()=>c.style.transform='');
+});
+
+/* reveal */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+$$('.rev').forEach(e=>io.observe(e));
+
+/* counters */
+const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target,t=+el.dataset.count;let n=0;
+ const id=setInterval(()=>{n+=Math.ceil(t/40);if(n>=t){n=t;clearInterval(id)}el.textContent=n},32);co.unobserve(el)}),{threshold:.5});
+$$('[data-count]').forEach(e=>co.observe(e));
+
+/* focus timer */
+let left=1500,run=null;
+const fmt=s=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(s%60).padStart(2,'0')}`;
+$('#pl').onclick=e=>{if(run){clearInterval(run);run=null;e.target.textContent='Start';return}
+ e.target.textContent='Pause';run=setInterval(()=>{left--;$('#clock').textContent=fmt(left);if(left<=0){clearInterval(run);run=null;$('#pl').textContent='Start'}},1000)};
+$('#rs').onclick=()=>{clearInterval(run);run=null;left=1500;$('#clock').textContent='25:00';$('#pl').textContent='Start'};
+</script>
+
+
+
+
+
+
+
+
+
+<!-- DS LEFT THEME SWITCHER -->
+<style>
+  #ds-theme-switcher { position: fixed; bottom: max(24px, env(safe-area-inset-bottom, 24px)); left: max(24px, env(safe-area-inset-left, 24px)); z-index: 2147483647; font-family: system-ui, -apple-system, sans-serif; }
+  #ds-theme-button { background: #10b981; color: white; border: none; border-radius: 9999px; padding: 12px 24px; font-weight: 600; font-size: 15px; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,0.3); display: flex; align-items: center; gap: 8px; transition: transform 0.2s, background 0.2s; outline: none; -webkit-tap-highlight-color: transparent; }
+  #ds-theme-button:hover, #ds-theme-button:active { transform: translateY(-2px); background: #059669; }
+  #ds-theme-panel { display: none; position: absolute; bottom: 100%; left: 0; margin-bottom: 16px; width: 240px; background: #ffffff; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.4); overflow: hidden; flex-direction: column; border: 1px solid rgba(0,0,0,0.1); }
+  #ds-theme-panel.ds-open { display: flex; }
+  .ds-theme-header { padding: 14px 20px; font-weight: 700; font-size: 15px; border-bottom: 1px solid rgba(0,0,0,0.1); background: #f8fafc; color: #0f172a; margin: 0; }
+  .ds-theme-list { max-height: 350px !important; overflow-y: auto !important; padding: 8px 0; margin: 0; overscroll-behavior: contain !important; -webkit-overflow-scrolling: touch; }
+  .ds-theme-option { padding: 12px 20px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; cursor: pointer; background: transparent; border: none; width: 100%; text-align: left; transition: background 0.15s; outline: none; justify-content: space-between; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-option:hover, .ds-theme-option:active { background: #f1f5f9; }
+  .ds-theme-option.ds-active { font-weight: 700; color: #10b981; background: #ecfdf5; }
+  .ds-active-badge { font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; background: #10b981; color: #fff; padding: 2px 6px; border-radius: 4px; display: none; }
+  .ds-active .ds-active-badge { display: block; }
+  .ds-theme-selector-link { display: flex; align-items: center; gap: 8px; padding: 12px 20px; text-decoration: none; font-size: 14px; font-weight: 600; color: #10b981; border-top: 1px solid rgba(0,0,0,0.1); background: #f8fafc; transition: background 0.15s; -webkit-tap-highlight-color: transparent; }
+  .ds-theme-selector-link:hover, .ds-theme-selector-link:active { background: #e2e8f0; }
+  @media (max-height: 500px) { .ds-theme-list { max-height: 200px !important; } }
+  @media (max-width: 480px) { #ds-theme-switcher { bottom: max(16px, env(safe-area-inset-bottom, 16px)); left: max(16px, env(safe-area-inset-left, 16px)); } #ds-theme-button { padding: 10px 20px; font-size: 14px; } }
+</style>
+<div id="ds-theme-switcher">
+  <button id="ds-theme-button" aria-label="Change Theme">&#127912; Theme</button>
+  <div id="ds-theme-panel">
+    <div class="ds-theme-header">Select Theme</div>
+    <div class="ds-theme-list" id="ds-theme-list"></div>
+    <a href="/theme-selector/" class="ds-theme-selector-link">&#127912; Browse All Themes</a>
+  </div>
+</div>
+
+<script>
+  (function() {
+    var validThemes = [
+        { id: 'theme-alpha', name: 'Alpha' },
+        { id: 'theme-nexus', name: 'Nexus' },
+        { id: 'theme-horizon', name: 'Horizon' },
+        { id: 'theme-quantum', name: 'Quantum' },
+        { id: 'theme-vertex', name: 'Vertex' },
+        { id: 'theme-pulse', name: 'Pulse' },
+        { id: 'theme-orbit', name: 'Orbit' },
+        { id: 'theme-spark', name: 'Spark' },
+        { id: 'theme-lumina', name: 'Lumina' },
+        { id: 'theme-zenith', name: 'Zenith' },
+        { id: 'theme-aero', name: 'Aero' },
+        { id: 'theme-nova', name: 'Nova' },
+        { id: 'theme-prism', name: 'Prism' },
+        { id: 'theme-echo', name: 'Echo' },
+        { id: 'theme-flux', name: 'Flux' },
+        { id: 'theme-neon', name: 'Neon' },
+        { id: 'theme-core', name: 'Core' },
+        { id: 'theme-apex', name: 'Apex' },
+        { id: 'theme-ignite', name: 'Ignite' },
+        { id: 'theme-infinity', name: 'Infinity' },
+        { id: 'theme-genesis', name: 'Genesis' }
+    ];
+
+    var match = window.location.pathname.match(/theme-[a-zA-Z0-9]+/);
+    var currentTheme = match ? match[0] : (localStorage.getItem('activeTheme') || 'theme-alpha');
+
+    var toggleBtn = document.getElementById('ds-theme-button');
+    var panel = document.getElementById('ds-theme-panel');
+    var list = document.getElementById('ds-theme-list');
+
+    list.addEventListener('wheel', function(e) { e.stopPropagation(); }, { passive: true });
+    list.addEventListener('touchmove', function(e) { e.stopPropagation(); }, { passive: true });
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      panel.classList.toggle('ds-open');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    });
+
+    document.addEventListener('touchstart', function(e) {
+      if (!panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        panel.classList.remove('ds-open');
+      }
+    }, { passive: true });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') panel.classList.remove('ds-open');
+    });
+
+    for (var i = 0; i < validThemes.length; i++) {
+      (function(t) {
+        var btn = document.createElement('button');
+        var isActive = (t.id === currentTheme);
+        btn.className = 'ds-theme-option' + (isActive ? ' ds-active' : '');
+        btn.innerHTML = '<span>' + t.name + '</span><span class="ds-active-badge">&#10004; Active</span>';
+
+        btn.addEventListener('click', function() {
+          if (!isActive) {
+            localStorage.setItem('activeTheme', t.id);
+            if (t.id === 'theme-alpha') {
+              window.location.href = '/';
+            } else {
+              var themeMap = {
+                "theme-lumina": "out/index.html",
+                "theme-zenith": "dist/index.html",
+                "theme-aero": "dist/index.html",
+                "theme-nova": "dist/index.html"
+              };
+              var target = themeMap[t.id] || "index.html";
+              window.location.href = '/homepage-themes/' + t.id + '/' + target;
+            }
+          }
+        });
+
+        list.appendChild(btn);
+      })(validThemes[i]);
+    }
+  })();
+</script>
+<!-- END DS LEFT THEME SWITCHER -->
+
+</body>
+</html>

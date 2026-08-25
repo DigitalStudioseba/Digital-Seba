@@ -165,6 +165,12 @@ $RC=function(a,b){if(b=document.getElementById(b))(a=document.getElementById(a))
     var panel = document.getElementById('ds-theme-panel');
     var list = document.getElementById('ds-theme-list');
 
+    ['wheel', 'touchstart', 'touchmove', 'touchend', 'pointerdown', 'pointermove'].forEach(function(evt) {
+      list.addEventListener(evt, function(e) {
+        e.stopPropagation();
+      }, { passive: false });
+    });
+
     toggleBtn.addEventListener('click', function(e) {
       e.stopPropagation();
       panel.classList.toggle('ds-open');

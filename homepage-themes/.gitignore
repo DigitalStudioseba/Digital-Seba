@@ -1,4 +1,3 @@
-!*/out/
 */src/
 */node_modules/
 */.next/
@@ -8,6 +7,10 @@
 *.txt
 *.js.map
 *.css.map
-!*/out/_next/
-!*/dist/assets/
 update_vite.py
+
+# Un-ignore deployment artifacts completely
+!*/out/
+!*/out/**
+!*/dist/
+!*/dist/**

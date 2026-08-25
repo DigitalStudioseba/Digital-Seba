@@ -67,9 +67,9 @@ Thumbs.db
 
 
 # Generated theme/build directories
-/homepage-themes/**/out/
-/homepage-themes/**/dist/
+# /homepage-themes/**/out/
+# /homepage-themes/**/dist/
 
-/homepage-themes/theme-lumina/out/
+# /homepage-themes/theme-lumina/out/
 
-/homepage-themes/theme-lumina/out/**
+# /homepage-themes/theme-lumina/out/**

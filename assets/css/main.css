@@ -2454,3 +2454,5 @@ width:100%;
     transform:translateY(-5px);
     background:#1d4ed8;
 }
+/* Force mobile menu height to override Next.js containing block constraints */
+#mobileMenu { height: calc(100vh - 70px) !important; max-height: calc(100dvh - 70px) !important; }

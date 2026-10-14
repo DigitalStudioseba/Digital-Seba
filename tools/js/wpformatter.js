@@ -431,32 +431,43 @@ function renderFqInputs() {
     });
 }
 
+function escFq(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
+}
+
 function drawFq() {
-    const inst = document.getElementById('fq-name').value || (fqLang === 'bn' ? "প্রতিষ্ঠানের নাম" : "Institution Name");
-    const exam = document.getElementById('fq-exam-title').value || (fqLang === 'bn' ? "পরীক্ষার নাম" : "Exam Title");
+    const inst = escFq(document.getElementById('fq-name').value || (fqLang === 'bn' ? "প্রতিষ্ঠানের নাম" : "Institution Name"));
+    const exam = escFq(document.getElementById('fq-exam-title').value || (fqLang === 'bn' ? "পরীক্ষার নাম" : "Exam Title"));
     const labels = fqLang === 'bn' ? ['শ্রেণি', 'বিষয়', 'সময়', 'পূর্ণমান'] : ['Class', 'Subject', 'Time', 'Marks'];
     const optLabels = fqLang === 'bn' ? ['(ক)', '(খ)', '(গ)', '(ঘ)'] : ['(a)', '(b)', '(c)', '(d)'];
+    const fqClass = escFq(document.getElementById('fq-class').value);
+    const fqSub = escFq(document.getElementById('fq-sub').value);
+    const fqTime = escFq(document.getElementById('fq-time').value);
+    const fqMarks = escFq(toFqNum(document.getElementById('fq-marks').value));
+    const safeLogo = (fqLogoSrc && /^data:image\/(jpeg|png|webp|gif);base64,/i.test(fqLogoSrc)) ? fqLogoSrc : '';
 
     let html = `<div style="text-align:center; border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 10px;">
-                    ${fqLogoSrc ? `<img src="${fqLogoSrc}" style="height:45px; margin-bottom:5px;">` : ''}
+                    ${safeLogo ? `<img src="${safeLogo}" style="height:45px; margin-bottom:5px;">` : ''}
                     <h1 style="margin:0; font-size:20px;">${inst}</h1>
                     <h2 style="margin:2px 0; font-size:15px;">${exam}</h2>
                 </div>
                 <div style="display:flex; justify-content:space-between; font-weight:bold; border-bottom: 1px solid #000; padding-bottom:5px; margin-bottom:15px; font-size:13px;">
-                    <span>${labels[0]}: ${document.getElementById('fq-class').value}</span>
-                    <span>${labels[1]}: ${document.getElementById('fq-sub').value}</span>
-                    <span>${labels[2]}: ${document.getElementById('fq-time').value}</span>
-                    <span>${labels[3]}: ${toFqNum(document.getElementById('fq-marks').value)}</span>
+                    <span>${labels[0]}: ${fqClass}</span>
+                    <span>${labels[1]}: ${fqSub}</span>
+                    <span>${labels[2]}: ${fqTime}</span>
+                    <span>${labels[3]}: ${fqMarks}</span>
                 </div>`;
 
     fqQuestions.forEach((q, index) => {
         html += `<div style="margin-bottom:10px; line-height:1.4;">
                     <div style="display:flex; justify-content:space-between;">
-                        <span><b>${toFqNum(index+1)}.</b> ${q.qText}</span>
-                        <b>${toFqNum(q.marks)}</b>
+                        <span><b>${toFqNum(index+1)}.</b> ${escFq(q.qText)}</span>
+                        <b>${escFq(toFqNum(q.marks))}</b>
                     </div>
                     ${q.type === 'mcq' ? `<div style="display:grid; grid-template-columns: 1fr 1fr; margin-left:20px; font-size:12px;">
-                        ${q.options.map((opt, i) => `<span>${optLabels[i]} ${opt}</span>`).join('')}
+                        ${q.options.map((opt, i) => `<span>${optLabels[i]} ${escFq(opt)}</span>`).join('')}
                     </div>` : ''}
                 </div>`;
     });

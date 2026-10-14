@@ -596,23 +596,77 @@ function renderDebug(d) {
   panel.id = 'debugPanel';
   panel.style.cssText = 'position:fixed;z-index:99999;left:0;right:0;top:0;max-height:58vh;overflow:auto;background:#151515;color:#eee;border-bottom:3px solid #f33;padding:14px;font:12px/1.45 Consolas,monospace;box-shadow:0 12px 30px #000;';
 
-  const preview = d.validRecords.slice(0, 20).map(r =>
-    `${r.serial} | ${r.name} | ${r.voterId} | F:${r.father} | M:${r.mother} | ${r.occupation} | ${r.dob} | ${r.address} | P${r.sourcePage}`
+  const mask = (s) => {
+    if (!s) return '';
+    const str = String(s);
+    if (str.length <= 4) return '***';
+    return str.slice(0, 2) + '***' + str.slice(-2);
+  };
+  const maskText = (str) => {
+    if (!str) return '';
+    return String(str)
+      .replace(/\b\d{9,17}\b/g, m => m.slice(0, 2) + '***' + m.slice(-2))
+      .replace(/\b\d{2}[-/.]\d{2}[-/.]\d{4}\b/g, '**/**/****')
+      .replace(/[\u0980-\u09FFa-zA-Z]{3,}/g, w => w.length > 4 ? w.slice(0, 2) + '***' : '***');
+  };
+  const sanitizeRecord = (r) => {
+    if (!r || typeof r !== 'object') return r;
+    return {
+      serial: r.serial,
+      sourcePage: r.sourcePage,
+      name: mask(r.name),
+      voterId: mask(r.voterId),
+      father: mask(r.father),
+      mother: mask(r.mother),
+      dob: mask(r.dob),
+      occupation: mask(r.occupation),
+      address: mask(r.address)
+    };
+  };
+
+  const preview = (d.validRecords || []).slice(0, 20).map(r =>
+    `${r.serial} | ${mask(r.name)} | ${mask(r.voterId)} | F:${mask(r.father)} | M:${mask(r.mother)} | ${mask(r.occupation)} | ${mask(r.dob)} | ${mask(r.address)} | P${r.sourcePage}`
   ).join('\n');
-  const rawRows = d.blocks.slice(0, 5).map((b, i) =>
-    `BLOCK ${i+1} | Page ${b.page} | Anchors ${b.anchors.map(x => Math.round(x)).join(', ')} | Serials ${b.serials.join(', ')}\n${b.rawRows.join('\n')}`
+  const rawRows = (d.blocks || []).slice(0, 5).map((b, i) =>
+    `BLOCK ${i+1} | Page ${b.page} | Anchors ${b.anchors.map(x => Math.round(x)).join(', ')} | Serials ${b.serials.join(', ')}\n${b.rawRows.map(maskText).join('\n')}`
   ).join('\n\n----------------------------------------\n\n');
 
-  const json = JSON.stringify(d, null, 2);
+  const sanitizedDiag = {
+    pages: d.pages,
+    pagesWithText: d.pagesWithText,
+    totalTextItems: d.totalTextItems,
+    totalExtractedCharacters: d.totalExtractedCharacters,
+    physicalRows: d.physicalRows,
+    serialStarts: d.serialStarts,
+    candidateBlocks: d.candidateBlocks,
+    failureStage: d.failureStage,
+    duplicateRecords: d.duplicateRecords,
+    counts: {
+      candidate: (d.candidateRecords || []).length,
+      valid: (d.validRecords || []).length,
+      invalid: (d.invalidRecords || []).length
+    },
+    blocksSummary: (d.blocks || []).map((b, i) => ({
+      blockIndex: i + 1,
+      page: b.page,
+      anchors: b.anchors,
+      serials: b.serials,
+      rowCount: b.rawRows ? b.rawRows.length : 0
+    })),
+    sampleRecords: (d.validRecords || []).slice(0, 20).map(sanitizeRecord),
+    piiStatus: 'REDACTED_FOR_SECURITY'
+  };
+  const json = JSON.stringify(sanitizedDiag, null, 2);
+
   panel.innerHTML = `
     <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
-      <b style="color:#ffb84d;font-size:14px">⚠️ DEVELOPER DIAGNOSTIC MODE</b>
+      <b style="color:#ffb84d;font-size:14px">⚠️ DEVELOPER DIAGNOSTIC MODE (REDACTED)</b>
       <button id="closeDebug" style="background:#d33;color:#fff;border:0;padding:7px 12px;cursor:pointer">Close Panel</button>
     </div>
     <div style="margin:10px 0;padding:7px;border:1px solid #e6d000;color:#ffe900"><b>FAILURE STAGE:</b> ${esc(d.failureStage)}</div>
     <div style="margin-bottom:8px">
       <button id="copyDiag" style="background:#1488d8;color:#fff;border:0;padding:7px 10px;margin-right:7px;cursor:pointer">Copy Diagnostic JSON</button>
-      <button id="copyRaw" style="background:#1b9aaa;color:#fff;border:0;padding:7px 10px;cursor:pointer">Copy Raw TXT</button>
+      <button id="copyRaw" style="background:#1b9aaa;color:#fff;border:0;padding:7px 10px;cursor:pointer">Copy Raw TXT (Redacted)</button>
     </div>
     <div>PDF Pages: ${d.pages} | Pages With Text: ${d.pagesWithText} | Total Text Items: ${d.totalTextItems}</div>
     <div>Total Extracted Characters: ${d.totalExtractedCharacters} | Physical Rows: ${d.physicalRows}</div>
@@ -620,12 +674,12 @@ function renderDebug(d) {
     <div>Candidate Records: ${d.candidateRecords.length} | Valid Records: ${d.validRecords.length} | Invalid Records: ${d.invalidRecords.length} | Duplicate Records: ${d.duplicateRecords}</div>
     <h4 style="color:#8bd3ff">FIRST 5 RAW CANDIDATE BLOCKS</h4><pre style="background:#080808;padding:10px;max-height:250px;overflow:auto">${esc(rawRows || 'No candidate blocks')}</pre>
     <h4 style="color:#8bd3ff">FIRST 20 PARSED RECORDS</h4><pre style="background:#080808;padding:10px;max-height:250px;overflow:auto">${esc(preview || 'No valid records')}</pre>
-    <h4 style="color:#8bd3ff">FIRST 50 RECONSTRUCTED ROWS</h4><pre style="background:#080808;padding:10px;max-height:250px;overflow:auto">${esc(d.pagesData.flatMap(p => p.rows.slice(0, 50).map(r => `P${p.page} Y=${Math.round(r.y)} X=${Math.round(r.items[0]?.x||0)} ${rowText(r)}`)).slice(0,50).join('\n'))}</pre>
+    <h4 style="color:#8bd3ff">FIRST 50 RECONSTRUCTED ROWS</h4><pre style="background:#080808;padding:10px;max-height:250px;overflow:auto">${esc(d.pagesData.flatMap(p => p.rows.slice(0, 50).map(r => `P${p.page} Y=${Math.round(r.y)} X=${Math.round(r.items[0]?.x||0)} ${maskText(rowText(r))}`)).slice(0,50).join('\n'))}</pre>
   `;
   document.body.appendChild(panel);
   $('closeDebug').onclick = () => panel.remove();
-  $('copyDiag').onclick = async () => { await navigator.clipboard.writeText(json); $('copyDiag').textContent = 'Copied'; };
-  $('copyRaw').onclick = async () => { await navigator.clipboard.writeText(d.rawText); $('copyRaw').textContent = 'Copied'; };
+  $('copyDiag').onclick = async () => { await navigator.clipboard.writeText(json); $('copyDiag').textContent = 'Copied (Redacted)'; };
+  $('copyRaw').onclick = async () => { await navigator.clipboard.writeText(maskText(d.rawText)); $('copyRaw').textContent = 'Copied (Redacted)'; };
 }
 
 async function handle(files) {

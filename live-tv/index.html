@@ -14,7 +14,7 @@
     <meta name="application-name" content="Digital Seba" />
     <meta name="apple-mobile-web-app-title" content="Digital Seba" />
     <meta name="format-detection" content="telephone=no" />
-    <link rel="canonical" href="https://digiseba.shop/" />
+    <link rel="canonical" href="https://digiseba.shop/live-tv/" />
     <title>Digital Seba TV - Live IPTV Channels and Sports Streams</title>
     <link rel="icon" type="image/png" href="../assets/images/logo.png" />
     <link rel="apple-touch-icon" href="../assets/images/logo.png" />
@@ -1056,7 +1056,17 @@
     <script src="js/stream-player.js?v=2.6" defer></script>
     <script src="js/embed-providers.js?v=1.0" defer></script>
     <script src="js/ui-renderer.js?v=3.0" defer></script>
-    
+
+    <!-- Firebase SDK v8 Compat (must load before firebase-init.js and live-chat.js) -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js" defer></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js" defer></script>
+    <!-- Firebase initialization (sets window.db, window.FIREBASE_CONFIG) -->
+    <script src="../assets/js/firebase-init.js" defer></script>
+    <!-- Live Chat (depends on Firebase Database) -->
+    <script src="js/live-chat.js?v=1.0" defer></script>
+
     <script src="js/bootstrap.js?v=2.6" defer></script>
     <!-- Digital Seba Footer -->
     <footer class="footer">

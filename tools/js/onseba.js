@@ -1297,9 +1297,13 @@ function updateBioPreview() {
     document.getElementById('pre-name').innerText = document.getElementById('bio-name').value || (bioCurrentLang === 'bn' ? 'আপনার নাম' : 'YOUR NAME');
     
     // ছবি সেট করা
-    if(bioPhotoBase64) {
+    if(bioPhotoBase64 && /^data:image\/(jpeg|png|webp|gif);base64,/i.test(bioPhotoBase64)) {
         document.getElementById('pre-img-box').innerHTML = `<img src="${bioPhotoBase64}" style="width:100%; height:100%; object-fit:cover;">`;
     }
+
+    const escBio = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({
+        '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    }[c]));
 
     // ডিটেইলস ডাটা
     const labels = bioCurrentLang === 'bn' ? 
@@ -1307,25 +1311,25 @@ function updateBioPreview() {
         {f:"Father's Name", m:"Mother's Name", d:'Date of Birth', r:'Religion', h:'Height', b:'Blood Group', p:'Phone', e:'Email'};
 
     let detailsHtml = `
-        <b>${labels.f}:</b> ${document.getElementById('bio-father').value}<br>
-        <b>${labels.m}:</b> ${document.getElementById('bio-mother').value}<br>
-        <b>${labels.d}:</b> ${document.getElementById('bio-dob').value}<br>
-        <b>${labels.r}:</b> ${document.getElementById('bio-religion').value}<br>
+        <b>${labels.f}:</b> ${escBio(document.getElementById('bio-father').value)}<br>
+        <b>${labels.m}:</b> ${escBio(document.getElementById('bio-mother').value)}<br>
+        <b>${labels.d}:</b> ${escBio(document.getElementById('bio-dob').value)}<br>
+        <b>${labels.r}:</b> ${escBio(document.getElementById('bio-religion').value)}<br>
     `;
     
     if(bioType === 'marriage') {
-        detailsHtml += `<b>${labels.h}:</b> ${document.getElementById('bio-height').value}<br>`;
-        detailsHtml += `<b>${labels.b}:</b> ${document.getElementById('bio-blood').value}<br>`;
+        detailsHtml += `<b>${labels.h}:</b> ${escBio(document.getElementById('bio-height').value)}<br>`;
+        detailsHtml += `<b>${labels.b}:</b> ${escBio(document.getElementById('bio-blood').value)}<br>`;
     }
-    detailsHtml += `<b>${labels.p}:</b> ${document.getElementById('bio-phone').value}<br>`;
-    detailsHtml += `<b>${labels.e}:</b> ${document.getElementById('bio-email').value}`;
+    detailsHtml += `<b>${labels.p}:</b> ${escBio(document.getElementById('bio-phone').value)}<br>`;
+    detailsHtml += `<b>${labels.e}:</b> ${escBio(document.getElementById('bio-email').value)}`;
     document.getElementById('pre-details').innerHTML = detailsHtml;
 
     // সেকশন ডাটা
     let sectionsHtml = `
         <div style="margin-top:15px; border-top:1px solid #eee; padding-top:10px;">
             <h3 style="font-size:14px; color:#7c3aed; margin-bottom:5px; border-bottom:1px solid #f3f0ff; display:inline-block;">${bioCurrentLang === 'bn' ? 'শিক্ষাগত যোগ্যতা' : 'Education'}</h3>
-            <p style="white-space: pre-line; margin:0;">${document.getElementById('bio-edu').value}</p>
+            <p style="white-space: pre-line; margin:0;">${escBio(document.getElementById('bio-edu').value)}</p>
         </div>
     `;
 
@@ -1333,7 +1337,7 @@ function updateBioPreview() {
         sectionsHtml += `
             <div style="margin-top:15px;">
                 <h3 style="font-size:14px; color:#7c3aed; margin-bottom:5px; border-bottom:1px solid #f3f0ff; display:inline-block;">${bioCurrentLang === 'bn' ? 'অভিজ্ঞতা ও দক্ষতা' : 'Experience & Skills'}</h3>
-                <p style="white-space: pre-line; margin:0;">${document.getElementById('bio-exp').value}</p>
+                <p style="white-space: pre-line; margin:0;">${escBio(document.getElementById('bio-exp').value)}</p>
             </div>
         `;
     }
@@ -1341,7 +1345,7 @@ function updateBioPreview() {
     sectionsHtml += `
         <div style="margin-top:15px;">
             <h3 style="font-size:14px; color:#7c3aed; margin-bottom:5px; border-bottom:1px solid #f3f0ff; display:inline-block;">${bioCurrentLang === 'bn' ? 'ঠিকানা' : 'Address'}</h3>
-            <p style="white-space: pre-line; margin:0;">${document.getElementById('bio-addr').value}</p>
+            <p style="white-space: pre-line; margin:0;">${escBio(document.getElementById('bio-addr').value)}</p>
         </div>
     `;
     document.getElementById('pre-sections').innerHTML = sectionsHtml;

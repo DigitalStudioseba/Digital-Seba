@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://digiseba.shop/live-tv/sitemap.xml
+Sitemap: https://digiseba.shop/sitemap.xml

@@ -7,6 +7,10 @@ node_modules/
 **/.next/
 out/
 
+# Source maps
+*.map
+**/*.map
+
 # Next.js generated files
 _next/
 **/_next/

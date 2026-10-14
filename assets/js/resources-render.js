@@ -29,13 +29,72 @@ document.addEventListener('DOMContentLoaded', () => {
         return colors[ext] || '#64748b';
     }
 
+    function escapeHTML(str) {
+        if (!str) return '';
+        return String(str).replace(/[&<>"']/g, c => ({
+            '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+        }[c]));
+    }
+
+    function sanitizeResourceUrl(url) {
+        if (!url || typeof url !== 'string') return null;
+        const trimmed = url.trim();
+        if (!trimmed) return null;
+
+        // Reject backslashes anywhere in the URL (prevents scheme bypass and host confusion)
+        if (trimmed.includes('\\')) return null;
+
+        // Reject protocol-relative URLs starting with //
+        if (trimmed.startsWith('//')) return null;
+
+        // Reject control characters
+        if (/[\x00-\x1F\x7F]/.test(trimmed)) return null;
+
+        // Permit same-origin root-relative paths starting with a single '/' followed by a valid path character
+        if (/^\/[a-zA-Z0-9_\-.~%#?&=]/.test(trimmed)) {
+            return trimmed;
+        }
+
+        // Permit strictly http: or https: absolute URLs
+        try {
+            const parsed = new URL(trimmed);
+            if (parsed.protocol !== 'http:' && parsed.protocol !== 'https:') {
+                return null;
+            }
+            if (!parsed.hostname || parsed.hostname.length === 0) {
+                return null;
+            }
+            return parsed.href;
+        } catch (_) {
+            return null;
+        }
+    }
+
     function highlightTextDrive(text, q) {
         if (!text) return '';
+        const str = String(text);
+        const trimmedQ = (q || '').trim();
+        if (!trimmedQ) return escapeHTML(str);
+
         try {
-            const reg = new RegExp(`(${q.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')})`, 'gi');
-            return text.replace(reg, '<mark>$1</mark>');
-        } catch (e) {
-            return text;
+            const escapedQ = trimmedQ.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const reg = new RegExp(escapedQ, 'gi');
+            let result = '';
+            let lastIndex = 0;
+            let match;
+
+            while ((match = reg.exec(str)) !== null) {
+                result += escapeHTML(str.slice(lastIndex, match.index));
+                result += `<mark class="drive-highlight">${escapeHTML(match[0])}</mark>`;
+                lastIndex = match.index + match[0].length;
+                if (!match[0].length) {
+                    reg.lastIndex++;
+                }
+            }
+            result += escapeHTML(str.slice(lastIndex));
+            return result;
+        } catch (_) {
+            return escapeHTML(str);
         }
     }
 
@@ -90,20 +149,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 const header = document.createElement('div');
                 header.className = 'drive-folder-header';
                 header.style.cssText = 'width: 100%; grid-column: 1 / -1; margin-top: 25px; margin-bottom: 10px; padding-bottom: 5px; border-bottom: 2px solid rgba(0,0,0,0.05); font-size: 16px; font-weight: 700; color: #374151; display: flex; align-items: center; gap: 8px;';
-                header.innerHTML = `<span>📁</span> ${item.folder}`;
+                header.innerHTML = `<span>📁</span> ${escapeHTML(item.folder)}`;
                 fragment.appendChild(header);
                 lastFolderRendered = item.folder;
             }
 
-            const card = document.createElement('a');
-            card.href = item.url;
-            card.className = 'mode-card-btn drive-link-card';
+            const safeUrl = sanitizeResourceUrl(item.url);
+            let card;
+            if (safeUrl) {
+                card = document.createElement('a');
+                card.href = safeUrl;
+                card.className = 'mode-card-btn drive-link-card';
+                card.target = '_blank';
+                card.rel = 'noopener noreferrer';
+            } else {
+                card = document.createElement('div');
+                card.className = 'mode-card-btn drive-link-card';
+                card.style.setProperty('cursor', 'not-allowed');
+                card.style.setProperty('opacity', '0.6');
+                card.setAttribute('aria-disabled', 'true');
+                card.setAttribute('title', 'Resource link unavailable');
+            }
             card.style.setProperty('--btn-color', getColorForExt(item.ext));
-            card.target = '_blank';
-            card.rel = 'noopener noreferrer';
 
             const title = (lang === 'bn' && item.title_bn) ? item.title_bn : (item.title_en || item.title || 'Untitled');
-            const highlightedTitle = q.length >= 1 ? highlightTextDrive(title, q) : title;
+            const highlightedTitle = q.length >= 1 ? highlightTextDrive(title, q) : escapeHTML(title);
             // Removed folder badge from card text since we have folder headers now, making cards cleaner
 
             card.innerHTML = `

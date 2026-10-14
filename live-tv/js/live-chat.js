@@ -89,7 +89,6 @@ function initLiveChat() {
               .push(msgData)
               .then(() => {
                 currentChatRef.child("lastActive").set(Date.now());
-                enforceMessageLimit();
               });
           } else {
             // Fallback: Local echo for demo simulation
@@ -107,13 +106,18 @@ function initLiveChat() {
       $msgContainer.scrollHeight - $msgContainer.scrollTop <=
       $msgContainer.clientHeight + 50;
 
+    const safeUser = escapeHTML(user);
+    const safeInitial = escapeHTML((user && user[0]) ? user[0] : "?");
+    const safeColor = (/^#[0-9a-fA-F]{3,6}$/.test(color)) ? color : "#e91e63";
+    const safeText = escapeHTML(text);
+
     const $msg = document.createElement("div");
     $msg.className = "chat-msg";
     $msg.innerHTML = `
-      <div class="chat-msg-avatar" style="background: ${color};">${user[0]}</div>
+      <div class="chat-msg-avatar" style="background: ${safeColor};">${safeInitial}</div>
       <div class="chat-msg-content">
-        <span class="chat-msg-user" style="color: ${isSelf ? "#ff4e45" : "#aaa"};">${user}</span>
-        <span class="chat-msg-text">${escapeHTML(text)}</span>
+        <span class="chat-msg-user" style="color: ${isSelf ? "#ff4e45" : "#aaa"};">${safeUser}</span>
+        <span class="chat-msg-text">${safeText}</span>
       </div>
     `;
     $msgContainer.appendChild($msg);
@@ -130,10 +134,11 @@ function initLiveChat() {
   }
 
   function escapeHTML(str) {
-    return str.replace(
+    if (str === null || str === undefined) return "";
+    return String(str).replace(
       /[&<>'"]/g,
       (tag) =>
-        ({ "&": "&", "<": "<", ">": ">", "'": "&#39;", '"': '"' })[tag] || tag,
+        ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" })[tag] || tag,
     );
   }
 
@@ -178,13 +183,9 @@ function initLiveChat() {
     currentChatRef
       .child("lastActive")
       .once("value")
-      .then((snap) => {
-        const lastActive = snap.val();
-        const now = Date.now();
-        if (lastActive && now - lastActive > 2 * 60 * 60 * 1000) {
-          currentChatRef.child("messages").remove();
-        }
-        currentChatRef.child("lastActive").set(now);
+      .then(() => {
+        // Update channel activity timestamp without destructive client deletion
+        currentChatRef.child("lastActive").set(Date.now());
       });
 
     // Listen to real-time database updates
@@ -200,29 +201,7 @@ function initLiveChat() {
       }
     });
 
-    // Client-side helper to truncate messages to the last 50
-    function enforceMessageLimit() {
-      currentChatRef
-        .child("messages")
-        .once("value")
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            const count = snapshot.numChildren();
-            if (count > 50) {
-              const keys = [];
-              snapshot.forEach((child) => {
-                keys.push(child.key);
-              });
-              const toDelete = keys.slice(0, count - 50);
-              const updates = {};
-              toDelete.forEach((k) => {
-                updates[`messages/${k}`] = null;
-              });
-              currentChatRef.update(updates);
-            }
-          }
-        });
-    }
+
   } else {
     // ── NO CONFIG WARNING BANNER ──
     const $notice = document.createElement("div");

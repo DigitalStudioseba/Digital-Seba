@@ -42,7 +42,25 @@ const CLIENT_ID = '742363063259-hecd6i38ovt8kv16na4c7qrv21hrpg9k.apps.googleuser
 
   function gapiLoaded() { gapi.load('client', async () => { await gapi.client.init({ apiKey: API_KEY, discoveryDocs: [DISCOVERY_DOC] }); gapiInited = true; checkAuth(); }); }
   function gisLoaded() { tokenClient = google.accounts.oauth2.initTokenClient({ client_id: CLIENT_ID, scope: SCOPES, callback: '' }); gisInited = true; checkAuth(); }
-  function checkAuth() { const t = localStorage.getItem('studio_cloud_token'); if(t && gapiInited) { const tk = JSON.parse(t); if(Date.now() < tk.expires_at) { gapi.client.setToken(tk); if(document.getElementById('studioCloudModal').style.display==='flex') showMainUI(); } } }
+  function checkAuth() {
+    try {
+      if (localStorage.getItem('studio_cloud_token')) {
+        localStorage.removeItem('studio_cloud_token');
+      }
+      const t = sessionStorage.getItem('studio_cloud_token');
+      if (t && gapiInited) {
+        const tk = JSON.parse(t);
+        if (Date.now() < tk.expires_at) {
+          gapi.client.setToken(tk);
+          if (document.getElementById('studioCloudModal') && document.getElementById('studioCloudModal').style.display === 'flex') {
+            showMainUI();
+          }
+        } else {
+          sessionStorage.removeItem('studio_cloud_token');
+        }
+      }
+    } catch (_) {}
+  }
 
   function switchCloudMode(mode) {
     currentCloudMode = mode;
@@ -61,11 +79,31 @@ const CLIENT_ID = '742363063259-hecd6i38ovt8kv16na4c7qrv21hrpg9k.apps.googleuser
 
   function handleAuthClick() {
     tokenClient.callback = (resp) => {
+      if (resp && resp.access_token) {
         resp.expires_at = Date.now() + (resp.expires_in * 1000);
-        localStorage.setItem('studio_cloud_token', JSON.stringify(resp));
+        sessionStorage.setItem('studio_cloud_token', JSON.stringify(resp));
+        localStorage.removeItem('studio_cloud_token');
+        if (window.gapi && window.gapi.client) window.gapi.client.setToken(resp);
         showMainUI();
+      }
     };
     tokenClient.requestAccessToken({prompt: 'consent'});
+  }
+
+  function handleSignoutClick() {
+    try {
+      const curTk = (window.gapi && window.gapi.client) ? window.gapi.client.getToken() : null;
+      if (curTk && curTk.access_token && window.google && window.google.accounts && window.google.accounts.oauth2) {
+        google.accounts.oauth2.revoke(curTk.access_token, () => {});
+      }
+    } catch (_) {}
+    if (window.gapi && window.gapi.client) window.gapi.client.setToken(null);
+    sessionStorage.removeItem('studio_cloud_token');
+    localStorage.removeItem('studio_cloud_token');
+    const mainUi = document.getElementById('cloud-main-ui');
+    const authSec = document.getElementById('cloud-auth-section');
+    if (mainUi) mainUi.style.display = 'none';
+    if (authSec) authSec.style.display = 'flex';
   }
 
   function showMainUI() {
@@ -237,12 +275,7 @@ const CLIENT_ID = '742363063259-hecd6i38ovt8kv16na4c7qrv21hrpg9k.apps.googleuser
 
   function openStudioCloudModal() { document.getElementById('studioCloudModal').style.display='flex'; checkAuth(); switchCloudMode('photo'); }
   function closeStudioCloudModal() { document.getElementById('studioCloudModal').style.display='none'; }
-  function handleSignoutClick() { 
-    google.accounts.oauth2.revoke(gapi.client.getToken().access_token);
-    gapi.client.setToken(null); localStorage.removeItem('studio_cloud_token');
-    document.getElementById('cloud-auth-section').style.display = 'flex';
-    document.getElementById('cloud-main-ui').style.display='none';
-  }
+
   function searchRecords() {
     const q = document.getElementById('st-search').value.toLowerCase();
     document.querySelectorAll('.st-card').forEach(c => { c.style.display = c.innerText.toLowerCase().includes(q) ? 'flex' : 'none'; });
@@ -1756,16 +1789,17 @@ function saveMemoSettings() {
 }
 
 function loadMemoSettings() {
-    const data = JSON.parse(localStorage.getItem('memo_shop_data_v3'));
-    if (data) {
-        // দোকানের নাম, ঠিকানা, মোবাইল ও ইমেইল লোড
-        if(data.name) document.getElementById('set-shop-name').innerHTML = data.name;
-        if(data.addr) document.getElementById('set-shop-addr').innerHTML = data.addr;
-        if(data.mob) document.getElementById('set-shop-mob').innerHTML = data.mob;
-        if(data.email) document.getElementById('set-shop-email').innerHTML = data.email;
-        
-        // শর্তাবলী (Terms & Conditions) লোড
-        if(data.terms) document.getElementById('txt-terms-placeholder').innerHTML = data.terms;
+    try {
+        const data = JSON.parse(localStorage.getItem('memo_shop_data_v3'));
+        if (data) {
+            // দোকানের নাম, ঠিকানা, মোবাইল ও ইমেইল লোড
+            if(data.name) document.getElementById('set-shop-name').textContent = data.name;
+            if(data.addr) document.getElementById('set-shop-addr').textContent = data.addr;
+            if(data.mob) document.getElementById('set-shop-mob').textContent = data.mob;
+            if(data.email) document.getElementById('set-shop-email').textContent = data.email;
+            
+            // শর্তাবলী (Terms & Conditions) লোড
+            if(data.terms) document.getElementById('txt-terms-placeholder').textContent = data.terms;
         
         // লোগো লোড
         if(data.logo && data.logo.startsWith('data:image')) {
@@ -1774,6 +1808,7 @@ function loadMemoSettings() {
             document.getElementById('txt-logo-hint').style.display = 'none';
         }
     }
+    } catch (_) {}
 }
 
 function addMemoRow() {

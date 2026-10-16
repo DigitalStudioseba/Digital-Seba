@@ -36,6 +36,7 @@
    ============================================ */
 @media (max-width: 1366px) {
   .nav-links { display: none; }
+  .auth-buttons { display: none; }
   .mobile-menu-toggle { display: flex; }
 }
 

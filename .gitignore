@@ -77,3 +77,10 @@ Thumbs.db
 # /homepage-themes/theme-lumina/out/
 
 # /homepage-themes/theme-lumina/out/**
+
+# Local Scratch, Diagnostic & Benchmark Scripts
+scratch/
+
+# AI Agent Runtime & Skills Metadata
+.agents/
+skills-lock.json

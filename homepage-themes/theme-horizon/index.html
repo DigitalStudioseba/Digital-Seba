@@ -584,6 +584,71 @@
     .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
     .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
     .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+    /* Scoped Auth Styles - Horizon Theme */
+    .nav-inner .auth-buttons { display: inline-flex; align-items: center; }
+    .horizon-btn-login {
+      padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+      color: var(--muted); transition: color 0.2s, background 0.2s;
+    }
+    .horizon-btn-login:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .horizon-mobile-btn {
+      display: flex; align-items: center; justify-content: center;
+      padding: 10px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+      color: #fff; border: 1px solid var(--line); background: rgba(255,255,255,0.04);
+    }
+    .horizon-mobile-btn-primary {
+      display: flex; align-items: center; justify-content: center;
+      padding: 10px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+      color: #fff; background: linear-gradient(180deg, #8b7dff, #5a4bff);
+      box-shadow: 0 8px 20px rgba(107,92,255,.35);
+    }
+    .user-menu-wrapper { position: relative; }
+    .user-menu-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 12px 5px 7px; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.14);
+      color: var(--text); font-size: 13px; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(12px); transition: all 0.2s;
+    }
+    .user-menu-btn:hover { border-color: rgba(107,92,255,0.5); background: rgba(107,92,255,0.12); }
+    .user-avatar-thumb { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; }
+    .user-avatar-thumb.hidden { display: none !important; }
+    .user-initial-thumb {
+      width: 26px; height: 26px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--accent));
+      color: #fff; font-weight: 700; font-size: 11px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .user-initial-thumb.hidden { display: none !important; }
+    .user-name-display { max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 13px; }
+    .chevron-icon { transition: transform 0.2s ease; color: var(--muted); }
+    .user-dropdown {
+      position: absolute; right: 0; top: calc(100% + 8px);
+      width: 220px; background: rgba(16, 16, 28, 0.96); border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px; box-shadow: 0 18px 48px rgba(0,0,0,0.5);
+      backdrop-filter: blur(20px); padding: 8px; opacity: 0; pointer-events: none;
+      transform: translateY(-8px); transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 100;
+    }
+    .user-dropdown.active { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .dropdown-header { display: flex; align-items: center; gap: 10px; padding: 8px 10px; }
+    .dropdown-header-info { min-width: 0; flex: 1; }
+    .dropdown-user-name { display: block; font-weight: 700; font-size: 13px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dropdown-user-email { display: block; font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .dropdown-divider { height: 1px; background: rgba(255, 255, 255, 0.1); margin: 6px 0; }
+    .dropdown-item {
+      display: flex; align-items: center; gap: 8px; padding: 7px 10px;
+      border-radius: 8px; font-size: 12.5px; color: var(--text);
+      text-decoration: none; transition: background 0.15s ease;
+      background: transparent; border: none; width: 100%; text-align: left; cursor: pointer;
+    }
+    .dropdown-item:hover { background: rgba(107, 92, 255, 0.15); color: #fff; }
+    .dropdown-item-danger { color: #ff6b6b; }
+    .dropdown-item-danger:hover { background: rgba(255, 107, 107, 0.12); color: #ff8787; }
+    @media (max-width: 860px) {
+      .nav-inner .auth-buttons { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -617,7 +682,51 @@
         <button type="button" data-set-lang="en">EN</button>
         <button type="button" data-set-lang="bn">বাংলা</button>
       </div>
-      <a class="nav-cta" href="#categories"><span class="t-en">Explore</span><span class="t-bn">এক্সপ্লোর</span></a>
+      <!-- Desktop Auth Controls -->
+      <div class="auth-buttons">
+        <div class="auth-logged-out" style="display:flex;align-items:center;gap:8px;">
+          <a href="../../login/" class="horizon-btn-login btn-login">
+            <span class="t-en">Sign in</span><span class="t-bn">লগইন</span>
+          </a>
+          <a href="../../login/#signup" class="nav-cta btn-signup">
+            <span class="t-en">Get Started</span><span class="t-bn">শুরু করুন</span>
+          </a>
+        </div>
+        <div class="auth-logged-in" style="display: none;">
+          <div class="user-menu-wrapper" id="headerUserMenu">
+            <button type="button" class="user-menu-btn" id="headerUserMenuBtn" aria-expanded="false" aria-haspopup="true">
+              <img class="user-avatar-thumb hidden" id="headerUserAvatar" src="" alt="Profile">
+              <span class="user-initial-thumb" id="headerUserInitial">U</span>
+              <span class="user-name-display" id="headerUserName">User</span>
+              <svg class="chevron-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="user-dropdown" id="headerUserDropdown" role="menu">
+              <div class="dropdown-header">
+                <img class="user-avatar-thumb hidden" id="dropdownUserAvatar" src="" alt="Profile">
+                <span class="user-initial-thumb" id="dropdownUserInitial">U</span>
+                <div class="dropdown-header-info">
+                  <span class="dropdown-user-name" id="dropdownUserName">User</span>
+                  <span class="dropdown-user-email" id="dropdownUserEmail">user@example.com</span>
+                </div>
+              </div>
+              <div class="dropdown-divider"></div>
+              <a href="../../profile/" class="dropdown-item" role="menuitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="t-en">Profile</span><span class="t-bn">প্রোফাইল</span>
+              </a>
+              <a href="../../services/index.html" class="dropdown-item" role="menuitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span class="t-en">All Services</span><span class="t-bn">সকল সেবা</span>
+              </a>
+              <div class="dropdown-divider"></div>
+              <button type="button" class="dropdown-item dropdown-item-danger" id="headerSignOutBtn" role="menuitem">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                <span class="t-en">Sign Out</span><span class="t-bn">লগআউট</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav" aria-label="Open menu"><span></span></button>
     </div>
   </header>
@@ -629,7 +738,42 @@
       <a href="#live-tv"><span class="t-en">Live TV</span><span class="t-bn">লাইভ টিভি</span></a>
       <a href="#focus-mode"><span class="t-en">Focus Mode</span><span class="t-bn">ফোকাস মোড</span></a>
       <a href="/about/"><span class="t-en">About</span><span class="t-bn">আমাদের কথা</span></a>
-      <a class="nav-cta" href="#categories"><span class="t-en">Explore Digital Seba</span><span class="t-bn">ডিজিটাল সেবা দেখুন</span></a>
+      <div class="mobile-auth" style="margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--line);">
+        <div class="mobile-logged-out" style="display: flex; flex-direction: column; gap: 8px;">
+          <a href="../../login/" class="horizon-mobile-btn btn-login">
+            <span class="t-en">Sign in</span><span class="t-bn">লগইন</span>
+          </a>
+          <a href="../../login/#signup" class="horizon-mobile-btn-primary btn-signup">
+            <span class="t-en">Get Started</span><span class="t-bn">শুরু করুন</span>
+          </a>
+        </div>
+        <div class="mobile-logged-in" style="display: none;">
+          <div class="mobile-user-card" style="padding: 12px; background: rgba(255,255,255,0.04); border: 1px solid var(--line); border-radius: 14px;">
+            <div style="display: flex; align-items: center; gap: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--line);">
+              <img class="user-avatar-thumb hidden" id="mobileUserAvatar" src="" alt="Profile" style="width: 34px; height: 34px; border-radius: 50%; object-fit: cover;">
+              <span class="user-initial-thumb" id="mobileUserInitial">U</span>
+              <div style="min-width: 0; flex: 1;">
+                <div class="mobile-user-name" id="mobileUserName" style="font-weight: 700; font-size: 13.5px; color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">User</div>
+                <div class="mobile-user-email" id="mobileUserEmail" style="font-size: 11px; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">user@example.com</div>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px; padding-top: 8px;">
+              <a href="../../profile/" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; font-size: 13px; color: var(--text); border-radius: 8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <span class="t-en">Profile</span><span class="t-bn">প্রোফাইল</span>
+              </a>
+              <a href="../../services/index.html" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; font-size: 13px; color: var(--text); border-radius: 8px;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span class="t-en">All Services</span><span class="t-bn">সকল সেবা</span>
+              </a>
+              <button type="button" class="mobile-signout-btn" id="mobileSignOutBtn" style="display: flex; align-items: center; gap: 8px; padding: 6px 8px; font-size: 13px; color: #ff6b6b; background: transparent; border: none; text-align: left; cursor: pointer;">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                <span class="t-en">Sign Out</span><span class="t-bn">লগআউট</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
     </nav>
   </div>
 
@@ -1185,7 +1329,14 @@
     }
   })();
 </script>
-<!-- END DS LEFT THEME SWITCHER -->
+<!-- Firebase SDK v8 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<!-- Firebase initialization -->
+<script src="../../assets/js/firebase-init.js"></script>
+<!-- Digital Seba Auth Controller -->
+<script src="../../assets/js/auth.js"></script>
 
 </body>
 </html>

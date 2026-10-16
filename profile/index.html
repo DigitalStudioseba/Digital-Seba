@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba — Manage your profile, account preferences, and digital service settings.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="canonical" href="https://digiseba.shop/profile/">
+  <title>My Profile — Digital Seba</title>
+  
+  <link rel="icon" type="image/png" href="../assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/accessibility.css">
+
+  <style>
+    /* ── Page-Specific Scoped Styles for /profile/ ── */
+    :root {
+      --profile-bg-gradient: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.15) 0%, transparent 60%),
+                             radial-gradient(circle at 85% 75%, rgba(79, 70, 229, 0.12) 0%, transparent 50%);
+    }
+
+    [data-theme="light"] {
+      --profile-bg-gradient: radial-gradient(circle at 50% 15%, rgba(37, 99, 235, 0.08) 0%, transparent 60%),
+                             radial-gradient(circle at 85% 75%, rgba(79, 70, 229, 0.06) 0%, transparent 50%);
+    }
+
+    .profile-page-wrapper {
+      min-height: calc(100vh - 70px);
+      padding: 100px 20px 60px;
+      position: relative;
+      background: var(--profile-bg-gradient);
+    }
+
+    .profile-container {
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Breadcrumbs */
+    .profile-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: var(--text-muted, #64748b);
+      margin-bottom: 20px;
+    }
+
+    .profile-breadcrumb a {
+      color: var(--text-secondary, #94a3b8);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .profile-breadcrumb a:hover {
+      color: var(--primary, #3b82f6);
+    }
+
+    /* Main Card */
+    .profile-card {
+      background: var(--card-bg, rgba(15, 23, 42, 0.85));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 24px;
+      padding: 40px 36px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35),
+                  0 0 0 1px rgba(255, 255, 255, 0.05);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    [data-theme="light"] .profile-card {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(226, 232, 240, 0.85);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08),
+                  0 0 0 1px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Ambient card top border line */
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #3b82f6, #818cf8, transparent);
+      border-radius: 2px;
+    }
+
+    /* Card Header / Avatar Area */
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+    }
+
+    .profile-avatar-wrap {
+      width: 96px;
+      height: 96px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .profile-avatar-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #3b82f6;
+      box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+      display: block;
+    }
+
+    .profile-avatar-fallback {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563EB, #4F46E5);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.25rem;
+      font-weight: 700;
+      border: 3px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    .avatar-upload-btn {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #2563eb;
+      border: 2px solid var(--card-bg, #0f172a);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+      transition: transform 0.2s ease, background-color 0.2s ease;
+      z-index: 5;
+    }
+
+    .avatar-upload-btn:hover {
+      background: #1d4ed8;
+      transform: scale(1.08);
+    }
+
+    .avatar-loading-overlay {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(2px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 6;
+    }
+
+    .badge-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #94a3b8;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .badge-role.admin {
+      background: rgba(245, 158, 11, 0.15);
+      border-color: rgba(245, 158, 11, 0.35);
+      color: #f59e0b;
+    }
+
+    .profile-uid-container {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 10px;
+      padding: 8px 12px;
+      margin-top: 4px;
+    }
+
+    .profile-uid-code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.88rem;
+      color: var(--foreground, #f8fafc);
+      word-break: break-all;
+      flex: 1;
+      user-select: all;
+    }
+
+    .btn-copy-uid {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(37, 99, 235, 0.15);
+      border: 1px solid rgba(37, 99, 235, 0.3);
+      color: #60a5fa;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .btn-copy-uid:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    .btn-action-admin {
+      border-color: rgba(245, 158, 11, 0.4);
+      color: #f59e0b;
+    }
+
+    .btn-action-admin:hover {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: #f59e0b;
+      color: #fbbf24;
+    }
+
+    .profile-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .badge-verified {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: #22c55e;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .badge-provider {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 12px;
+      border-radius: 99px;
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      color: #3b82f6;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .profile-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--foreground, #f8fafc);
+      margin-bottom: 4px;
+    }
+
+    .profile-subtitle {
+      font-size: 0.9375rem;
+      color: var(--text-secondary, #94a3b8);
+      max-width: 480px;
+    }
+
+    /* Feedback Alert */
+    .profile-alert {
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.45;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      transition: all 0.2s ease;
+    }
+
+    .profile-alert.success {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      color: #22c55e;
+    }
+
+    [data-theme="light"] .profile-alert.success {
+      background: #f0fdf4;
+      border-color: #bbf7d0;
+      color: #15803d;
+    }
+
+    .profile-alert.error {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      color: #f87171;
+    }
+
+    [data-theme="light"] .profile-alert.error {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #dc2626;
+    }
+
+    .profile-alert-dismiss {
+      margin-left: auto;
+      background: none;
+      border: none;
+      color: inherit;
+      cursor: pointer;
+      font-size: 1.15rem;
+      opacity: 0.7;
+      padding: 2px 6px;
+    }
+
+    .profile-alert-dismiss:hover {
+      opacity: 1;
+    }
+
+    /* Details Grid */
+    .profile-details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (max-width: 640px) {
+      .profile-details-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .profile-field-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 16px;
+      padding: 16px 20px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    [data-theme="light"] .profile-field-card {
+      background: rgba(248, 250, 252, 0.8);
+      border-color: rgba(226, 232, 240, 0.9);
+    }
+
+    .profile-field-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted, #64748b);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .profile-field-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--foreground, #f8fafc);
+      word-break: break-word;
+    }
+
+    .profile-field-subtext {
+      font-size: 0.75rem;
+      color: var(--text-muted, #64748b);
+      margin-top: 4px;
+    }
+
+    /* Form Inputs in Edit Mode */
+    .profile-input-wrap {
+      margin-top: 4px;
+    }
+
+    .profile-input {
+      width: 100%;
+      padding: 10px 14px;
+      background: var(--bg-secondary, rgba(30, 41, 59, 0.6));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+      border-radius: 10px;
+      color: var(--foreground, #f8fafc);
+      font-size: 0.95rem;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      box-sizing: border-box;
+    }
+
+    [data-theme="light"] .profile-input {
+      background: #ffffff;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .profile-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .profile-input:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .field-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted, #64748b);
+      margin-top: 5px;
+    }
+
+    /* Actions Bar */
+    .profile-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    }
+
+    .btn-action-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #2563EB, #4F46E5);
+      color: #ffffff;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+      transition: transform 0.15s, opacity 0.15s, box-shadow 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-action-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-action-primary:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .btn-action-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 12px;
+      background: transparent;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.18));
+      color: var(--foreground, #f8fafc);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-action-outline:hover {
+      background: var(--bg-secondary, rgba(255, 255, 255, 0.05));
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    .btn-action-danger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border-radius: 12px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #ef4444;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      margin-left: auto;
+    }
+
+    .btn-action-danger:hover {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: rgba(239, 68, 68, 0.5);
+    }
+
+    @media (max-width: 640px) {
+      .btn-action-danger {
+        margin-left: 0;
+        width: 100%;
+      }
+      .btn-action-primary,
+      .btn-action-outline {
+        width: 100%;
+      }
+    }
+
+    /* Spinner */
+    .save-spinner {
+      display: none;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: #ffffff;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .save-spinner.active {
+      display: inline-block;
+    }
+
+    /* Skeleton Loading State */
+    .profile-skeleton-card {
+      text-align: center;
+      padding: 30px 10px;
+    }
+
+    .skeleton-avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+      background-size: 200% 100%;
+      animation: skeletonPulse 1.5s infinite;
+    }
+
+    .skeleton-line {
+      height: 20px;
+      border-radius: 8px;
+      margin: 0 auto 14px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+      background-size: 200% 100%;
+      animation: skeletonPulse 1.5s infinite;
+    }
+
+    @keyframes skeletonPulse {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    /* Unauthenticated Guard View */
+    .unauthed-guard {
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .guard-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    /* Quick Links Dock */
+    .quick-dock {
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 640px) {
+      .quick-dock {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .dock-card {
+      background: var(--card-bg, rgba(15, 23, 42, 0.6));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+      border-radius: 16px;
+      padding: 18px 20px;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: transform 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    [data-theme="light"] .dock-card {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(226, 232, 240, 0.8);
+    }
+
+    .dock-card:hover {
+      transform: translateY(-2px);
+      border-color: #3b82f6;
+      background: rgba(37, 99, 235, 0.06);
+    }
+
+    .dock-icon {
+      font-size: 1.5rem;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(37, 99, 235, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .dock-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--foreground, #f8fafc);
+      margin-bottom: 2px;
+    }
+
+    .dock-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted, #64748b);
+    }
+
+    /* Modal Backdrop & Dialog */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background: var(--card-bg, #0f172a);
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+      border-radius: 20px;
+      padding: 28px 24px;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
+    }
+
+    [data-theme="light"] .modal-dialog {
+      background: #ffffff;
+      border-color: rgba(226, 232, 240, 0.95);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    }
+
+    .modal-backdrop.active .modal-dialog {
+      transform: scale(1);
+    }
+
+    .modal-icon {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .modal-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--foreground, #f8fafc);
+      margin-bottom: 8px;
+    }
+
+    .modal-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary, #94a3b8);
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .modal-btn {
+      flex: 1;
+      padding: 11px 16px;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+    }
+
+    .modal-btn-cancel {
+      background: transparent;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+      color: var(--foreground, #f8fafc);
+    }
+
+    .modal-btn-cancel:hover {
+      background: var(--bg-secondary, rgba(255, 255, 255, 0.05));
+    }
+
+    .modal-btn-confirm {
+      background: #ef4444;
+      border: 1px solid #ef4444;
+      color: #ffffff;
+    }
+
+    .modal-btn-confirm:hover {
+      background: #dc2626;
+      border-color: #dc2626;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="ds-skip-link">Skip to content</a>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <img src="../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo">
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline"
+              data-en="Bangladesh's Smart Digital Service Platform"
+              data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সেবা প্ল্যাটফর্ম">
+          Bangladesh's Smart Digital Service Platform
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home" class="nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../services/index.html" class="nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+      <li><a href="../resources/index.html" class="nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
+      <li><a href="../live-tv/index.html" class="nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
+      <li><a href="../focus-mode/index.html" class="nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a></li>
+      <li><a href="../about/index.html" class="nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" title="Switch Language" aria-label="Switch language">
+        <span class="lang-icon">🌐</span>
+        <span class="lang-text" id="langText">EN</span>
+      </button>
+
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle dark/light mode">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Auth Container -->
+      <div class="auth-buttons">
+        <div class="auth-logged-out" style="display:flex;align-items:center;gap:8px;">
+          <a href="../login/" class="btn-login" data-en="Login" data-bn="লগইন">Login</a>
+          <a href="../login/#signup" class="btn-signup" data-en="Sign Up" data-bn="নিবন্ধন">Sign Up</a>
+        </div>
+        <div class="auth-logged-in" style="display:none;">
+          <div class="user-menu-container" id="headerUserMenu">
+            <button class="user-menu-btn" id="headerUserMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Open user menu">
+              <img class="user-avatar-thumb hidden" id="headerUserAvatar" src="" alt="Profile">
+              <div class="user-initial-thumb" id="headerUserInitial">U</div>
+              <span class="user-menu-name" id="headerUserName">User</span>
+              <svg class="user-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="user-dropdown" id="headerUserDropdown" role="menu">
+              <div class="user-dropdown-header">
+                <img class="user-avatar-thumb hidden" id="dropdownUserAvatar" src="" alt="Profile">
+                <div class="user-initial-thumb" id="dropdownUserInitial">U</div>
+                <div class="user-dropdown-info">
+                  <div class="user-dropdown-name" id="dropdownUserName">User</div>
+                  <div class="user-dropdown-email" id="dropdownUserEmail">user@example.com</div>
+                </div>
+              </div>
+              <a href="../profile/" class="user-dropdown-item" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+              </a>
+              <a href="../services/index.html" class="user-dropdown-item" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span data-en="All Services" data-bn="সকল সেবা">All Services</span>
+              </a>
+              <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span data-en="Sign Out" data-bn="লগআউট">Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../services/index.html" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../tools/index.html" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+      <li><a href="../resources/index.html" class="mobile-nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
+      <li><a href="../live-tv/index.html" class="mobile-nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
+      <li><a href="../focus-mode/index.html" class="mobile-nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a></li>
+      <li><a href="../about/index.html" class="mobile-nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+    </ul>
+
+    <!-- Mobile Auth Section -->
+    <div class="mobile-auth">
+      <div class="mobile-logged-out" style="display:flex;flex-direction:column;gap:10px;">
+        <a href="../login/" class="btn-login" data-en="Login" data-bn="লগইন">Login</a>
+        <a href="../login/#signup" class="btn-signup" data-en="Sign Up" data-bn="নিবন্ধন">Sign Up</a>
+      </div>
+      <div class="mobile-logged-in" style="display:none;">
+        <div class="mobile-user-card">
+          <div class="mobile-user-header">
+            <img class="user-avatar-thumb hidden" id="mobileUserAvatar" src="" alt="Profile">
+            <div class="user-initial-thumb" id="mobileUserInitial">U</div>
+            <div style="min-width:0;flex:1;">
+              <div class="mobile-user-name" id="mobileUserName">User</div>
+              <div class="mobile-user-email" id="mobileUserEmail">user@example.com</div>
+            </div>
+          </div>
+          <div class="mobile-user-actions">
+            <a href="../profile/" class="mobile-btn-profile">
+              <span data-en="👤 My Profile" data-bn="👤 আমার প্রোফাইল">👤 My Profile</span>
+            </a>
+            <button type="button" class="mobile-btn-signout" id="mobileSignOutBtn">
+              <span data-en="🚪 Sign Out" data-bn="🚪 লগআউট">🚪 Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN PROFILE CONTENT
+════════════════════════════════════════════ -->
+<main id="main-content">
+  <div class="profile-page-wrapper">
+    <div class="profile-container">
+
+      <!-- Breadcrumb -->
+      <nav class="profile-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html" data-en="Home" data-bn="হোম">Home</a>
+        <span>/</span>
+        <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+      </nav>
+
+      <!-- Main Profile Card -->
+      <div class="profile-card">
+
+        <!-- State 1: Skeleton Loading (while checking Firebase auth) -->
+        <div id="profile-loading" class="profile-skeleton-card">
+          <div class="skeleton-avatar"></div>
+          <div class="skeleton-line" style="width: 220px; height: 28px;"></div>
+          <div class="skeleton-line" style="width: 280px; height: 16px;"></div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;">
+            <div class="skeleton-line" style="width:100%;height:70px;"></div>
+            <div class="skeleton-line" style="width:100%;height:70px;"></div>
+            <div class="skeleton-line" style="width:100%;height:70px;"></div>
+            <div class="skeleton-line" style="width:100%;height:70px;"></div>
+          </div>
+        </div>
+
+        <!-- State 2: Unauthenticated Guard (redirect countdown & manual login) -->
+        <div id="profile-unauthed" class="unauthed-guard hidden">
+          <span class="guard-icon">🔒</span>
+          <h2 class="profile-title" data-en="Sign In Required" data-bn="সাইন-ইন প্রয়োজন">Sign In Required</h2>
+          <p class="profile-subtitle" style="margin: 0 auto 24px;"
+             data-en="You need to be signed in to access your profile. Redirecting you to login..."
+             data-bn="আপনার প্রোফাইল দেখতে সাইন-ইন করতে হবে। লগইন পাতায় নিয়ে যাওয়া হচ্ছে...">
+            You need to be signed in to access your profile. Redirecting you to login...
+          </p>
+          <a href="../login/?redirect=/profile/" class="btn-action-primary" style="text-decoration:none;">
+            <svg viewBox="0 0 24 24" width="18" height="18" style="margin-right:4px;">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+            </svg>
+            <span data-en="Continue with Google" data-bn="গুগল দিয়ে চালিয়ে যান">Continue with Google</span>
+          </a>
+        </div>
+
+        <!-- State 3: Authenticated Profile View -->
+        <div id="profile-content" class="hidden">
+
+          <!-- Alert / Feedback Notification -->
+          <div id="profile-alert" class="profile-alert hidden" role="alert">
+            <span id="profile-alert-icon">✓</span>
+            <span id="profile-alert-text">Profile updated successfully.</span>
+            <button type="button" class="profile-alert-dismiss" id="profile-alert-dismiss" aria-label="Dismiss message">×</button>
+          </div>
+
+          <!-- Profile Top Header -->
+          <div class="profile-header">
+            <div class="profile-avatar-wrap">
+              <img id="profile-avatar" class="profile-avatar-img hidden" src="" alt="Profile Photo">
+              <div id="profile-avatar-fallback" class="profile-avatar-fallback">U</div>
+              <label for="input-avatar-file" class="avatar-upload-btn" id="avatar-upload-btn" title="Change Profile Photo" aria-label="Upload profile photo">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                  <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+              </label>
+              <input type="file" id="input-avatar-file" accept="image/jpeg,image/png,image/webp" style="display:none;" aria-label="Upload profile photo file">
+              <div id="avatar-loading-overlay" class="avatar-loading-overlay hidden">
+                <div class="save-spinner active"></div>
+              </div>
+            </div>
+
+            <div class="profile-badges">
+              <span class="badge-verified">
+                <span>✓</span>
+                <span data-en="Google Verified" data-bn="গুগল ভেরিফাইড">Google Verified</span>
+              </span>
+              <span class="badge-provider">
+                <span>🔐</span>
+                <span data-en="Google Account Connected" data-bn="গুগল অ্যাকাউন্ট সংযুক্ত">Google Account Connected</span>
+              </span>
+              <span class="badge-role" id="badge-role">
+                <span id="badge-role-icon">👤</span>
+                <span id="badge-role-text" data-en="Member" data-bn="সদস্য">Member</span>
+              </span>
+            </div>
+
+            <h1 class="profile-title" id="profile-title-name">User Name</h1>
+            <p class="profile-subtitle" id="profile-title-email">user@example.com</p>
+          </div>
+
+          <!-- Information Grid -->
+          <div class="profile-details-grid">
+
+            <!-- Field 0: Permanent Unique User ID (Immutable) -->
+            <div class="profile-field-card" style="grid-column: 1 / -1;">
+              <div class="profile-field-label">
+                <span>🆔</span>
+                <span data-en="Permanent User ID" data-bn="স্থায়ী ইউজার আইডি">Permanent User ID</span>
+              </div>
+              <div class="profile-uid-container">
+                <code id="field-uid-view" class="profile-uid-code">—</code>
+                <button type="button" class="btn-copy-uid" id="btn-copy-uid" title="Copy User ID" aria-label="Copy User ID">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  <span id="copy-uid-text" data-en="Copy ID" data-bn="কপি করুন">Copy ID</span>
+                </button>
+              </div>
+              <div class="profile-field-subtext" data-en="Your unique, permanent identifier on Digital Seba" data-bn="ডিজিটাল সেবায় আপনার অনন্য ও স্থায়ী পরিচয়চিহ্ন">Your unique, permanent identifier on Digital Seba</div>
+            </div>
+
+            <!-- Field 1: Display Name (Editable) -->
+            <div class="profile-field-card">
+              <div class="profile-field-label">
+                <span>👤</span>
+                <span data-en="Display Name" data-bn="পূর্ণ নাম / ডিসপ্লে নাম">Display Name</span>
+              </div>
+              <div id="field-name-view" class="profile-field-value">—</div>
+              <div id="field-name-edit" class="profile-input-wrap hidden">
+                <input type="text" id="input-display-name" class="profile-input" maxlength="60" placeholder="Enter your name" required>
+                <div class="field-hint" data-en="Your public name on Digital Seba" data-bn="ডিজিটাল সেবায় প্রদর্শিত নাম">Your public name on Digital Seba</div>
+              </div>
+            </div>
+
+            <!-- Field 2: Email Address (Readonly Google OAuth) -->
+            <div class="profile-field-card">
+              <div class="profile-field-label">
+                <span>✉️</span>
+                <span data-en="Email Address" data-bn="ইমেইল ঠিকানা">Email Address</span>
+              </div>
+              <div id="field-email-view" class="profile-field-value">—</div>
+              <div class="profile-field-subtext" data-en="Managed by Google Sign-In" data-bn="গুগল সাইন-ইন দ্বারা পরিচালিত">Managed by Google Sign-In</div>
+            </div>
+
+            <!-- Field 3: Phone Number (Optional & Editable) -->
+            <div class="profile-field-card">
+              <div class="profile-field-label">
+                <span>📱</span>
+                <span data-en="Phone Number (Optional)" data-bn="ফোন নম্বর (ঐচ্ছিক)">Phone Number (Optional)</span>
+              </div>
+              <div id="field-phone-view" class="profile-field-value" style="color:var(--text-muted);">
+                <span data-en="Not provided" data-bn="যুক্ত করা হয়নি">Not provided</span>
+              </div>
+              <div id="field-phone-edit" class="profile-input-wrap hidden">
+                <input type="tel" id="input-phone" class="profile-input" maxlength="20" placeholder="e.g. +880 1824 741444">
+                <div class="field-hint" data-en="For notifications and fast service support" data-bn="বিজ্ঞপ্তি এবং দ্রুত সেবা সহায়তার জন্য">For notifications and fast service support</div>
+              </div>
+            </div>
+
+            <!-- Field 4: Member Since (Creation Date) -->
+            <div class="profile-field-card">
+              <div class="profile-field-label">
+                <span>📅</span>
+                <span data-en="Member Since" data-bn="সদস্য হওয়ার তারিখ">Member Since</span>
+              </div>
+              <div id="field-created-view" class="profile-field-value">—</div>
+              <div class="profile-field-subtext" data-en="Account Registration Date" data-bn="অ্যাকাউন্ট তৈরির সময়কাল">Account Registration Date</div>
+            </div>
+
+          </div>
+
+          <!-- Actions Bar -->
+          <div class="profile-actions-bar">
+
+            <!-- View Mode Actions -->
+            <div id="profile-view-controls" style="display:flex;align-items:center;gap:12px;width:100%;flex-wrap:wrap;">
+              <button type="button" class="btn-action-primary" id="btn-edit-mode">
+                <span>✏️</span>
+                <span data-en="Edit Profile" data-bn="প্রোফাইল সম্পাদনা">Edit Profile</span>
+              </button>
+              <a href="../admin/" class="btn-action-outline btn-action-admin hidden" id="btn-admin-dashboard" style="text-decoration:none;">
+                <span>⚙️</span>
+                <span data-en="Admin Dashboard" data-bn="অ্যাডমিন ড্যাশবোর্ড">Admin Dashboard</span>
+              </a>
+              <a href="../services/index.html" class="btn-action-outline" style="text-decoration:none;">
+                <span>🏛️</span>
+                <span data-en="Explore Services" data-bn="সেবা দেখুন">Explore Services</span>
+              </a>
+              <button type="button" class="btn-action-danger" id="btn-signout-trigger">
+                <span>🚪</span>
+                <span data-en="Sign Out" data-bn="লগআউট">Sign Out</span>
+              </button>
+            </div>
+
+            <!-- Edit Mode Actions (Hidden by default) -->
+            <div id="profile-edit-controls" class="hidden" style="display:flex;align-items:center;gap:12px;width:100%;flex-wrap:wrap;">
+              <button type="button" class="btn-action-primary" id="btn-save-profile">
+                <span id="save-spinner" class="save-spinner" aria-hidden="true"></span>
+                <span id="btn-save-text" data-en="Save Changes" data-bn="পরিবর্তন সংরক্ষণ করুন">Save Changes</span>
+              </button>
+              <button type="button" class="btn-action-outline" id="btn-cancel-edit">
+                <span data-en="Cancel" data-bn="বাতিল">Cancel</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Quick Access Dock -->
+      <div class="quick-dock" id="profile-quick-dock">
+        <a href="../services/index.html" class="dock-card">
+          <div class="dock-icon">🏛️</div>
+          <div>
+            <div class="dock-title" data-en="Government Services" data-bn="সরকারি সেবা">Government Services</div>
+            <div class="dock-sub" data-en="Passport, NID, Birth Certificate" data-bn="পাসপোর্ট, এনআইডি, জন্ম নিবন্ধন">Passport, NID, Birth Certificate</div>
+          </div>
+        </a>
+        <a href="../tools/index.html" class="dock-card">
+          <div class="dock-icon">⚡</div>
+          <div>
+            <div class="dock-title" data-en="Digital Tools" data-bn="ডিজিটাল টুলস">Digital Tools</div>
+            <div class="dock-sub" data-en="PDF tools, image converter, utility" data-bn="পিডিএফ, ছবি রূপান্তর, ইউটিলিটি">PDF tools, image converter, utility</div>
+          </div>
+        </a>
+        <a href="../about/index.html" class="dock-card">
+          <div class="dock-icon">💬</div>
+          <div>
+            <div class="dock-title" data-en="Help &amp; Support" data-bn="সাহায্য ও যোগাযোগ">Help &amp; Support</div>
+            <div class="dock-sub" data-en="Direct WhatsApp &amp; Helpline" data-bn="সরাসরি হোয়াটসঅ্যাপ ও হেল্পলাইন">Direct WhatsApp &amp; Helpline</div>
+          </div>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     CONFIRMATION MODAL: SIGN OUT
+════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="signout-modal" role="dialog" aria-modal="true" aria-labelledby="modal-signout-title">
+  <div class="modal-dialog">
+    <span class="modal-icon">🚪</span>
+    <h3 class="modal-title" id="modal-signout-title" data-en="Confirm Sign Out" data-bn="লগআউট নিশ্চিতকরণ">
+      Confirm Sign Out
+    </h3>
+    <p class="modal-desc" data-en="Are you sure you want to sign out from Digital Seba on this device?" data-bn="আপনি কি এই ডিভাইস থেকে ডিজিটাল সেবা অ্যাকাউন্ট লগআউট করতে চান?">
+      Are you sure you want to sign out from Digital Seba on this device?
+    </p>
+    <div class="modal-actions">
+      <button type="button" class="modal-btn modal-btn-cancel" id="btn-cancel-modal" data-en="Cancel" data-bn="বাতিল">
+        Cancel
+      </button>
+      <button type="button" class="modal-btn modal-btn-confirm" id="btn-confirm-signout" data-en="Yes, Sign Out" data-bn="হ্যাঁ, লগআউট করুন">
+        Yes, Sign Out
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <div class="copyright"
+             data-en="© 2026 Digital Seba. All rights reserved. Designed &amp; Developed by Monir Hossain"
+             data-bn="© ২০২৬ ডিজিটাল সেবা। সর্বস্বত্ব সংরক্ষিত। ডিজাইন ও ডেভেলপমেন্ট: মনির হোসেন">
+          © 2026 Digital Seba. All rights reserved. Made with ❤️ in Bangladesh
+        </div>
+        <div class="footer-bottom-links">
+          <a href="../pages/privacy.html" data-en="Privacy" data-bn="গোপনীয়তা">Privacy</a>
+          <a href="../pages/terms.html" data-en="Terms" data-bn="শর্তাবলী">Terms</a>
+          <a href="../index.html#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Core site scripts -->
+<script src="../assets/js/theme.js" charset="UTF-8"></script>
+<script src="../assets/js/language.js" charset="UTF-8"></script>
+
+<!-- Mobile Navigation Toggle Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('mobileMenuToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        btn.classList.toggle('active', !isExpanded);
+        menu.classList.toggle('active', !isExpanded);
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.classList.remove('active');
+          menu.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Firebase SDK v8.10.1 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+<!-- Shared Firebase Config -->
+<script src="../assets/js/firebase-init.js"></script>
+
+<!-- Digital Seba Auth & Profile Controller -->
+<script src="../assets/js/auth.js"></script>
+
+</body>
+</html>
+

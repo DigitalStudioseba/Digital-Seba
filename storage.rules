@@ -1,0 +1,44 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // ─── HELPER FUNCTIONS ───
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'digitalsebamail@gmail.com' &&
+        request.auth.token.email_verified == true
+      );
+    }
+
+    // ─── USER AVATAR STORAGE ───
+    // Path: users/{userId}/{fileName}
+    match /users/{userId}/{allPaths=**} {
+      // Authenticated users can view avatars across user profiles and comments
+      allow read: if isAuthenticated();
+
+      // Only the genuine account owner can upload/update their own profile photo
+      // Backend validates max size <= 3MB and standard image formats only
+      allow write: if isOwner(userId)
+                   && request.resource.size <= 3 * 1024 * 1024
+                   && request.resource.contentType.matches('image/(jpeg|png|webp|gif)');
+
+      // Deletion permitted to the account owner or verified administrator
+      allow delete: if isOwner(userId) || isAdmin();
+    }
+
+    // ─── DEFAULT FALLBACK ───
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
+

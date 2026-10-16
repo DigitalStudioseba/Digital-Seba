@@ -1,0 +1,1754 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba — Administrative Control Panel and User Management System.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Admin Dashboard — Digital Seba</title>
+  
+  <link rel="icon" type="image/png" href="../assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Core Design System CSS -->
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../assets/css/animations.css">
+  <link rel="stylesheet" href="../assets/css/components.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/accessibility.css">
+
+  <style>
+    /* ── Page-Specific Scoped Styles for /admin/ ── */
+    :root {
+      --admin-bg-gradient: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
+                           radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.08) 0%, transparent 50%);
+    }
+
+    [data-theme="light"] {
+      --admin-bg-gradient: radial-gradient(circle at 50% 10%, rgba(245, 158, 11, 0.04) 0%, transparent 50%),
+                           radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.04) 0%, transparent 50%);
+    }
+
+    .admin-page-wrapper {
+      min-height: calc(100vh - 70px);
+      padding: 100px 20px 60px;
+      position: relative;
+      background: var(--admin-bg-gradient);
+    }
+
+    .admin-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Breadcrumbs */
+    .admin-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      color: var(--text-muted, #64748b);
+      margin-bottom: 24px;
+    }
+
+    .admin-breadcrumb a {
+      color: var(--text-secondary, #94a3b8);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .admin-breadcrumb a:hover {
+      color: var(--primary, #3b82f6);
+    }
+
+    /* Header Banner */
+    .admin-header-card {
+      background: var(--card-bg, rgba(15, 23, 42, 0.85));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 20px;
+      padding: 28px 32px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      position: relative;
+      overflow: hidden;
+    }
+
+    [data-theme="light"] .admin-header-card {
+      background: rgba(255, 255, 255, 0.94);
+      border-color: rgba(226, 232, 240, 0.9);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .admin-header-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #f59e0b, #3b82f6, #10b981);
+    }
+
+    .admin-info-wrap {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .admin-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 2px solid #f59e0b;
+      box-shadow: 0 4px 16px rgba(245, 158, 11, 0.3);
+      object-fit: cover;
+    }
+
+    .admin-avatar-fallback {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 700;
+      border: 2px solid #f59e0b;
+    }
+
+    .admin-name-title {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--foreground, #f8fafc);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .badge-admin-crown {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #f59e0b;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 99px;
+    }
+
+    .admin-email-sub {
+      font-size: 0.88rem;
+      color: var(--text-secondary, #94a3b8);
+    }
+
+    .admin-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Metrics Grid */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .metric-card {
+      background: var(--card-bg, rgba(15, 23, 42, 0.8));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+      border-radius: 16px;
+      padding: 20px;
+      backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    [data-theme="light"] .metric-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-color: rgba(226, 232, 240, 0.8);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+
+    .metric-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .metric-icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .metric-icon-users { background: rgba(59, 130, 246, 0.15); color: #3b82f6; }
+    .metric-icon-active { background: rgba(34, 197, 94, 0.15); color: #22c55e; }
+    .metric-icon-admins { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .metric-icon-suspended { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+    .metric-val {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--foreground, #f8fafc);
+      line-height: 1.1;
+      margin-bottom: 2px;
+    }
+
+    .metric-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--text-muted, #64748b);
+    }
+
+    /* Management Card */
+    .admin-main-card {
+      background: var(--card-bg, rgba(15, 23, 42, 0.85));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 20px;
+      padding: 28px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    }
+
+    [data-theme="light"] .admin-main-card {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: rgba(226, 232, 240, 0.9);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05);
+    }
+
+    .controls-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .search-filter-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+      min-width: 280px;
+      flex-wrap: wrap;
+    }
+
+    .search-input-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .search-input-wrap svg {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted, #64748b);
+      pointer-events: none;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border-radius: 10px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+      color: var(--foreground, #f8fafc);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    [data-theme="light"] .admin-input {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .admin-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .admin-select {
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+      color: var(--foreground, #f8fafc);
+      font-size: 0.88rem;
+      outline: none;
+      transition: all 0.2s ease;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    [data-theme="light"] .admin-select {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .admin-select option {
+      background: #0f172a;
+      color: #f8fafc;
+    }
+
+    [data-theme="light"] .admin-select option {
+      background: #ffffff;
+      color: #0f172a;
+    }
+
+    .btn-admin-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-family: inherit;
+      border: 1px solid transparent;
+    }
+
+    .btn-admin-refresh {
+      background: var(--bg-secondary, rgba(255, 255, 255, 0.06));
+      border-color: var(--border-color, rgba(255, 255, 255, 0.12));
+      color: var(--foreground, #f8fafc);
+    }
+
+    .btn-admin-refresh:hover {
+      background: rgba(37, 99, 235, 0.15);
+      border-color: #3b82f6;
+      color: #3b82f6;
+    }
+
+    /* Table & Cards */
+    .admin-table-container {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .admin-table th {
+      background: rgba(255, 255, 255, 0.03);
+      padding: 14px 16px;
+      color: var(--text-muted, #94a3b8);
+      font-weight: 600;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    }
+
+    [data-theme="light"] .admin-table th {
+      background: #f1f5f9;
+      color: #64748b;
+    }
+
+    .admin-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border-color, rgba(255, 255, 255, 0.06));
+      vertical-align: middle;
+      color: var(--foreground, #f8fafc);
+    }
+
+    .admin-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .admin-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    [data-theme="light"] .admin-table tr:hover td {
+      background: rgba(241, 245, 249, 0.6);
+    }
+
+    .user-cell {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .user-table-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .user-table-avatar-fallback {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .user-cell-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-cell-name {
+      font-weight: 600;
+      color: var(--foreground, #f8fafc);
+    }
+
+    .user-cell-email {
+      font-size: 0.78rem;
+      color: var(--text-muted, #94a3b8);
+    }
+
+    .table-uid-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-family: monospace;
+      font-size: 0.78rem;
+      max-width: 170px;
+    }
+
+    .table-uid-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .btn-table-copy {
+      background: none;
+      border: none;
+      color: var(--primary, #3b82f6);
+      cursor: pointer;
+      padding: 1px;
+      display: inline-flex;
+      align-items: center;
+      opacity: 0.8;
+      transition: opacity 0.15s;
+    }
+
+    .btn-table-copy:hover {
+      opacity: 1;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .status-active {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.25);
+      color: #22c55e;
+    }
+
+    .status-suspended {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.25);
+      color: #ef4444;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+    }
+
+    .role-admin {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #f59e0b;
+    }
+
+    .role-user {
+      background: rgba(148, 163, 184, 0.12);
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      color: #94a3b8;
+    }
+
+    .btn-manage {
+      background: rgba(37, 99, 235, 0.12);
+      border: 1px solid rgba(37, 99, 235, 0.28);
+      color: #3b82f6;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-manage:hover {
+      background: #2563eb;
+      color: #ffffff;
+    }
+
+    /* Modal Backdrop & Dialog */
+    .admin-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .admin-modal-backdrop.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .admin-modal-dialog {
+      background: var(--card-bg, #0f172a);
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+      transform: scale(0.95);
+      transition: transform 0.25s ease;
+    }
+
+    [data-theme="light"] .admin-modal-dialog {
+      background: #ffffff;
+      border-color: rgba(226, 232, 240, 0.95);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+    }
+
+    .admin-modal-backdrop.active .admin-modal-dialog {
+      transform: scale(1);
+    }
+
+    .modal-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .modal-user-summary {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 12px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.03));
+      border-radius: 12px;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-secondary, #94a3b8);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--input-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.12));
+      color: var(--foreground, #f8fafc);
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.15s ease;
+      font-family: inherit;
+    }
+
+    [data-theme="light"] .form-input {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .form-input:focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
+
+    .form-input:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .form-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted, #64748b);
+      margin-top: 4px;
+    }
+
+    .admin-modal-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn-modal-save {
+      flex: 1;
+      padding: 11px;
+      border-radius: 10px;
+      background: #2563eb;
+      border: 1px solid #2563eb;
+      color: #ffffff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-modal-save:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-modal-cancel {
+      flex: 1;
+      padding: 11px;
+      border-radius: 10px;
+      background: transparent;
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.15));
+      color: var(--foreground, #f8fafc);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+
+    .btn-modal-cancel:hover {
+      background: var(--bg-secondary, rgba(255, 255, 255, 0.05));
+    }
+
+    /* Access Denied Guard & Unauthenticated Guard */
+    .guard-state-card {
+      text-align: center;
+      padding: 60px 24px;
+      max-width: 580px;
+      margin: 40px auto;
+      background: var(--card-bg, rgba(15, 23, 42, 0.85));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.1));
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .guard-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    /* Skeleton Loading State */
+    .admin-skeleton {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .skeleton-box {
+      height: 70px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.03) 25%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03) 75%);
+      background-size: 200% 100%;
+      animation: skeletonPulse 1.5s infinite;
+    }
+
+    @keyframes skeletonPulse {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .profile-alert {
+      padding: 14px 18px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .profile-alert.success {
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      color: #22c55e;
+    }
+
+    .profile-alert.error {
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.28);
+      color: #f87171;
+    }
+
+    [data-theme="light"] .profile-alert.error {
+      background: #fef2f2;
+      border-color: #fecaca;
+      color: #dc2626;
+    }
+
+    .profile-alert.warning {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.28);
+      color: #f59e0b;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="ds-skip-link">Skip to content</a>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <a href="../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <img src="../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo">
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline"
+              data-en="Bangladesh's Smart Digital Service Platform"
+              data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সেবা প্ল্যাটফর্ম">
+          Bangladesh's Smart Digital Service Platform
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html#home" class="nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../services/index.html" class="nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+      <li><a href="../resources/index.html" class="nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
+      <li><a href="../live-tv/index.html" class="nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
+      <li><a href="../focus-mode/index.html" class="nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a></li>
+      <li><a href="../about/index.html" class="nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" title="Switch Language" aria-label="Switch language">
+        <span class="lang-icon">🌐</span>
+        <span class="lang-text" id="langText">EN</span>
+      </button>
+
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle dark/light mode">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <!-- Desktop Auth Container -->
+      <div class="auth-buttons">
+        <div class="auth-logged-out" style="display:flex;align-items:center;gap:8px;">
+          <a href="../login/" class="btn-login" data-en="Login" data-bn="লগইন">Login</a>
+          <a href="../login/#signup" class="btn-signup" data-en="Sign Up" data-bn="নিবন্ধন">Sign Up</a>
+        </div>
+        <div class="auth-logged-in" style="display:none;">
+          <div class="user-menu-container" id="headerUserMenu">
+            <button class="user-menu-btn" id="headerUserMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Open user menu">
+              <img class="user-avatar-thumb hidden" id="headerUserAvatar" src="" alt="Profile">
+              <div class="user-initial-thumb" id="headerUserInitial">U</div>
+              <span class="user-menu-name" id="headerUserName">User</span>
+              <svg class="user-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="user-dropdown" id="headerUserDropdown" role="menu">
+              <div class="user-dropdown-header">
+                <img class="user-avatar-thumb hidden" id="dropdownUserAvatar" src="" alt="Profile">
+                <div class="user-initial-thumb" id="dropdownUserInitial">U</div>
+                <div class="user-dropdown-info">
+                  <div class="user-dropdown-name" id="dropdownUserName">User</div>
+                  <div class="user-dropdown-email" id="dropdownUserEmail">user@example.com</div>
+                </div>
+              </div>
+              <a href="../profile/" class="user-dropdown-item" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+              </a>
+              <a href="../admin/" class="user-dropdown-item admin-dropdown-link" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+                <span data-en="Admin Dashboard" data-bn="অ্যাডমিন ড্যাশবোর্ড">Admin Dashboard</span>
+              </a>
+              <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span data-en="Sign Out" data-bn="লগআউট">Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-nav-links">
+      <li><a href="../index.html#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../services/index.html" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../tools/index.html" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+      <li><a href="../resources/index.html" class="mobile-nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
+      <li><a href="../live-tv/index.html" class="mobile-nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
+      <li><a href="../focus-mode/index.html" class="mobile-nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a></li>
+      <li><a href="../about/index.html" class="mobile-nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+    </ul>
+
+    <!-- Mobile Auth Section -->
+    <div class="mobile-auth">
+      <div class="mobile-logged-out" style="display:flex;flex-direction:column;gap:10px;">
+        <a href="../login/" class="btn-login" data-en="Login" data-bn="লগইন">Login</a>
+        <a href="../login/#signup" class="btn-signup" data-en="Sign Up" data-bn="নিবন্ধন">Sign Up</a>
+      </div>
+      <div class="mobile-logged-in" style="display:none;">
+        <div class="mobile-user-card">
+          <div class="mobile-user-header">
+            <img class="user-avatar-thumb hidden" id="mobileUserAvatar" src="" alt="Profile">
+            <div class="user-initial-thumb" id="mobileUserInitial">U</div>
+            <div style="min-width:0;flex:1;">
+              <div class="mobile-user-name" id="mobileUserName">User</div>
+              <div class="mobile-user-email" id="mobileUserEmail">user@example.com</div>
+            </div>
+          </div>
+          <div class="mobile-user-actions">
+            <a href="../profile/" class="mobile-btn-profile">
+              <span data-en="👤 My Profile" data-bn="👤 আমার প্রোফাইল">👤 My Profile</span>
+            </a>
+            <a href="../admin/" class="mobile-btn-profile mobile-btn-admin">
+              <span data-en="⚙️ Admin Dashboard" data-bn="⚙️ অ্যাডমিন ড্যাশবোর্ড">⚙️ Admin Dashboard</span>
+            </a>
+            <button type="button" class="mobile-btn-signout" id="mobileSignOutBtn">
+              <span data-en="🚪 Sign Out" data-bn="🚪 লগআউট">🚪 Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN ADMIN CONTENT
+════════════════════════════════════════════ -->
+<main id="main-content">
+  <div class="admin-page-wrapper">
+    <div class="admin-container">
+
+      <!-- Breadcrumbs -->
+      <nav class="admin-breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html" data-en="Home" data-bn="হোম">Home</a>
+        <span>/</span>
+        <a href="../profile/" data-en="Profile" data-bn="প্রোফাইল">Profile</a>
+        <span>/</span>
+        <span data-en="Admin Dashboard" data-bn="অ্যাডমিন ড্যাশবোর্ড">Admin Dashboard</span>
+      </nav>
+
+      <!-- State 1: Skeleton Loading (Initial Authentication Check) -->
+      <div id="admin-loading" class="admin-skeleton">
+        <div class="skeleton-box" style="height: 100px;"></div>
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px;">
+          <div class="skeleton-box"></div>
+          <div class="skeleton-box"></div>
+          <div class="skeleton-box"></div>
+          <div class="skeleton-box"></div>
+        </div>
+        <div class="skeleton-box" style="height: 350px;"></div>
+      </div>
+
+      <!-- State 2: Unauthenticated Guard -->
+      <div id="admin-unauthed" class="guard-state-card hidden">
+        <span class="guard-icon">🔒</span>
+        <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:8px;color:var(--foreground);"
+            data-en="Sign In Required" data-bn="সাইন-ইন প্রয়োজন">Sign In Required</h2>
+        <p style="color:var(--text-secondary);margin-bottom:24px;line-height:1.5;"
+           data-en="You must be signed in with an authorized administrator account to access this page."
+           data-bn="এই পাতাটি দেখার জন্য আপনাকে অনুমোদিত অ্যাডমিন অ্যাকাউন্ট দিয়ে সাইন-ইন করতে হবে।">
+          You must be signed in with an authorized administrator account to access this page.
+        </p>
+        <a href="../login/?redirect=/admin/" class="btn-action-primary" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:12px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;">
+          <span data-en="Sign In Now" data-bn="লগইন করুন">Sign In Now</span>
+        </a>
+      </div>
+
+      <!-- State 3: Forbidden Guard (Authenticated, but non-admin) -->
+      <div id="admin-forbidden" class="guard-state-card hidden">
+        <span class="guard-icon">⛔</span>
+        <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:8px;color:#ef4444;"
+            data-en="Access Denied (403)" data-bn="প্রবেশাধিকার নেই (৪০৩)">Access Denied (403)</h2>
+        <p style="color:var(--text-secondary);margin-bottom:24px;line-height:1.5;"
+           data-en="Your account does not possess administrator privileges. If you believe this is an error, please contact the system owner."
+           data-bn="আপনার অ্যাকাউন্টে অ্যাডমিন অধিকার নেই। কোনো ভুল হলে অনুগ্রহ করে সিস্টেম কর্তৃপক্ষের সাথে যোগাযোগ করুন।">
+          Your account does not possess administrator privileges. If you believe this is an error, please contact the system owner.
+        </p>
+        <div style="display:flex;justify-content:center;gap:12px;">
+          <a href="../profile/" class="btn-action-primary" style="padding:10px 20px;border-radius:10px;background:#2563eb;color:#fff;text-decoration:none;font-weight:600;">
+            <span data-en="Back to Profile" data-bn="প্রোফাইলে ফিরুন">Back to Profile</span>
+          </a>
+          <a href="../index.html" class="btn-action-outline" style="padding:10px 20px;border-radius:10px;border:1px solid rgba(255,255,255,0.2);color:var(--foreground);text-decoration:none;font-weight:600;">
+            <span data-en="Home" data-bn="হোম">Home</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- State 4: Authorized Admin Dashboard -->
+      <div id="admin-content" class="hidden">
+
+        <!-- Top Header Card -->
+        <div class="admin-header-card">
+          <div class="admin-info-wrap">
+            <img id="admin-current-avatar" class="admin-avatar hidden" src="" alt="Admin Photo">
+            <div id="admin-current-fallback" class="admin-avatar-fallback">A</div>
+            <div>
+              <div class="admin-name-title">
+                <span id="admin-current-name">Admin</span>
+                <span class="badge-admin-crown">
+                  <span>👑</span>
+                  <span id="admin-crown-label" data-en="Administrator" data-bn="অ্যাডমিনিস্ট্রেটর">Administrator</span>
+                </span>
+              </div>
+              <div class="admin-email-sub" id="admin-current-email">admin@digitalseba.com</div>
+            </div>
+          </div>
+          <div class="admin-header-actions">
+            <a href="../profile/" class="btn-admin-action btn-admin-refresh" style="text-decoration:none;">
+              <span>👤</span>
+              <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Metrics Grid -->
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-icon-box metric-icon-users">👥</div>
+            <div>
+              <div class="metric-val" id="metric-total-users">0</div>
+              <div class="metric-label" data-en="Total Users" data-bn="মোট ব্যবহারকারী">Total Users</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon-box metric-icon-active">✅</div>
+            <div>
+              <div class="metric-val" id="metric-active-users">0</div>
+              <div class="metric-label" data-en="Active Accounts" data-bn="সক্রিয় ব্যবহারকারী">Active Accounts</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon-box metric-icon-admins">👑</div>
+            <div>
+              <div class="metric-val" id="metric-admins">0</div>
+              <div class="metric-label" data-en="Administrators" data-bn="অ্যাডমিনিস্ট্রেটর">Administrators</div>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon-box metric-icon-suspended">⚠️</div>
+            <div>
+              <div class="metric-val" id="metric-suspended">0</div>
+              <div class="metric-label" data-en="Suspended" data-bn="স্থগিত ব্যবহারকারী">Suspended</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Management Card -->
+        <div class="admin-main-card">
+
+          <!-- Toolbar -->
+          <div class="controls-toolbar">
+            <div class="search-filter-group">
+              <div class="search-input-wrap">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="11" cy="11" r="8"></circle>
+                  <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+                <input type="text" id="admin-search-input" class="admin-input" placeholder="Search by name, email, or UID...">
+              </div>
+
+              <select id="filter-role" class="admin-select" aria-label="Filter by role">
+                <option value="all">All Roles / সকল পদবী</option>
+                <option value="admin">Admin / অ্যাডমিন</option>
+                <option value="user">User / ব্যবহারকারী</option>
+              </select>
+
+              <select id="filter-status" class="admin-select" aria-label="Filter by status">
+                <option value="all">All Status / সকল স্ট্যাটাস</option>
+                <option value="active">Active / সক্রিয়</option>
+                <option value="suspended">Suspended / স্থগিত</option>
+              </select>
+            </div>
+
+            <button type="button" class="btn-admin-action btn-admin-refresh" id="btn-refresh-users">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 4v6h-6"></path>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+              </svg>
+              <span data-en="Refresh" data-bn="রিফ্রেশ">Refresh</span>
+            </button>
+          </div>
+
+          <!-- Alert Notification in Dashboard -->
+          <div id="admin-table-alert" class="profile-alert hidden" style="margin-bottom:16px;"></div>
+
+          <!-- Table Container -->
+          <div class="admin-table-container">
+            <table class="admin-table" id="users-table">
+              <thead>
+                <tr>
+                  <th data-en="User" data-bn="ব্যবহারকারী">User</th>
+                  <th data-en="Contact Details" data-bn="যোগাযোগ">Contact Details</th>
+                  <th data-en="Permanent UID" data-bn="স্থায়ী ইউআইডি">Permanent UID</th>
+                  <th data-en="Role" data-bn="পদবী">Role</th>
+                  <th data-en="Status" data-bn="স্ট্যাটাস">Status</th>
+                  <th data-en="Action" data-bn="অ্যাকশন">Action</th>
+                </tr>
+              </thead>
+              <tbody id="users-table-body">
+                <tr>
+                  <td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);" data-en="Loading user directory..." data-bn="ব্যবহারকারী তালিকা লোড হচ্ছে...">Loading user directory...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     MODAL: MANAGE USER
+════════════════════════════════════════════ -->
+<div class="admin-modal-backdrop" id="manage-user-modal" role="dialog" aria-modal="true" aria-labelledby="modal-manage-title">
+  <div class="admin-modal-dialog">
+    <div class="modal-header-row">
+      <h3 style="font-size:1.25rem;font-weight:800;color:var(--foreground);" id="modal-manage-title" data-en="Manage User Account" data-bn="ব্যবহারকারী অ্যাকাউন্ট পরিচালনা">
+        Manage User Account
+      </h3>
+      <button type="button" id="btn-close-modal" style="background:none;border:none;color:var(--text-muted);font-size:1.4rem;cursor:pointer;">×</button>
+    </div>
+
+    <div class="modal-user-summary">
+      <div id="modal-user-avatar-wrap">
+        <div class="user-table-avatar-fallback" id="modal-avatar-fallback">U</div>
+      </div>
+      <div style="min-width:0;flex:1;">
+        <div style="font-weight:700;color:var(--foreground);font-size:0.95rem;" id="modal-user-name">—</div>
+        <div style="font-size:0.8rem;color:var(--text-muted);" id="modal-user-email">—</div>
+        <div style="font-family:monospace;font-size:0.75rem;color:var(--primary);margin-top:2px;" id="modal-user-uid">—</div>
+      </div>
+    </div>
+
+    <form id="form-manage-user" onsubmit="return false;">
+      <div class="form-group">
+        <label class="form-label" for="edit-user-name" data-en="Display Name" data-bn="ডিসপ্লে নাম">Display Name</label>
+        <input type="text" id="edit-user-name" class="form-input" required maxlength="60">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-user-phone" data-en="Phone Number" data-bn="ফোন নম্বর">Phone Number</label>
+        <input type="text" id="edit-user-phone" class="form-input" placeholder="+880 1824 741444">
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-user-role" data-en="System Role" data-bn="সিস্টেম রোল">System Role</label>
+        <select id="edit-user-role" class="form-input">
+          <option value="user">User / সাধারণ ব্যবহারকারী</option>
+          <option value="admin">Administrator / অ্যাডমিনিস্ট্রেটর</option>
+        </select>
+        <div class="form-hint" id="role-lockout-hint"></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="edit-user-status" data-en="Account Status" data-bn="অ্যাকাউন্ট স্ট্যাটাস">Account Status</label>
+        <select id="edit-user-status" class="form-input">
+          <option value="active">Active / সক্রিয়</option>
+          <option value="suspended">Suspended / স্থগিত</option>
+        </select>
+        <div class="form-hint" id="status-lockout-hint"></div>
+      </div>
+
+      <div class="admin-modal-actions">
+        <button type="button" class="btn-modal-cancel" id="btn-cancel-user-modal" data-en="Cancel" data-bn="বাতিল">
+          Cancel
+        </button>
+        <button type="submit" class="btn-modal-save" id="btn-save-user-mgmt">
+          <span id="save-user-spinner" class="save-spinner" style="display:none;"></span>
+          <span id="save-user-text" data-en="Save Changes" data-bn="সংরক্ষণ করুন">Save Changes</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <div class="copyright"
+             data-en="© 2026 Digital Seba. All rights reserved. Designed &amp; Developed by Monir Hossain"
+             data-bn="© ২০২৬ ডিজিটাল সেবা। সর্বস্বত্ব সংরক্ষিত। ডিজাইন ও ডেভেলপমেন্ট: মনির হোসেন">
+          © 2026 Digital Seba. All rights reserved. Made with ❤️ in Bangladesh
+        </div>
+        <div class="footer-bottom-links">
+          <a href="../pages/privacy.html" data-en="Privacy" data-bn="গোপনীয়তা">Privacy</a>
+          <a href="../pages/terms.html" data-en="Terms" data-bn="শর্তাবলী">Terms</a>
+          <a href="../index.html#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Core site scripts -->
+<script src="../assets/js/theme.js" charset="UTF-8"></script>
+<script src="../assets/js/language.js" charset="UTF-8"></script>
+
+<!-- Mobile Navigation Toggle Script -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('mobileMenuToggle');
+    var menu = document.getElementById('mobileMenu');
+    if (btn && menu) {
+      btn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isExpanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', !isExpanded);
+        btn.classList.toggle('active', !isExpanded);
+        menu.classList.toggle('active', !isExpanded);
+      });
+      menu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          btn.setAttribute('aria-expanded', 'false');
+          btn.classList.remove('active');
+          menu.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
+
+<!-- Firebase SDK v8.10.1 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+
+<!-- Shared Firebase Config -->
+<script src="../assets/js/firebase-init.js"></script>
+
+<!-- Digital Seba Auth Controller -->
+<script src="../assets/js/auth.js"></script>
+
+<!-- Admin Management Controller -->
+<script>
+(function() {
+  let currentAdminUser = null;
+  let allUsersList = [];
+  let selectedUserForEdit = null;
+
+  const loadingEl = document.getElementById('admin-loading');
+  const unauthedEl = document.getElementById('admin-unauthed');
+  const forbiddenEl = document.getElementById('admin-forbidden');
+  const contentEl = document.getElementById('admin-content');
+
+  const adminNameEl = document.getElementById('admin-current-name');
+  const adminEmailEl = document.getElementById('admin-current-email');
+  const adminAvatarEl = document.getElementById('admin-current-avatar');
+  const adminFallbackEl = document.getElementById('admin-current-fallback');
+
+  const totalUsersEl = document.getElementById('metric-total-users');
+  const activeUsersEl = document.getElementById('metric-active-users');
+  const adminsCountEl = document.getElementById('metric-admins');
+  const suspendedCountEl = document.getElementById('metric-suspended');
+
+  const tableBodyEl = document.getElementById('users-table-body');
+  const searchInput = document.getElementById('admin-search-input');
+  const filterRole = document.getElementById('filter-role');
+  const filterStatus = document.getElementById('filter-status');
+  const btnRefresh = document.getElementById('btn-refresh-users');
+
+  const manageModal = document.getElementById('manage-user-modal');
+  const btnCloseModal = document.getElementById('btn-close-modal');
+  const btnCancelModal = document.getElementById('btn-cancel-user-modal');
+  const formManageUser = document.getElementById('form-manage-user');
+
+  const modalName = document.getElementById('modal-user-name');
+  const modalEmail = document.getElementById('modal-user-email');
+  const modalUid = document.getElementById('modal-user-uid');
+  const editName = document.getElementById('edit-user-name');
+  const editPhone = document.getElementById('edit-user-phone');
+  const editRole = document.getElementById('edit-user-role');
+  const editStatus = document.getElementById('edit-user-status');
+  const roleLockoutHint = document.getElementById('role-lockout-hint');
+  const statusLockoutHint = document.getElementById('status-lockout-hint');
+  const saveSpinner = document.getElementById('save-user-spinner');
+  const saveText = document.getElementById('save-user-text');
+  const btnSaveMgmt = document.getElementById('btn-save-user-mgmt');
+
+  // Helper: Get active language
+  function getActiveLang() {
+    return (localStorage.getItem('preferredLanguage') || 'en').toLowerCase().trim();
+  }
+
+  // 1. Authentication State Listener & Security Gate
+  let unauthedRedirectTimer = null;
+
+  if (window.DSAuth && typeof window.DSAuth.onAuthStateChanged === 'function') {
+    window.DSAuth.onAuthStateChanged(handleAdminAuthChange);
+  } else if (window.firebase && firebase.auth) {
+    firebase.auth().onAuthStateChanged(handleAdminAuthChange);
+  }
+
+  async function handleAdminAuthChange(user) {
+    if (unauthedRedirectTimer) {
+      clearTimeout(unauthedRedirectTimer);
+      unauthedRedirectTimer = null;
+    }
+
+    if (!user) {
+      if (loadingEl) loadingEl.classList.add('hidden');
+      if (forbiddenEl) forbiddenEl.classList.add('hidden');
+      if (contentEl) contentEl.classList.add('hidden');
+      if (unauthedEl) unauthedEl.classList.remove('hidden');
+
+      if (!window.__disableAutoRedirect && !window.location.search.includes('no_redirect=1')) {
+        unauthedRedirectTimer = setTimeout(() => {
+          const u = (window.DSAuth && window.DSAuth.getUser) ? window.DSAuth.getUser() : (window.firebase && firebase.auth ? firebase.auth().currentUser : null);
+          if (!u) {
+            window.location.href = '../login/?redirect=/admin/';
+          }
+        }, 1200);
+      }
+      return;
+    }
+
+    currentAdminUser = user;
+
+    // Check Administrator Privileges
+    let isAdmin = false;
+    if (window.DSAuth && typeof window.DSAuth.checkAdminStatus === 'function') {
+      isAdmin = await window.DSAuth.checkAdminStatus(user);
+    } else {
+      isAdmin = (user.email === 'digitalsebamail@gmail.com');
+      if (!isAdmin && window.db) {
+        try {
+          const doc = await window.db.collection('admins').doc(user.uid).get();
+          isAdmin = (doc.exists && doc.data().role === 'admin');
+        } catch (_) {}
+      }
+    }
+
+    if (!isAdmin) {
+      if (loadingEl) loadingEl.classList.add('hidden');
+      if (unauthedEl) unauthedEl.classList.add('hidden');
+      if (contentEl) contentEl.classList.add('hidden');
+      if (forbiddenEl) forbiddenEl.classList.remove('hidden');
+      return;
+    }
+
+    // Authorized Admin! Render Dashboard
+    if (loadingEl) loadingEl.classList.add('hidden');
+    if (unauthedEl) unauthedEl.classList.add('hidden');
+    if (forbiddenEl) forbiddenEl.classList.add('hidden');
+    if (contentEl) contentEl.classList.remove('hidden');
+
+    renderAdminHeader(user);
+    await loadUsersDirectory();
+  }
+
+  function renderAdminHeader(user) {
+    const displayName = (window.DSAuth && window.DSAuth.getUserName) 
+      ? window.DSAuth.getUserName(user) 
+      : (user.displayName || (user.email ? user.email.split('@')[0] : 'Administrator'));
+    const photoURL = (window.DSAuth && window.DSAuth.getUserPhoto) 
+      ? window.DSAuth.getUserPhoto(user) 
+      : (user.photoURL || null);
+    const initial = (displayName[0] || 'A').toUpperCase();
+
+    if (adminNameEl) adminNameEl.textContent = displayName;
+    if (adminEmailEl) adminEmailEl.textContent = user.email || '';
+
+    if (photoURL && adminAvatarEl && adminFallbackEl) {
+      adminAvatarEl.src = photoURL;
+      adminAvatarEl.classList.remove('hidden');
+      adminFallbackEl.classList.add('hidden');
+      adminAvatarEl.onerror = () => {
+        adminAvatarEl.classList.add('hidden');
+        adminFallbackEl.classList.remove('hidden');
+        adminFallbackEl.textContent = initial;
+      };
+    } else if (adminFallbackEl) {
+      if (adminAvatarEl) adminAvatarEl.classList.add('hidden');
+      adminFallbackEl.classList.remove('hidden');
+      adminFallbackEl.textContent = initial;
+    }
+  }
+
+  function showAdminTableAlert(msg, type = 'error') {
+    const alertBox = document.getElementById('admin-table-alert');
+    if (!alertBox) return;
+    alertBox.className = 'profile-alert ' + type;
+    alertBox.innerHTML = msg;
+    alertBox.classList.remove('hidden');
+  }
+
+  function hideAdminTableAlert() {
+    const alertBox = document.getElementById('admin-table-alert');
+    if (alertBox) {
+      alertBox.classList.add('hidden');
+      alertBox.innerHTML = '';
+    }
+  }
+
+  let isLoadingDirectory = false;
+  async function loadUsersDirectory() {
+    if (isLoadingDirectory) return;
+    isLoadingDirectory = true;
+    allUsersList = [];
+    hideAdminTableAlert();
+    tableBodyEl.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);">Loading user directory...</td></tr>`;
+
+    console.log('[DS-ADMIN:FIRESTORE-QUERY] Executing query on collection "users"...');
+
+    let querySucceeded = false;
+    let queryError = null;
+
+    try {
+      if (window.db && typeof window.db.collection === 'function') {
+        const snapshot = await window.db.collection('users').get();
+        querySucceeded = true;
+        console.log('[DS-ADMIN:FIRESTORE-QUERY] Firestore query succeeded. Documents returned:', snapshot.size);
+
+        snapshot.forEach((doc) => {
+          const data = doc.data();
+          let createdAtDate = null;
+          if (data.createdAt) {
+            if (typeof data.createdAt.toDate === 'function') {
+              createdAtDate = data.createdAt.toDate();
+            } else {
+              createdAtDate = new Date(data.createdAt);
+            }
+          }
+
+          allUsersList.push({
+            uid: doc.id,
+            displayName: data.displayName || (data.email ? data.email.split('@')[0] : 'User'),
+            email: data.email || '—',
+            phone: data.phone || '—',
+            photoURL: data.photoURL || null,
+            role: data.role || (data.email === 'digitalsebamail@gmail.com' ? 'admin' : 'user'),
+            status: data.status || 'active',
+            createdAt: createdAtDate
+          });
+        });
+      } else {
+        console.warn('[DS-ADMIN:FIRESTORE-QUERY] window.db is not initialized or collection is unavailable.');
+        queryError = { message: 'Firestore SDK is not initialized on this page.' };
+      }
+    } catch (err) {
+      queryError = err;
+      console.warn('[DS-ADMIN:FIRESTORE-QUERY] FAILED to read from Firestore users collection:', err);
+    }
+
+    if (queryError) {
+      let alertMsg = '⚠️ <strong>Cloud Firestore Query Failed:</strong> ' + (queryError.message || queryError.code || 'Permission Denied / Service Unavailable');
+      if (queryError.code === 'permission-denied' || (queryError.message && (queryError.message.includes('disabled') || queryError.message.includes('not been used')))) {
+        alertMsg += '<br><small style="opacity:0.95;margin-top:6px;display:block;"><strong>Action Required:</strong> Cloud Firestore has not been activated in Firebase project <code>digital-seba-92ae6</code>. Open the Firebase Console &rarr; <strong>Firestore Database</strong> &rarr; Click <strong>Create database</strong>. Until Firestore is enabled, only the active administrator fallback can be displayed.</small>';
+      }
+      showAdminTableAlert(alertMsg, 'error');
+    } else if (querySucceeded && allUsersList.length === 0) {
+      console.log('[DS-ADMIN:FIRESTORE-QUERY] Query succeeded but "users" collection is empty.');
+    }
+
+    // Ensure Current Admin is in the list
+    if (currentAdminUser && !allUsersList.some(u => u.uid === currentAdminUser.uid)) {
+      console.log('[DS-ADMIN:UI-RENDER] Admin account not present in collection query; adding active admin to table view:', currentAdminUser.email);
+      allUsersList.unshift({
+        uid: currentAdminUser.uid,
+        displayName: currentAdminUser.displayName || 'Administrator',
+        email: currentAdminUser.email || 'digitalsebamail@gmail.com',
+        phone: '01824741444',
+        photoURL: currentAdminUser.photoURL || null,
+        role: 'admin',
+        status: 'active',
+        createdAt: new Date()
+      });
+    }
+
+    updateMetrics();
+    renderUsersTable();
+    isLoadingDirectory = false;
+  }
+
+  function updateMetrics() {
+    const total = allUsersList.length;
+    const active = allUsersList.filter(u => u.status === 'active').length;
+    const admins = allUsersList.filter(u => u.role === 'admin').length;
+    const suspended = allUsersList.filter(u => u.status === 'suspended').length;
+
+    if (totalUsersEl) totalUsersEl.textContent = total;
+    if (activeUsersEl) activeUsersEl.textContent = active;
+    if (adminsCountEl) adminsCountEl.textContent = admins;
+    if (suspendedCountEl) suspendedCountEl.textContent = suspended;
+  }
+
+  function renderUsersTable() {
+    const query = (searchInput.value || '').toLowerCase().trim();
+    const roleFilter = filterRole.value;
+    const statusFilter = filterStatus.value;
+    const lang = getActiveLang();
+
+    const filtered = allUsersList.filter((user) => {
+      const matchQuery = !query || 
+        (user.displayName && user.displayName.toLowerCase().includes(query)) ||
+        (user.email && user.email.toLowerCase().includes(query)) ||
+        (user.uid && user.uid.toLowerCase().includes(query));
+
+      const matchRole = roleFilter === 'all' || user.role === roleFilter;
+      const matchStatus = statusFilter === 'all' || user.status === statusFilter;
+
+      return matchQuery && matchRole && matchStatus;
+    });
+
+    console.log('[DS-ADMIN:UI-RENDER] Rendering user table. Total records in state:', allUsersList.length, 'Filtered records:', filtered.length, 'Filter role:', roleFilter, 'Filter status:', statusFilter, 'Search query:', query);
+
+    if (filtered.length === 0) {
+      tableBodyEl.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:40px;color:var(--text-muted);">${lang === 'bn' ? 'কোনো ব্যবহারকারী পাওয়া যায়নি।' : 'No users found matching current filters.'}</td></tr>`;
+      return;
+    }
+
+    tableBodyEl.innerHTML = filtered.map((u) => {
+      const initial = (u.displayName[0] || 'U').toUpperCase();
+      const isCurrentAdmin = (currentAdminUser && u.uid === currentAdminUser.uid);
+      const isSuperAdmin = (u.email === 'digitalsebamail@gmail.com');
+
+      return `
+        <tr>
+          <td>
+            <div class="user-cell">
+              ${u.photoURL 
+                ? `<img class="user-table-avatar" src="${u.photoURL}" alt="" onerror="this.outerHTML='<div class=\\'user-table-avatar-fallback\\'>${initial}</div>'">`
+                : `<div class="user-table-avatar-fallback">${initial}</div>`
+              }
+              <div class="user-cell-meta">
+                <span class="user-cell-name">${escapeHtml(u.displayName)} ${isCurrentAdmin ? '<span style="font-size:0.75rem;color:#3b82f6;">(You)</span>' : ''}</span>
+                <span class="user-cell-email">${escapeHtml(u.email)}</span>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div style="font-size:0.85rem;">${escapeHtml(u.email)}</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);">${escapeHtml(u.phone)}</div>
+          </td>
+          <td>
+            <div class="table-uid-box">
+              <span class="table-uid-text" title="${u.uid}">${u.uid}</span>
+              <button type="button" class="btn-table-copy" data-copy="${u.uid}" title="Copy UID" aria-label="Copy UID">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+          </td>
+          <td>
+            <span class="role-badge ${u.role === 'admin' ? 'role-admin' : 'role-user'}">
+              ${u.role === 'admin' ? '👑 Admin' : '👤 User'}
+            </span>
+          </td>
+          <td>
+            <span class="status-badge ${u.status === 'suspended' ? 'status-suspended' : 'status-active'}">
+              ${u.status === 'suspended' ? '⚠️ Suspended' : '✅ Active'}
+            </span>
+          </td>
+          <td>
+            <button type="button" class="btn-manage" data-manage-uid="${u.uid}">
+              ${lang === 'bn' ? 'পরিচালনা' : 'Manage'}
+            </button>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // Wire Copy buttons in table
+    tableBodyEl.querySelectorAll('.btn-table-copy').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const text = btn.getAttribute('data-copy');
+        if (text) {
+          navigator.clipboard.writeText(text).catch(() => {});
+          btn.style.color = '#22c55e';
+          setTimeout(() => { btn.style.color = ''; }, 1500);
+        }
+      });
+    });
+
+    // Wire Manage buttons
+    tableBodyEl.querySelectorAll('.btn-manage').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const uid = btn.getAttribute('data-manage-uid');
+        const user = allUsersList.find(u => u.uid === uid);
+        if (user) openManageModal(user);
+      });
+    });
+  }
+
+  function openManageModal(user) {
+    selectedUserForEdit = user;
+    const isSelf = (currentAdminUser && user.uid === currentAdminUser.uid);
+    const isSuperAdmin = (user.email === 'digitalsebamail@gmail.com');
+    const lang = getActiveLang();
+
+    modalName.textContent = user.displayName;
+    modalEmail.textContent = user.email;
+    modalUid.textContent = 'UID: ' + user.uid;
+
+    editName.value = user.displayName || '';
+    editPhone.value = (user.phone && user.phone !== '—') ? user.phone : '';
+    editRole.value = user.role || 'user';
+    editStatus.value = user.status || 'active';
+
+    // Prevent Self-Lockout or Superadmin demotion
+    if (isSelf || isSuperAdmin) {
+      editRole.disabled = true;
+      editStatus.disabled = true;
+      roleLockoutHint.textContent = lang === 'bn' 
+        ? '⚠️ লকআউট প্রতিরোধের জন্য নিজের বা সুপারঅ্যাডমিনের রোল পরিবর্তন নিষ্ক্রিয়।'
+        : '⚠️ Role changes on your own account or superadmin are disabled to prevent lockout.';
+      roleLockoutHint.style.color = '#f59e0b';
+      statusLockoutHint.textContent = lang === 'bn' 
+        ? '⚠️ সক্রিয় অ্যাডমিন অ্যাকাউন্ট স্থগিত করা যাবে না।'
+        : '⚠️ Active admin accounts cannot be suspended.';
+      statusLockoutHint.style.color = '#f59e0b';
+    } else {
+      editRole.disabled = false;
+      editStatus.disabled = false;
+      roleLockoutHint.textContent = '';
+      statusLockoutHint.textContent = '';
+    }
+
+    manageModal.classList.add('active');
+  }
+
+  function closeManageModal() {
+    manageModal.classList.remove('active');
+    selectedUserForEdit = null;
+  }
+
+  if (btnCloseModal) btnCloseModal.addEventListener('click', closeManageModal);
+  if (btnCancelModal) btnCancelModal.addEventListener('click', closeManageModal);
+
+  // Form Submit: Save user changes
+  if (formManageUser) {
+    formManageUser.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!selectedUserForEdit) return;
+
+      const newName = editName.value.trim();
+      const newPhone = editPhone.value.trim();
+      const newRole = editRole.value;
+      const newStatus = editStatus.value;
+      const lang = getActiveLang();
+
+      if (!newName || newName.length < 2 || newName.length > 60) {
+        alert(lang === 'bn' ? 'নাম ২ থেকে ৬০ অক্ষরের মধ্যে হতে হবে।' : 'Display name must be between 2 and 60 characters.');
+        return;
+      }
+
+      btnSaveMgmt.disabled = true;
+      if (saveSpinner) saveSpinner.style.display = 'inline-block';
+      if (saveText) saveText.textContent = lang === 'bn' ? 'সংরক্ষণ হচ্ছে...' : 'Saving...';
+
+      try {
+        const updatePayload = {
+          displayName: newName,
+          phone: newPhone || null,
+          role: editRole.disabled ? selectedUserForEdit.role : newRole,
+          status: editStatus.disabled ? selectedUserForEdit.status : newStatus,
+          updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+
+        // 1. Update Firestore users collection
+        if (window.db && typeof window.db.collection === 'function') {
+          await window.db.collection('users').doc(selectedUserForEdit.uid).set(updatePayload, { merge: true });
+
+          // 2. Sync admins collection if role changed
+          if (!editRole.disabled) {
+            if (newRole === 'admin') {
+              await window.db.collection('admins').doc(selectedUserForEdit.uid).set({
+                role: 'admin',
+                email: selectedUserForEdit.email,
+                assignedAt: firebase.firestore.FieldValue.serverTimestamp()
+              }, { merge: true });
+            } else {
+              try {
+                await window.db.collection('admins').doc(selectedUserForEdit.uid).delete();
+              } catch (_) {}
+            }
+          }
+        }
+
+        // 3. Update Local Cache
+        selectedUserForEdit.displayName = newName;
+        selectedUserForEdit.phone = newPhone || '—';
+        selectedUserForEdit.role = updatePayload.role;
+        selectedUserForEdit.status = updatePayload.status;
+
+        // If updated self, sync Auth profile display name
+        if (currentAdminUser && selectedUserForEdit.uid === currentAdminUser.uid) {
+          try {
+            await currentAdminUser.updateProfile({ displayName: newName });
+            renderAdminHeader(currentAdminUser);
+          } catch (_) {}
+        }
+
+        updateMetrics();
+        renderUsersTable();
+        closeManageModal();
+      } catch (err) {
+        console.error('Failed to update user:', err);
+        alert(lang === 'bn' ? 'তথ্য আপডেট করতে ব্যর্থ হয়েছে: ' + err.message : 'Failed to update user: ' + err.message);
+      } finally {
+        btnSaveMgmt.disabled = false;
+        if (saveSpinner) saveSpinner.style.display = 'none';
+        if (saveText) saveText.textContent = lang === 'bn' ? 'সংরক্ষণ করুন' : 'Save Changes';
+      }
+    });
+  }
+
+  // Filter & Search Event Listeners
+  if (searchInput) searchInput.addEventListener('input', renderUsersTable);
+  if (filterRole) filterRole.addEventListener('change', renderUsersTable);
+  if (filterStatus) filterStatus.addEventListener('change', renderUsersTable);
+  if (btnRefresh) btnRefresh.addEventListener('click', loadUsersDirectory);
+
+  window.handleAdminAuthChange = handleAdminAuthChange;
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+})();
+</script>
+
+</body>
+</html>

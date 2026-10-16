@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  if (window.location.pathname.endsWith('/theme-core')) {
+    window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
+  }
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Digital Seba — সবকিছু এক জায়গায় | Services, Tools, Resources, Live TV & Focus Mode</title>
@@ -152,6 +157,77 @@ footer a:hover{color:#fff}
     .ds-theme-list::-webkit-scrollbar-track { background: transparent; }
     .ds-theme-list::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); border-radius: 4px; }
     .ds-theme-list::-webkit-scrollbar-thumb:hover { background: rgba(0,0,0,0.3); }
+
+    /* theme-core auth styling */
+    .hidden { display: none !important; }
+    .auth-buttons { display: flex; align-items: center; gap: 10px; }
+    .auth-logged-out { display: flex; align-items: center; gap: 10px; }
+    .auth-logged-in { display: none; align-items: center; }
+
+    .user-menu-container { position: relative; }
+    .user-menu-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 14px 6px 8px; border-radius: 999px;
+      background: var(--glass); border: 1px solid var(--line);
+      color: var(--ink); font-family: inherit; font-size: 0.85rem; font-weight: 600;
+      cursor: pointer; transition: 0.25s;
+    }
+    .user-menu-btn:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.08); }
+    .user-avatar-thumb { width: 30px; height: 30px; border-radius: 50%; object-fit: cover; }
+    .user-initial-thumb {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      display: grid; place-items: center; font-weight: 700; font-size: 0.82rem; color: #fff;
+    }
+    .user-menu-name { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .user-menu-chevron { width: 14px; height: 14px; transition: transform 0.25s; opacity: 0.7; }
+    .user-dropdown {
+      position: absolute; top: calc(100% + 10px); right: 0; min-width: 230px;
+      background: rgba(8, 11, 24, 0.96); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6); padding: 8px;
+      display: none; flex-direction: column; gap: 4px; z-index: 100;
+    }
+    .user-dropdown.active { display: flex; animation: dropIn 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes dropIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+    .user-dropdown-header {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.06); margin-bottom: 4px;
+    }
+    .user-dropdown-info { min-width: 0; flex: 1; }
+    .user-dropdown-name { font-weight: 700; font-size: 0.88rem; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .user-dropdown-email { font-size: 0.74rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .user-dropdown-item {
+      display: flex; align-items: center; gap: 10px; padding: 9px 12px;
+      border-radius: 10px; font-size: 0.84rem; font-weight: 500; color: var(--muted);
+      transition: 0.2s; background: none; border: none; width: 100%; text-align: left; cursor: pointer; font-family: inherit;
+    }
+    .user-dropdown-item:hover { background: rgba(255,255,255,0.06); color: var(--ink); }
+    .signout-item { color: #ff5f9e !important; }
+    .signout-item:hover { background: rgba(255,95,158,0.12) !important; color: #ff85b3 !important; }
+
+    /* mobile auth in theme-core */
+    .mobile-auth { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); }
+    .mobile-user-card {
+      background: var(--glass); border: 1px solid var(--line); border-radius: 14px; padding: 14px;
+    }
+    .mobile-user-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    .mobile-user-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
+    .mobile-user-email { font-size: 0.75rem; color: var(--muted); overflow: hidden; text-overflow: ellipsis; }
+    .mobile-user-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .mobile-btn-profile, .mobile-btn-signout {
+      display: flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 8px 12px; border-radius: 999px; font-size: 0.8rem; font-weight: 600;
+      border: 1px solid var(--line); background: var(--glass); color: var(--ink); cursor: pointer; font-family: inherit;
+    }
+    .mobile-btn-profile:hover { border-color: rgba(255,255,255,0.3); }
+    .mobile-btn-signout { border-color: rgba(255,95,158,0.3); color: #ff5f9e; }
+    .mobile-btn-signout:hover { background: rgba(255,95,158,0.12); }
+
+    @media(max-width:900px) {
+      .nav .auth-buttons, .nav .lang-toggle { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -163,16 +239,109 @@ footer a:hover{color:#fff}
   <div class="nav">
    <a href="#top" class="logo"><img src="/assets/images/logo.png" class="mark" style="object-fit:contain; background:transparent; border:none; box-shadow:none;" alt="Digital Seba Logo"> Digital<span style="color:var(--b)">Seba</span></a>
    <nav class="links">
-    <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
-    <a href="#livetv">Live TV</a><a href="#focus">Focus</a><a href="#why">Why Us</a>
+    <a href="#services" data-en="Services" data-bn="সেবা">Services</a>
+    <a href="#resources" data-en="Resources" data-bn="রিসোর্স">Resources</a>
+    <a href="#tools" data-en="Tools" data-bn="টুলস">Tools</a>
+    <a href="#livetv" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</a>
+    <a href="#focus" data-en="Focus" data-bn="ফোকাস মোড">Focus</a>
+    <a href="#why" data-en="Why Us" data-bn="পরিচিতি">Why Us</a>
    </nav>
-   <a href="#start" class="btn p">শুরু করুন →</a>
-   <button class="burger" id="bg" aria-label="Menu"><span></span><span></span><span></span></button>
+   <div style="display:flex;gap:10px;align-items:center;">
+    <!-- Language Toggle -->
+    <button class="btn lang-toggle" id="langToggle" aria-label="Switch Language" title="Switch Language" style="padding:10px 14px;font-size:12px;background:var(--glass);">
+      <span style="font-size:14px;line-height:1">🌐</span>
+      <span id="langText" style="font-weight:700">EN</span>
+    </button>
+
+    <!-- Auth Controls -->
+    <div class="auth-buttons">
+      <div class="auth-logged-out" style="display:flex;align-items:center;gap:10px;">
+        <a href="../../login/" class="btn btn-login" data-en="Sign in" data-bn="লগইন">Sign in</a>
+        <a href="../../login/#signup" class="btn p btn-signup" data-en="Get Started →" data-bn="শুরু করুন →">Get Started →</a>
+      </div>
+      <div class="auth-logged-in" style="display:none;">
+        <div class="user-menu-container" id="headerUserMenu">
+          <button class="user-menu-btn" id="headerUserMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Open user menu">
+            <img class="user-avatar-thumb hidden" id="headerUserAvatar" src="" alt="Profile">
+            <div class="user-initial-thumb" id="headerUserInitial">U</div>
+            <span class="user-menu-name" id="headerUserName">User</span>
+            <svg class="user-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="m6 9 6 6 6-6"></path>
+            </svg>
+          </button>
+          <div class="user-dropdown" id="headerUserDropdown" role="menu">
+            <div class="user-dropdown-header">
+              <img class="user-avatar-thumb hidden" id="dropdownUserAvatar" src="" alt="Profile">
+              <div class="user-initial-thumb" id="dropdownUserInitial">U</div>
+              <div class="user-dropdown-info">
+                <div class="user-dropdown-name" id="dropdownUserName">User</div>
+                <div class="user-dropdown-email" id="dropdownUserEmail">user@example.com</div>
+              </div>
+            </div>
+            <a href="../../profile/" class="user-dropdown-item" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+            </a>
+            <a href="../../services/index.html" class="user-dropdown-item" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span data-en="All Services" data-bn="সকল সেবা">All Services</span>
+            </a>
+            <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+              </svg>
+              <span data-en="Sign Out" data-bn="লগআউট">Sign Out</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Burger Toggle -->
+    <button class="burger" id="bg" aria-label="Menu"><span></span><span></span><span></span></button>
+   </div>
   </div>
   <div id="mob">
-   <a href="#services">Services</a><a href="#resources">Resources</a><a href="#tools">Tools</a>
-   <a href="#livetv">Live TV</a><a href="#focus">Focus Mode</a><a href="#why">Why Digital Seba</a>
-   <a href="#start" style="color:var(--b);font-weight:600">Get Started →</a>
+   <a href="#services" data-en="Services" data-bn="সেবা">Services</a>
+   <a href="#resources" data-en="Resources" data-bn="রিসোর্স">Resources</a>
+   <a href="#tools" data-en="Tools" data-bn="টুলস">Tools</a>
+   <a href="#livetv" data-en="Live TV" data-bn="লাইভ টিভি">Live TV</a>
+   <a href="#focus" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a>
+   <a href="#why" data-en="Why Digital Seba" data-bn="কেন ডিজিটাল সেবা">Why Digital Seba</a>
+   <div class="mobile-auth">
+     <div class="mobile-logged-out" style="display:flex;flex-direction:column;gap:10px;">
+       <a href="../../login/" class="btn btn-login" data-en="Sign in" data-bn="লগইন" style="justify-content:center">Sign in</a>
+       <a href="../../login/#signup" class="btn p btn-signup" data-en="Get Started →" data-bn="শুরু করুন →" style="justify-content:center">Get Started →</a>
+     </div>
+     <div class="mobile-logged-in" style="display:none;">
+       <div class="mobile-user-card">
+         <div class="mobile-user-header">
+           <img class="user-avatar-thumb hidden" id="mobileUserAvatar" src="" alt="Profile">
+           <div class="user-initial-thumb" id="mobileUserInitial">U</div>
+           <div style="min-width:0;flex:1;">
+             <div class="mobile-user-name" id="mobileUserName">User</div>
+             <div class="mobile-user-email" id="mobileUserEmail">user@example.com</div>
+           </div>
+         </div>
+         <div class="mobile-user-actions">
+           <a href="../../profile/" class="mobile-btn-profile">
+             <span data-en="👤 My Profile" data-bn="👤 আমার প্রোফাইল">👤 My Profile</span>
+           </a>
+           <button type="button" class="mobile-btn-signout" id="mobileSignOutBtn">
+             <span data-en="🚪 Sign Out" data-bn="🚪 লগআউট">🚪 Sign Out</span>
+           </button>
+         </div>
+       </div>
+     </div>
+   </div>
   </div>
  </div>
 </header>
@@ -517,7 +686,16 @@ $('#rs').onclick=()=>{clearInterval(run);run=null;left=1500;$('#clock').textCont
     }
   })();
 </script>
-<!-- END DS LEFT THEME SWITCHER -->
+<!-- Language Manager -->
+<script src="../../assets/js/language.js"></script>
+<!-- Firebase SDK v8 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<!-- Firebase initialization -->
+<script src="../../assets/js/firebase-init.js"></script>
+<!-- Digital Seba Auth Controller -->
+<script src="../../assets/js/auth.js"></script>
 
 </body>
 </html>

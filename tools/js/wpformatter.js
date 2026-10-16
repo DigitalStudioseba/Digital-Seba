@@ -4198,7 +4198,7 @@ let isQLibrariesLoaded = false;
 
   // ডিফল্ট কোম্পানি ও শর্তাবলী ডাটা
   const defaultCompanyName = "Your Company Name";
-  const defaultCompanyContact = "Mob: 01834030544, 01403178709";
+  const defaultCompanyContact = "Mob: 01824741444";
   const defaultCompanyAddress = "Comilla, Chittagong, Bangladesh.";
   const defaultTermsAndConditions = 
     "1. Scope Includes Delivery & Installation of above mentioned items.\n" +

@@ -33,6 +33,14 @@
       }
     }
 
+    if (typeof firebase.storage === "function" && !window.storage) {
+      try {
+        window.storage = firebase.storage();
+      } catch (e) {
+        console.warn("Firebase Storage init:", e);
+      }
+    }
+
     if (typeof firebase.analytics === "function" && !window.analytics) {
       try {
         window.analytics = firebase.analytics();

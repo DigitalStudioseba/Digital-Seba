@@ -65,6 +65,41 @@
       : (err.message || 'Authentication failed. Please try again.');
   }
 
+  // ── Available Themes for Authenticated Profile Selection
+  // Strictly excludes the 7 hidden themes: Nexus, Horizon, Vertex, Aero, Flux, Neon, Ignite
+  const THEME_NAMES = {
+    'theme-alpha': { en: 'Alpha — Government Portal (Default)', bn: 'আলফা — সরকারি পোর্টাল আর্কিটেকচার (ডিফল্ট)' },
+    'theme-quantum': { en: 'Quantum — High-Performance Delivery Framework', bn: 'কোয়ান্টাম — উচ্চ-ক্ষমতাসম্পন্ন ফ্রেমওয়ার্ক' },
+    'theme-pulse': { en: 'Pulse — Vibrant & Energetic Dynamic Layout', bn: 'পালস — প্রাণবন্ত ও গতিশীল লেআউট' },
+    'theme-orbit': { en: 'Orbit — Smooth Circular Content Transitions', bn: 'অরবিট — মসৃণ রূপান্তর নকশা' },
+    'theme-spark': { en: 'Spark — Lightweight & Rapid Interaction', bn: 'স্পার্ক — দ্রুত ও হালকা আর্কিটেকচার' },
+    'theme-lumina': { en: 'Lumina — Bright Focus-Driven Layout', bn: 'লুমিনা — ফোকাস-ভিত্তিক অ্যাপ রাউটার লেআউট' },
+    'theme-zenith': { en: 'Zenith — Peak Performance Ultra-Optimized', bn: 'জেনিথ — শীর্ষ অপ্টিমাইজড আর্কিটেকচার' },
+    'theme-nova': { en: 'Nova — Bold & High-Visual Impact', bn: 'নোভা — দৃষ্টি-আকর্ষণীয় ভিজ্যুয়াল আর্কিটেকচার' },
+    'theme-prism': { en: 'Prism — Multi-Faceted Complex Data Grid', bn: 'প্রিজম — বহুমুখী ডেটা গ্রিড আর্কিটেকচার' },
+    'theme-echo': { en: 'Echo — Resonant Typography-Focused Design', bn: 'ইকো — টাইপোগ্রাফি-কেন্দ্রিক নকশা' },
+    'theme-core': { en: 'Core — Clean Minimalist Content Delivery', bn: 'কোর — পরিচ্ছন্ন বিষয়বস্তু পরিবেশনা' },
+    'theme-apex': { en: 'Apex — Premium High-Trust Architecture', bn: 'অ্যাপেক্স — প্রিমিয়াম নির্ভরযোগ্য নকশা' },
+    'theme-infinity': { en: 'Infinity — Endless Scrolling Grid Library', bn: 'ইনফিনিটি — অন্তহীন স্ক্রলিং লাইব্রেরি' },
+    'theme-genesis': { en: 'Genesis — Classic Origin Architecture', bn: 'জেনেসিস — ক্লাসিক নির্ভরযোগ্য প্ল্যাটফর্ম' }
+  };
+  const ALLOWED_THEME_IDS = Object.keys(THEME_NAMES);
+  const FORBIDDEN_THEMES = ['theme-nexus', 'theme-horizon', 'theme-vertex', 'theme-aero', 'theme-flux', 'theme-neon', 'theme-ignite'];
+
+  function sanitizeTheme(themeId) {
+    if (!themeId || typeof themeId !== 'string') return 'theme-alpha';
+    if (FORBIDDEN_THEMES.includes(themeId)) return 'theme-alpha';
+    return ALLOWED_THEME_IDS.includes(themeId) ? themeId : 'theme-alpha';
+  }
+
+  function getThemeLabel(themeId, lang = 'en') {
+    const valid = sanitizeTheme(themeId);
+    if (THEME_NAMES[valid]) {
+      return THEME_NAMES[valid][lang] || THEME_NAMES[valid].en;
+    }
+    return 'Alpha (Default)';
+  }
+
   // ── Firebase Auth Module Definition
   let authInstance = null;
   let isSigningIn = false;
@@ -184,15 +219,28 @@
 
     setLoadingState(true);
     try {
+      try { sessionStorage.setItem('ds_logout_in_progress', '1'); } catch (_) {}
       if (activeUser) {
         try { sessionStorage.removeItem('ds_role_' + activeUser.uid); } catch (_) {}
       }
       activeUser = null;
+      try { localStorage.setItem('activeTheme', 'theme-alpha'); } catch (_) {}
       await auth.signOut();
       clearError();
-      // If on profile or admin page, redirect cleanly
+      // If on profile or admin page, redirect cleanly to login
       if (window.location.pathname.includes('/profile') || window.location.pathname.includes('/admin')) {
         window.location.href = '../login/';
+      } else {
+        // From portal, theme page, or home, cleanly land on Alpha homepage
+        try {
+          if (window.top && window.top !== window.self) {
+            window.top.location.href = '/';
+          } else {
+            window.location.href = '/';
+          }
+        } catch (_) {
+          window.location.href = '/';
+        }
       }
     } catch (error) {
       console.warn('Digital Seba Auth: sign-out notice:', error);
@@ -315,9 +363,20 @@
         baseDoc.photoURL = user.photoURL || null;
         baseDoc.role = defaultRole;
         baseDoc.status = 'active';
+        baseDoc.theme = 'theme-alpha';
         baseDoc.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+        try {
+          localStorage.setItem('ds_theme_' + user.uid, 'theme-alpha');
+          localStorage.setItem('activeTheme', 'theme-alpha');
+        } catch (_) {}
       } else {
         console.log('[DS-AUTH:FIRESTORE-PROFILE] Existing user profile found in Firestore for UID:', user.uid);
+        const existingData = doc.data();
+        const existingTheme = existingData && existingData.theme ? sanitizeTheme(existingData.theme) : 'theme-alpha';
+        try {
+          localStorage.setItem('ds_theme_' + user.uid, existingTheme);
+          localStorage.setItem('activeTheme', existingTheme);
+        } catch (_) {}
       }
 
       await userRef.set(baseDoc, { merge: true });
@@ -428,7 +487,7 @@
               <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
               <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
             </svg>
-            <span data-en="All Services" data-bn="সকল সেবা">All Services</span>
+            <span data-en="Insights" data-bn="জ্ঞানকথা">Insights</span>
           </a>
           <a href="${getAdminUrl()}" class="user-dropdown-item admin-dropdown-link hidden" id="dropdownAdminLink" role="menuitem">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -901,7 +960,14 @@
       }
     }
 
-    // Background sync from Firestore: User profile, Photo, Phone, Role
+    // Theme Preference: Load from user-scoped localStorage + fallback
+    const fieldThemeName = document.getElementById('field-theme-name');
+    const selectTheme = document.getElementById('select-theme-preference');
+    let userTheme = sanitizeTheme(localStorage.getItem('ds_theme_' + user.uid));
+    if (fieldThemeName) fieldThemeName.textContent = getThemeLabel(userTheme, lang);
+    if (selectTheme) selectTheme.value = userTheme;
+
+    // Background sync from Firestore: User profile, Photo, Phone, Role, Theme
     const db = getDb();
     if (db && typeof db.collection === 'function') {
       ensureUserProfileDoc(user).then((res) => {
@@ -916,6 +982,15 @@
             fieldPhoneView.textContent = data.phone;
             fieldPhoneView.style.color = '';
           }
+        }
+        if (data.theme) {
+          const validTheme = sanitizeTheme(data.theme);
+          try {
+            localStorage.setItem('ds_theme_' + user.uid, validTheme);
+            localStorage.setItem('activeTheme', validTheme);
+          } catch (_) {}
+          if (fieldThemeName) fieldThemeName.textContent = getThemeLabel(validTheme, lang);
+          if (selectTheme) selectTheme.value = validTheme;
         }
         if (data.photoURL && !localStorage.getItem('ds_profile_photo_' + user.uid)) {
           try { localStorage.setItem('ds_profile_photo_' + user.uid, data.photoURL); } catch (_) {}
@@ -964,6 +1039,10 @@
     const fieldNameEdit = document.getElementById('field-name-edit');
     const fieldPhoneView = document.getElementById('field-phone-view');
     const fieldPhoneEdit = document.getElementById('field-phone-edit');
+    const fieldThemeView = document.getElementById('field-theme-view');
+    const fieldThemeEdit = document.getElementById('field-theme-edit');
+    const selectTheme = document.getElementById('select-theme-preference');
+    const fieldThemeName = document.getElementById('field-theme-name');
 
     const inputName = document.getElementById('input-display-name');
     const inputPhone = document.getElementById('input-phone');
@@ -1157,6 +1236,10 @@
         if (fieldPhoneView) fieldPhoneView.classList.add('hidden');
         if (fieldPhoneEdit) fieldPhoneEdit.classList.remove('hidden');
 
+        if (fieldThemeView) fieldThemeView.classList.add('hidden');
+        if (fieldThemeEdit) fieldThemeEdit.classList.remove('hidden');
+        if (selectTheme) selectTheme.value = sanitizeTheme(localStorage.getItem('ds_theme_' + user.uid));
+
         if (viewControls) viewControls.classList.add('hidden');
         if (editControls) editControls.classList.remove('hidden');
 
@@ -1173,6 +1256,9 @@
 
         if (fieldPhoneView) fieldPhoneView.classList.remove('hidden');
         if (fieldPhoneEdit) fieldPhoneEdit.classList.add('hidden');
+
+        if (fieldThemeView) fieldThemeView.classList.remove('hidden');
+        if (fieldThemeEdit) fieldThemeEdit.classList.add('hidden');
 
         if (viewControls) viewControls.classList.remove('hidden');
         if (editControls) editControls.classList.remove('hidden');
@@ -1219,25 +1305,28 @@
             await user.updateProfile({ displayName: newName });
           }
 
-          // 2. Persist Phone Number safely in user-scoped localStorage
+          // 2. Persist Phone & Theme safely in user-scoped localStorage
+          const newTheme = sanitizeTheme(selectTheme ? selectTheme.value : 'theme-alpha');
           try {
             if (newPhone) {
               localStorage.setItem('ds_profile_phone_' + user.uid, newPhone);
             } else {
               localStorage.removeItem('ds_profile_phone_' + user.uid);
             }
+            localStorage.setItem('ds_theme_' + user.uid, newTheme);
+            localStorage.setItem('activeTheme', newTheme);
           } catch (_) {}
 
-          // 3. Optional Firestore Sync if initialized
-          if (window.db && typeof window.db.collection === 'function') {
-            try {
-              window.db.collection('users').doc(user.uid).set({
-                displayName: newName,
-                phone: newPhone || null,
-                email: user.email || null,
-                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
-              }, { merge: true }).catch(() => {});
-            } catch (_) {}
+          // 3. Firestore Sync using existing getDb() helper
+          const db = getDb();
+          if (db && typeof db.collection === 'function') {
+            await db.collection('users').doc(user.uid).set({
+              displayName: newName,
+              phone: newPhone || null,
+              email: user.email || null,
+              theme: newTheme,
+              updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
           }
 
           // 4. Update UI in view mode
@@ -1255,6 +1344,8 @@
             }
           }
 
+          if (fieldThemeName) fieldThemeName.textContent = getThemeLabel(newTheme, lang);
+
           // 5. Update Universal Header Avatar and Name
           updateHeaderAuthState(user);
 
@@ -1268,6 +1359,8 @@
           if (fieldNameEdit) fieldNameEdit.classList.add('hidden');
           if (fieldPhoneView) fieldPhoneView.classList.remove('hidden');
           if (fieldPhoneEdit) fieldPhoneEdit.classList.add('hidden');
+          if (fieldThemeView) fieldThemeView.classList.remove('hidden');
+          if (fieldThemeEdit) fieldThemeEdit.classList.add('hidden');
           if (viewControls) viewControls.classList.remove('hidden');
           if (editControls) editControls.classList.add('hidden');
 
@@ -1420,7 +1513,11 @@
       auth.onAuthStateChanged((user) => {
         const u = user || activeUser;
         if (u) {
+          const userTheme = sanitizeTheme(localStorage.getItem('ds_theme_' + u.uid));
+          try { localStorage.setItem('activeTheme', userTheme); } catch (_) {}
           ensureUserProfileDoc(u).catch(() => {});
+        } else {
+          try { localStorage.setItem('activeTheme', 'theme-alpha'); } catch (_) {}
         }
         updateHeaderAuthState(u);
         renderLoginPage(u);
@@ -1429,7 +1526,11 @@
     } else {
       const u = activeUser || null;
       if (u) {
+        const userTheme = sanitizeTheme(localStorage.getItem('ds_theme_' + u.uid));
+        try { localStorage.setItem('activeTheme', userTheme); } catch (_) {}
         ensureUserProfileDoc(u).catch(() => {});
+      } else {
+        try { localStorage.setItem('activeTheme', 'theme-alpha'); } catch (_) {}
       }
       updateHeaderAuthState(u);
       renderLoginPage(u);

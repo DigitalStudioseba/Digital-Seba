@@ -55,6 +55,13 @@
       .loading-text { color: #888; font-size: 0.9rem; letter-spacing: 0.05em; text-transform: uppercase; position: absolute; z-index: 1; }
     .preview-iframe { z-index: 2; }
   </style>
+  <script src="/assets/js/theme-guard.js"></script>
+  <script>
+    // Theme switching is only permitted via Profile settings
+    try {
+      window.location.replace('/profile/');
+    } catch (_) {}
+  </script>
 </head>
 <body>
   <a href="/" class="back-btn">&larr; Back to Portal</a>
@@ -65,24 +72,24 @@
   <script>
     const themes = [
       { id: 'theme-alpha', name: 'Alpha', path: '../index.html', desc: 'Sleek and minimal government portal architecture.' },
-      { id: 'theme-nexus', name: 'Nexus', path: '../homepage-themes/theme-nexus/index.html', desc: 'Centralized hub with dynamic content routing.' },
-      { id: 'theme-horizon', name: 'Horizon', path: '../homepage-themes/theme-horizon/index.html', desc: 'Expansive layouts designed for massive data presentation.' },
+      { id: 'theme-nexus', name: 'Nexus', hidden: true, path: '../homepage-themes/theme-nexus/index.html', desc: 'Centralized hub with dynamic content routing.' },
+      { id: 'theme-horizon', name: 'Horizon', hidden: true, path: '../homepage-themes/theme-horizon/index.html', desc: 'Expansive layouts designed for massive data presentation.' },
       { id: 'theme-quantum', name: 'Quantum', path: '../homepage-themes/theme-quantum/index.html', desc: 'High-performance framework for rapid digital delivery.' },
-      { id: 'theme-vertex', name: 'Vertex', path: '../homepage-themes/theme-vertex/index.html', desc: 'Cutting-edge geometric design with sharp, clean edges.' },
+      { id: 'theme-vertex', name: 'Vertex', hidden: true, path: '../homepage-themes/theme-vertex/index.html', desc: 'Cutting-edge geometric design with sharp, clean edges.' },
       { id: 'theme-pulse', name: 'Pulse', path: '../homepage-themes/theme-pulse/index.html', desc: 'Vibrant, energetic layouts that capture immediate attention.' },
       { id: 'theme-orbit', name: 'Orbit', path: '../homepage-themes/theme-orbit/index.html', desc: 'Circular motifs and smooth, flowing content transitions.' },
       { id: 'theme-spark', name: 'Spark', path: '../homepage-themes/theme-spark/index.html', desc: 'Lightweight and engaging architecture for quick interactions.' },
       { id: 'theme-lumina', name: 'Lumina', path: '../homepage-themes/theme-lumina/out/index.html', desc: 'Bright, focus-driven layout built on strict App Router principles.' },
       { id: 'theme-zenith', name: 'Zenith', path: '../homepage-themes/theme-zenith/dist/index.html', desc: 'Peak performance with ultra-optimized single-file bundling.' },
-      { id: 'theme-aero', name: 'Aero', path: '../homepage-themes/theme-aero/dist/index.html', desc: 'Sleek, airy design language with expansive negative space.' },
+      { id: 'theme-aero', name: 'Aero', hidden: true, path: '../homepage-themes/theme-aero/dist/index.html', desc: 'Sleek, airy design language with expansive negative space.' },
       { id: 'theme-nova', name: 'Nova', path: '../homepage-themes/theme-nova/dist/index.html', desc: 'Bold, explosive aesthetics meant for maximum visual impact.' },
       { id: 'theme-prism', name: 'Prism', path: '../homepage-themes/theme-prism/index.html', desc: 'Multi-faceted layout designed to handle complex data structures.' },
       { id: 'theme-echo', name: 'Echo', path: '../homepage-themes/theme-echo/index.html', desc: 'Resonant, typography-heavy design for deep and focused reading.' },
-      { id: 'theme-flux', name: 'Flux', path: '../homepage-themes/theme-flux/index.html', desc: 'Dynamic, motion-driven interfaces that adapt beautifully to scroll.' },
-      { id: 'theme-neon', name: 'Neon', path: '../homepage-themes/theme-neon/index.html', desc: 'High-contrast, cyberpunk-inspired visual language and colors.' },
+      { id: 'theme-flux', name: 'Flux', hidden: true, path: '../homepage-themes/theme-flux/index.html', desc: 'Dynamic, motion-driven interfaces that adapt beautifully to scroll.' },
+      { id: 'theme-neon', name: 'Neon', hidden: true, path: '../homepage-themes/theme-neon/index.html', desc: 'High-contrast, cyberpunk-inspired visual language and colors.' },
       { id: 'theme-core', name: 'Core', path: '../homepage-themes/theme-core/index.html', desc: 'Minimalist foundation focusing strictly on content delivery.' },
       { id: 'theme-apex', name: 'Apex', path: '../homepage-themes/theme-apex/index.html', desc: 'Premium, corporate-tier architecture designed for high trust.' },
-      { id: 'theme-ignite', name: 'Ignite', path: '../homepage-themes/theme-ignite/index.html', desc: 'Conversion-optimized layout engineered for immediate user action.' },
+      { id: 'theme-ignite', name: 'Ignite', hidden: true, path: '../homepage-themes/theme-ignite/index.html', desc: 'Conversion-optimized layout engineered for immediate user action.' },
       { id: 'theme-infinity', name: 'Infinity', path: '../homepage-themes/theme-infinity/index.html', desc: 'Endless scrolling grids built for massive content libraries.' },
       { id: 'theme-genesis', name: 'Genesis', path: '../homepage-themes/theme-genesis/index.html', desc: 'The origin architecture. Classic, reliable, and battle-tested.' },
     ];
@@ -90,7 +97,7 @@
     const currentTheme = localStorage.getItem('activeTheme') || 'theme-alpha';
     const grid = document.getElementById('theme-grid');
 
-    themes.forEach(theme => {
+    themes.filter(theme => !theme.hidden).forEach(theme => {
       const isAct = theme.id === currentTheme;
       const card = document.createElement('div');
       card.className = 'card' + (isAct ? ' active' : '');

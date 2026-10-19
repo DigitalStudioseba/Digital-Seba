@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba Insights — Contributor Dashboard and Article Editor.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Insights Editor &amp; Dashboard — Digital Seba</title>
+  <link rel="icon" type="image/png" href="../../assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <link rel="stylesheet" href="../../assets/css/resources.css">
+
+  <style id="insights-editor-styles">
+    /* ── Insights Editor & Dashboard Scoped Styles ── */
+    .editor-wrapper {
+      max-width: 1100px;
+      margin: 95px auto 60px;
+      padding: 0 24px;
+    }
+
+    /* Auth Gate Card */
+    .auth-gate-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl, 24px);
+      padding: 60px 24px;
+      text-align: center;
+      max-width: 540px;
+      margin: 40px auto;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .auth-gate-icon {
+      font-size: 3.5rem;
+      margin-bottom: 16px;
+    }
+
+    .auth-gate-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .auth-gate-text {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    /* Dashboard Header */
+    .dashboard-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-title-group h1 {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: var(--text-primary);
+      margin: 0 0 4px;
+    }
+
+    .dashboard-user-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    .role-pill {
+      background: rgba(37, 99, 235, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 2px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    /* Policy Notice Banner */
+    .policy-banner {
+      background: rgba(245, 158, 11, 0.08);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: var(--radius-lg, 14px);
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--text-secondary);
+    }
+
+    .policy-banner strong {
+      color: #f59e0b;
+    }
+
+    /* Dashboard Tabs */
+    .dashboard-tabs {
+      display: flex;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+
+    .d-tab-btn {
+      padding: 10px 18px;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-secondary);
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .d-tab-btn:hover {
+      color: var(--text-primary);
+    }
+
+    .d-tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+
+    /* Editor Form Card */
+    .editor-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl, 20px);
+      padding: 32px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+    }
+
+    [data-theme="light"] .editor-card {
+      background: #ffffff;
+      border-color: #e2e8f0;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md, 10px);
+      padding: 11px 14px;
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.92rem;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      box-sizing: border-box;
+    }
+
+    [data-theme="light"] .form-input,
+    [data-theme="light"] .form-select,
+    [data-theme="light"] .form-textarea {
+      background: #f8fafc;
+      border-color: #cbd5e1;
+      color: #0f172a;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    }
+
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    /* Markdown Editor & Preview Tabs */
+    .editor-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      border-bottom: none;
+      border-radius: var(--radius-md, 10px) var(--radius-md, 10px) 0 0;
+      padding: 8px 12px;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text-secondary);
+      padding: 5px 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.15s;
+    }
+
+    .tool-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .editor-textarea {
+      border-radius: 0 0 var(--radius-md, 10px) var(--radius-md, 10px);
+      min-height: 280px;
+      resize: vertical;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    .preview-box {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-md, 10px);
+      padding: 24px;
+      min-height: 240px;
+      display: none;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    /* Actions Bar */
+    .editor-actions-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .btn-action {
+      padding: 10px 22px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+
+    .btn-secondary {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-card-hover);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      color: #ffffff;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
+    }
+
+    .btn-primary:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn-publish {
+      background: #10b981;
+      color: #fff;
+    }
+
+    .btn-publish:hover {
+      background: #059669;
+    }
+
+    /* My Submissions Table */
+    .submissions-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .submissions-table th {
+      text-align: left;
+      padding: 12px 14px;
+      background: var(--bg-secondary);
+      color: var(--text-muted);
+      border-bottom: 1px solid var(--border-strong);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .submissions-table td {
+      padding: 14px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .status-draft { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+    .status-in_review { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+    .status-published { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+
+    @media (max-width: 768px) {
+      .editor-wrapper {
+        margin-top: 85px;
+        padding: 0 16px;
+      }
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .editor-card {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR (Preserved structure & styling)
+════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../../index.html" class="nav-logo">
+      <div class="logo-icon"><img src="../../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo"></div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline" data-en="Bangladesh's Smart Digital Service Platform" data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সেবা প্ল্যাটফর্ম">Bangladesh's Smart Digital Service Platform</span>
+      </div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../../index.html#home" class="nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../../insights/index.html" class="nav-link active" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
+      <li><a href="../../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" title="Switch Language"><span class="lang-text" id="langText">EN</span></button>
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle></svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN EDITOR & DASHBOARD
+════════════════════════════════════════════ -->
+<main id="main-content">
+  <div class="editor-wrapper">
+
+    <!-- 1. Authentication Required Gate (Shows when logged out) -->
+    <div class="auth-gate-card" id="authGate">
+      <div class="auth-gate-icon">🔐</div>
+      <h2 class="auth-gate-title" data-en="Contributor Sign-In Required" data-bn="লেখক সাইন-ইন প্রয়োজন">Contributor Sign-In Required</h2>
+      <p class="auth-gate-text"
+         data-en="You must be signed in with an authorized Digital Seba account to access the article creation and editorial workflow."
+         data-bn="নিবন্ধ তৈরি ও প্রকাশনা ওয়ার্কফ্লো ব্যবহার করতে অনুমোদিত ডিজিটাল সেবা অ্যাকাউন্টে সাইন-ইন করুন।">
+        You must be signed in with an authorized Digital Seba account to access the article creation and editorial workflow.
+      </p>
+      <a href="../../login/" class="btn-action btn-primary" data-en="Sign In to Continue" data-bn="সাইন ইন করুন">Sign In to Continue</a>
+    </div>
+
+    <!-- 2. Protected Dashboard Container (Shows when logged in) -->
+    <div id="editorContent" style="display:none;">
+
+      <!-- Header & User Status -->
+      <header class="dashboard-header">
+        <div class="dashboard-title-group">
+          <h1 data-en="Insights Editorial Dashboard" data-bn="জ্ঞানকথা সম্পাদকীয় ড্যাশবোর্ড">Insights Editorial Dashboard</h1>
+          <div class="dashboard-user-badge">
+            <span data-en="Logged in as:" data-bn="লগইন আছেন:">Logged in as:</span>
+            <strong id="dashUserName">User</strong>
+            <span class="role-pill" id="dashRolePill">Contributor</span>
+          </div>
+        </div>
+        <div>
+          <a href="../index.html" class="btn-action btn-secondary" data-en="← View Insights" data-bn="← জ্ঞানকথা দেখুন">← View Insights</a>
+        </div>
+      </header>
+
+      <!-- Safety Notice on Security Rules Policy -->
+      <div class="policy-banner">
+        <span>ℹ️</span>
+        <div>
+          <strong>Safe Local Operation Notice:</strong> Production Firestore security rules are locked under zero-trust policy pending deployment approval. In this phase, your articles, drafts, and submissions are safely managed in local persistent storage, allowing full UI testing without unapproved database writes.
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="dashboard-tabs">
+        <button type="button" class="d-tab-btn active" id="tabNewArticle" data-en="✍️ New Article" data-bn="✍️ নতুন নিবন্ধ">✍️ New Article</button>
+        <button type="button" class="d-tab-btn" id="tabSubmissions" data-en="📁 My Submissions" data-bn="📁 আমার নিবন্ধসমূহ">📁 My Submissions</button>
+      </nav>
+
+      <!-- Panel A: New Article Editor -->
+      <div id="panelEditor" class="editor-card">
+        <form id="articleEditorForm">
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="articleTitleInput" data-en="Article Title *" data-bn="নিবন্ধের শিরোনাম *">Article Title *</label>
+              <input type="text" id="articleTitleInput" class="form-input" placeholder="e.g. 10 Essential Cybersecurity Tips for Computer Shops" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="articleSlugInput" data-en="Article Slug (URL) *" data-bn="নিবন্ধ স্লাগ (URL) *">Article Slug (URL) *</label>
+              <input type="text" id="articleSlugInput" class="form-input" placeholder="e.g. 10-essential-cybersecurity-tips" required>
+            </div>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="articleCategorySelect" data-en="Topic Category *" data-bn="বিষয় ক্যাটাগরি *">Topic Category *</label>
+              <select id="articleCategorySelect" class="form-select" required>
+                <option value="computer-tips">💻 Computer Tips</option>
+                <option value="mobile-tips">📱 Mobile Tips</option>
+                <option value="software-apps">⚙️ Software &amp; Apps</option>
+                <option value="networking">🌐 Internet &amp; Networking</option>
+                <option value="cybersecurity">🛡️ Cybersecurity</option>
+                <option value="digital-services">🏛️ Digital Services</option>
+                <option value="how-to">📖 How-to Guides</option>
+                <option value="troubleshooting">🔧 Troubleshooting</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="articleCoverInput" data-en="Cover Image URL" data-bn="কভার ছবির URL">Cover Image URL</label>
+              <input type="url" id="articleCoverInput" class="form-input" placeholder="https://... or ../assets/images/cover.webp">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="articleExcerptInput" data-en="Short Excerpt (Max 240 chars) *" data-bn="সংক্ষিপ্ত সারসংক্ষেপ (সর্বোচ্চ ২৪০ অক্ষর) *">Short Excerpt (Max 240 chars) *</label>
+            <textarea id="articleExcerptInput" class="form-textarea" rows="2" maxlength="240" placeholder="Brief summary of the article..." required></textarea>
+          </div>
+
+          <!-- Body with Markdown Formatting Tools -->
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <label class="form-label" style="margin:0;" data-en="Article Content (Markdown Supported) *" data-bn="নিবন্ধের বিষয়বস্তু (Markdown সমর্থিত) *">Article Content (Markdown Supported) *</label>
+              <div style="display:flex; gap:6px;">
+                <button type="button" class="tool-btn" id="btnModeWrite" style="background:var(--primary); color:#fff;">Write</button>
+                <button type="button" class="tool-btn" id="btnModePreview">Preview</button>
+              </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="editor-toolbar" id="editorToolbar">
+              <button type="button" class="tool-btn" data-insert="## ">H2</button>
+              <button type="button" class="tool-btn" data-insert="### ">H3</button>
+              <button type="button" class="tool-btn" data-wrap="**">Bold</button>
+              <button type="button" class="tool-btn" data-wrap="*">Italic</button>
+              <button type="button" class="tool-btn" data-wrap="`">Code</button>
+              <button type="button" class="tool-btn" data-insert="```js\n\n```">Code Block</button>
+              <button type="button" class="tool-btn" data-insert="> [!TIP] ">Tip Callout</button>
+              <button type="button" class="tool-btn" data-insert="> [!WARNING] ">Warning</button>
+              <button type="button" class="tool-btn" data-insert="- ">Bullet List</button>
+            </div>
+
+            <textarea id="articleBodyInput" class="form-textarea editor-textarea" placeholder="Write your article in markdown..." required></textarea>
+            <div id="articleBodyPreview" class="preview-box"></div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="editor-actions-bar">
+            <div style="color:var(--text-muted); font-size:0.84rem;" id="autoSaveStatus">Ready</div>
+            <div style="display:flex; gap:10px;">
+              <button type="button" class="btn-action btn-secondary" id="btnSaveDraft" data-en="Save Draft" data-bn="খসড়া সংরক্ষণ">Save Draft</button>
+              <button type="submit" class="btn-action btn-primary" id="btnSubmitReview" data-en="Submit for Review" data-bn="পর্যালোচনার জন্য জমা দিন">Submit for Review</button>
+              <button type="button" class="btn-action btn-publish" id="btnPublishDirect" style="display:none;" data-en="Publish Now" data-bn="এখনই প্রকাশ করুন">Publish Now</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Panel B: My Submissions Table -->
+      <div id="panelSubmissions" class="editor-card" style="display:none;">
+        <table class="submissions-table">
+          <thead>
+            <tr>
+              <th data-en="Title" data-bn="শিরোনাম">Title</th>
+              <th data-en="Category" data-bn="ক্যাটাগরি">Category</th>
+              <th data-en="Status" data-bn="অবস্থা">Status</th>
+              <th data-en="Last Updated" data-bn="সর্বশেষ পরিবর্তন">Last Updated</th>
+              <th data-en="Actions" data-bn="অ্যাকশন">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="submissionsTableBody">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</main>
+
+<!-- Core Dependencies -->
+<script src="../../assets/js/theme.js"         charset="UTF-8"></script>
+<script src="../../assets/js/language.js"      charset="UTF-8"></script>
+<!-- Firebase SDK v8 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="../../assets/js/firebase-init.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/main.js"          charset="UTF-8"></script>
+
+<script>
+(function() {
+  'use strict';
+
+  let currentUser = null;
+  let isAdminUser = false;
+
+  const titleInput = document.getElementById('articleTitleInput');
+  const slugInput = document.getElementById('articleSlugInput');
+  const catSelect = document.getElementById('articleCategorySelect');
+  const coverInput = document.getElementById('articleCoverInput');
+  const excerptInput = document.getElementById('articleExcerptInput');
+  const bodyInput = document.getElementById('articleBodyInput');
+  const bodyPreview = document.getElementById('articleBodyPreview');
+  const autoSaveStatus = document.getElementById('autoSaveStatus');
+
+  // Slug generator from title
+  if (titleInput && slugInput) {
+    titleInput.addEventListener('input', () => {
+      if (!slugInput.dataset.manual) {
+        slugInput.value = titleInput.value.toLowerCase()
+          .replace(/[^\w\s-]/g, '')
+          .trim()
+          .replace(/\s+/g, '-');
+      }
+    });
+    slugInput.addEventListener('input', () => {
+      slugInput.dataset.manual = 'true';
+    });
+  }
+
+  // Toolbar actions
+  const toolbar = document.getElementById('editorToolbar');
+  if (toolbar && bodyInput) {
+    toolbar.querySelectorAll('[data-insert]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const text = btn.getAttribute('data-insert');
+        const start = bodyInput.selectionStart;
+        const val = bodyInput.value;
+        bodyInput.value = val.substring(0, start) + text + val.substring(start);
+        bodyInput.focus();
+        bodyInput.selectionStart = bodyInput.selectionEnd = start + text.length;
+      });
+    });
+
+    toolbar.querySelectorAll('[data-wrap]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wrap = btn.getAttribute('data-wrap');
+        const start = bodyInput.selectionStart;
+        const end = bodyInput.selectionEnd;
+        const val = bodyInput.value;
+        const selected = val.substring(start, end) || 'text';
+        bodyInput.value = val.substring(0, start) + wrap + selected + wrap + val.substring(end);
+        bodyInput.focus();
+      });
+    });
+  }
+
+  // Write vs Preview mode
+  const btnWrite = document.getElementById('btnModeWrite');
+  const btnPreview = document.getElementById('btnModePreview');
+  if (btnWrite && btnPreview && bodyInput && bodyPreview) {
+    btnWrite.addEventListener('click', () => {
+      btnWrite.style.background = 'var(--primary)';
+      btnWrite.style.color = '#fff';
+      btnPreview.style.background = 'var(--bg-card)';
+      btnPreview.style.color = 'var(--text-secondary)';
+      bodyInput.style.display = 'block';
+      toolbar.style.display = 'flex';
+      bodyPreview.style.display = 'none';
+    });
+    btnPreview.addEventListener('click', () => {
+      btnPreview.style.background = 'var(--primary)';
+      btnPreview.style.color = '#fff';
+      btnWrite.style.background = 'var(--bg-card)';
+      btnWrite.style.color = 'var(--text-secondary)';
+      bodyInput.style.display = 'none';
+      toolbar.style.display = 'none';
+      bodyPreview.style.display = 'block';
+      bodyPreview.innerHTML = (bodyInput.value || '').replace(/\n/g, '<br>');
+    });
+  }
+
+  // Dashboard Tabs (New Article vs My Submissions)
+  const tabNew = document.getElementById('tabNewArticle');
+  const tabSubs = document.getElementById('tabSubmissions');
+  const panelEdit = document.getElementById('panelEditor');
+  const panelSubs = document.getElementById('panelSubmissions');
+
+  if (tabNew && tabSubs && panelEdit && panelSubs) {
+    tabNew.addEventListener('click', () => {
+      tabNew.classList.add('active');
+      tabSubs.classList.remove('active');
+      panelEdit.style.display = 'block';
+      panelSubs.style.display = 'none';
+    });
+    tabSubs.addEventListener('click', () => {
+      tabSubs.classList.add('active');
+      tabNew.classList.remove('active');
+      panelEdit.style.display = 'none';
+      panelSubs.style.display = 'block';
+      loadMySubmissions();
+    });
+  }
+
+  function getLocalArticles() {
+    try {
+      const stored = localStorage.getItem('ds_insights_articles');
+      return stored ? JSON.parse(stored) : [];
+    } catch (_) {
+      return [];
+    }
+  }
+
+  function saveLocalArticles(list) {
+    try {
+      localStorage.setItem('ds_insights_articles', JSON.stringify(list));
+    } catch (_) {}
+  }
+
+  function saveCurrentArticle(status) {
+    const title = titleInput.value.trim();
+    const slug = slugInput.value.trim();
+    if (!title || !slug) {
+      alert('Please provide an article title and slug.');
+      return false;
+    }
+
+    const wordCount = (bodyInput.value || '').split(/\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 180));
+
+    const articleData = {
+      id: 'art_' + Date.now(),
+      title,
+      slug,
+      categoryId: catSelect.value,
+      coverImage: coverInput.value.trim(),
+      excerpt: excerptInput.value.trim(),
+      body: bodyInput.value,
+      readingTime,
+      status: status || 'draft',
+      authorUid: currentUser ? currentUser.uid : 'anon',
+      authorDisplayName: currentUser ? (currentUser.displayName || currentUser.email) : 'Author',
+      authorRoleLabel: isAdminUser ? 'Administrator' : 'Contributor',
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+      publishedAt: status === 'published' ? new Date().toISOString() : null
+    };
+
+    const articles = getLocalArticles();
+    const existingIndex = articles.findIndex(a => a.slug === slug);
+    if (existingIndex >= 0) {
+      articles[existingIndex] = { ...articles[existingIndex], ...articleData };
+    } else {
+      articles.push(articleData);
+    }
+    saveLocalArticles(articles);
+
+    if (autoSaveStatus) {
+      autoSaveStatus.textContent = `Saved as ${status} at ${new Date().toLocaleTimeString()}`;
+    }
+    return true;
+  }
+
+  function loadMySubmissions() {
+    const tbody = document.getElementById('submissionsTableBody');
+    if (!tbody) return;
+    const articles = getLocalArticles();
+    if (articles.length === 0) {
+      tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding:24px; color:var(--text-muted);">No article submissions recorded yet.</td></tr>';
+      return;
+    }
+
+    tbody.innerHTML = articles.map(art => {
+      const d = new Date(art.updatedAt || art.createdAt).toLocaleDateString();
+      return `
+        <tr>
+          <td><strong>${art.title}</strong><div style="font-size:0.75rem; color:var(--text-muted);">${art.slug}</div></td>
+          <td>${art.categoryId}</td>
+          <td><span class="status-badge status-${art.status}">${art.status}</span></td>
+          <td>${d}</td>
+          <td>
+            <a href="../article/index.html?slug=${encodeURIComponent(art.slug)}" style="color:var(--primary); font-weight:700; text-decoration:none;">Preview</a>
+          </td>
+        </tr>
+      `;
+    }).join('');
+  }
+
+  // Form Submission
+  const form = document.getElementById('articleEditorForm');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (saveCurrentArticle('in_review')) {
+        alert('Article submitted for editorial review successfully!');
+        if (tabSubs) tabSubs.click();
+      }
+    });
+  }
+
+  const btnDraft = document.getElementById('btnSaveDraft');
+  if (btnDraft) {
+    btnDraft.addEventListener('click', () => {
+      if (saveCurrentArticle('draft')) {
+        alert('Draft saved successfully to local storage.');
+      }
+    });
+  }
+
+  const btnPub = document.getElementById('btnPublishDirect');
+  if (btnPub) {
+    btnPub.addEventListener('click', () => {
+      if (saveCurrentArticle('published')) {
+        alert('Article published successfully!');
+        if (tabSubs) tabSubs.click();
+      }
+    });
+  }
+
+  // Auth gate listener
+  document.addEventListener('DOMContentLoaded', () => {
+    if (window.DSAuth && typeof window.DSAuth.onAuthStateChanged === 'function') {
+      window.DSAuth.onAuthStateChanged(async (user) => {
+        currentUser = user;
+        const gate = document.getElementById('authGate');
+        const content = document.getElementById('editorContent');
+        const nameEl = document.getElementById('dashUserName');
+        const roleEl = document.getElementById('dashRolePill');
+        const btnPublish = document.getElementById('btnPublishDirect');
+
+        if (user) {
+          if (gate) gate.style.display = 'none';
+          if (content) content.style.display = 'block';
+          if (nameEl) nameEl.textContent = user.displayName || user.email;
+
+          isAdminUser = (user.email === 'digitalsebamail@gmail.com');
+          if (!isAdminUser && typeof window.DSAuth.checkAdminStatus === 'function') {
+            try {
+              isAdminUser = await window.DSAuth.checkAdminStatus(user);
+            } catch (_) {}
+          }
+
+          if (roleEl) {
+            roleEl.textContent = isAdminUser ? 'Administrator' : 'Contributor';
+          }
+          if (btnPublish) {
+            btnPublish.style.display = isAdminUser ? 'inline-block' : 'none';
+          }
+        } else {
+          if (gate) gate.style.display = 'block';
+          if (content) content.style.display = 'none';
+        }
+      });
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

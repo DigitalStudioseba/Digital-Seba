@@ -102,7 +102,7 @@
               ],
               "contactPoint": {
                 "@type": "ContactPoint",
-                "email": "digitalsebamail@gmail.com",
+                "email": "hello@digiseba.shop",
                 "contactType": "customer support"
               }
             },
@@ -219,7 +219,7 @@
 *   [ OWNER AND DEVELOPER INFO ]                                 *
 *   Designed By     : Admin of Digital Seba               *
 *   Owner Name      : Md. Monir Hossain                            *
-*   Contact Email   : Digitalsebamail@gmail.com                     *
+*   Contact Email   : hello@digiseba.shop                     *
 *   Phone           : +880 1824741444 - Call or WhatsApp        *
 *                                                                *
 *   [ TECHNOLOGY STACK ]                                         *
@@ -1012,6 +1012,90 @@ body.dark-mode .mode-card-btn:hover {
     border-color: var(--border) !important;
     color: var(--text-primary) !important;
   }
+
+  /* Popular Services Cards (Moved from services) */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 0;
+    width: 100%;
+    margin: 0 0 24px 0;
+    grid-column: 1 / -1;
+    box-sizing: border-box;
+  }
+  @media (max-width: 992px) {
+    .services-grid {
+      gap: 16px;
+    }
+  }
+  @media (max-width: 700px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+  }
+
+  .service-card {
+    background: var(--card-bg, rgba(255,255,255,0.04));
+    border: 1px solid var(--border-color, rgba(255,255,255,0.08));
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  }
+  .service-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px rgba(0,0,0,0.18);
+    border-color: rgba(59,130,246,0.4);
+  }
+  .service-icon {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+    line-height: 1;
+  }
+  .service-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary, #f8fafc);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .service-card p {
+    font-size: 0.88rem;
+    color: var(--text-secondary, #94a3b8);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 20px;
+  }
+  .service-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-color, #3b82f6);
+    color: #fff;
+    padding: 9px 16px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-align: center;
+    transition: background 0.2s, opacity 0.2s;
+    text-decoration: none;
+    align-self: flex-start;
+  }
+  .service-card:hover .service-btn {
+    background: #2563eb;
+  }
+
+  [data-theme="light"] .service-card {
+    background: #fff;
+    border-color: #e2e8f0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  [data-theme="light"] .service-card h2 { color: #1e293b; }
+  [data-theme="light"] .service-card p  { color: #64748b; }
 </style>
 
 <style id="targeted-bug-fixes">
@@ -1275,7 +1359,7 @@ body.dark-mode .mode-card-btn:hover {
     <!-- Nav Links -->
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.html" class="nav-link active" data-en="Home" data-bn="হোম">Home</a></li>
-      <li><a href="../services/index.html" class="nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../insights/index.html" class="nav-link" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
       <li class="dropdown">
         <a href="../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg></a>
         <div class="dropdown-menu tools-mega-menu">
@@ -1404,12 +1488,12 @@ body.dark-mode .mode-card-btn:hover {
                 </svg>
                 <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
               </a>
-              <a href="../services/index.html" class="user-dropdown-item" role="menuitem">
+              <a href="../insights/index.html" class="user-dropdown-item" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
                   <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
                 </svg>
-                <span data-en="All Services" data-bn="সকল সেবা">All Services</span>
+                <span data-en="Insights" data-bn="জ্ঞানকথা">Insights</span>
               </a>
               <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1438,7 +1522,7 @@ body.dark-mode .mode-card-btn:hover {
   <div id="mobileMenu" class="mobile-menu" style="display:block;position:fixed;top:70px;left:0;right:0;height:calc(100vh - 70px);max-height:calc(100dvh - 70px);background:rgba(15, 23, 42, 0.9);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.1);overflow-y:auto;transform:translateX(100%);transition:transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);z-index:9999;padding:1.5rem">
     <ul class="mobile-nav-links">
       <li><a href="../index.html#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
-      <li><a href="../services/index.html" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../insights/index.html" class="mobile-nav-link" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
       <li><a href="../tools/index.html" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
       <li><a href="../resources/index.html" class="mobile-nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
       <li><a href="../live-tv/index.html" class="mobile-nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
@@ -1964,6 +2048,52 @@ body.dark-mode .mode-card-btn:hover {
 <div class="tool-category-header"><i class="fa-solid fa-fire" style="color: var(--accent-red);"></i> Popular & Trending Tools</div>
 <div class="mode-selector">
 
+<div class="services-grid">
+
+      <!-- VoteSondhan -->
+      <a href="../services/Voteshondhan/" class="service-card">
+        <div class="service-icon">🗳️</div>
+        <h2 data-en="VoteSondhan — Voter List Finder"
+            data-bn="ভোটসন্ধান — ভোটার তালিকা অনুসন্ধান">VoteSondhan — Voter List Finder</h2>
+        <p  data-en="Search voter lists from PDFs — fully browser-based, no upload required."
+            data-bn="PDF থেকে ভোটার তালিকা খুঁজুন। সম্পূর্ণ browser-এর মধ্যেই, কোনো আপলোড নেই।">
+          Search voter lists from PDFs — fully browser-based, no upload required.
+        </p>
+        <div class="service-btn"
+             data-en="Open Service →"
+             data-bn="সেবা খুলুন →">Open Service →</div>
+      </a>
+
+      <!-- Voter Transfer -->
+      <a href="../services/voter-transfer/" class="service-card">
+        <div class="service-icon">📄</div>
+        <h2 data-en="Form-13 — Voter Transfer"
+            data-bn="ফরম-১৩ — ভোটার স্থানান্তর">Form-13 — Voter Transfer</h2>
+        <p  data-en="Application form for transferring voter registration from one area to another."
+            data-bn="এক ভোটার এলাকা থেকে অন্য ভোটার এলাকায় স্থানান্তরের আবেদন ফর্ম।">
+          Application form for transferring voter registration from one area to another.
+        </p>
+        <div class="service-btn"
+             data-en="Open Service →"
+             data-bn="সেবা খুলুন →">Open Service →</div>
+      </a>
+
+      <!-- Student Registration -->
+      <a href="../services/ছাত্র রেজিস্ট্রেশন ও প্রত্যয়নপত্র জেনারেটর ফর্ম/" class="service-card">
+        <div class="service-icon">🎓</div>
+        <h2 data-en="Student Registration &amp; Certificate"
+            data-bn="ছাত্র রেজিস্ট্রেশন ও প্রত্যয়নপত্র">Student Registration &amp; Certificate</h2>
+        <p  data-en="Student information registration and certificate generation system."
+            data-bn="ছাত্র তথ্য রেজিস্ট্রেশন এবং প্রত্যয়নপত্র তৈরির সিস্টেম।">
+          Student information registration and certificate generation system.
+        </p>
+        <div class="service-btn"
+             data-en="Open Service →"
+             data-bn="সেবা খুলুন →">Open Service →</div>
+      </a>
+
+</div>
+
 <div class="mode-separator"><span>🏛️ Government & Citizen Services</span></div>
 <div class="mode-card-btn" id="mode-family-card" onclick="openFamilyCardModal()" style="--btn-color: #7c3aed;">
 <i class="fa-solid fa-users-rectangle mode-icon"></i>
@@ -2000,6 +2130,10 @@ body.dark-mode .mode-card-btn:hover {
 <div class="mode-card-btn" id="mode-fuel-form" onclick="openFuelOilModal()" style="--btn-color: #7c3aed;">
 <i class="fa-solid fa-gas-pump mode-icon"></i>
 <span>জ্বালানি তেলের আবেদন ফরম - Fuel Application Form</span>
+</div>
+<div class="mode-card-btn" id="mode-dob" onclick="openDobModal()" style="--btn-color: #10b981;">
+<i class="fa-solid fa-file-invoice mode-icon"></i>
+<span>জন্ম ও মৃত্যু নিবন্ধন - Birth & Death Certificate</span>
 </div>
 
 <div class="mode-separator"><span data-en="📷 Image & Photo Tools" data-bn="📷 ছবি ও ফটো টুলস">📷 Image & Photo Tools</span></div>
@@ -10762,10 +10896,10 @@ body.dark-mode .mode-card-btn:hover {
         <div class="footer-links-col">
           <h4 data-en="Quick Links" data-bn="দ্রুত লিঙ্ক">Quick Links</h4>
           <ul>
-            <li><a href="index.html" data-en="Home" data-bn="হোম">Home</a></li>
-            <li><a href="services/index.html" data-en="Services" data-bn="সেবা">Services</a></li>
+            <li><a href="../index.html" data-en="Home" data-bn="হোম">Home</a></li>
+            <li><a href="../insights/index.html" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
             <li><a href="#categories" data-en="Categories" data-bn="ক্যাটাগরি">Categories</a></li>
-            <li><a href="about/index.html" data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</a></li>
+            <li><a href="../about/index.html" data-en="About Us" data-bn="আমাদের সম্পর্কে">About Us</a></li>
             <li><a href="#contact" data-en="Contact" data-bn="যোগাযোগ">Contact</a></li>
           </ul>
         </div>
@@ -10773,12 +10907,12 @@ body.dark-mode .mode-card-btn:hover {
         <div class="footer-links-col">
           <h4 data-en="Tools" data-bn="টুলস">Tools</h4>
           <ul>
-            <li><a href="tools/passport/index.html" data-en="Passport Services" data-bn="পাসপোর্ট সেবা">Passport Services</a></li>
-            <li><a href="tools/nid/index.html" data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</a></li>
-            <li><a href="tools/birth/index.html" data-en="Birth Certificate" data-bn="জন্ম নিবন্ধন">Birth Certificate</a></li>
-            <li><a href="tools/photo/index.html" data-en="Photo Studio" data-bn="ফটো স্টুডিও">Photo Studio</a></li>
-            <li><a href="tools/pdf/index.html" data-en="PDF Tools" data-bn="পিডিএফ টুলস">PDF Tools</a></li>
-            <li><a href="tools/ai/index.html" data-en="AI Tools" data-bn="এআই টুলস">AI Tools</a></li>
+            <li><a href="passport/index.html" data-en="Passport Services" data-bn="পাসপোর্ট সেবা">Passport Services</a></li>
+            <li><a href="nid/index.html" data-en="NID Services" data-bn="এনআইডি সেবা">NID Services</a></li>
+            <li><a href="birth/index.html" data-en="Birth Certificate" data-bn="জন্ম নিবন্ধন">Birth Certificate</a></li>
+            <li><a href="photo/index.html" data-en="Photo Studio" data-bn="ফটো স্টুডিও">Photo Studio</a></li>
+            <li><a href="pdf/index.html" data-en="PDF Tools" data-bn="পিডিএফ টুলস">PDF Tools</a></li>
+            <li><a href="ai/index.html" data-en="AI Tools" data-bn="এআই টুলস">AI Tools</a></li>
           </ul>
         </div>
 
@@ -10940,6 +11074,26 @@ document.addEventListener('DOMContentLoaded', function() {
         ['input', 'keyup', 'change', 'compositionend'].forEach(evt => {
             input.addEventListener(evt, window.filterTools);
         });
+
+        // Deep-linking support: auto-filter if query params present
+        try {
+            const params = new URLSearchParams(window.location.search);
+            const query = params.get('search') || params.get('q') || params.get('query') || params.get('cat');
+            if (query) {
+                input.value = query;
+                if (typeof window.filterTools === 'function') {
+                    window.filterTools();
+                }
+                setTimeout(() => {
+                    const searchSection = document.querySelector('.hero-search') || input;
+                    if (searchSection) {
+                        searchSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }, 150);
+            }
+        } catch (e) {
+            console.error('Error auto-filtering tools:', e);
+        }
     }
 });
 

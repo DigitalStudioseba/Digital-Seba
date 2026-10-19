@@ -21,6 +21,7 @@
       transition: opacity 0.3s;
     }
   </style>
+  <script src="/assets/js/theme-guard.js"></script>
 </head>
 <body>
   <iframe id="theme-frame" allowfullscreen></iframe>
@@ -52,9 +53,43 @@
 
       const frame = document.getElementById('theme-frame');
 
+      const forbiddenThemes = ['theme-nexus', 'theme-horizon', 'theme-vertex', 'theme-aero', 'theme-flux', 'theme-neon', 'theme-ignite'];
+
+      function sanitizePortalTheme(themeId) {
+        if (!themeId || !themeMap[themeId] || forbiddenThemes.indexOf(themeId) !== -1) {
+          return 'theme-alpha';
+        }
+        return themeId;
+      }
+
+      function getUserTheme() {
+        try {
+          for (let i = 0; i < localStorage.length; i++) {
+            const k = localStorage.key(i);
+            if (k && k.startsWith('firebase:authUser:')) {
+              const raw = localStorage.getItem(k);
+              if (raw) {
+                const parsed = JSON.parse(raw);
+                if (parsed && parsed.uid) {
+                  const userTheme = localStorage.getItem('ds_theme_' + parsed.uid);
+                  if (userTheme) return sanitizePortalTheme(userTheme);
+                }
+              }
+            }
+          }
+          const active = localStorage.getItem('activeTheme');
+          if (active) return sanitizePortalTheme(active);
+        } catch (_) {}
+        return 'theme-alpha';
+      }
+
       function loadTheme(themeId) {
-        if (!themeMap[themeId]) themeId = 'theme-alpha';
-        const targetUrl = themeId === 'theme-alpha' ? '../index.html' : '../homepage-themes/' + themeId + '/' + themeMap[themeId];
+        themeId = sanitizePortalTheme(themeId);
+        if (themeId === 'theme-alpha') {
+          window.location.replace('../index.html');
+          return;
+        }
+        const targetUrl = '../homepage-themes/' + themeId + '/' + themeMap[themeId];
         frame.style.opacity = '0';
         setTimeout(() => {
           frame.src = targetUrl;
@@ -73,10 +108,10 @@
       });
 
       try {
-        const activeTheme = localStorage.getItem('activeTheme') || 'theme-alpha';
+        const activeTheme = getUserTheme();
         loadTheme(activeTheme);
       } catch (e) {
-        window.location.replace('/theme-selector/');
+        window.location.replace('../index.html');
       }
     })();
   </script>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" id="html-root">
 <head>
+<script src="/assets/js/theme-guard.js"></script>
 <script>
   if (window.location.pathname.endsWith('/theme-nexus')) {
     window.location.replace(window.location.pathname + '/' + window.location.search + window.location.hash);
@@ -29,7 +30,7 @@
 <meta name="twitter:description" content="Everything digital, one place. Services, tools, resources, Live TV and Focus Mode." />
 
 <link rel="icon" href="/favicon.ico" sizes="any" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
 <!-- Fonts: Latin display/body + Bengali (Hind Siliguri reads cleanly at UI sizes) -->
@@ -764,7 +765,7 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a></li>
+      <li><a href="../../insights/index.html"><span class="en">Insights</span><span class="bn">জ্ঞানকথা</span></a></li>
       <li><a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a></li>
       <li><a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a></li>
       <li><a href="/live-tv/"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></a></li>
@@ -815,12 +816,12 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
                 </svg>
                 <span class="en">My Profile</span><span class="bn">আমার প্রোফাইল</span>
               </a>
-              <a href="../../services/index.html" class="user-dropdown-item" role="menuitem">
+              <a href="../../insights/index.html" class="user-dropdown-item" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
                   <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
                 </svg>
-                <span class="en">All Services</span><span class="bn">সকল সেবা</span>
+                <span class="en">Insights</span><span class="bn">জ্ঞানকথা</span>
               </a>
               <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -842,7 +843,7 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
   </nav>
 
   <div class="mobile-panel" id="mobile-panel">
-    <a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a>
+    <a href="../../insights/index.html"><span class="en">Insights</span><span class="bn">জ্ঞানকথা</span></a>
     <a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a>
     <a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a>
     <a href="/live-tv/"><span class="en">Live TV</span><span class="bn">লাইভ টিভি</span></a>
@@ -907,7 +908,7 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
           </p>
 
           <div class="hero-actions">
-            <a href="/services/" class="btn-primary">
+            <a href="../../insights/index.html" class="btn-primary">
               <span class="en">Explore Digital Seba</span><span class="bn">ডিজিটাল সেবা দেখুন</span>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
             </a>
@@ -986,9 +987,9 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
 
           <div class="const-center"><span><span class="en">Digital Seba</span><span class="bn">ডিজিটাল সেবা</span></span></div>
 
-          <a href="/services/" class="const-node n-services">
+          <a href="../../insights/index.html" class="const-node n-services">
             <span class="node-dot" aria-hidden="true">🗂️</span>
-            <span class="node-label"><span class="en">Services</span><span class="bn">সেবা</span></span>
+            <span class="node-label"><span class="en">Insights</span><span class="bn">জ্ঞানকথা</span></span>
           </a>
           <a href="/tools/" class="const-node n-tools">
             <span class="node-dot" aria-hidden="true">🛠️</span>
@@ -1032,8 +1033,8 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
               <span class="en">Practical digital and public-facing utilities — including Voteshondhan, a PDF-based voter information search tool.</span>
               <span class="bn">প্রয়োজনীয় ডিজিটাল ও পাবলিক সার্ভিস সহজে ব্যবহার করুন।</span>
             </p>
-            <a href="/services/" class="cat-link">
-              <span class="en">Explore Services</span><span class="bn">সেবা দেখুন</span>
+            <a href="../../insights/index.html" class="cat-link">
+              <span class="en">Explore Insights</span><span class="bn">জ্ঞানকথা দেখুন</span>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
             </a>
           </article>
@@ -1219,11 +1220,11 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
           <span class="bn">আপনার প্রয়োজনীয় ডিজিটাল জিনিসগুলো এখন এক জায়গায়।</span>
         </h2>
         <div class="final-cta-actions">
-          <a href="/services/" class="btn-primary">
+          <a href="../../insights/index.html" class="btn-primary">
             <span class="en">Explore Digital Seba</span><span class="bn">ডিজিটাল সেবা দেখুন</span>
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </a>
-          <a href="/services/" class="btn-outline"><span class="en">Browse Services</span><span class="bn">সেবা দেখুন</span></a>
+          <a href="../../insights/index.html" class="btn-outline"><span class="en">Browse Insights</span><span class="bn">জ্ঞানকথা দেখুন</span></a>
         </div>
       </div>
     </section>
@@ -1250,7 +1251,7 @@ footer { background: var(--bg); border-top: 1px solid var(--line); padding-block
         <div class="foot-links">
           <div class="foot-col">
             <p class="foot-col-title">Platform</p>
-            <a href="/services/"><span class="en">Services</span><span class="bn">সেবা</span></a>
+            <a href="../../insights/index.html"><span class="en">Insights</span><span class="bn">জ্ঞানকথা</span></a>
             <a href="/tools/"><span class="en">Tools</span><span class="bn">টুলস</span></a>
             <a href="/resources/"><span class="en">Resources</span><span class="bn">রিসোর্স</span></a>
           </div>

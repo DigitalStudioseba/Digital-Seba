@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Digital Seba Insights — Tech tips, tutorials, troubleshooting, and digital service guides.">
+  <meta name="robots" content="index, follow">
+  <title>Article Reader — Insights | Digital Seba</title>
+  <link rel="icon" type="image/png" href="../../assets/images/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+Bengali:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/main.css">
+  <link rel="stylesheet" href="../../assets/css/animations.css">
+  <link rel="stylesheet" href="../../assets/css/components.css">
+  <link rel="stylesheet" href="../../assets/css/responsive.css">
+  <link rel="stylesheet" href="../../assets/css/accessibility.css">
+  <link rel="stylesheet" href="../../assets/css/resources.css">
+
+  <style id="article-reader-styles">
+    /* ── Insights Article Reader Scoped Styles ── */
+    .article-page-wrap {
+      max-width: 960px;
+      margin: 100px auto 60px;
+      padding: 0 24px;
+    }
+
+    /* Breadcrumbs */
+    .article-breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .article-breadcrumb a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .article-breadcrumb a:hover {
+      color: var(--primary);
+    }
+
+    /* Article Header */
+    .article-header {
+      margin-bottom: 32px;
+    }
+
+    .article-cat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(99, 102, 241, 0.14);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .article-main-title {
+      font-size: clamp(1.8rem, 3.8vw, 2.75rem);
+      font-weight: 900;
+      line-height: 1.22;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .article-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .article-author-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .article-author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1.05rem;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    }
+
+    .article-author-name {
+      font-size: 0.94rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      line-height: 1.25;
+    }
+
+    .article-author-role {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .article-timing {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Featured Cover Image */
+    .article-cover-wrap {
+      width: 100%;
+      border-radius: var(--radius-2xl, 20px);
+      overflow: hidden;
+      margin: 28px 0 36px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+    }
+
+    .article-cover-wrap img {
+      width: 100%;
+      max-height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Article Content & Table of Contents */
+    .article-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .article-body {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .article-body h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin: 36px 0 16px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      letter-spacing: -0.01em;
+    }
+
+    .article-body h3 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 28px 0 14px;
+    }
+
+    .article-body p {
+      margin-bottom: 20px;
+      color: var(--text-secondary);
+    }
+
+    .article-body ul, .article-body ol {
+      margin: 0 0 24px 24px;
+      color: var(--text-secondary);
+    }
+
+    .article-body li {
+      margin-bottom: 8px;
+      line-height: 1.65;
+    }
+
+    .article-body code {
+      background: rgba(99, 102, 241, 0.12);
+      color: #38bdf8;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-size: 0.88em;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    [data-theme="light"] .article-body code {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .article-body pre {
+      background: #0f172a;
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-lg, 14px);
+      padding: 18px 22px;
+      overflow-x: auto;
+      margin: 24px 0;
+      color: #f8fafc;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .article-body pre code {
+      background: transparent;
+      padding: 0;
+      color: inherit;
+    }
+
+    .article-body blockquote {
+      border-left: 4px solid var(--primary);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 24px 0;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+
+    /* Callouts */
+    .article-callout {
+      border-radius: var(--radius-lg, 14px);
+      padding: 16px 20px;
+      margin: 24px 0;
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .article-callout.tip {
+      background: rgba(16, 185, 129, 0.1);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--text-primary);
+    }
+
+    .article-callout.warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-color: rgba(245, 158, 11, 0.3);
+      color: var(--text-primary);
+    }
+
+    /* Table of contents card */
+    .article-toc {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl, 16px);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+    }
+
+    .article-toc-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .article-toc ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .article-toc li {
+      margin-bottom: 8px;
+    }
+
+    .article-toc a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.92rem;
+      transition: color 0.15s;
+    }
+
+    .article-toc a:hover {
+      color: var(--primary);
+    }
+
+    /* Article Sharing and Footer */
+    .article-actions-bar {
+      margin-top: 48px;
+      padding: 24px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .share-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .share-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+
+    .share-btn:hover {
+      background: var(--bg-card-hover);
+      color: var(--text-primary);
+      border-color: var(--border-strong);
+      transform: translateY(-1px);
+    }
+
+    .btn-copy-link {
+      background: rgba(37, 99, 235, 0.12);
+      color: #38bdf8;
+      border-color: rgba(56, 189, 248, 0.3);
+    }
+
+    /* Author Profile Card */
+    .article-author-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl, 18px);
+      padding: 24px;
+      margin-top: 36px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .author-card-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #7c3aed);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    .author-card-details h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .author-card-details p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* Back Button */
+    .article-back-nav {
+      margin-top: 36px;
+      text-align: center;
+    }
+
+    .btn-back-insights {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 999px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      color: var(--text-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-back-insights:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    /* Empty / Not Found State */
+    .article-not-found {
+      text-align: center;
+      padding: 72px 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-2xl, 24px);
+      margin-top: 40px;
+    }
+
+    .anf-icon {
+      font-size: 3.5rem;
+      margin-bottom: 18px;
+    }
+
+    .anf-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 10px;
+    }
+
+    .anf-desc {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      max-width: 520px;
+      margin: 0 auto 24px;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+      .article-page-wrap {
+        margin-top: 85px;
+        padding: 0 16px;
+      }
+      .article-meta-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .article-author-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main-content" class="ds-skip-link">Skip to content</a>
+
+<!-- ══════════════════════════════════════════
+     NAVBAR (Preserved structure & styling)
+════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <a href="../../index.html" class="nav-logo">
+      <div class="logo-icon">
+        <img src="../../assets/images/logo.png" alt="Digital Seba Logo" class="site-logo">
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">Digital Seba</span>
+        <span class="logo-tagline"
+              data-en="Bangladesh's Smart Digital Service Platform"
+              data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সেবা প্ল্যাটফর্ম">
+          Bangladesh's Smart Digital Service Platform
+        </span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../../index.html#home" class="nav-link" data-en="Home" data-bn="হোম">Home</a></li>
+      <li><a href="../../insights/index.html" class="nav-link active" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
+
+      <!-- Tools dropdown -->
+      <li class="dropdown">
+        <a href="../../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
+        <div class="dropdown-menu tools-mega-menu">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <div class="mega-title">🛂 Government</div>
+              <a href="../../tools/passport/index.html">Passport Services</a>
+              <a href="../../tools/nid/index.html">NID Services</a>
+              <a href="../../tools/birth/index.html">Birth Certificate</a>
+              <a href="../../tools/land/index.html">Land Records</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">📷 Photo &amp; PDF</div>
+              <a href="../../tools/photo/index.html">Photo Studio</a>
+              <a href="../../tools/pdf/index.html">PDF Tools</a>
+              <a href="../../tools/photo/index.html">Signature Maker</a>
+              <a href="../../tools/photo/index.html">Background Remover</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🤖 AI Tools</div>
+              <a href="../../tools/ai/index.html">AI Chat</a>
+              <a href="../../tools/ai/index.html">AI Image Generator</a>
+              <a href="../../tools/pdf/index.html">AI OCR</a>
+              <a href="../../tools/ai/index.html">AI Writer</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🔧 Utilities</div>
+              <a href="../../tools/utility/index.html">Age Calculator</a>
+              <a href="../../tools/utility/index.html">BMI Calculator</a>
+              <a href="../../tools/utility/index.html">Currency Converter</a>
+              <a href="../../tools/utility/index.html">QR Generator</a>
+              <a href="../../link-auditor/index.html" class="new-feature-badge" data-badge="PRO">Link Auditor</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Resources dropdown -->
+      <li class="dropdown">
+        <a href="../../resources/index.html" class="nav-link" data-en="Resources" data-bn="রিসোর্স">Resources
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+        </a>
+        <div class="dropdown-menu tools-mega-menu">
+          <div class="mega-grid">
+            <div class="mega-col">
+              <div class="mega-title">🏛️ Government</div>
+              <a href="../../resources/index.html?cat=Passport">Passport</a>
+              <a href="../../resources/index.html?cat=NID">NID</a>
+              <a href="../../resources/index.html?cat=Birth%20Certificate">Birth Certificate</a>
+              <a href="../../resources/index.html?cat=Land%20Services">Land Services</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🌍 Visa &amp; Travel</div>
+              <a href="../../resources/index.html?cat=Visa%20Services">Visa Services</a>
+              <a href="../../resources/index.html?cat=BMET">BMET</a>
+              <a href="../../resources/index.html?cat=Medical%20Report">Medical Report</a>
+              <a href="../../resources/index.html?cat=Police%20Services">Police Services</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">🎓 Education</div>
+              <a href="../../resources/index.html?cat=University%20Admission">Admission</a>
+              <a href="../../resources/index.html?cat=Board%20Result">Board Results</a>
+              <a href="../../resources/index.html?cat=Scholarship">Scholarship</a>
+              <a href="../../resources/index.html?cat=Education">Education Boards</a>
+            </div>
+            <div class="mega-col">
+              <div class="mega-title">💾 Downloads</div>
+              <a href="../../resources/index.html?cat=Adobe%20Software">Adobe Software</a>
+              <a href="../../resources/index.html?cat=Google%20Drive%20Collections">Drive Collections</a>
+              <a href="../../resources/index.html?cat=Fonts%20Collection">Fonts</a>
+              <a href="../../resources/index.html">View All Resources →</a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="../../live-tv/index.html" class="nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
+      <li><a href="../../focus-mode/index.html" class="nav-link" data-en="Focus Mode" data-bn="ফোকাস মোড">Focus Mode</a></li>
+      <li><a href="../../about/index.html" class="nav-link" data-en="About" data-bn="আমাদের">About</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+      <button class="lang-toggle" id="langToggle" title="Switch Language" aria-label="Switch language">
+        <span class="lang-icon">🌐</span>
+        <span class="lang-text" id="langText">EN</span>
+      </button>
+
+      <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle dark/light mode">
+        <svg class="sun-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+
+      <div class="auth-buttons">
+        <div class="auth-logged-out" style="display:flex;align-items:center;gap:8px;">
+          <a href="../../login/" class="btn-login" data-en="Login" data-bn="লগইন">Login</a>
+          <a href="../../login/#signup" class="btn-signup" data-en="Sign Up" data-bn="নিবন্ধন">Sign Up</a>
+        </div>
+        <div class="auth-logged-in" style="display:none;">
+          <div class="user-menu-container" id="headerUserMenu">
+            <button class="user-menu-btn" id="headerUserMenuBtn" aria-expanded="false" aria-haspopup="true" aria-label="Open user menu">
+              <img class="user-avatar-thumb hidden" id="headerUserAvatar" src="" alt="Profile">
+              <div class="user-initial-thumb" id="headerUserInitial">U</div>
+              <span class="user-menu-name" id="headerUserName">User</span>
+              <svg class="user-menu-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="m6 9 6 6 6-6"></path>
+              </svg>
+            </button>
+            <div class="user-dropdown" id="headerUserDropdown" role="menu">
+              <div class="user-dropdown-header">
+                <img class="user-avatar-thumb hidden" id="dropdownUserAvatar" src="" alt="Profile">
+                <div class="user-initial-thumb" id="dropdownUserInitial">U</div>
+                <div class="user-dropdown-info">
+                  <div class="user-dropdown-name" id="dropdownUserName">User</div>
+                  <div class="user-dropdown-email" id="dropdownUserEmail">user@example.com</div>
+                </div>
+              </div>
+              <a href="../../profile/" class="user-dropdown-item" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
+              </a>
+              <a href="../../insights/index.html" class="user-dropdown-item" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                  <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                </svg>
+                <span data-en="Insights" data-bn="জ্ঞানকথা">Insights</span>
+              </a>
+              <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                  <polyline points="16 17 21 12 16 7"></polyline>
+                  <line x1="21" y1="12" x2="9" y2="12"></line>
+                </svg>
+                <span data-en="Sign Out" data-bn="লগআউট">Sign Out</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN ARTICLE READER CONTAINER
+════════════════════════════════════════════ -->
+<main id="main-content">
+  <div class="article-page-wrap">
+
+    <!-- Loading Placeholder -->
+    <div id="articleLoadingState" style="text-align:center; padding:60px 20px;">
+      <div class="insights-empty-icon" style="font-size:3rem; animation:fb-pulse 1.5s infinite;">📖</div>
+      <p style="color:var(--text-secondary); font-size:1rem;" data-en="Loading article..." data-bn="নিবন্ধটি লোড হচ্ছে...">Loading article...</p>
+    </div>
+
+    <!-- Article Content (rendered once loaded) -->
+    <article id="articleContent" style="display:none;">
+      <!-- Breadcrumbs -->
+      <nav class="article-breadcrumb" aria-label="Breadcrumb">
+        <a href="../../index.html" data-en="Home" data-bn="হোম">Home</a>
+        <span>›</span>
+        <a href="../index.html" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a>
+        <span>›</span>
+        <span id="breadcrumbCategory" style="color:var(--text-muted);">Category</span>
+        <span>›</span>
+        <span id="breadcrumbTitle" style="color:var(--text-secondary); max-width:240px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Article</span>
+      </nav>
+
+      <!-- Header -->
+      <header class="article-header">
+        <span class="article-cat-badge" id="articleCategoryBadge">Guide</span>
+        <h1 class="article-main-title" id="articleTitle">Article Title</h1>
+
+        <div class="article-meta-bar">
+          <div class="article-author-box">
+            <div class="article-author-avatar" id="authorAvatar">A</div>
+            <div>
+              <div class="article-author-name" id="authorName">Author</div>
+              <div class="article-author-role" id="authorRole">Tech Contributor</div>
+            </div>
+          </div>
+          <div class="article-timing">
+            <span id="articleDate">📅 Date</span>
+            <span>•</span>
+            <span id="articleReadingTime">⏱️ 5 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Cover Image -->
+      <div class="article-cover-wrap" id="coverWrap">
+        <img id="articleCoverImg" src="../../assets/images/cover.webp" alt="Cover" loading="eager">
+      </div>
+
+      <!-- Article Body -->
+      <div class="article-layout">
+        <div class="article-body" id="articleBody">
+          <!-- Parsed markdown content will appear here -->
+        </div>
+      </div>
+
+      <!-- Actions & Share Bar -->
+      <div class="article-actions-bar">
+        <div class="share-label" data-en="Share this article:" data-bn="নিবন্ধটি শেয়ার করুন:">Share this article:</div>
+        <div class="share-buttons">
+          <button type="button" class="share-btn btn-copy-link" id="btnCopyLink">🔗 Copy Link</button>
+          <a id="shareFb" class="share-btn" target="_blank" rel="noopener">Facebook</a>
+          <a id="shareWa" class="share-btn" target="_blank" rel="noopener">WhatsApp</a>
+          <a id="shareTg" class="share-btn" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+
+      <!-- Author Bio Card -->
+      <div class="article-author-card">
+        <div class="author-card-avatar" id="bioAvatar">A</div>
+        <div class="author-card-details">
+          <h4 id="bioName">Author</h4>
+          <p id="bioDesc"
+             data-en="Author and contributor at Digital Seba Insights. Passionate about empowering citizens and computer shops with modern tech solutions."
+             data-bn="ডিজিটাল সেবা জ্ঞানকথার লেখক ও অবদানকারী। আধুনিক প্রযুক্তি সমাধানের মাধ্যমে নাগরিক ও ডিজিটাল উদ্যোক্তাদের সহায়তা প্রদানে নিবেদিত।">
+            Author and contributor at Digital Seba Insights. Passionate about empowering citizens and computer shops with modern tech solutions.
+          </p>
+        </div>
+      </div>
+
+      <!-- Back to Insights -->
+      <div class="article-back-nav">
+        <a href="../index.html" class="btn-back-insights"
+           data-en="← Back to All Articles"
+           data-bn="← সকল নিবন্ধে ফিরে যান">← Back to All Articles</a>
+      </div>
+    </article>
+
+    <!-- Not Found State -->
+    <div class="article-not-found" id="articleNotFound" style="display:none;">
+      <div class="anf-icon">📄</div>
+      <h2 class="anf-title" data-en="Article Not Found" data-bn="নিবন্ধটি পাওয়া যায়নি">Article Not Found</h2>
+      <p class="anf-desc"
+         data-en="The requested article does not exist, has been unpublished, or is currently under editorial review."
+         data-bn="অনুরোধকৃত নিবন্ধটি বিদ্যমান নেই, অপ্রকাশিত রয়েছে অথবা সম্পাদকীয় পর্যালোচনার অধীনে রয়েছে।">
+        The requested article does not exist, has been unpublished, or is currently under editorial review.
+      </p>
+      <a href="../index.html" class="btn-back-insights"
+         data-en="Browse Insights"
+         data-bn="জ্ঞানকথা ব্রাউজ করুন">Browse Insights</a>
+    </div>
+
+  </div>
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER (Preserved structure & links)
+════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="../../index.html" class="footer-logo">
+            <img src="../../assets/images/logo.png" alt="Digital Seba Logo" class="footer-logo-img" loading="lazy" width="46" height="46">
+            <div class="footer-logo-text"><span class="footer-logo-name">Digital Seba</span></div>
+          </a>
+          <p data-en="Bangladesh's Smart Digital Service Platform." data-bn="বাংলাদেশের স্মার্ট ডিজিটাল সার্ভিস প্ল্যাটফর্ম।">Bangladesh's Smart Digital Service Platform.</p>
+        </div>
+        <div class="footer-links-col">
+          <h4 data-en="Quick Links" data-bn="দ্রুত লিঙ্ক">Quick Links</h4>
+          <ul>
+            <li><a href="../../index.html" data-en="Home" data-bn="হোম">Home</a></li>
+            <li><a href="../../insights/index.html" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
+            <li><a href="../../tools/index.html" data-en="Tools" data-bn="টুলস">Tools</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <div class="footer-bottom-content">
+        <div class="copyright" data-en="© 2026 Digital Seba. All rights reserved." data-bn="© ২০২৬ ডিজিটাল সেবা। সর্বস্বত্ব সংরক্ষিত।">© 2026 Digital Seba. All rights reserved.</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Core Dependencies -->
+<script src="../../assets/js/theme.js"           charset="UTF-8"></script>
+<script src="../../assets/js/language.js"        charset="UTF-8"></script>
+<script src="../../assets/js/tv-config.js"       charset="UTF-8"></script>
+<script src="../../assets/js/config-loader.js"   charset="UTF-8"></script>
+<!-- Firebase SDK v8 Compat -->
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="../../assets/js/firebase-init.js"></script>
+<script src="../../assets/js/auth.js"></script>
+<script src="../../assets/js/main.js"            charset="UTF-8"></script>
+
+<!-- ══════════════════════════════════════════
+     ARTICLE LOADER & SAFE MARKDOWN PARSER
+════════════════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  function getQuerySlug() {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('slug')) return params.get('slug');
+    if (params.get('post')) return params.get('post');
+
+    // Also extract from pathname /services/<slug>/
+    const pathParts = window.location.pathname.split('/').filter(Boolean);
+    if (pathParts.length >= 2 && pathParts[0] === 'services') {
+      const candidate = pathParts[1];
+      if (!['article', 'editor', 'voter-transfer', 'Voteshondhan'].includes(candidate)) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
+  // Safe minimal Markdown to HTML Converter (XSS resistant)
+  function renderMarkdownSafe(md) {
+    if (!md) return '';
+    // Escape raw HTML entities
+    let escaped = md
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    // Code blocks ```code```
+    escaped = escaped.replace(/```([\s\S]*?)```/g, function(match, code) {
+      return '<pre><code>' + code.trim() + '</code></pre>';
+    });
+
+    // Inline code `code`
+    escaped = escaped.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    // Headings
+    escaped = escaped.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+    escaped = escaped.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+    escaped = escaped.replace(/^# (.*$)/gim, '<h2>$1</h2>');
+
+    // Callout notes (> [!NOTE] text)
+    escaped = escaped.replace(/^&gt; \[!TIP\] (.*$)/gim, '<div class="article-callout tip">💡 <div>$1</div></div>');
+    escaped = escaped.replace(/^&gt; \[!WARNING\] (.*$)/gim, '<div class="article-callout warning">⚠️ <div>$1</div></div>');
+    escaped = escaped.replace(/^&gt; (.*$)/gim, '<blockquote>$1</blockquote>');
+
+    // Bold & Italics
+    escaped = escaped.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    escaped = escaped.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    // Paragraphs (double line breaks)
+    const blocks = escaped.split(/\n{2,}/);
+    return blocks.map(b => {
+      b = b.trim();
+      if (!b) return '';
+      if (b.startsWith('<h') || b.startsWith('<pre') || b.startsWith('<blockquote') || b.startsWith('<div class="article-callout')) {
+        return b;
+      }
+      return '<p>' + b.replace(/\n/g, '<br>') + '</p>';
+    }).join('\n');
+  }
+
+  async function fetchArticle(slug) {
+    // 1. Check Local Drafts/Published Cache first
+    try {
+      const local = localStorage.getItem('ds_insights_articles');
+      if (local) {
+        const list = JSON.parse(local);
+        if (Array.isArray(list)) {
+          const matched = list.find(a => (a.slug === slug || a.id === slug) && a.status === 'published');
+          if (matched) return matched;
+        }
+      }
+    } catch (_) {}
+
+    // 2. Query Firestore collection
+    if (typeof firebase !== 'undefined' && firebase.firestore) {
+      try {
+        const db = firebase.firestore();
+        const snap = await db.collection('articles')
+                             .where('slug', '==', slug)
+                             .where('status', '==', 'published')
+                             .limit(1)
+                             .get();
+        if (snap && !snap.empty) {
+          const doc = snap.docs[0];
+          return { id: doc.id, ...doc.data() };
+        }
+      } catch (err) {
+        console.warn('[ARTICLE:FIRESTORE] Query notice (handled safely):', err.code || err.message);
+      }
+    }
+
+    return null;
+  }
+
+  function displayArticle(article) {
+    const loading = document.getElementById('articleLoadingState');
+    const content = document.getElementById('articleContent');
+    const notFound = document.getElementById('articleNotFound');
+
+    if (!article) {
+      if (loading) loading.style.display = 'none';
+      if (content) content.style.display = 'none';
+      if (notFound) notFound.style.display = 'block';
+      return;
+    }
+
+    if (loading) loading.style.display = 'none';
+    if (notFound) notFound.style.display = 'none';
+    if (content) content.style.display = 'block';
+
+    // Populate Fields
+    document.title = `${article.title || 'Article'} — Insights | Digital Seba`;
+    const titleEl = document.getElementById('articleTitle');
+    const bcTitleEl = document.getElementById('breadcrumbTitle');
+    const bcCatEl = document.getElementById('breadcrumbCategory');
+    const catBadgeEl = document.getElementById('articleCategoryBadge');
+    const authorNameEl = document.getElementById('authorName');
+    const authorRoleEl = document.getElementById('authorRole');
+    const authorAvatarEl = document.getElementById('authorAvatar');
+    const bioAvatarEl = document.getElementById('bioAvatar');
+    const bioNameEl = document.getElementById('bioName');
+    const dateEl = document.getElementById('articleDate');
+    const readingTimeEl = document.getElementById('articleReadingTime');
+    const coverImg = document.getElementById('articleCoverImg');
+    const coverWrap = document.getElementById('coverWrap');
+    const bodyEl = document.getElementById('articleBody');
+
+    if (titleEl) titleEl.textContent = article.title || '';
+    if (bcTitleEl) bcTitleEl.textContent = article.title || '';
+    if (bcCatEl) bcCatEl.textContent = article.categoryId || 'General';
+    if (catBadgeEl) catBadgeEl.textContent = article.categoryId || 'Insights';
+
+    const author = article.authorDisplayName || 'Digital Seba Team';
+    const initial = (author[0] || 'A').toUpperCase();
+    if (authorNameEl) authorNameEl.textContent = author;
+    if (bioNameEl) bioNameEl.textContent = author;
+    if (authorAvatarEl) authorAvatarEl.textContent = initial;
+    if (bioAvatarEl) bioAvatarEl.textContent = initial;
+    if (authorRoleEl) authorRoleEl.textContent = article.authorRoleLabel || 'Contributor';
+
+    if (coverImg) {
+      if (article.coverImage) {
+        coverImg.src = article.coverImage;
+        if (coverWrap) coverWrap.style.display = 'block';
+      } else {
+        if (coverWrap) coverWrap.style.display = 'none';
+      }
+    }
+
+    if (readingTimeEl) {
+      readingTimeEl.textContent = article.readingTime ? `⏱️ ${article.readingTime} min read` : '⏱️ 4 min read';
+    }
+
+    if (dateEl && article.publishedAt) {
+      const d = article.publishedAt.toDate ? article.publishedAt.toDate() : new Date(article.publishedAt);
+      dateEl.textContent = '📅 ' + d.toLocaleDateString();
+    }
+
+    if (bodyEl) {
+      bodyEl.innerHTML = renderMarkdownSafe(article.body || '');
+    }
+
+    // Configure Social Links
+    const currentUrl = window.location.href;
+    const shareFb = document.getElementById('shareFb');
+    const shareWa = document.getElementById('shareWa');
+    const shareTg = document.getElementById('shareTg');
+    const btnCopy = document.getElementById('btnCopyLink');
+
+    if (shareFb) shareFb.href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+    if (shareWa) shareWa.href = `https://api.whatsapp.com/send?text=${encodeURIComponent(article.title + ' ' + currentUrl)}`;
+    if (shareTg) shareTg.href = `https://t.me/share/url?url=${encodeURIComponent(currentUrl)}&text=${encodeURIComponent(article.title || '')}`;
+
+    if (btnCopy) {
+      btnCopy.addEventListener('click', () => {
+        navigator.clipboard.writeText(currentUrl).then(() => {
+          btnCopy.textContent = '✅ Copied!';
+          setTimeout(() => { btnCopy.textContent = '🔗 Copy Link'; }, 2000);
+        }).catch(() => {});
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    const slug = getQuerySlug();
+    if (!slug) {
+      displayArticle(null);
+      return;
+    }
+    const article = await fetchArticle(slug);
+    displayArticle(article);
+  });
+})();
+</script>
+
+</body>
+</html>

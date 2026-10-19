@@ -1,1 +1,31 @@
 /live-tv    /live-tv/    301
+
+# Auth redirect
+/auth/*                                    /login/                                      301
+
+# Insights physical service directories and tools (preserve direct static serving)
+/services/voter-transfer/*              /services/voter-transfer/:splat              200
+/services/Voteshondhan/*                /services/Voteshondhan/:splat                200
+/services/editor/*                      /services/editor/:splat                      200
+/services/article/*                     /services/article/:splat                     200
+
+# Insights aliases for editor and article
+/insights/editor/*                         /services/editor/:splat                      200
+/insights/article/*                        /services/article/:splat                     200
+
+# Tools Compatibility Redirects
+/tools/ai/*                                /tools/index.html?search=AI                  302
+/tools/photo/*                             /tools/index.html?search=Photo               302
+/tools/pdf/*                               /tools/index.html?search=PDF                 302
+/tools/utility/*                           /tools/index.html?search=Calculator          302
+/tools/passport/*                          /tools/index.html?search=Passport            302
+/tools/nid/*                               /tools/index.html?search=NID                 302
+/tools/birth/*                             /tools/index.html?search=Birth               302
+/tools/land/*                              /tools/index.html?search=Land                302
+
+# Services Hub to Insights Hub Migration 301 Redirects
+/services/                              /insights/                                   301
+/services/index.html                    /insights/                                   301
+
+# Insights article dynamic routing rewrite
+/services/:slug                         /services/article/index.html                 200

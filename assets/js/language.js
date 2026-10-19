@@ -15,7 +15,7 @@ const LanguageManager = (() => {
     en: {
       'nav.home': 'Home',
       'nav.tools': 'Tools',
-      'nav.services': 'Services',
+      'nav.services': 'Insights',
       'nav.categories': 'Categories',
       'nav.about': 'About',
       'nav.contact': 'Contact',
@@ -71,7 +71,7 @@ const LanguageManager = (() => {
     bn: {
       'nav.home': 'হোম',
       'nav.tools': 'টুলস',
-      'nav.services': 'সেবা',
+      'nav.services': 'জ্ঞানকথা',
       'nav.categories': 'ক্যাটাগরি',
       'nav.about': 'আমাদের',
       'nav.contact': 'যোগাযোগ',

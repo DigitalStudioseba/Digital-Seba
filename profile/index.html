@@ -791,7 +791,7 @@
     <!-- Desktop Nav Links -->
     <ul class="nav-links" id="navLinks">
       <li><a href="../index.html#home" class="nav-link" data-en="Home" data-bn="হোম">Home</a></li>
-      <li><a href="../services/index.html" class="nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../insights/index.html" class="nav-link" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
       <li><a href="../tools/index.html" class="nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
       <li><a href="../resources/index.html" class="nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
       <li><a href="../live-tv/index.html" class="nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
@@ -847,12 +847,12 @@
                 </svg>
                 <span data-en="My Profile" data-bn="আমার প্রোফাইল">My Profile</span>
               </a>
-              <a href="../services/index.html" class="user-dropdown-item" role="menuitem">
+              <a href="../insights/index.html" class="user-dropdown-item" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
                   <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
                 </svg>
-                <span data-en="All Services" data-bn="সকল সেবা">All Services</span>
+                <span data-en="Insights" data-bn="জ্ঞানকথা">Insights</span>
               </a>
               <button type="button" class="user-dropdown-item signout-item" id="headerSignOutBtn" role="menuitem">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -877,7 +877,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-nav-links">
       <li><a href="../index.html#home" class="mobile-nav-link" data-en="Home" data-bn="হোম">Home</a></li>
-      <li><a href="../services/index.html" class="mobile-nav-link" data-en="Services" data-bn="সেবা">Services</a></li>
+      <li><a href="../insights/index.html" class="mobile-nav-link" data-en="Insights" data-bn="জ্ঞানকথা">Insights</a></li>
       <li><a href="../tools/index.html" class="mobile-nav-link" data-en="Tools" data-bn="টুলস">Tools</a></li>
       <li><a href="../resources/index.html" class="mobile-nav-link" data-en="Resources" data-bn="রিসোর্স">Resources</a></li>
       <li><a href="../live-tv/index.html" class="mobile-nav-link" data-en="Live TV" data-bn="লাইভ টিভি">📺 Live TV</a></li>
@@ -1081,6 +1081,38 @@
               <div class="profile-field-subtext" data-en="Account Registration Date" data-bn="অ্যাকাউন্ট তৈরির সময়কাল">Account Registration Date</div>
             </div>
 
+            <!-- Field 5: Homepage Theme Preference (Profile Settings) -->
+            <div class="profile-field-card" style="grid-column: 1 / -1;" id="card-theme-preference">
+              <div class="profile-field-label">
+                <span>🎨</span>
+                <span data-en="Homepage Theme Preference" data-bn="হোমপেজ থিম পছন্দ">Homepage Theme Preference</span>
+              </div>
+              <div id="field-theme-view" class="profile-field-value" style="display:flex;align-items:center;gap:10px;">
+                <span id="field-theme-name">Alpha (Default)</span>
+                <span class="badge-role" style="background:rgba(16,185,129,0.15);border-color:rgba(16,185,129,0.35);color:#10b981;font-size:0.75rem;" data-en="Active Theme" data-bn="সক্রিয় থিম">Active Theme</span>
+              </div>
+              <div id="field-theme-edit" class="profile-input-wrap hidden">
+                <select id="select-theme-preference" class="profile-input" style="cursor:pointer;background:var(--card-bg, #0f172a);color:inherit;">
+                  <option value="theme-alpha">Alpha — Government Portal Architecture (Default)</option>
+                  <option value="theme-quantum">Quantum — High-Performance Delivery Framework</option>
+                  <option value="theme-pulse">Pulse — Vibrant & Energetic Dynamic Layout</option>
+                  <option value="theme-orbit">Orbit — Smooth Circular Content Transitions</option>
+                  <option value="theme-spark">Spark — Lightweight & Rapid Interaction</option>
+                  <option value="theme-lumina">Lumina — Bright Focus-Driven Layout</option>
+                  <option value="theme-zenith">Zenith — Peak Performance Ultra-Optimized</option>
+                  <option value="theme-nova">Nova — Bold & High-Visual Impact</option>
+                  <option value="theme-prism">Prism — Multi-Faceted Complex Data Grid</option>
+                  <option value="theme-echo">Echo — Resonant Typography-Focused Design</option>
+                  <option value="theme-core">Core — Clean Minimalist Content Delivery</option>
+                  <option value="theme-apex">Apex — Premium High-Trust Architecture</option>
+                  <option value="theme-infinity">Infinity — Endless Scrolling Grid Library</option>
+                  <option value="theme-genesis">Genesis — Classic Origin Architecture</option>
+                </select>
+                <div class="field-hint" data-en="Choose your personalized homepage interface theme" data-bn="আপনার পছন্দের হোমপেজ ইন্টারফেস থিম নির্বাচন করুন">Choose your personalized homepage interface theme</div>
+              </div>
+              <div class="profile-field-subtext" data-en="Your personalized theme will automatically load when you visit Digital Seba" data-bn="ডিজিটাল সেবায় প্রবেশের সময় আপনার নির্বাচিত থিমটি স্বয়ংক্রিয়ভাবে চালু হবে">Your personalized theme will automatically load when you visit Digital Seba</div>
+            </div>
+
           </div>
 
           <!-- Actions Bar -->
@@ -1096,9 +1128,9 @@
                 <span>⚙️</span>
                 <span data-en="Admin Dashboard" data-bn="অ্যাডমিন ড্যাশবোর্ড">Admin Dashboard</span>
               </a>
-              <a href="../services/index.html" class="btn-action-outline" style="text-decoration:none;">
+              <a href="../insights/index.html" class="btn-action-outline" style="text-decoration:none;">
                 <span>🏛️</span>
-                <span data-en="Explore Services" data-bn="সেবা দেখুন">Explore Services</span>
+                <span data-en="Explore Insights" data-bn="জ্ঞানকথা দেখুন">Explore Insights</span>
               </a>
               <button type="button" class="btn-action-danger" id="btn-signout-trigger">
                 <span>🚪</span>
